@@ -371,7 +371,6 @@
   "quickAsk": {
     "message": "Dopytaj"
   },
-
   "highlightToggleTitle": {
     "message": "Włącz wyróżnianie tekstu"
   },
@@ -470,6 +469,9 @@
   },
   "notepadYesterday": {
     "message": "Yesterday"
+  },
+  "notepadSaveToFolder": {
+    "message": "Zapisz w folderze"
   },
   "formulaCopyTypeTitle": {
     "message": "Typ kopiowania formuły"
@@ -729,16 +731,40 @@
   "chatWidthConfirm": {
     "message": "OK"
   },
-  "mirrorSiteTabName": { "message": "Strony lustrzane" },
-  "mirrorSiteHint": { "message": "Dodaj domeny lustrzanych stron AI. Na tych stronach pojawi się pływający przycisk umożliwiający korzystanie z niektórych funkcji tego rozszerzenia." },
-  "mirrorSiteAddDomain": { "message": "Dodaj" },
-  "mirrorSiteInputPlaceholder": { "message": "Wpisz domenę, np. chat.example.com" },
-  "mirrorSiteDomainListTitle": { "message": "Dodane domeny" },
-  "mirrorSiteNoDomains": { "message": "Brak dodanych domen" },
-  "mirrorSiteDomainAdded": { "message": "Domena dodana" },
-  "mirrorSiteDomainRemoved": { "message": "Domena usunięta" },
-  "mirrorSiteDomainExists": { "message": "Domena już istnieje" },
-  "mirrorSiteDomainInvalid": { "message": "Nieprawidłowy format domeny" },
-  "mirrorSiteDomainIsOfficial": { "message": "Ta domena jest już oficjalnie wspieraną platformą" },
-  "mirrorSiteCopied": { "message": "Skopiowano do schowka" }
+  "mirrorSiteTabName": {
+    "message": "Strony lustrzane"
+  },
+  "mirrorSiteHint": {
+    "message": "Dodaj domeny lustrzanych stron AI. Na tych stronach pojawi się pływający przycisk umożliwiający korzystanie z niektórych funkcji tego rozszerzenia."
+  },
+  "mirrorSiteAddDomain": {
+    "message": "Dodaj"
+  },
+  "mirrorSiteInputPlaceholder": {
+    "message": "Wpisz domenę, np. chat.example.com"
+  },
+  "mirrorSiteDomainListTitle": {
+    "message": "Dodane domeny"
+  },
+  "mirrorSiteNoDomains": {
+    "message": "Brak dodanych domen"
+  },
+  "mirrorSiteDomainAdded": {
+    "message": "Domena dodana"
+  },
+  "mirrorSiteDomainRemoved": {
+    "message": "Domena usunięta"
+  },
+  "mirrorSiteDomainExists": {
+    "message": "Domena już istnieje"
+  },
+  "mirrorSiteDomainInvalid": {
+    "message": "Nieprawidłowy format domeny"
+  },
+  "mirrorSiteDomainIsOfficial": {
+    "message": "Ta domena jest już oficjalnie wspieraną platformą"
+  },
+  "mirrorSiteCopied": {
+    "message": "Skopiowano do schowka"
+  }
 }

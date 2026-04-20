@@ -371,7 +371,6 @@
   "quickAsk": {
     "message": "Preguntar más"
   },
-
   "highlightToggleTitle": {
     "message": "Activar resaltado de texto"
   },
@@ -470,6 +469,9 @@
   },
   "notepadYesterday": {
     "message": "Yesterday"
+  },
+  "notepadSaveToFolder": {
+    "message": "Guardar en carpeta"
   },
   "formulaCopyTypeTitle": {
     "message": "Tipo de copia de fórmula"
@@ -729,16 +731,40 @@
   "chatWidthConfirm": {
     "message": "OK"
   },
-  "mirrorSiteTabName": { "message": "Sitios espejo" },
-  "mirrorSiteHint": { "message": "Agrega dominios de sitios espejo de IA. Aparecerá un botón flotante en estos sitios, habilitando algunas funciones de esta extensión." },
-  "mirrorSiteAddDomain": { "message": "Agregar" },
-  "mirrorSiteInputPlaceholder": { "message": "Ingresa dominio, ej. chat.example.com" },
-  "mirrorSiteDomainListTitle": { "message": "Dominios agregados" },
-  "mirrorSiteNoDomains": { "message": "No hay dominios agregados" },
-  "mirrorSiteDomainAdded": { "message": "Dominio agregado" },
-  "mirrorSiteDomainRemoved": { "message": "Dominio eliminado" },
-  "mirrorSiteDomainExists": { "message": "El dominio ya existe" },
-  "mirrorSiteDomainInvalid": { "message": "Formato de dominio inválido" },
-  "mirrorSiteDomainIsOfficial": { "message": "Este dominio ya es una plataforma oficial compatible" },
-  "mirrorSiteCopied": { "message": "Copiado al portapapeles" }
+  "mirrorSiteTabName": {
+    "message": "Sitios espejo"
+  },
+  "mirrorSiteHint": {
+    "message": "Agrega dominios de sitios espejo de IA. Aparecerá un botón flotante en estos sitios, habilitando algunas funciones de esta extensión."
+  },
+  "mirrorSiteAddDomain": {
+    "message": "Agregar"
+  },
+  "mirrorSiteInputPlaceholder": {
+    "message": "Ingresa dominio, ej. chat.example.com"
+  },
+  "mirrorSiteDomainListTitle": {
+    "message": "Dominios agregados"
+  },
+  "mirrorSiteNoDomains": {
+    "message": "No hay dominios agregados"
+  },
+  "mirrorSiteDomainAdded": {
+    "message": "Dominio agregado"
+  },
+  "mirrorSiteDomainRemoved": {
+    "message": "Dominio eliminado"
+  },
+  "mirrorSiteDomainExists": {
+    "message": "El dominio ya existe"
+  },
+  "mirrorSiteDomainInvalid": {
+    "message": "Formato de dominio inválido"
+  },
+  "mirrorSiteDomainIsOfficial": {
+    "message": "Este dominio ya es una plataforma oficial compatible"
+  },
+  "mirrorSiteCopied": {
+    "message": "Copiado al portapapeles"
+  }
 }

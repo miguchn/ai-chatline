@@ -371,7 +371,6 @@
   "quickAsk": {
     "message": "Tanya Lanjutan"
   },
-
   "highlightToggleTitle": {
     "message": "Aktifkan Sorotan Teks"
   },
@@ -470,6 +469,9 @@
   },
   "notepadYesterday": {
     "message": "Yesterday"
+  },
+  "notepadSaveToFolder": {
+    "message": "Simpan ke folder"
   },
   "formulaCopyTypeTitle": {
     "message": "Jenis salinan rumus"
@@ -729,16 +731,40 @@
   "chatWidthConfirm": {
     "message": "OK"
   },
-  "mirrorSiteTabName": { "message": "Situs Cermin" },
-  "mirrorSiteHint": { "message": "Tambahkan domain situs cermin AI. Tombol mengambang akan muncul di situs ini, memungkinkan penggunaan beberapa fitur ekstensi ini." },
-  "mirrorSiteAddDomain": { "message": "Tambah" },
-  "mirrorSiteInputPlaceholder": { "message": "Masukkan domain, mis. chat.example.com" },
-  "mirrorSiteDomainListTitle": { "message": "Domain yang ditambahkan" },
-  "mirrorSiteNoDomains": { "message": "Belum ada domain yang ditambahkan" },
-  "mirrorSiteDomainAdded": { "message": "Domain ditambahkan" },
-  "mirrorSiteDomainRemoved": { "message": "Domain dihapus" },
-  "mirrorSiteDomainExists": { "message": "Domain sudah ada" },
-  "mirrorSiteDomainInvalid": { "message": "Format domain tidak valid" },
-  "mirrorSiteDomainIsOfficial": { "message": "Domain ini sudah merupakan platform resmi" },
-  "mirrorSiteCopied": { "message": "Disalin ke papan klip" }
+  "mirrorSiteTabName": {
+    "message": "Situs Cermin"
+  },
+  "mirrorSiteHint": {
+    "message": "Tambahkan domain situs cermin AI. Tombol mengambang akan muncul di situs ini, memungkinkan penggunaan beberapa fitur ekstensi ini."
+  },
+  "mirrorSiteAddDomain": {
+    "message": "Tambah"
+  },
+  "mirrorSiteInputPlaceholder": {
+    "message": "Masukkan domain, mis. chat.example.com"
+  },
+  "mirrorSiteDomainListTitle": {
+    "message": "Domain yang ditambahkan"
+  },
+  "mirrorSiteNoDomains": {
+    "message": "Belum ada domain yang ditambahkan"
+  },
+  "mirrorSiteDomainAdded": {
+    "message": "Domain ditambahkan"
+  },
+  "mirrorSiteDomainRemoved": {
+    "message": "Domain dihapus"
+  },
+  "mirrorSiteDomainExists": {
+    "message": "Domain sudah ada"
+  },
+  "mirrorSiteDomainInvalid": {
+    "message": "Format domain tidak valid"
+  },
+  "mirrorSiteDomainIsOfficial": {
+    "message": "Domain ini sudah merupakan platform resmi"
+  },
+  "mirrorSiteCopied": {
+    "message": "Disalin ke papan klip"
+  }
 }

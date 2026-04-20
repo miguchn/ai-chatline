@@ -18,7 +18,13 @@ class NotepadManager {
         this.MAX_NOTES = 50;
 
         // 笔记数组 [{id, content, updatedAt}]
+        // 文件夹和标题信息存在 chatTimelineStars 中，key 格式：chatTimelineStar:notepad:{noteId}
         this.notes = [];
+
+        // 文件夹管理
+        this.folderManager = null;
+        this.locationEl = null;
+        this.locationTextEl = null;
 
         // 存储 key
         this.NOTES_KEY = 'aitNotepadNotes';
@@ -57,6 +63,9 @@ class NotepadManager {
     }
 
     async init() {
+        try {
+            this.folderManager = new FolderManager(StorageAdapter);
+        } catch (e) {}
         this.createPanel();
         await this.loadNotes();
         if (!this.notes.length) {
@@ -121,6 +130,16 @@ class NotepadManager {
                 <div class="ait-notepad-list"></div>
                 <textarea class="ait-notepad-editor" placeholder="${chrome.i18n.getMessage('notepadPlaceholder') || '想到什么就写什么，无需排版…'}"></textarea>
             </div>
+            <div class="ait-notepad-footer">
+                <div class="ait-notepad-location">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        width="13" height="13">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                    </svg>
+                    <span class="ait-notepad-location-text ait-notepad-location-empty">${chrome.i18n.getMessage('notepadSaveToFolder') || '保存到文件夹'}</span>
+                </div>
+            </div>
             <div class="ait-notepad-resize-handle" data-direction="se"></div>
             <div class="ait-notepad-resize-handle" data-direction="sw"></div>
             <div class="ait-notepad-resize-handle" data-direction="ne"></div>
@@ -137,6 +156,9 @@ class NotepadManager {
         this.listContainer = panel.querySelector('.ait-notepad-list');
         this.listBtn = panel.querySelector('.ait-notepad-list-btn');
         this.addBtn = panel.querySelector('.ait-notepad-add-btn');
+        this.locationEl = panel.querySelector('.ait-notepad-location');
+        this.locationTextEl = panel.querySelector('.ait-notepad-location-text');
+        this.footerEl = panel.querySelector('.ait-notepad-footer');
     }
 
     // ─── Events ───────────────────────────────────────────────────────────────
@@ -186,6 +208,11 @@ class NotepadManager {
         this.addBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             this.createNote();
+        });
+
+        this.locationEl.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this._showFolderPicker();
         });
 
         this.listContainer.addEventListener('click', (e) => {
@@ -268,6 +295,7 @@ class NotepadManager {
         this.textarea.style.display = 'none';
         this.listContainer.style.display = 'flex';
         this.listContainer.style.flexDirection = 'column';
+        if (this.footerEl) this.footerEl.style.display = 'none';
         this._renderList();
     }
 
@@ -275,6 +303,7 @@ class NotepadManager {
         this.currentView = 'edit';
         this.listContainer.style.display = 'none';
         this.textarea.style.display = '';
+        if (this.footerEl) this.footerEl.style.display = '';
         this._updateListBtnVisibility();
     }
 
@@ -284,7 +313,7 @@ class NotepadManager {
         }
     }
 
-    _renderList() {
+    async _renderList() {
         if (!this.notes.length) {
             this.listContainer.innerHTML = '';
             return;
@@ -292,17 +321,43 @@ class NotepadManager {
 
         const sorted = [...this.notes].sort((a, b) => b.updatedAt - a.updatedAt);
 
+        const allStars = await StarStorageManager.getAll();
+        const noteStarMap = {};
+        for (const star of allStars) {
+            if (star.key?.includes(':notepad:') && star.noteId) {
+                noteStarMap[star.noteId] = star;
+            }
+        }
+
+        const folderPaths = {};
+        if (this.folderManager) {
+            for (const note of sorted) {
+                const star = noteStarMap[note.id];
+                if (star?.folderId && !(star.folderId in folderPaths)) {
+                    folderPaths[star.folderId] = await this.folderManager.getFolderPath(star.folderId) || '';
+                }
+            }
+        }
+
         this.listContainer.innerHTML = sorted.map(note => {
-            const title = this._extractTitle(note.content) || (chrome.i18n.getMessage('notepadUntitled') || '无标题');
-            const preview = this._extractPreview(note.content);
+            const star = noteStarMap[note.id];
+            const contentTitle = this._extractTitle(note.content) || (chrome.i18n.getMessage('notepadUntitled') || '无标题');
+            const folderPath = star?.folderId ? (folderPaths[star.folderId] || '') : '';
+            const starTitle = star?.question || '';
             const time = this._formatTime(note.updatedAt);
+
+            let folderLine = '';
+            if (folderPath) {
+                folderLine = `<div class="ait-notepad-item-folder-line"><span class="ait-notepad-item-folder">${this._escapeHtml(folderPath)}</span>${starTitle ? `<span class="ait-notepad-item-star-title">${this._escapeHtml(starTitle)}</span>` : ''}</div>`;
+            }
+
             return `
                 <div class="ait-notepad-item" data-id="${note.id}">
                     <div class="ait-notepad-item-content">
-                        <div class="ait-notepad-item-title">${this._escapeHtml(title)}</div>
+                        <div class="ait-notepad-item-title">${this._escapeHtml(contentTitle)}</div>
+                        ${folderLine}
                         <div class="ait-notepad-item-meta">
                             <span class="ait-notepad-item-time">${time}</span>
-                            ${preview ? `<span class="ait-notepad-item-preview">${this._escapeHtml(preview)}</span>` : ''}
                         </div>
                     </div>
                     <button class="ait-notepad-item-delete" title="${chrome.i18n.getMessage('mzxvkp') || '删除'}">
@@ -349,6 +404,7 @@ class NotepadManager {
         this.activeNoteId = id;
         this.textarea.value = note.content;
         this._showEditView();
+        this._updateLocationDisplay();
 
         requestAnimationFrame(() => {
             this.textarea.focus();
@@ -368,6 +424,9 @@ class NotepadManager {
 
         this.notes = this.notes.filter(n => n.id !== id);
         this.saveNotes();
+
+        const starKey = this._getNoteStarKey(id);
+        StarStorageManager.remove(starKey).catch(() => {});
 
         if (this.activeNoteId === id) {
             this.activeNoteId = null;
@@ -442,6 +501,77 @@ class NotepadManager {
 
     _getNoteById(id) {
         return this.notes.find(n => n.id === id) || null;
+    }
+
+    // ─── 文件夹位置 ────────────────────────────────────────────────────────────
+
+    async _updateLocationDisplay() {
+        if (!this.locationTextEl || !this.activeNoteId) return;
+
+        const emptyText = chrome.i18n.getMessage('notepadSaveToFolder') || '保存到文件夹';
+        const starRecord = await StarStorageManager.findByKey(this._getNoteStarKey(this.activeNoteId));
+
+        if (!starRecord?.folderId || !this.folderManager) {
+            this.locationTextEl.textContent = emptyText;
+            this.locationTextEl.classList.add('ait-notepad-location-empty');
+            this.locationTextEl.innerHTML = emptyText;
+            return;
+        }
+        try {
+            const path = await this.folderManager.getFolderPath(starRecord.folderId);
+            if (path) {
+                const title = starRecord.question || '';
+                const folderHtml = `<span class="ait-notepad-loc-folder">${this._escapeHtml(path)}</span>`;
+                const titleHtml = title ? `<span class="ait-notepad-loc-title">${this._escapeHtml(title)}</span>` : '';
+                this.locationTextEl.innerHTML = folderHtml + titleHtml;
+                this.locationTextEl.classList.remove('ait-notepad-location-empty');
+            } else {
+                this.locationTextEl.textContent = emptyText;
+                this.locationTextEl.classList.add('ait-notepad-location-empty');
+            }
+        } catch (e) {
+            this.locationTextEl.textContent = emptyText;
+            this.locationTextEl.classList.add('ait-notepad-location-empty');
+        }
+    }
+
+    _getNoteStarKey(noteId) {
+        return `chatTimelineStar:notepad:${noteId}`;
+    }
+
+    async _showFolderPicker() {
+        if (!this.activeNoteId || !this.folderManager || !window.starInputModal) return;
+
+        const note = this._getNoteById(this.activeNoteId);
+        if (!note) return;
+
+        const starKey = this._getNoteStarKey(this.activeNoteId);
+        const existingStar = await StarStorageManager.findByKey(starKey);
+
+        const defaultTitle = existingStar?.question || this._extractTitle(note.content) || '';
+
+        const result = await window.starInputModal.show({
+            title: chrome.i18n.getMessage('zmvkpx') || '收藏到文件夹',
+            defaultValue: defaultTitle,
+            folderManager: this.folderManager,
+            defaultFolderId: existingStar?.folderId || null
+        });
+
+        if (!result) {
+            if (this.isOpen && this.panel) this.panel.classList.add('ait-notepad-focused');
+            return;
+        }
+
+        await StarStorageManager.add({
+            key: starKey,
+            noteId: this.activeNoteId,
+            question: result.value?.trim() || defaultTitle,
+            timestamp: Date.now(),
+            folderId: result.folderId || null
+        });
+
+        this._updateLocationDisplay();
+        if (this.isOpen && this.panel) this.panel.classList.add('ait-notepad-focused');
     }
 
     // ─── Storage ──────────────────────────────────────────────────────────────
@@ -755,6 +885,9 @@ class NotepadManager {
         this.listContainer = null;
         this.listBtn = null;
         this.addBtn = null;
+        this.locationEl = null;
+        this.locationTextEl = null;
+        this.footerEl = null;
     }
 }
 
