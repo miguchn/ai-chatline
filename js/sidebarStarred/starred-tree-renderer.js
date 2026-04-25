@@ -262,7 +262,7 @@ class StarredTreeRenderer {
         if (item.turnId?.startsWith('notepad:')) {
             const logo = document.createElement('div');
             logo.className = 'timeline-starred-item-logo';
-            logo.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6128FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>';
+            logo.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>';
             el.appendChild(logo);
         } else if (this.opts.showPlatformIcon) {
             const siteInfo = getSiteInfoByUrl(item.url);

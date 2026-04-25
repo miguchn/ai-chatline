@@ -194,11 +194,7 @@ class DataSyncTab extends BaseTab {
         try {
             const data = await this.getAllStorageData();
             const exportData = {
-                _meta: {
-                    version: '1.0',
-                    exportTime: new Date().toISOString(),
-                    source: 'AIChatTimeline'
-                },
+                _meta: this._buildMeta(),
                 data: data
             };
             
@@ -253,7 +249,7 @@ class DataSyncTab extends BaseTab {
             
             // 验证数据格式
             const importData = resp.data;
-            if (!importData.data || typeof importData.data !== 'object') {
+            if (!this._isValidBackup(importData)) {
                 throw new Error(chrome.i18n.getMessage('gdriveDataInvalid') || '云端数据格式无效');
             }
             
@@ -301,11 +297,7 @@ class DataSyncTab extends BaseTab {
             
             // 添加元数据
             const exportData = {
-                _meta: {
-                    version: '1.0',
-                    exportTime: new Date().toISOString(),
-                    source: 'AIChatTimeline'
-                },
+                _meta: this._buildMeta(),
                 data: data
             };
             
@@ -358,8 +350,8 @@ class DataSyncTab extends BaseTab {
             const text = await file.text();
             const importData = JSON.parse(text);
             
-            // 验证数据格式
-            if (!importData.data || typeof importData.data !== 'object') {
+            // 验证数据格式（含来源指纹，避免误导入非本扩展备份）
+            if (!this._isValidBackup(importData)) {
                 throw new Error('Invalid data format');
             }
             
@@ -395,6 +387,35 @@ class DataSyncTab extends BaseTab {
         }
     }
     
+    /**
+     * 构建备份文件元数据
+     *  - source:          来源指纹，import 端用来识别"是不是本扩展的备份"，防止误导入
+     *  - appVersion:      导出时的扩展版本号，便于后续排查脏数据 / 兼容性问题
+     *  - exportTime:      ISO 字符串，人可读
+     *  - exportTimestamp: 毫秒数，程序可直接比较
+     */
+    _buildMeta() {
+        return {
+            source: 'AIChatTimeline',
+            appVersion: chrome.runtime.getManifest().version,
+            exportTime: new Date().toISOString(),
+            exportTimestamp: Date.now()
+        };
+    }
+
+    /**
+     * 校验是否是合法的本扩展备份
+     *  - data 必须是对象
+     *  - 若带 _meta，则 source 必须为 'AIChatTimeline'（缺 _meta 时放行，兼容极早期备份）
+     */
+    _isValidBackup(importData) {
+        if (!importData || typeof importData !== 'object') return false;
+        if (!importData.data || typeof importData.data !== 'object') return false;
+        const meta = importData._meta;
+        if (meta && meta.source !== undefined && meta.source !== 'AIChatTimeline') return false;
+        return true;
+    }
+
     /**
      * 获取所有存储数据（过滤掉 _ 开头的内部数据）
      */

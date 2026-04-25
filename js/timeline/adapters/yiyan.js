@@ -30,7 +30,7 @@ class YiyanAdapter extends SiteAdapter {
         return text || '[图片或文件]';
     }
     
-    getTextContainer(element) {
+    getTimeLabelTarget(element) {
         return element.querySelector('span') || element;
     }
 

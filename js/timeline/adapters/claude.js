@@ -32,11 +32,10 @@ class ClaudeAdapter extends SiteAdapter {
     }
     
     /**
-     * 获取文本容器元素（用于时间标签定位）
-     * Claude: 使用 p 标签（文本在 p 标签中）
+     * 获取时间标签的渲染目标元素
+     * Claude: 使用 p 标签
      */
-    getTextContainer(element) {
-        // extractText 从 p 标签提取文本，所以返回 p 标签
+    getTimeLabelTarget(element) {
         const pElement = element.querySelector('p');
         return pElement || element;
     }

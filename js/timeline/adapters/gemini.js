@@ -113,11 +113,10 @@ class GeminiAdapter extends SiteAdapter {
     }
     
     /**
-     * 获取文本容器元素（用于时间标签定位）
+     * 获取时间标签的渲染目标元素
      * Gemini: 使用第一个 p.query-text-line 元素
      */
-    getTextContainer(element) {
-        // 使用第一个 .query-text-line（p 标签）
+    getTimeLabelTarget(element) {
         const firstLine = element.querySelector('.query-text-line');
         return firstLine || element;
     }

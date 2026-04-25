@@ -965,15 +965,13 @@ class TimelineManager {
             this.updateVirtualRangeAndRender();
             this.updateActiveDotUI();
             this.scheduleScrollSync();
+            // 重新渲染时间标签（虚拟滚动可能导致新元素出现但节点数不变）
+            if (window.chatTimeRecorder) {
+                window.chatTimeRecorder._renderTimeLabels();
+            }
             this.perfEnd('recalc');
             return;
         }
-        
-        // console.log('🔄 [重新计算] 节点发生变化:', { 
-        //     nodeCount: userTurnElements.length, 
-        //     countChanged: nodeCountChanged, 
-        //     idsChanged: nodeIdsChanged 
-        // });
         
         // ✅ 节点数量变化时，对外派发事件
         let pendingNodesChange = null;
@@ -984,7 +982,6 @@ class TimelineManager {
             
             // ✅ 检查数据是否真的变化了（避免重复 emit 相同数据）
             const lastChange = this.lastNodesChange;
-            // 帮我打一些console，我要看下节点数量的变化
             const shouldEmit = !(lastChange && lastChange.count === currentCount && lastChange.previousCount === previousCount);
             
             if (shouldEmit) {
@@ -1099,6 +1096,9 @@ class TimelineManager {
         // Build markers with normalized position along conversation
         this.markerMap.clear();
         
+        // 调用 fiber bridge 提取文本（仅 ChatGPT 等实现了该方法的平台）
+        const fiberTexts = this.adapter.extractFiberTexts?.() || new Map();
+        
         this.markers = Array.from(userTurnElements).map((el, index, arr) => {
             /**
              * ✅ 节点位置信息：
@@ -1125,10 +1125,14 @@ class TimelineManager {
             
             const id = this.adapter.generateTurnId(el, index);
             
+            // 优先使用 fiber 文本，回退到 DOM 提取
+            const turnIdRaw = el.getAttribute?.('data-turn-id');
+            const fiberText = turnIdRaw ? fiberTexts.get(turnIdRaw) : null;
+            
             const m = {
                 id: id,
                 element: el,
-                summary: this.adapter.extractText(el),
+                summary: fiberText || this.adapter.extractText(el),
                 offsetTop,      // 节点顶部距离（像素）- 用于激活判断
                 offsetBottom,   // 节点结束位置（像素）
                 visualN,        // 原始位置比例（0~1）
@@ -1215,7 +1219,6 @@ class TimelineManager {
                 previousCount: pendingNodesChange.previousCount,  // 变化前节点数
                 adapter: this.adapter                             // 传递 adapter 引用
             };
-            console.log('[TimelineManager] timeline:nodesChange', { count: nodesChangeDetail.count, previousCount: nodesChangeDetail.previousCount });
             try {
                 window.dispatchEvent(new CustomEvent('timeline:nodesChange', {
                     detail: nodesChangeDetail
@@ -1265,6 +1268,11 @@ class TimelineManager {
                 }, 500);
             }
         }).catch(() => {});
+        
+        // 重新渲染时间标签（处理虚拟滚动后新出现的消息元素）
+        if (window.chatTimeRecorder) {
+            window.chatTimeRecorder._renderTimeLabels();
+        }
         
         this.perfEnd('recalc');
     }

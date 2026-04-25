@@ -107,6 +107,46 @@ html[data-timeline-theme="dark"] .global-dropdown-item.danger:hover {
     background-color: #450a0a;
 }
 
+/* "新建/添加 xxx" 类型的操作项 —— 视觉上与列表中的真实条目（如真实文件夹名）做区分 */
+.global-dropdown-item.create-action .global-dropdown-item-label {
+    font-style: italic;
+    color: #6b7280;          /* 比正文更弱：text-secondary */
+    transition: color 0.15s ease;
+}
+
+html[data-timeline-theme="dark"] .global-dropdown-item.create-action .global-dropdown-item-label {
+    color: #9ca3af;
+}
+
+/* hover 时把 label 提回正文亮度，避免"看起来像禁用" */
+.global-dropdown-item.create-action:hover .global-dropdown-item-label {
+    color: #1f2937;
+}
+
+html[data-timeline-theme="dark"] .global-dropdown-item.create-action:hover .global-dropdown-item-label {
+    color: #f5f5f5;
+}
+
+/* 图标用品牌紫，强化"动作"语义（与 timeline 激活紫一致） */
+.global-dropdown-item.create-action .global-dropdown-item-icon svg {
+    color: #6128FF;
+}
+
+html[data-timeline-theme="dark"] .global-dropdown-item.create-action .global-dropdown-item-icon svg {
+    color: #8B5CF6;
+}
+
+/* hover 时图标保持品牌紫，覆盖默认的 hover 变深灰 */
+.global-dropdown-item.create-action:hover .global-dropdown-item-icon svg,
+.global-dropdown-submenu .global-dropdown-item.create-action:hover .global-dropdown-item-icon svg {
+    color: #6128FF;
+}
+
+html[data-timeline-theme="dark"] .global-dropdown-item.create-action:hover .global-dropdown-item-icon svg,
+html[data-timeline-theme="dark"] .global-dropdown-submenu .global-dropdown-item.create-action:hover .global-dropdown-item-icon svg {
+    color: #8B5CF6;
+}
+
 /* 图标 */
 .global-dropdown-item-icon {
     font-size: 16px;

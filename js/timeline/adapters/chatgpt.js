@@ -18,12 +18,12 @@ class ChatGPTAdapter extends SiteAdapter {
     }
 
     getUserMessageSelector() {
-        return '[data-message-author-role="user"]';
+        return '[data-turn="user"][data-turn-id]';
     }
 
     /**
      * 从 DOM 元素中提取 nodeId
-     * ChatGPT 的 nodeId 来自元素的 data-message-id 属性
+     * 直接从元素的 data-turn-id 属性读取 ID
      * 
      * ✅ 降级方案：返回 null 时，generateTurnId 会降级使用 index（数字类型）
      * @param {Element} element - 用户消息元素
@@ -32,16 +32,16 @@ class ChatGPTAdapter extends SiteAdapter {
     _extractNodeIdFromDom(element) {
         if (!element) return null;
         
-        const nodeId = element.getAttribute('data-message-id') || null;
+        const nodeId = element.getAttribute('data-turn-id') || null;
         return nodeId ? String(nodeId) : null;
     }
 
     /**
      * 生成节点的唯一标识 turnId
-     * 优先使用 data-message-id（稳定），回退到数组索引（兼容）
+     * 优先使用 data-turn-id（稳定），回退到数组索引（兼容）
      */
     generateTurnId(element, index) {
-        // 优先使用 data-message-id（稳定标识），回退到数组索引
+        // 优先使用 data-turn-id（稳定标识），回退到数组索引
         const nodeId = this._extractNodeIdFromDom(element);
         return nodeId ? `chatgpt-${nodeId}` : `chatgpt-${index}`;
     }
@@ -97,18 +97,53 @@ class ChatGPTAdapter extends SiteAdapter {
     }
 
     extractText(element) {
-        // 从 whitespace-pre-wrap 类的元素中提取文本内容
         const textElement = element.querySelector('.whitespace-pre-wrap');
         const text = (textElement?.textContent || '').replace(/\s+/g, ' ').trim();
         return text || '[图片或文件]';
     }
+
+    /**
+     * 通过 MAIN world 的 fiber bridge 同步提取所有用户消息文本
+     * 用于补充/覆盖 DOM 提取（解决虚拟滚动导致的文本丢失问题）
+     *
+     * 通信依赖 DOM 自定义事件在同栈完成（同步往返）：
+     * 1. 注册一次性 `timeline-fiber-result` 监听
+     * 2. 派发 `timeline-extract-fiber` 触发 MAIN-world 桥
+     * 3. dispatchEvent 返回时 cache 已被填充
+     *
+     * 如果桥脚本未就绪（document_idle 未到达 / CSP 拦截 / 非 ChatGPT 域），
+     * 监听不会触发，cache 为空 → 调用方自动回退到 DOM 提取。
+     * 首次检测到桥不可用时打印一条 warn，便于定位「桥根本没接通」。
+     * @returns {Map<string, string>} - data-turn-id → 消息文本
+     */
+    extractFiberTexts() {
+        const cache = new Map();
+        let received = false;
+        const handler = (e) => {
+            received = true;
+            if (e.detail) {
+                Object.entries(e.detail).forEach(([id, txt]) => cache.set(id, txt));
+            }
+        };
+        document.addEventListener('timeline-fiber-result', handler, { once: true });
+        document.dispatchEvent(new CustomEvent('timeline-extract-fiber'));
+        if (!received) {
+            // 同步往返失败 → 桥脚本不可用，移除挂起监听避免内存泄漏
+            document.removeEventListener('timeline-fiber-result', handler);
+            if (!ChatGPTAdapter._bridgeWarned) {
+                ChatGPTAdapter._bridgeWarned = true;
+                console.warn('[ChatGPTAdapter] fiber bridge unavailable, falling back to DOM extraction. Check that fiber-bridge-chatgpt.js is loaded in MAIN world.');
+            }
+        }
+        return cache;
+    }
     
     /**
-     * 获取文本容器元素（用于时间标签定位）
-     * ChatGPT: 使用 .whitespace-pre-wrap 元素
+     * 获取时间标签的渲染目标元素
+     * ChatGPT: 使用 [data-message-id] 子元素
      */
-    getTextContainer(element) {
-        return element.querySelector('.whitespace-pre-wrap') || element;
+    getTimeLabelTarget(element) {
+        return element.querySelector('[data-message-id]') || null;
     }
 
     isConversationRoute(pathname) {
@@ -237,11 +272,11 @@ class ChatGPTAdapter extends SiteAdapter {
     
     /**
      * 获取滚动偏移量
-     * ChatGPT 顶部有固定导航栏遮挡，需要额外偏移
+     * 用户消息节点本身上方留白较多，仅需小幅补偿即可避免被顶部 UI 遮挡
      * @returns {number} - 滚动偏移量（像素）
      */
     getScrollOffset() {
-        return 100; // 基础 30 + 额外 80 (顶部遮挡)
+        return 20;
     }
     
     /**

@@ -50,11 +50,11 @@ class SiteAdapter {
     }
     
     /**
-     * Get the text container element for time label positioning
-     * @param {Element} element - Message DOM element
-     * @returns {Element|null} - The element that wraps the text content
+     * 获取时间标签的渲染目标元素
+     * @param {Element} element - 消息体元素（getUserMessageSelector 匹配到的）
+     * @returns {Element} - 时间标签实际渲染到的元素
      */
-    getTextContainer(element) {
+    getTimeLabelTarget(element) {
         return element; // 默认返回消息元素本身
     }
     

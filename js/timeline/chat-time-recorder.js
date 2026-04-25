@@ -17,6 +17,10 @@ class ChatTimeRecorder {
         this._pendingRecord = null;
         this._labelVisible = true;    // 时间标签是否显示（默认显示）
         
+        // _renderTimeLabels 并发控制：避免短时间多次调用造成重复 storage 读
+        this._renderInFlight = false;
+        this._renderQueued = false;
+        
         // 事件处理函数（绑定 this）
         this._boundOnAIStateChange = this._onAIStateChange.bind(this);
     }
@@ -287,13 +291,37 @@ class ChatTimeRecorder {
      * 使用 data-ait-time 属性 + CSS ::before 伪元素方案：
      * - 不插入 DOM 节点，避免干扰平台原有 DOM 结构
      * - 通过 CSS 变量传递位置配置
+     *
+     * 并发控制：MutationObserver 抖动可能在短时间内多次触发本方法，
+     * 通过 in-flight + 单 trailing 回放，把 N 次并发调用合并为最多 2 次 storage 读。
      * @private
      */
     async _renderTimeLabels() {
-        if (!this.enabled) return;
+        if (!this.enabled || !this._labelVisible) return;
         
-        // 如果设置为不显示时间标签，直接返回（但时间记录仍会保存）
-        if (!this._labelVisible) return;
+        // 已有渲染在执行 → 标记为「需要再跑一次」，让那个执行结束后回放
+        if (this._renderInFlight) {
+            this._renderQueued = true;
+            return;
+        }
+        
+        this._renderInFlight = true;
+        try {
+            do {
+                this._renderQueued = false;
+                await this._doRenderTimeLabels();
+            } while (this._renderQueued);
+        } finally {
+            this._renderInFlight = false;
+        }
+    }
+    
+    /**
+     * 实际的时间标签渲染逻辑（被 _renderTimeLabels 通过去重包装调用）
+     * @private
+     */
+    async _doRenderTimeLabels() {
+        if (!this.enabled || !this._labelVisible) return;
         
         const adapter = this._getAdapter();
         if (!adapter) return;
@@ -327,27 +355,31 @@ class ChatTimeRecorder {
             
             const formattedTime = this.formatNodeTime(timestamp);
             
+            // 获取时间标签的实际渲染目标元素
+            const target = adapter.getTimeLabelTarget(element);
+            if (!target) return;
+            
             if (position.paddingTop) {
-                element.style.paddingTop = position.paddingTop;
+                target.style.paddingTop = position.paddingTop;
             }
             
             // 检查是否已有时间标签且内容相同（避免不必要的 DOM 操作）
-            if (element.getAttribute('data-ait-time') === formattedTime) return;
+            if (target.getAttribute('data-ait-time') === formattedTime) return;
             
-            // 确保 element 有相对定位（::before 相对于 element 定位）
-            const computedStyle = window.getComputedStyle(element);
+            // 确保 target 有相对定位（::before 相对于 target 定位）
+            const computedStyle = window.getComputedStyle(target);
             if (computedStyle.position === 'static') {
-                element.style.position = 'relative';
+                target.style.position = 'relative';
             }
             
             // 设置时间数据属性（CSS ::before 通过 attr() 读取内容）
-            element.setAttribute('data-ait-time', formattedTime);
+            target.setAttribute('data-ait-time', formattedTime);
             
             // 通过 CSS 变量传递位置配置
-            if (position.top) element.style.setProperty('--ait-time-top', position.top);
-            if (position.right) element.style.setProperty('--ait-time-right', position.right);
-            if (position.left) element.style.setProperty('--ait-time-left', position.left);
-            if (position.bottom) element.style.setProperty('--ait-time-bottom', position.bottom);
+            if (position.top) target.style.setProperty('--ait-time-top', position.top);
+            if (position.right) target.style.setProperty('--ait-time-right', position.right);
+            if (position.left) target.style.setProperty('--ait-time-left', position.left);
+            if (position.bottom) target.style.setProperty('--ait-time-bottom', position.bottom);
         });
     }
 

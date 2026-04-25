@@ -287,6 +287,11 @@
     object-fit: contain;
 }
 
+/* Logo 内置 SVG（如闪记 notepad 笔记）—— 使用 currentColor，统一为次级灰，与 .timeline-starred-item-more 对齐 */
+.timeline-starred-item-logo svg {
+    color: #6b7280;
+}
+
 /* Logo 首字母（备用方案）*/
 .timeline-starred-item-initial {
     width: 20px;
@@ -846,6 +851,9 @@ html[data-timeline-theme="dark"] .timeline-starred-item.active:hover { backgroun
 
 body.dark-theme .timeline-starred-item-initial,
 html[data-timeline-theme="dark"] .timeline-starred-item-initial { background: #3c4043; color: #bdc1c6; }
+
+body.dark-theme .timeline-starred-item-logo svg,
+html[data-timeline-theme="dark"] .timeline-starred-item-logo svg { color: #9aa0a6; }
 
 body.dark-theme .timeline-starred-item-edit svg,
 body.dark-theme .timeline-starred-item-copy svg,
