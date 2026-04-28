@@ -135,6 +135,13 @@ class QuickAskManager {
             }
             this._hideButton();
         });
+
+        // 复制按钮：集成到追问工具栏（仅当选区含高亮 OR 公式时显示）
+        window.eventDelegateManager.on('click', '.ait-quick-ask-btn .ait-copy-action', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            this._handleCopy();
+        });
         
         btn.addEventListener('mousedown', (e) => {
             e.preventDefault();
@@ -161,16 +168,51 @@ class QuickAskManager {
             const icon = hlInfo?.getButtonIcon?.() || '';
             const divider = document.createElement('div');
             divider.className = 'ait-toolbar-divider';
+            divider.dataset.aitOwner = 'highlight';
             const hlBtn = document.createElement('button');
             hlBtn.className = 'ait-highlight-action';
             hlBtn.innerHTML = `${icon}<span>${chrome.i18n.getMessage('highlightMark') || '标注'}</span>`;
             this.buttonElement.appendChild(divider);
             this.buttonElement.appendChild(hlBtn);
         } else if (!hlEnabled && existing) {
-            const divider = this.buttonElement.querySelector('.ait-toolbar-divider');
+            const divider = this.buttonElement.querySelector('.ait-toolbar-divider[data-ait-owner="highlight"]');
             if (divider) divider.remove();
             existing.remove();
         }
+    }
+
+    /**
+     * 检查并注入/移除复制按钮到追问工具栏
+     * 仅当选区中包含高亮 OR 公式时显示
+     */
+    _syncCopyButton() {
+        if (!this.buttonElement) return;
+        const copyApi = window.AIChatTimelineSelectionCopy;
+        const need = !!(copyApi && this._savedRange && copyApi.hasRichContent(this._savedRange));
+        const existing = this.buttonElement.querySelector('.ait-copy-action');
+
+        if (need && !existing) {
+            const divider = document.createElement('div');
+            divider.className = 'ait-toolbar-divider';
+            divider.dataset.aitOwner = 'copy';
+            const btn = document.createElement('button');
+            btn.className = 'ait-copy-action';
+            btn.innerHTML = `${QuickAskManager._getCopyIcon()}<span>${chrome.i18n.getMessage('mvkxpz') || '复制'}</span>`;
+            this.buttonElement.appendChild(divider);
+            this.buttonElement.appendChild(btn);
+        } else if (!need && existing) {
+            const divider = this.buttonElement.querySelector('.ait-toolbar-divider[data-ait-owner="copy"]');
+            if (divider) divider.remove();
+            existing.remove();
+        }
+    }
+
+    /**
+     * 复制按钮的 SVG 图标
+     * 视觉描边范围 y=3→21（与追问/标注图标的 bbox 高度一致），避免视觉上比其他按钮"高一截"
+     */
+    static _getCopyIcon() {
+        return `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 14H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v1"/></svg>`;
     }
     
     /**
@@ -336,14 +378,18 @@ class QuickAskManager {
      */
     _showButton(selection) {
         this._syncHighlightButton();
+        this._syncCopyButton();
         if (!this.buttonElement || !selection || selection.rangeCount === 0) return;
 
         const range = selection.getRangeAt(0);
         const rect = range.getBoundingClientRect();
         
-        // 按钮尺寸和间距
-        const btnWidth = 100;
-        const btnHeight = 32;
+        // 先以不可见状态显示，以便测量真实宽度（按钮数量动态变化）
+        this.buttonElement.style.visibility = 'hidden';
+        this.buttonElement.style.display = 'flex';
+        const measured = this.buttonElement.getBoundingClientRect();
+        const btnWidth = Math.max(measured.width || 0, 80);
+        const btnHeight = Math.max(measured.height || 0, 28);
         const gap = 8;
         const margin = 10; // 距离屏幕边缘的最小间距
         
@@ -369,7 +415,7 @@ class QuickAskManager {
         
         this.buttonElement.style.left = `${left}px`;
         this.buttonElement.style.top = `${top + window.scrollY}px`;
-        this.buttonElement.style.display = 'flex';
+        this.buttonElement.style.visibility = '';
         
         // 触发动画
         requestAnimationFrame(() => {
@@ -485,7 +531,53 @@ class QuickAskManager {
         // 清除选区
         window.getSelection()?.removeAllRanges();
     }
-    
+
+    /**
+     * 处理复制：保留高亮样式 + 公式 LaTeX/MathML
+     * Toast 走屏幕居中顶部（不传 target）—— 因为按钮点完会立即隐藏，无可锚定元素
+     */
+    async _handleCopy() {
+        const range = this._savedRange;
+        const copyApi = window.AIChatTimelineSelectionCopy;
+
+        if (!range || !copyApi) {
+            this._hideButton();
+            return;
+        }
+
+        // 同步发起 clipboard.write 以保留 user gesture
+        const promise = copyApi.copyRange(range);
+
+        // 立即隐藏按钮，避免遮挡 toast
+        this._hideButton();
+        window.getSelection()?.removeAllRanges();
+
+        try {
+            const ok = await promise;
+            const toast = window.globalToastManager;
+            if (ok) {
+                toast?.success?.(
+                    chrome.i18n.getMessage('xpzmvk') || '已复制',
+                    null,
+                    { duration: 1600 }
+                );
+            } else {
+                toast?.error?.(
+                    chrome.i18n.getMessage('kpzmvx') || '复制失败',
+                    null,
+                    { duration: 1600 }
+                );
+            }
+        } catch (e) {
+            console.error('[QuickAsk] copy failed:', e);
+            window.globalToastManager?.error?.(
+                chrome.i18n.getMessage('kpzmvx') || '复制失败',
+                null,
+                { duration: 1600 }
+            );
+        }
+    }
+
     /**
      * 插入文字到输入框
      */

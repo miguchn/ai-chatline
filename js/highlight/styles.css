@@ -80,9 +80,34 @@ mark.ait-highlight[data-hl-style="textOnly"].ait-highlight-hover {
     transform: translateY(0);
 }
 
-/* ==================== 标注按钮（通用样式，追问栏 + 独立模式共用） ==================== */
+/* ==================== 工具栏按钮（标注 / 复制 通用样式，追问栏 + 独立模式共用） ==================== */
 
-.ait-highlight-action {
+/* 强制工具栏内所有按钮等高，避免因图标 SVG 视觉密度不同导致的视觉错位 */
+.ait-quick-ask-btn,
+.ait-highlight-standalone-btn {
+    height: 32px;
+    line-height: 1;
+}
+
+.ait-quick-ask-btn .ait-quick-ask-action,
+.ait-quick-ask-btn .ait-highlight-action,
+.ait-quick-ask-btn .ait-copy-action,
+.ait-highlight-standalone-btn .ait-highlight-action,
+.ait-highlight-standalone-btn .ait-copy-action {
+    height: 32px;
+    line-height: 1;
+}
+
+.ait-quick-ask-btn svg,
+.ait-highlight-standalone-btn svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.ait-highlight-action,
+.ait-copy-action {
     display: flex;
     align-items: center;
     gap: 4px;
@@ -98,15 +123,18 @@ mark.ait-highlight[data-hl-style="textOnly"].ait-highlight-hover {
     transition: background 0.15s ease;
 }
 
-.ait-highlight-action:hover {
+.ait-highlight-action:hover,
+.ait-copy-action:hover {
     background: var(--ait-quick-ask-hover, #333);
 }
 
-.ait-highlight-action:active {
+.ait-highlight-action:active,
+.ait-copy-action:active {
     background: var(--ait-quick-ask-active, #444);
 }
 
-.ait-highlight-action svg {
+.ait-highlight-action svg,
+.ait-copy-action svg {
     flex-shrink: 0;
 }
 

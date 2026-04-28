@@ -463,23 +463,27 @@
 
     // ==================== 独立按钮（非 AI 网站或追问关闭时） ====================
 
+    const COPY_BTN_ICON = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 14H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v1"/></svg>';
+
+    let standaloneSavedRange = null;
+
     function createStandaloneButton() {
         if (standaloneBtn) return;
 
         standaloneBtn = document.createElement('div');
         standaloneBtn.className = 'ait-highlight-standalone-btn';
         standaloneBtn.style.display = 'none';
-        standaloneBtn.innerHTML = `
-            <button class="ait-highlight-action">
-                ${HIGHLIGHT_BTN_ICON}
-                <span>${chrome.i18n.getMessage('highlightMark') || '标注'}</span>
-            </button>
-        `;
 
         window.eventDelegateManager.on('click', '.ait-highlight-standalone-btn .ait-highlight-action', (e) => {
             e.preventDefault();
             e.stopPropagation();
             onHighlightAction();
+        });
+
+        window.eventDelegateManager.on('click', '.ait-highlight-standalone-btn .ait-copy-action', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onStandaloneCopyAction();
         });
 
         window.eventDelegateManager.on('mousedown', '.ait-highlight-standalone-btn', (e) => {
@@ -496,14 +500,61 @@
         document.body.appendChild(standaloneBtn);
     }
 
-    function showStandaloneButton(selection) {
+    /**
+     * 同步独立工具栏的按钮组成（标注 / 复制）
+     * 采用「清空 → 重建」策略，规范结构为：[标注] [divider] [复制]
+     * 选区变化频率低，重建成本可忽略；好处是避免中间态错位（如分隔线遗留在首位）。
+     * @param {{ showHighlight: boolean, showCopy: boolean }} opts
+     */
+    function syncStandaloneButtons(opts) {
+        if (!standaloneBtn) return;
+
+        const items = [];
+
+        if (opts.showHighlight) {
+            const hlBtn = document.createElement('button');
+            hlBtn.className = 'ait-highlight-action';
+            hlBtn.innerHTML = `${HIGHLIGHT_BTN_ICON}<span>${chrome.i18n.getMessage('highlightMark') || '标注'}</span>`;
+            items.push(hlBtn);
+        }
+
+        if (opts.showCopy) {
+            if (items.length > 0) {
+                const divider = document.createElement('div');
+                divider.className = 'ait-toolbar-divider';
+                divider.dataset.aitOwner = 'copy';
+                items.push(divider);
+            }
+            const copyBtn = document.createElement('button');
+            copyBtn.className = 'ait-copy-action';
+            copyBtn.innerHTML = `${COPY_BTN_ICON}<span>${chrome.i18n.getMessage('mvkxpz') || '复制'}</span>`;
+            items.push(copyBtn);
+        }
+
+        standaloneBtn.replaceChildren(...items);
+    }
+
+    function showStandaloneButton(selection, opts) {
         if (!standaloneBtn || !selection || selection.rangeCount === 0) return;
+
+        syncStandaloneButtons(opts);
+        if (standaloneBtn.children.length === 0) {
+            hideStandaloneButton();
+            return;
+        }
+
+        // 缓存选区，复制按钮的 click 时复用
+        try { standaloneSavedRange = selection.getRangeAt(0).cloneRange(); } catch { standaloneSavedRange = null; }
 
         const range = selection.getRangeAt(0);
         const rect = range.getBoundingClientRect();
 
-        const btnWidth = 80;
-        const btnHeight = 32;
+        // 先以不可见状态显示，测量真实宽度
+        standaloneBtn.style.visibility = 'hidden';
+        standaloneBtn.style.display = 'flex';
+        const measured = standaloneBtn.getBoundingClientRect();
+        const btnWidth = Math.max(measured.width || 0, 80);
+        const btnHeight = Math.max(measured.height || 0, 28);
         const gap = 8;
         const margin = 10;
 
@@ -516,15 +567,54 @@
 
         standaloneBtn.style.left = `${left}px`;
         standaloneBtn.style.top = `${top + window.scrollY}px`;
-        standaloneBtn.style.display = 'flex';
+        standaloneBtn.style.visibility = '';
 
         requestAnimationFrame(() => standaloneBtn.classList.add('visible'));
+    }
+
+    async function onStandaloneCopyAction() {
+        const range = standaloneSavedRange;
+        const copyApi = window.AIChatTimelineSelectionCopy;
+        if (!range || !copyApi) {
+            hideStandaloneButton();
+            return;
+        }
+
+        const promise = copyApi.copyRange(range);
+        hideStandaloneButton();
+        window.getSelection()?.removeAllRanges();
+
+        try {
+            const ok = await promise;
+            const toast = window.globalToastManager;
+            if (ok) {
+                toast?.success?.(
+                    chrome.i18n.getMessage('xpzmvk') || '已复制',
+                    null,
+                    { duration: 1600 }
+                );
+            } else {
+                toast?.error?.(
+                    chrome.i18n.getMessage('kpzmvx') || '复制失败',
+                    null,
+                    { duration: 1600 }
+                );
+            }
+        } catch (e) {
+            console.error('[Highlight] copy failed:', e);
+            window.globalToastManager?.error?.(
+                chrome.i18n.getMessage('kpzmvx') || '复制失败',
+                null,
+                { duration: 1600 }
+            );
+        }
     }
 
     function hideStandaloneButton() {
         if (!standaloneBtn) return;
         standaloneBtn.classList.remove('visible');
         standaloneBtn.style.display = 'none';
+        standaloneSavedRange = null;
     }
 
     // ==================== 选区监听（独立模式） ====================
@@ -605,9 +695,20 @@
         const text = selection?.toString().trim();
         if (!text) { hideStandaloneButton(); return; }
         if (!isValidHighlightSelection(selection)) { hideStandaloneButton(); return; }
-        if (manager.isSelectionInsideHighlight()) { hideStandaloneButton(); return; }
 
-        showStandaloneButton(selection);
+        const range = selection.getRangeAt(0);
+        // 标注按钮：选区不在已有标注内才允许新增标注
+        const showHighlight = !manager.isSelectionInsideHighlight();
+        // 复制按钮：选区中包含高亮 OR 公式
+        const copyApi = window.AIChatTimelineSelectionCopy;
+        const showCopy = !!(copyApi && copyApi.hasRichContent(range));
+
+        if (!showHighlight && !showCopy) {
+            hideStandaloneButton();
+            return;
+        }
+
+        showStandaloneButton(selection, { showHighlight, showCopy });
     }
 
     // ==================== 状态更新 ====================
