@@ -1,5 +1,5 @@
 /* Wizard flight parade */
-.wizard-parade { position: fixed; z-index: 8; height: 48px; overflow: visible; pointer-events: none; -webkit-mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent); mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent); }
+.ait-wizard-parade { position: fixed; z-index: 8; height: 48px; overflow: visible; pointer-events: none; -webkit-mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent); mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent); }
 .wizard-track { width: 100%; height: 100%; position: relative; }
 .wizard-group { display: flex; align-items: flex-end; gap: 0; position: absolute; bottom: 0; pointer-events: auto; cursor: pointer; animation: wizard-march 40s linear 1 forwards; }
 .wizard-group:hover, .wizard-group:hover * { animation-play-state: paused !important; }

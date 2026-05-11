@@ -108,6 +108,30 @@ class StarredTab extends BaseTab {
             divider.className = 'starred-sidebar-divider';
             container.appendChild(divider);
 
+            const hideToggleSection = document.createElement('div');
+            hideToggleSection.className = 'starred-hide-toggle-section';
+            hideToggleSection.innerHTML = `
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">${chrome.i18n.getMessage('hideStarredFromListLabel') || '去重模式'}</div>
+                        <div class="setting-hint">${chrome.i18n.getMessage('hideStarredFromListHint') || '开启后，已加入文件夹的对话将从原版侧边栏列表中隐藏'}</div>
+                    </div>
+                    <label class="ait-toggle-switch">
+                        <input type="checkbox" id="hide-starred-from-list-toggle">
+                        <span class="ait-toggle-slider"></span>
+                    </label>
+                </div>
+            `;
+            container.appendChild(hideToggleSection);
+
+            const hideToggle = hideToggleSection.querySelector('#hide-starred-from-list-toggle');
+            StorageAdapter.get('hideStarredFromNativeList').then(val => {
+                hideToggle.checked = !!val;
+            });
+            this.addEventListener(hideToggle, 'change', async () => {
+                await StorageAdapter.set('hideStarredFromNativeList', hideToggle.checked);
+            });
+
             const manageSection = document.createElement('div');
             manageSection.className = 'starred-sidebar-toggle';
             manageSection.innerHTML = `

@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "__MSG_extName__",
   "short_name": "Timeline",
-  "version": "4.6.5",
+  "version": "4.6.6",
   "description": "__MSG_extDescription__",
   "default_locale": "en",
   "author": "yanchao hou",
@@ -58,6 +58,8 @@
         "js/sidebarStarred/adapters/registry.js",
         "js/global/dropdown-manager/index.js",
         "js/global/popconfirm-manager/index.js",
+        "js/global/changelog-modal/changelog.js",
+        "js/global/changelog-modal/index.js",
         "js/global/event-delegate-manager/index.js",
         "js/chat-width-manager/index.js",
         "js/formula/libs/temml.min.js",
@@ -185,6 +187,7 @@
         "js/sidebarStarred/styles.css",
         "js/global/dropdown-manager/styles.css",
         "js/global/popconfirm-manager/styles.css",
+        "js/global/changelog-modal/styles.css",
         "js/panelModal/styles.css",
         "js/panelModal/tabs/starred/styles.css",
         "js/panelModal/tabs/timeline/styles.css",
@@ -225,6 +228,7 @@
   "web_accessible_resources": [
     {
       "resources": [
+        "icons/icon128.png",
         "images/logo.png",
         "images/logo/*.webp",
         "images/logo/*.svg",

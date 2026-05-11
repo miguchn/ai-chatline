@@ -1,5 +1,5 @@
 /* 蚂蚁行军队列 */
-.ant-parade { position: fixed; z-index: 8; height: 26px; overflow: visible; pointer-events: none; -webkit-mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent); mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent); }
+.ait-ant-parade { position: fixed; z-index: 8; height: 26px; overflow: visible; pointer-events: none; -webkit-mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent); mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent); }
 .ant-track { width: 100%; height: 100%; position: relative; }
 .ant-group { display: flex; align-items: flex-end; gap: 4px; position: absolute; bottom: 0; pointer-events: auto; cursor: pointer; animation: ant-march 40s linear 1 forwards; }
 .ant-group:hover, .ant-group:hover * { animation-play-state: paused !important; }
@@ -22,9 +22,9 @@
 @keyframes ant-antenna { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(4deg); } }
 
 /* 深色模式下蚂蚁提亮 */
-html[data-timeline-theme="dark"] .ant-parade svg,
-html[class*="dark"] .ant-parade svg,
-body.dark .ant-parade svg,
-body[class*="dark"] .ant-parade svg { filter: brightness(2.2) saturate(0.8); }
+html[data-timeline-theme="dark"] .ait-ant-parade svg,
+html[class*="dark"] .ait-ant-parade svg,
+body.dark .ait-ant-parade svg,
+body[class*="dark"] .ait-ant-parade svg { filter: brightness(2.2) saturate(0.8); }
 
 .anim-paused * { animation-play-state: paused !important; }

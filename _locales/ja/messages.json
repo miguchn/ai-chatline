@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline：AI チャット体験を強化"
+    "message": "Timeline：ChatGPT・Gemini チャット強化"
   },
   "extDescription": {
-    "message": "AI チャットの神ツール。ChatGPT、Gemini、DeepSeek などすべての主要 AI プラットフォームに対応。"
+    "message": "DeepSeek・Claude など全 AI プラットフォーム対応。タイムライン、フォルダ、プロンプト集、バーチャルペット。"
   },
   "qwxpzm": {
     "message": "お気に入り"
@@ -701,6 +701,18 @@
   "aboutBtnDocs": {
     "message": "機能ドキュメント"
   },
+  "changelogTitle": {
+    "message": "Timeline アップデート！"
+  },
+  "changelogSubtitle": {
+    "message": "$1 ユーザーが利用中。新バージョンで体験をさらに向上。"
+  },
+  "changelogFeatures": {
+    "message": "新機能"
+  },
+  "changelogImprovements": {
+    "message": "改善"
+  },
   "aboutFeedbackStore": {
     "message": "Chrome ストアレビュー"
   },
@@ -817,5 +829,11 @@
   },
   "mirrorSiteCopied": {
     "message": "クリップボードにコピーしました"
+  },
+  "hideStarredFromListLabel": {
+    "message": "重複排除モード"
+  },
+  "hideStarredFromListHint": {
+    "message": "有効にすると、フォルダに追加された会話がサイドバーのリストから非表示になります"
   }
 }

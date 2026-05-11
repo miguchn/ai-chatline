@@ -55,6 +55,52 @@
     --ait-quick-ask-divider: rgba(255, 255, 255, 0.15);
 }
 
+/*
+ * 防止 Ctrl+A 全选时选中插件注入的 UI 文本
+ * 根因：插件向宿主页面 DOM 注入了多个 UI 元素，若不设置 user-select: none，
+ *       用户全选复制时会将插件 UI 中的文案（按钮文字、placeholder、提示语等）一起复制。
+ * 新增注入到页面的根级 UI 组件时，需要将其选择器加入此列表。
+ * ref: https://github.com/houyanchao/Timeline/issues/72
+ */
+.ait-chat-timeline-wrapper,
+.timeline-toggle-btn,
+.timeline-tooltip,
+.timeline-tooltip-base,
+.timeline-copy-feedback,
+.timeline-error-toast,
+.ait-panel-modal,
+.ait-notepad-panel,
+.ait-sidebar-starred,
+.ait-question-list-popup,
+.ait-quick-ask-btn,
+.ait-highlight-standalone-btn,
+.ait-hl-popover,
+.ait-mermaid-overlay,
+.ait-cw-float,
+.ait-scroll-to-bottom-btn,
+.ait-custom-drag-ghost,
+.floating-runner-container,
+.mirror-site-float-btn,
+.smart-input-prompt-btn,
+.smart-input-update-btn,
+.global-dropdown,
+.global-dropdown-overlay,
+.global-input-modal-overlay,
+.global-popconfirm-overlay,
+.changelog-modal-overlay,
+.folder-edit-modal-overlay,
+.star-input-modal-overlay,
+.starred-platform-modal-overlay,
+.prompt-modal-overlay,
+.prompt-dropdown-overlay,
+.prompt-dropdown-container,
+.ait-ant-parade,
+.ait-snail-parade,
+.ait-wizard-parade,
+.ait-zombie-parade {
+    user-select: none;
+}
+
 /* Override variables when chat's dark mode is active */
 html[data-timeline-theme="dark"] {
     --ait-timeline-dot-color: #A0A0A0; /* ✅✅ 进一步提升亮度：#888 → #A0A0A0，深色主题下更清晰 */

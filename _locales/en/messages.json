@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline: Enhance AI Chat Experience"
+    "message": "Timeline: ChatGPT & Gemini Chat Enhanced"
   },
   "extDescription": {
-    "message": "The ultimate AI chat companion — works with ChatGPT, Gemini, DeepSeek and all major AI platforms."
+    "message": "Supports DeepSeek, Claude & all AI platforms. Timeline, folders, prompt library, virtual pet."
   },
   "qwxpzm": {
     "message": "Star"
@@ -743,6 +743,18 @@
   "aboutBtnDocs": {
     "message": "Feature Docs"
   },
+  "changelogTitle": {
+    "message": "Timeline Updated!"
+  },
+  "changelogSubtitle": {
+    "message": "Trusted by $1 users. New version, better experience."
+  },
+  "changelogFeatures": {
+    "message": "New Features"
+  },
+  "changelogImprovements": {
+    "message": "Improvements"
+  },
   "aboutFeedbackStore": {
     "message": "Chrome Store Reviews"
   },
@@ -859,5 +871,11 @@
   },
   "mirrorSiteCopied": {
     "message": "Copied to clipboard"
+  },
+  "hideStarredFromListLabel": {
+    "message": "Dedup Mode"
+  },
+  "hideStarredFromListHint": {
+    "message": "When enabled, conversations added to folders will be hidden from the native sidebar list"
   }
 }

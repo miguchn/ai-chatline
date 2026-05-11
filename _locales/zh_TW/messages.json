@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline：增強 AI 對話體驗"
+    "message": "Timeline：ChatGPT、Gemini 對話增強"
   },
   "extDescription": {
-    "message": "AI 對話神器，ChatGPT、Gemini、DeepSeek 等所有 AI 平台通用。"
+    "message": "支持 DeepSeek、Claude、豆包等所有 AI 平台，時間軸、資料夾、提示詞庫、電子寵物。"
   },
   "qwxpzm": {
     "message": "收藏"
@@ -707,6 +707,18 @@
   "aboutBtnDocs": {
     "message": "功能文檔"
   },
+  "changelogTitle": {
+    "message": "Timeline 更新啦！"
+  },
+  "changelogSubtitle": {
+    "message": "$1 用戶在用，新版本體驗再升級。"
+  },
+  "changelogFeatures": {
+    "message": "新功能"
+  },
+  "changelogImprovements": {
+    "message": "功能優化"
+  },
   "aboutFeedbackStore": {
     "message": "Chrome 商店評價區"
   },
@@ -823,5 +835,11 @@
   },
   "mirrorSiteCopied": {
     "message": "已複製到剪貼簿"
+  },
+  "hideStarredFromListLabel": {
+    "message": "去重模式"
+  },
+  "hideStarredFromListHint": {
+    "message": "開啟後，已加入資料夾的對話將從原版側邊欄列表中隱藏"
   }
 }

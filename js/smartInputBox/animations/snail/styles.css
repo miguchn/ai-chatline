@@ -1,5 +1,5 @@
 /* 蜗牛爬行队列 */
-.snail-parade { position: fixed; z-index: 8; height: 40px; overflow: visible; pointer-events: none; -webkit-mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent); mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent); }
+.ait-snail-parade { position: fixed; z-index: 8; height: 40px; overflow: visible; pointer-events: none; -webkit-mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent); mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent); }
 .snail-parade-track { width: 100%; height: 100%; position: relative; }
 .snail-parade-group { display: flex; align-items: flex-end; gap: 0; position: absolute; bottom: 0; pointer-events: auto; cursor: pointer; animation: snail-march 60s linear 1 forwards; }
 .snail-parade-group:hover, .snail-parade-group:hover * { animation-play-state: paused !important; }

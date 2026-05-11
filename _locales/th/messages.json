@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline: ยกระดับประสบการณ์แชท AI"
+    "message": "Timeline: ChatGPT และ Gemini แชทเสริม"
   },
   "extDescription": {
-    "message": "สุดยอดเครื่องมือแชท AI ใช้ได้กับ ChatGPT, Gemini, DeepSeek และแพลตฟอร์ม AI ชั้นนำทั้งหมด"
+    "message": "รองรับ DeepSeek, Claude และแพลตฟอร์ม AI ทั้งหมด ไทม์ไลน์ โฟลเดอร์ คลังพรอมต์ สัตว์เลี้ยงเสมือน"
   },
   "qwxpzm": {
     "message": "รายการโปรด"
@@ -650,6 +650,18 @@
   "aboutBtnDocs": {
     "message": "เอกสารฟีเจอร์"
   },
+  "changelogTitle": {
+    "message": "Timeline อัปเดตแล้ว!"
+  },
+  "changelogSubtitle": {
+    "message": "ผู้ใช้ $1 คนกำลังใช้งาน เวอร์ชันใหม่ ประสบการณ์ที่ดียิ่งขึ้น"
+  },
+  "changelogFeatures": {
+    "message": "ฟีเจอร์ใหม่"
+  },
+  "changelogImprovements": {
+    "message": "การปรับปรุง"
+  },
   "aboutFeedbackStore": {
     "message": "รีวิวบน Chrome Store"
   },
@@ -766,5 +778,11 @@
   },
   "mirrorSiteCopied": {
     "message": "คัดลอกไปยังคลิปบอร์ดแล้ว"
+  },
+  "hideStarredFromListLabel": {
+    "message": "โหมดกรองซ้ำ"
+  },
+  "hideStarredFromListHint": {
+    "message": "เมื่อเปิดใช้งาน การสนทนาที่เพิ่มในโฟลเดอร์จะถูกซ่อนจากรายการแถบด้านข้าง"
   }
 }

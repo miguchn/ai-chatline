@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline: AI चैट अनुभव को बेहतर बनाएं"
+    "message": "Timeline: ChatGPT और Gemini चैट संवर्धित"
   },
   "extDescription": {
-    "message": "AI चैट का बेहतरीन साथी। ChatGPT, Gemini, DeepSeek सहित सभी प्रमुख AI प्लेटफार्मों के साथ काम करता है।"
+    "message": "DeepSeek, Claude और सभी AI प्लेटफ़ॉर्म का समर्थन। टाइमलाइन, फ़ोल्डर, प्रॉम्प्ट लाइब्रेरी, वर्चुअल पेट।"
   },
   "qwxpzm": {
     "message": "पसंदीदा"
@@ -650,6 +650,18 @@
   "aboutBtnDocs": {
     "message": "फ़ीचर डॉक्स"
   },
+  "changelogTitle": {
+    "message": "Timeline अपडेट हुआ!"
+  },
+  "changelogSubtitle": {
+    "message": "$1 उपयोगकर्ता उपयोग कर रहे हैं। नया संस्करण, बेहतर अनुभव।"
+  },
+  "changelogFeatures": {
+    "message": "नई सुविधाएँ"
+  },
+  "changelogImprovements": {
+    "message": "सुधार"
+  },
   "aboutFeedbackStore": {
     "message": "Chrome स्टोर समीक्षा"
   },
@@ -766,5 +778,11 @@
   },
   "mirrorSiteCopied": {
     "message": "क्लिपबोर्ड पर कॉपी किया गया"
+  },
+  "hideStarredFromListLabel": {
+    "message": "डीडुप मोड"
+  },
+  "hideStarredFromListHint": {
+    "message": "सक्षम होने पर, फ़ोल्डर में जोड़ी गई बातचीत साइडबार सूची से छिपा दी जाएगी"
   }
 }

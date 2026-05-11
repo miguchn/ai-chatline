@@ -40,7 +40,7 @@ class SnailAnimation {
         }
         items += `<span class="snail-item snail-bob-3 snail-leader">${this._snailSvg('a', this._leaderSize)}</span>`;
         const el = document.createElement('div');
-        el.className = 'snail-parade';
+        el.className = 'ait-snail-parade';
         el.style.display = 'none';
         el.innerHTML = `<div class="snail-parade-track"><div class="snail-parade-group">${items}</div></div>`;
         document.body.appendChild(el);

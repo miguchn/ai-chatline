@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline: KI-Chat-Erlebnis verbessern"
+    "message": "Timeline: ChatGPT & Gemini Chat-Verbesserung"
   },
   "extDescription": {
-    "message": "Das ultimative Tool für KI-Chats. Funktioniert mit ChatGPT, Gemini, DeepSeek und allen gängigen KI-Plattformen."
+    "message": "Unterstützt DeepSeek, Claude & alle AI-Plattformen. Zeitleiste, Ordner, Prompt-Bibliothek, virtuelles Haustier."
   },
   "qwxpzm": {
     "message": "Favorisieren"
@@ -650,6 +650,18 @@
   "aboutBtnDocs": {
     "message": "Funktionsdoku"
   },
+  "changelogTitle": {
+    "message": "Timeline aktualisiert!"
+  },
+  "changelogSubtitle": {
+    "message": "Von $1 Nutzern verwendet. Neue Version, besseres Erlebnis."
+  },
+  "changelogFeatures": {
+    "message": "Neue Funktionen"
+  },
+  "changelogImprovements": {
+    "message": "Verbesserungen"
+  },
   "aboutFeedbackStore": {
     "message": "Chrome Store Bewertungen"
   },
@@ -766,5 +778,11 @@
   },
   "mirrorSiteCopied": {
     "message": "In die Zwischenablage kopiert"
+  },
+  "hideStarredFromListLabel": {
+    "message": "Deduplizierungsmodus"
+  },
+  "hideStarredFromListHint": {
+    "message": "Wenn aktiviert, werden Unterhaltungen in Ordnern aus der Seitenleiste ausgeblendet"
   }
 }

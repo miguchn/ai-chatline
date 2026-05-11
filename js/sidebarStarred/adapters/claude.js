@@ -91,6 +91,10 @@ class ClaudeSidebarStarredAdapter extends BaseSidebarStarredAdapter {
         try { return new URL(convEl.href).pathname; } catch { return ''; }
     }
 
+    getHideTarget(convEl) {
+        return convEl.closest('li') || convEl;
+    }
+
     injectStarIcon(convEl) {
         const titleSpan = convEl.querySelector('span.truncate');
         if (!titleSpan || titleSpan.querySelector(`[${BaseSidebarStarredAdapter.STAR_ICON_ATTR}]`)) return;

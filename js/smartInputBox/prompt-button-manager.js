@@ -28,13 +28,18 @@ class PromptButtonManager {
         // 提示词列表
         this.prompts = [];
         
+        // 版本更新 Logo 按钮
+        this._updateBtnElement = null;
+        this._hasUpdate = false;
+        
         // 事件处理器引用
         this._onResize = null;
         this._rafPending = false;  // RAF 节流标志
         
         // 配置
         this.config = {
-            gap: 8  // 按钮与输入框的间距
+            gap: 8,  // 按钮与输入框的间距
+            updateBtnGap: 6  // Logo 按钮与提示词按钮的间距
         };
     }
     
@@ -54,7 +59,11 @@ class PromptButtonManager {
         // 4. 创建按钮
         this._createButton();
         
-        // 5. 检查是否启用
+        // 5. 检查版本更新状态 & 创建 Logo 按钮
+        await this._checkUpdateStatus();
+        this._createUpdateButton();
+        
+        // 6. 检查是否启用
         if (this._isPlatformEnabled()) {
             this._enable();
         }
@@ -161,6 +170,11 @@ class PromptButtonManager {
                 if (changes.prompts) {
                     this.prompts = changes.prompts.newValue || [];
                 }
+                
+                // 监听版本已读状态变化（用户在某个站点看完更新后，其他站点实时隐藏 Logo）
+                if (changes['ait-changelog-read-version']) {
+                    this._checkUpdateStatus().then(() => this._updateUpdateButtonVisibility());
+                }
             }
         };
         chrome.storage.onChanged.addListener(this.storageListener);
@@ -195,6 +209,79 @@ class PromptButtonManager {
         const platform = typeof getCurrentPlatform === 'function' ? getCurrentPlatform() : null;
         if (window.inputBoxAnimationManager && platform?.features?.inputAnimation === true) {
             window.inputBoxAnimationManager.init();
+        }
+    }
+    
+    /**
+     * 检查是否有版本更新
+     */
+    async _checkUpdateStatus() {
+        try {
+            // 仅 icon 模式下在提示词按钮旁显示 Logo，popup 模式由 ChangelogModal 自行弹窗
+            if (typeof CHANGELOG_DATA !== 'undefined' && CHANGELOG_DATA.displayMode !== 'icon') {
+                this._hasUpdate = false;
+                return;
+            }
+            if (window.changelogModal) {
+                this._hasUpdate = await window.changelogModal.hasUpdate();
+            } else {
+                this._hasUpdate = false;
+            }
+        } catch {
+            this._hasUpdate = false;
+        }
+    }
+    
+    /**
+     * 创建版本更新 Logo 按钮
+     */
+    _createUpdateButton() {
+        if (this._updateBtnElement) return;
+        
+        const btn = document.createElement('div');
+        btn.className = 'smart-input-update-btn';
+        
+        try {
+            const logoUrl = chrome.runtime.getURL('images/logo.png');
+            btn.innerHTML = `
+                <img class="smart-input-update-logo" src="${logoUrl}" alt="logo" />
+                <span class="smart-input-update-dot"></span>
+            `;
+        } catch {
+            return;
+        }
+        
+        btn.style.display = 'none';
+        
+        window.eventDelegateManager.on('click', '.smart-input-update-btn', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            this._handleUpdateClick();
+        });
+        
+        document.body.appendChild(btn);
+        this._updateBtnElement = btn;
+    }
+    
+    /**
+     * 更新 Logo 按钮的显示/隐藏
+     */
+    _updateUpdateButtonVisibility() {
+        if (!this._updateBtnElement) return;
+        
+        if (this._hasUpdate && this.isEnabled && this.inputElement) {
+            this._updatePosition();
+        } else {
+            this._updateBtnElement.style.display = 'none';
+        }
+    }
+    
+    /**
+     * 处理 Logo 按钮点击 → 打开 changelog 弹窗
+     */
+    _handleUpdateClick() {
+        if (window.changelogModal) {
+            window.changelogModal.show();
         }
     }
     
@@ -356,6 +443,19 @@ class PromptButtonManager {
             this.buttonElement.style.top = `${safeTop}px`;
             this.buttonElement.style.left = `${safeLeft}px`;
             this.buttonElement.style.visibility = 'visible';
+            
+            // 更新 Logo 按钮位置（在提示词按钮左侧）
+            if (this._updateBtnElement && this._hasUpdate) {
+                this._updateBtnElement.style.visibility = 'hidden';
+                this._updateBtnElement.style.display = 'flex';
+                const updateRect = this._updateBtnElement.getBoundingClientRect();
+                const updateLeft = Math.max(8, safeLeft - updateRect.width - this.config.updateBtnGap);
+                this._updateBtnElement.style.top = `${safeTop}px`;
+                this._updateBtnElement.style.left = `${updateLeft}px`;
+                this._updateBtnElement.style.visibility = 'visible';
+            } else if (this._updateBtnElement) {
+                this._updateBtnElement.style.display = 'none';
+            }
 
             if (window.inputBoxAnimationManager) {
                 const ref = this.adapter.getPositionReferenceElement?.(this.inputElement) || this.inputElement;
@@ -372,6 +472,9 @@ class PromptButtonManager {
     _hideButton() {
         if (this.buttonElement) {
             this.buttonElement.style.display = 'none';
+        }
+        if (this._updateBtnElement) {
+            this._updateBtnElement.style.display = 'none';
         }
         if (window.inputBoxAnimationManager) {
             window.inputBoxAnimationManager.hideActive();
@@ -653,6 +756,10 @@ class PromptButtonManager {
         if (this.buttonElement?.parentNode) {
             this.buttonElement.parentNode.removeChild(this.buttonElement);
             this.buttonElement = null;
+        }
+        if (this._updateBtnElement?.parentNode) {
+            this._updateBtnElement.parentNode.removeChild(this._updateBtnElement);
+            this._updateBtnElement = null;
         }
         if (window.inputBoxAnimationManager) {
             window.inputBoxAnimationManager.destroy();

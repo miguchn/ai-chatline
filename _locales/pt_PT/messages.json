@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline: Melhore a experiência de chat com IA"
+    "message": "Timeline: ChatGPT e Gemini chat melhorado"
   },
   "extDescription": {
-    "message": "O companheiro definitivo para chat com IA. Compatível com ChatGPT, Gemini, DeepSeek e todas as principais plataformas de IA."
+    "message": "Compatível com DeepSeek, Claude e todas as plataformas IA. Cronologia, pastas, biblioteca de prompts, pet virtual."
   },
   "qwxpzm": {
     "message": "Favorito"
@@ -650,6 +650,18 @@
   "aboutBtnDocs": {
     "message": "Documentação"
   },
+  "changelogTitle": {
+    "message": "Timeline atualizado!"
+  },
+  "changelogSubtitle": {
+    "message": "Usado por $1 utilizadores. Nova versão, melhor experiência."
+  },
+  "changelogFeatures": {
+    "message": "Novidades"
+  },
+  "changelogImprovements": {
+    "message": "Melhorias"
+  },
   "aboutFeedbackStore": {
     "message": "Avaliações Chrome Store"
   },
@@ -766,5 +778,11 @@
   },
   "mirrorSiteCopied": {
     "message": "Copiado para a área de transferência"
+  },
+  "hideStarredFromListLabel": {
+    "message": "Modo deduplicação"
+  },
+  "hideStarredFromListHint": {
+    "message": "Quando ativado, as conversas adicionadas a pastas serão ocultadas da barra lateral"
   }
 }

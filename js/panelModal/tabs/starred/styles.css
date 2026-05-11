@@ -148,6 +148,20 @@
 @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
 /* ============================================
+   隐藏开关区域
+   ============================================ */
+
+.starred-hide-toggle-section {
+    flex-shrink: 0;
+    padding: 0 6px 0;
+}
+
+.starred-hide-toggle-section .setting-item {
+    padding: 10px 10px;
+    margin-bottom: 8px;
+}
+
+/* ============================================
    工具栏
    ============================================ */
 

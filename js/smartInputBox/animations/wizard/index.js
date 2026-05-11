@@ -61,7 +61,7 @@ class WizardAnimation {
         }
         items += `<span class="wizard-item wizard-float wizard-leader">${this._wizardSvg(this._leaderSize, 0)}</span>`;
         const el = document.createElement('div');
-        el.className = 'wizard-parade';
+        el.className = 'ait-wizard-parade';
         el.style.display = 'none';
         el.innerHTML = `<div class="wizard-track"><div class="wizard-group">${items}</div></div>`;
         document.body.appendChild(el);

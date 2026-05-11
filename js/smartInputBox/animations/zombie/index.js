@@ -63,7 +63,7 @@ class ZombieAnimation {
         }
         items += `<span class="zombie-item z-bob-1 zombie-leader">${this._zombieSvg(this._leaderSize, 0)}</span>`;
         const el = document.createElement('div');
-        el.className = 'zombie-parade';
+        el.className = 'ait-zombie-parade';
         el.style.display = 'none';
         el.innerHTML = `<div class="zombie-track"><div class="zombie-group">${items}</div></div>`;
         document.body.appendChild(el);

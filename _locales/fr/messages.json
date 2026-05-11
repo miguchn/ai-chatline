@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline : Améliorez l'expérience de chat IA"
+    "message": "Timeline : ChatGPT et Gemini améliorés"
   },
   "extDescription": {
-    "message": "Le compagnon ultime pour vos chats IA. Compatible avec ChatGPT, Gemini, DeepSeek et toutes les principales plateformes IA."
+    "message": "Compatible DeepSeek, Claude et toutes les plateformes IA. Chronologie, dossiers, bibliothèque de prompts, animal virtuel."
   },
   "qwxpzm": {
     "message": "Favori"
@@ -650,6 +650,18 @@
   "aboutBtnDocs": {
     "message": "Documentation"
   },
+  "changelogTitle": {
+    "message": "Timeline mis à jour !"
+  },
+  "changelogSubtitle": {
+    "message": "Utilisé par $1 utilisateurs. Nouvelle version, meilleure expérience."
+  },
+  "changelogFeatures": {
+    "message": "Nouveautés"
+  },
+  "changelogImprovements": {
+    "message": "Améliorations"
+  },
   "aboutFeedbackStore": {
     "message": "Avis Chrome Store"
   },
@@ -766,5 +778,11 @@
   },
   "mirrorSiteCopied": {
     "message": "Copié dans le presse-papiers"
+  },
+  "hideStarredFromListLabel": {
+    "message": "Mode dédoublonnage"
+  },
+  "hideStarredFromListHint": {
+    "message": "Lorsqu'activé, les conversations ajoutées aux dossiers seront masquées de la barre latérale"
   }
 }

@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline: Улучшение опыта общения с ИИ"
+    "message": "Timeline: ChatGPT и Gemini чат улучшен"
   },
   "extDescription": {
-    "message": "Незаменимый помощник для AI-чатов. Работает с ChatGPT, Gemini, DeepSeek и всеми основными ИИ-платформами."
+    "message": "Поддержка DeepSeek, Claude и всех AI-платформ. Хронология, папки, библиотека промптов, виртуальный питомец."
   },
   "qwxpzm": {
     "message": "Избранное"
@@ -650,6 +650,18 @@
   "aboutBtnDocs": {
     "message": "Документация"
   },
+  "changelogTitle": {
+    "message": "Timeline обновлён!"
+  },
+  "changelogSubtitle": {
+    "message": "$1 пользователей используют. Новая версия, лучший опыт."
+  },
+  "changelogFeatures": {
+    "message": "Новое"
+  },
+  "changelogImprovements": {
+    "message": "Улучшения"
+  },
   "aboutFeedbackStore": {
     "message": "Отзывы в Chrome Store"
   },
@@ -766,5 +778,11 @@
   },
   "mirrorSiteCopied": {
     "message": "Скопировано в буфер обмена"
+  },
+  "hideStarredFromListLabel": {
+    "message": "Режим дедупликации"
+  },
+  "hideStarredFromListHint": {
+    "message": "При включении разговоры, добавленные в папки, будут скрыты из боковой панели"
   }
 }

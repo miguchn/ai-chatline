@@ -30,7 +30,7 @@ class AntAnimation {
         }
         items += `<span class="ant-item ant-bob-${(n % 3) + 1} ant-leader">${this._antSvg(this._leaderSize, '#3A2718')}</span>`;
         const el = document.createElement('div');
-        el.className = 'ant-parade';
+        el.className = 'ait-ant-parade';
         el.style.display = 'none';
         el.innerHTML = `<div class="ant-track"><div class="ant-group">${items}</div></div>`;
         document.body.appendChild(el);

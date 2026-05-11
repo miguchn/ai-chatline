@@ -161,9 +161,16 @@ class BaseSidebarStarredAdapter {
     // ==================== 侧边栏收藏标记（基类通用逻辑） ====================
 
     static STAR_ICON_ATTR = 'data-ait-starred-icon';
+    static HIDDEN_ATTR = 'data-ait-hidden';
+
+    /** 获取需要隐藏/显示的目标元素（平台可覆盖，例如需要隐藏父级 li） */
+    getHideTarget(convEl) { return convEl; }
 
     async refreshStarredIcons() {
-        const items = await StarStorageManager.getAll();
+        const [items, shouldHide] = await Promise.all([
+            StarStorageManager.getAll(),
+            StorageAdapter.get('hideStarredFromNativeList'),
+        ]);
         const starredPaths = new Set();
         for (const item of items) {
             if (item.index !== -1) continue;
@@ -177,11 +184,21 @@ class BaseSidebarStarredAdapter {
         const convEls = this.getConversationElements();
         for (const el of convEls) {
             const path = this.getConversationUrlPath(el);
+            const isStarred = path && starredPaths.has(path);
             const hasIcon = !!el.querySelector(`[${BaseSidebarStarredAdapter.STAR_ICON_ATTR}]`);
-            if (path && starredPaths.has(path)) {
+            if (isStarred) {
                 if (!hasIcon) this.injectStarIcon(el);
             } else {
                 if (hasIcon) this.removeStarIcon(el);
+            }
+
+            const hideTarget = this.getHideTarget(el);
+            if (isStarred && shouldHide) {
+                hideTarget.setAttribute(BaseSidebarStarredAdapter.HIDDEN_ATTR, '');
+                hideTarget.style.display = 'none';
+            } else if (hideTarget.hasAttribute(BaseSidebarStarredAdapter.HIDDEN_ATTR)) {
+                hideTarget.removeAttribute(BaseSidebarStarredAdapter.HIDDEN_ATTR);
+                hideTarget.style.display = '';
             }
         }
     }

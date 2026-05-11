@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline: AI 대화 경험 향상"
+    "message": "Timeline: ChatGPT, Gemini 채팅 강화"
   },
   "extDescription": {
-    "message": "AI 대화 필수 도구. ChatGPT, Gemini, DeepSeek 등 모든 주요 AI 플랫폼에서 사용할 수 있습니다."
+    "message": "DeepSeek, Claude 등 모든 AI 플랫폼 지원. 타임라인, 폴더, 프롬프트 라이브러리, 가상 펫."
   },
   "qwxpzm": {
     "message": "즐겨찾기"
@@ -701,6 +701,18 @@
   "aboutBtnDocs": {
     "message": "기능 문서"
   },
+  "changelogTitle": {
+    "message": "Timeline 업데이트!"
+  },
+  "changelogSubtitle": {
+    "message": "$1 사용자가 이용 중. 새 버전으로 더 나은 경험을 제공합니다."
+  },
+  "changelogFeatures": {
+    "message": "새 기능"
+  },
+  "changelogImprovements": {
+    "message": "개선 사항"
+  },
   "aboutFeedbackStore": {
     "message": "Chrome 스토어 리뷰"
   },
@@ -817,5 +829,11 @@
   },
   "mirrorSiteCopied": {
     "message": "클립보드에 복사되었습니다"
+  },
+  "hideStarredFromListLabel": {
+    "message": "중복 제거 모드"
+  },
+  "hideStarredFromListHint": {
+    "message": "활성화하면 폴더에 추가된 대화가 사이드바 목록에서 숨겨집니다"
   }
 }

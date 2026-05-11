@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline：增强 AI 对话体验"
+    "message": "Timeline：ChatGPT、Gemini 对话增强"
   },
   "extDescription": {
-    "message": "AI 对话神器，ChatGPT、Gemini、DeepSeek 等所有 AI 平台通用。"
+    "message": "支持 DeepSeek、Claude、豆包等所有 AI 平台，时间轴、文件夹、提示词库、电子宠物。"
   },
   "qwxpzm": {
     "message": "收藏"
@@ -755,6 +755,18 @@
   "aboutBtnDocs": {
     "message": "功能文档"
   },
+  "changelogTitle": {
+    "message": "Timeline 更新啦！"
+  },
+  "changelogSubtitle": {
+    "message": "$1 用户在用，新版本体验再升级。"
+  },
+  "changelogFeatures": {
+    "message": "新功能"
+  },
+  "changelogImprovements": {
+    "message": "功能优化"
+  },
   "aboutFeedbackStore": {
     "message": "Chrome 商店评价区"
   },
@@ -859,5 +871,11 @@
   },
   "mirrorSiteCopied": {
     "message": "已复制到剪贴板"
+  },
+  "hideStarredFromListLabel": {
+    "message": "去重模式"
+  },
+  "hideStarredFromListHint": {
+    "message": "开启后，已加入文件夹的对话将从原版侧边栏列表中隐藏"
   }
 }

@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline: Nâng cao trải nghiệm trò chuyện AI"
+    "message": "Timeline: ChatGPT & Gemini chat nâng cao"
   },
   "extDescription": {
-    "message": "Công cụ chat AI không thể thiếu. Hoạt động với ChatGPT, Gemini, DeepSeek và tất cả các nền tảng AI phổ biến."
+    "message": "Hỗ trợ DeepSeek, Claude và tất cả nền tảng AI. Dòng thời gian, thư mục, thư viện prompt, thú cưng ảo."
   },
   "qwxpzm": {
     "message": "Yêu thích"
@@ -650,6 +650,18 @@
   "aboutBtnDocs": {
     "message": "Tài liệu"
   },
+  "changelogTitle": {
+    "message": "Timeline đã cập nhật!"
+  },
+  "changelogSubtitle": {
+    "message": "$1 người dùng đang sử dụng. Phiên bản mới, trải nghiệm tốt hơn."
+  },
+  "changelogFeatures": {
+    "message": "Tính năng mới"
+  },
+  "changelogImprovements": {
+    "message": "Cải tiến"
+  },
   "aboutFeedbackStore": {
     "message": "Đánh giá Chrome Store"
   },
@@ -766,5 +778,11 @@
   },
   "mirrorSiteCopied": {
     "message": "Đã sao chép vào clipboard"
+  },
+  "hideStarredFromListLabel": {
+    "message": "Chế độ loại trùng"
+  },
+  "hideStarredFromListHint": {
+    "message": "Khi bật, các cuộc trò chuyện đã thêm vào thư mục sẽ bị ẩn khỏi danh sách thanh bên"
   }
 }

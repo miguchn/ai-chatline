@@ -101,6 +101,113 @@ body[class*="dark"] .smart-input-prompt-btn:hover {
     }
 }
 
+/* ==================== 版本更新 Logo 按钮 ==================== */
+
+.smart-input-update-btn {
+    position: fixed;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.15s ease;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 
+        0 1px 3px rgba(0, 0, 0, 0.08),
+        0 1px 2px rgba(0, 0, 0, 0.06),
+        inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+    border: none;
+}
+
+.smart-input-update-btn:hover {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.1),
+        0 2px 4px rgba(0, 0, 0, 0.06),
+        inset 0 0 0 1px rgba(97, 40, 255, 0.25);
+}
+
+.smart-input-update-btn:active {
+    opacity: 0.8;
+}
+
+.smart-input-update-logo {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.smart-input-update-dot {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 10px;
+    height: 10px;
+    background: #ef4444;
+    border-radius: 50%;
+    border: 1.5px solid #ffffff;
+}
+
+/* Logo 按钮深色模式 */
+html[data-timeline-theme="dark"] .smart-input-update-btn,
+html[class*="dark"] .smart-input-update-btn,
+body.dark .smart-input-update-btn,
+body[class*="dark"] .smart-input-update-btn {
+    background: rgba(55, 65, 81, 0.9);
+    box-shadow: 
+        0 1px 3px rgba(0, 0, 0, 0.2),
+        0 1px 2px rgba(0, 0, 0, 0.15),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+html[data-timeline-theme="dark"] .smart-input-update-btn:hover,
+html[class*="dark"] .smart-input-update-btn:hover,
+body.dark .smart-input-update-btn:hover,
+body[class*="dark"] .smart-input-update-btn:hover {
+    background: rgba(75, 85, 99, 0.95);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.25),
+        0 2px 4px rgba(0, 0, 0, 0.15),
+        inset 0 0 0 1px rgba(129, 140, 248, 0.25);
+}
+
+html[data-timeline-theme="dark"] .smart-input-update-dot,
+html[class*="dark"] .smart-input-update-dot,
+body.dark .smart-input-update-dot,
+body[class*="dark"] .smart-input-update-dot {
+    border-color: rgba(55, 65, 81, 0.9);
+}
+
+@media (prefers-color-scheme: dark) {
+    .smart-input-update-btn {
+        background: rgba(55, 65, 81, 0.9);
+        box-shadow: 
+            0 1px 3px rgba(0, 0, 0, 0.2),
+            0 1px 2px rgba(0, 0, 0, 0.15),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+    
+    .smart-input-update-btn:hover {
+        background: rgba(75, 85, 99, 0.95);
+        box-shadow: 
+            0 4px 12px rgba(0, 0, 0, 0.25),
+            0 2px 4px rgba(0, 0, 0, 0.15),
+            inset 0 0 0 1px rgba(129, 140, 248, 0.25);
+    }
+    
+    .smart-input-update-dot {
+        border-color: rgba(55, 65, 81, 0.9);
+    }
+}
+
 /* ==================== 动画效果 ==================== */
 
 /* 出现动画 */
@@ -116,5 +223,9 @@ body[class*="dark"] .smart-input-prompt-btn:hover {
 }
 
 .smart-input-prompt-btn[style*="display: flex"] {
+    animation: prompt-btn-appear 0.15s ease-out;
+}
+
+.smart-input-update-btn[style*="display: flex"] {
     animation: prompt-btn-appear 0.15s ease-out;
 }

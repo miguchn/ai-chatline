@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline: Ulepsz doświadczenie czatu AI"
+    "message": "Timeline: ChatGPT i Gemini czat ulepszony"
   },
   "extDescription": {
-    "message": "Niezbędne narzędzie do czatów AI. Współpracuje z ChatGPT, Gemini, DeepSeek i wszystkimi popularnymi platformami AI."
+    "message": "Obsługuje DeepSeek, Claude i wszystkie platformy AI. Oś czasu, foldery, biblioteka promptów, wirtualny zwierzak."
   },
   "qwxpzm": {
     "message": "Ulubione"
@@ -650,6 +650,18 @@
   "aboutBtnDocs": {
     "message": "Dokumentacja"
   },
+  "changelogTitle": {
+    "message": "Timeline zaktualizowany!"
+  },
+  "changelogSubtitle": {
+    "message": "Używane przez $1 użytkowników. Nowa wersja, lepsze doświadczenie."
+  },
+  "changelogFeatures": {
+    "message": "Nowości"
+  },
+  "changelogImprovements": {
+    "message": "Ulepszenia"
+  },
   "aboutFeedbackStore": {
     "message": "Opinie w Chrome Store"
   },
@@ -766,5 +778,11 @@
   },
   "mirrorSiteCopied": {
     "message": "Skopiowano do schowka"
+  },
+  "hideStarredFromListLabel": {
+    "message": "Tryb deduplikacji"
+  },
+  "hideStarredFromListHint": {
+    "message": "Po włączeniu rozmowy dodane do folderów zostaną ukryte z paska bocznego"
   }
 }

@@ -47,6 +47,10 @@ body.dark-theme .ait-sidebar-starred.deepseek .ait-ss-list::-webkit-scrollbar-th
 .ait-ss-help-btn { opacity: 0.35; transition: opacity 0.2s, background-color 0.2s; width: 22px; height: 22px; margin-left: 2px; }
 .ait-ss-help-btn:hover { opacity: 0.7; }
 
+/* Settings button (inline after help) */
+.ait-ss-settings-btn { opacity: 0.35; transition: opacity 0.2s, background-color 0.2s; width: 22px; height: 22px; margin-left: 0; }
+.ait-ss-settings-btn:hover { opacity: 0.7; }
+
 /* 收藏项：整体缩进，hover 背景无左侧空白 */
 .ait-sidebar-starred > .ait-ss-list > .timeline-starred-item { margin-left: 24px; }
 .ait-sidebar-starred .ait-folder-content .timeline-starred-item { margin-left: 10px; }

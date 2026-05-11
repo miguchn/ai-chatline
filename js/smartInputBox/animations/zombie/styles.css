@@ -1,5 +1,5 @@
 /* 僵尸行走队列 */
-.zombie-parade { position: fixed; z-index: 8; height: 42px; overflow: visible; pointer-events: none; -webkit-mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent); mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent); }
+.ait-zombie-parade { position: fixed; z-index: 8; height: 42px; overflow: visible; pointer-events: none; -webkit-mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent); mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent); }
 .zombie-track { width: 100%; height: 100%; position: relative; }
 .zombie-group { display: flex; align-items: flex-end; gap: 8px; position: absolute; bottom: 0; pointer-events: auto; cursor: pointer; animation: z-march 50s linear 1 forwards; }
 .zombie-group:hover, .zombie-group:hover * { animation-play-state: paused !important; }
