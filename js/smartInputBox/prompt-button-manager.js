@@ -222,6 +222,12 @@ class PromptButtonManager {
                 this._hasUpdate = false;
                 return;
             }
+            // 仅在下午 3 点 ~ 8 点之间展示更新 icon，减少对用户的打扰
+            const hour = new Date().getHours();
+            if (hour < 15 || hour >= 20) {
+                this._hasUpdate = false;
+                return;
+            }
             if (window.changelogModal) {
                 this._hasUpdate = await window.changelogModal.hasUpdate();
             } else {

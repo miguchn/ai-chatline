@@ -19,7 +19,7 @@ class ChangelogModal {
      */
     show() {
         const hasContent = CHANGELOG_DATA.features?.length || CHANGELOG_DATA.improvements?.length;
-        if (!CHANGELOG_DATA.version || !hasContent) return;
+        if (!CHANGELOG_DATA.id || !hasContent) return;
         this._render();
     }
 
@@ -29,15 +29,12 @@ class ChangelogModal {
      */
     async hasUpdate() {
         try {
-            const targetVersion = CHANGELOG_DATA.version;
+            const id = CHANGELOG_DATA.id;
             const hasContent = CHANGELOG_DATA.features?.length || CHANGELOG_DATA.improvements?.length;
-            if (!targetVersion || !hasContent) return false;
+            if (!id || !hasContent) return false;
 
-            const manifestVersion = chrome.runtime.getManifest?.()?.version;
-            if (targetVersion !== manifestVersion) return false;
-
-            const readVersion = await this._getReadVersion();
-            return readVersion !== targetVersion;
+            const readId = await this._getReadVersion();
+            return readId !== id;
         } catch {
             return false;
         }
@@ -64,7 +61,7 @@ class ChangelogModal {
     _markAsRead() {
         try {
             chrome.storage.local.set({
-                [this.STORAGE_KEY]: CHANGELOG_DATA.version
+                [this.STORAGE_KEY]: CHANGELOG_DATA.id
             });
         } catch (e) {
             console.warn('[ChangelogModal] markAsRead error:', e);
@@ -127,7 +124,8 @@ class ChangelogModal {
         if (this.overlay) return;
 
         const lang = this._getLang();
-        const { version, features, improvements } = CHANGELOG_DATA;
+        const { features, improvements } = CHANGELOG_DATA;
+        const version = chrome.runtime.getManifest?.()?.version || '';
 
         const overlay = document.createElement('div');
         overlay.className = 'changelog-modal-overlay';

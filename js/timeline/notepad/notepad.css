@@ -5,6 +5,8 @@
 /* ── 面板容器 ── */
 .ait-notepad-panel {
     position: fixed;
+    top: -9999px;
+    left: -9999px;
     z-index: 99998;
     width: 260px;
     height: 370px;

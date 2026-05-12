@@ -30,7 +30,7 @@
         '.MathJax_SVG',
         '.MathJax',
         '[data-mathml]',
-        '[data-custom-copy-text]'
+        '[copy-text]'
     ].join(',');
 
     // 临时标记属性：在原 DOM 上短暂打标，cloneContents 后通过该属性回查

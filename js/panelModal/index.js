@@ -107,7 +107,7 @@ class PanelModal {
             <div class="ait-panel-modal-footer-item ait-panel-modal-footer-version">v${version}</div>
         `;
 
-        if (typeof CHANGELOG_DATA !== 'undefined' && version === CHANGELOG_DATA.version) {
+        if (typeof CHANGELOG_DATA !== 'undefined' && CHANGELOG_DATA.id) {
             const versionEl = footer.querySelector('.ait-panel-modal-footer-version');
             versionEl.style.cursor = 'pointer';
             versionEl.addEventListener('click', () => {

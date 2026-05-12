@@ -6,7 +6,7 @@
  * - ChatGPT (KaTeX + annotation)
  * - Gemini (KaTeX + data-math)
  * - DeepSeek (KaTeX + annotation)
- * - 豆包 (data-custom-copy-text)
+ * - 豆包 (copy-text)
  * - Grok (KaTeX + annotation)
  * - 维基百科 (MathML + annotation)
  * - MathJax (script[type="math/tex"])
@@ -25,21 +25,21 @@ class FormulaSourceParser {
             return null;
         }
 
-        // 方法1: 豆包格式 - data-custom-copy-text 属性（当前元素）
-        if (formulaElement.hasAttribute('data-custom-copy-text')) {
-            return formulaElement.getAttribute('data-custom-copy-text').trim();
+        // 方法1: 豆包格式 - copy-text 属性（当前元素）
+        if (formulaElement.hasAttribute('copy-text')) {
+            return FormulaSourceParser._stripMathDelimiters(formulaElement.getAttribute('copy-text').trim());
         }
 
         // 方法2: 豆包格式 - 向上查找 .math-inline 父元素
         let mathInlineParent = formulaElement.closest('.math-inline');
-        if (mathInlineParent && mathInlineParent.hasAttribute('data-custom-copy-text')) {
-            return mathInlineParent.getAttribute('data-custom-copy-text').trim();
+        if (mathInlineParent && mathInlineParent.hasAttribute('copy-text')) {
+            return FormulaSourceParser._stripMathDelimiters(mathInlineParent.getAttribute('copy-text').trim());
         }
 
-        // 方法3: 豆包格式 - data-custom-copy-text 属性（子元素）
-        const doubaoChild = formulaElement.querySelector('[data-custom-copy-text]');
+        // 方法3: 豆包格式 - copy-text 属性（子元素）
+        const doubaoChild = formulaElement.querySelector('[copy-text]');
         if (doubaoChild) {
-            return doubaoChild.getAttribute('data-custom-copy-text').trim();
+            return FormulaSourceParser._stripMathDelimiters(doubaoChild.getAttribute('copy-text').trim());
         }
 
         // 方法4: 当前元素的 data-math 属性
@@ -171,6 +171,26 @@ class FormulaSourceParser {
         }
 
         return null;
+    }
+
+    /**
+     * 剥离 LaTeX 数学分隔符：\(...\)  \[...\]  $$...$$  $...$
+     */
+    static _stripMathDelimiters(text) {
+        if (!text) return text;
+        if (text.startsWith('\\(') && text.endsWith('\\)')) {
+            return text.slice(2, -2).trim();
+        }
+        if (text.startsWith('\\[') && text.endsWith('\\]')) {
+            return text.slice(2, -2).trim();
+        }
+        if (text.startsWith('$$') && text.endsWith('$$') && text.length > 4) {
+            return text.slice(2, -2).trim();
+        }
+        if (text.startsWith('$') && text.endsWith('$') && text.length > 2) {
+            return text.slice(1, -1).trim();
+        }
+        return text;
     }
 
     /**
