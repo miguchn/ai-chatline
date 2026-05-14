@@ -194,7 +194,7 @@ class ChangelogModal {
             : `If Timeline helped you, a 5-star review on the ${storeName} Web Store helps more people discover it!`;
         const storeUrl = isEdge
             ? 'https://microsoftedge.microsoft.com/addons/detail/ai-timeline%EF%BC%9Agemini%E3%80%81chatgp/ekednjjojnhlajfobalaaihkibbdcbab'
-            : 'https://chromewebstore.google.com/detail/fgebdnlceacaiaeikopldglhffljjlhh?utm_source=item-share-cb';
+            : 'https://chromewebstore.google.com/detail/timeline-chatgpt-gemini-c/fgebdnlceacaiaeikopldglhffljjlhh/reviews?utm_source=item-share-cb';
 
         const ratingBtn = document.createElement('a');
         ratingBtn.className = 'changelog-rating-btn';

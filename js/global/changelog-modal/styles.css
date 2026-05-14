@@ -101,8 +101,9 @@
 .changelog-version-badge {
     display: inline-flex;
     align-items: center;
-    background: #FFD60A;
-    color: #1a1a2e;
+    background: #eef4ff;
+    color: #2563eb;
+    border: 1px solid rgba(37, 99, 235, 0.14);
     font-size: 11px;
     font-weight: 700;
     padding: 2px 9px;
@@ -285,6 +286,7 @@
 /* ==================== Footer ==================== */
 
 .changelog-modal-footer {
+    margin-top: 15px;
     padding: 18px 28px 22px;
     display: flex;
     align-items: center;
@@ -365,8 +367,9 @@ html[data-timeline-theme="dark"] .changelog-modal-title {
 }
 
 html[data-timeline-theme="dark"] .changelog-version-badge {
-    background: #FFD60A;
-    color: #1a1a2e;
+    background: rgba(96, 165, 250, 0.14);
+    color: #93c5fd;
+    border-color: rgba(147, 197, 253, 0.2);
 }
 
 html[data-timeline-theme="dark"] .changelog-modal-subtitle {

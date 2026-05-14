@@ -222,12 +222,17 @@ class PromptButtonManager {
                 this._hasUpdate = false;
                 return;
             }
-            // 仅在下午 3 点 ~ 8 点之间展示更新 icon，减少对用户的打扰
-            const hour = new Date().getHours();
-            if (hour < 15 || hour >= 20) {
+            const hasChatTimes = await this._hasChatTimesRecords();
+            if (!hasChatTimes) {
                 this._hasUpdate = false;
                 return;
             }
+            // 仅在下午 3 点 ~ 8 点之间展示更新 icon，减少对用户的打扰
+            // const hour = new Date().getHours();
+            // if (hour < 15 || hour >= 20) {
+            //     this._hasUpdate = false;
+            //     return;
+            // }
             if (window.changelogModal) {
                 this._hasUpdate = await window.changelogModal.hasUpdate();
             } else {
@@ -236,6 +241,23 @@ class PromptButtonManager {
         } catch {
             this._hasUpdate = false;
         }
+    }
+
+    /**
+     * chatTimes 中已有记录时，才展示更新 Logo
+     */
+    async _hasChatTimesRecords() {
+        try {
+            const result = await chrome.storage.local.get('chatTimes');
+            const chatTimes = result?.chatTimes;
+
+            const count = chatTimes && typeof chatTimes === 'object'
+                ? Object.keys(chatTimes).length
+                : 0;
+
+            return count > 0;
+        } catch {}
+        return false;
     }
     
     /**
