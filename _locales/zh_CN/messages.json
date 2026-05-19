@@ -877,5 +877,8 @@
   },
   "hideStarredFromListHint": {
     "message": "开启后，已加入文件夹的对话将从原版侧边栏列表中隐藏"
+  },
+  "timelineAICompleteNotLatestToast": {
+    "message": "$1 回复已完成"
   }
 }

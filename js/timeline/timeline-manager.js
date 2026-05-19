@@ -51,6 +51,7 @@ class TimelineManager {
         this.onTimelineWheel = null;
         this.onStorage = null;
         this.onVisualViewportResize = null;
+        this.onAIStateChange = null;
         // ✅ 长按相关事件处理器
         this.startLongPress = null;
         this.checkLongPressMove = null;
@@ -69,6 +70,7 @@ class TimelineManager {
         this.resizeIdleTimer = null;
         this.resizeIdleRICId = null;
         this.zeroTurnsTimer = null;
+        this.aiCompleteToastTimer = null;
         
         // Padding 管理：AI 生成中不更新，生成结束后更新
         this._pendingPaddingUpdate = null;
@@ -144,6 +146,9 @@ class TimelineManager {
 
         // ✅ 健康检查定时器
         this.healthCheckInterval = null;
+
+        // ✅ AI 回复完成提示使用的右上角定位锚点
+        this.aiCompleteToastAnchor = null;
     }
 
     perfStart(name) {
@@ -1760,6 +1765,13 @@ class TimelineManager {
         };
         this.ui.timelineBar.addEventListener('wheel', this.onTimelineWheel, { passive: false });
 
+        // AI 回复完成后，如果用户当前停留在非最后节点，提示仍有后续内容。
+        this.onAIStateChange = (event) => {
+            if (event.detail?.generating !== false) return;
+            this.scheduleAICompleteToastCheck();
+        };
+        window.addEventListener('ai:stateChange', this.onAIStateChange);
+
         // Cross-tab/cross-site star sync via chrome.storage change event
         this.onStorage = async (changes, areaName) => {
             try {
@@ -2859,6 +2871,63 @@ class TimelineManager {
         });
     }
 
+    scheduleAICompleteToastCheck() {
+        this.aiCompleteToastTimer = TimelineUtils.clearTimerSafe(this.aiCompleteToastTimer);
+        this.aiCompleteToastTimer = setTimeout(() => {
+            this.aiCompleteToastTimer = null;
+            this.maybeShowAICompleteNotLatestToast();
+        }, TIMELINE_CONFIG.AI_COMPLETE_TOAST_DELAY);
+    }
+
+    maybeShowAICompleteNotLatestToast() {
+        if (!this.isPlatformEnabled()) return;
+        if (!this.markers || this.markers.length <= 1) return;
+        if (this.ui.wrapper && this.ui.wrapper.style.display === 'none') return;
+        if (!window.globalToastManager) return;
+
+        try {
+            this._recalcMarkerPositions();
+            this.computeActiveByScroll();
+        } catch {}
+
+        const activeId = this.pendingActiveId || this.activeTurnId;
+        const activeIndex = activeId ? this.markers.findIndex(m => m.id === activeId) : -1;
+        if (activeIndex < 0 || activeIndex >= this.markers.length - 1) return;
+
+        const platformName = getCurrentPlatform()?.name || 'AI';
+        const message = chrome.i18n.getMessage('timelineAICompleteNotLatestToast', platformName) ||
+            `${platformName} 回复已完成`;
+        const anchor = this.getAICompleteToastAnchor();
+
+        window.globalToastManager.info(message, anchor, {
+            duration: 2600,
+            icon: '✅',
+            position: 'left',
+            gap: 12
+        });
+    }
+
+    getAICompleteToastAnchor() {
+        if (this.aiCompleteToastAnchor?.isConnected) {
+            return this.aiCompleteToastAnchor;
+        }
+
+        const anchor = document.createElement('div');
+        anchor.className = 'ait-timeline-ai-complete-toast-anchor';
+        anchor.style.cssText = [
+            'position: fixed',
+            'top: 52px',
+            'right: 16px',
+            'width: 1px',
+            'height: 1px',
+            'pointer-events: none',
+            'z-index: 2147483647'
+        ].join(';');
+        document.body.appendChild(anchor);
+        this.aiCompleteToastAnchor = anchor;
+        return anchor;
+    }
+
     /**
      * 管理底部空白元素，确保最后节点可滚动激活
      * @param {number} lastOffsetTop - 最后节点的 offsetTop
@@ -3236,6 +3305,7 @@ class TimelineManager {
         TimelineUtils.removeEventListenerSafe(this.ui.timelineBar, 'focusout', this.onTimelineBarFocusOut);
         // ✅ 注意：不再需要清理 tooltip 事件监听器（因为 tooltip 不由 Timeline 创建）
         TimelineUtils.removeEventListenerSafe(this.ui.timelineBar, 'wheel', this.onTimelineWheel);
+        TimelineUtils.removeEventListenerSafe(window, 'ai:stateChange', this.onAIStateChange);
         TimelineUtils.removeEventListenerSafe(window, 'resize', this.onWindowResize);
         TimelineUtils.removeEventListenerSafe(window.visualViewport, 'resize', this.onVisualViewportResize);
         
@@ -3248,6 +3318,7 @@ class TimelineManager {
         this.resizeIdleRICId = TimelineUtils.clearIdleCallbackSafe(this.resizeIdleRICId);
         // ✅ 移除：longPressTimer 已删除
         this.zeroTurnsTimer = TimelineUtils.clearTimerSafe(this.zeroTurnsTimer);
+        this.aiCompleteToastTimer = TimelineUtils.clearTimerSafe(this.aiCompleteToastTimer);
         this.showRafId = TimelineUtils.clearRafSafe(this.showRafId);
         
         // Remove DOM elements
@@ -3267,6 +3338,9 @@ class TimelineManager {
         // ✅ 清理切换按钮
         TimelineUtils.removeElementSafe(this.ui.toggleBtn);
         
+        // ✅ 清理 AI 完成提示定位锚点
+        TimelineUtils.removeElementSafe(this.aiCompleteToastAnchor);
+
         // ✅ 清理底部空白元素
         if (this.conversationContainer) {
             const paddingEl = this.conversationContainer.querySelector('.ait-scroll-padding');
@@ -3288,11 +3362,13 @@ class TimelineManager {
         this.onScroll = null;
         this.onWindowResize = null;
         this.onVisualViewportResize = null;
+        this.onAIStateChange = null;
         // ✅ 清理长按相关的引用
         this.startLongPress = this.checkLongPressMove = this.cancelLongPress = null;
         // ✅ 清理键盘导航引用
         this.onKeyDown = null;
         this.pendingActiveId = null;
+        this.aiCompleteToastAnchor = null;
     }
 
     // --- Star/Highlight helpers ---

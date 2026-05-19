@@ -877,5 +877,8 @@
   },
   "hideStarredFromListHint": {
     "message": "When enabled, conversations added to folders will be hidden from the native sidebar list"
+  },
+  "timelineAICompleteNotLatestToast": {
+    "message": "$1 reply is complete."
   }
 }

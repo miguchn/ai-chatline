@@ -32,6 +32,7 @@ const TIMELINE_CONFIG = {
     // Observers
     OBSERVER_TIMEOUT: 5000, // ms - timeout for mutation observers
     ZERO_TURNS_TIMER: 350, // ms - wait before clearing UI when no turns found
+    AI_COMPLETE_TOAST_DELAY: 450, // ms - wait for timeline markers to settle after AI output ends
     
     // Virtualization
     VIRTUAL_BUFFER_MIN: 100, // px - minimum buffer for virtualization
@@ -834,4 +835,3 @@ StorageAdapter.migrateFromSyncToLocal();
 
 // 定期清理不活跃的 chatTimes 数据（每次加载时检查）
 ChatTimeStorageManager.cleanup(30).catch(() => {});
-
