@@ -46,6 +46,29 @@ class TimelineSettingsTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
+                        <div class="setting-label">${chrome.i18n.getMessage('timelineThemeColorLabel') || '时间轴主题色'}</div>
+                        <div class="setting-hint">${chrome.i18n.getMessage('timelineThemeColorHint') || '为不同平台设置时间轴激活节点的主题色'}</div>
+                    </div>
+                    <button class="starred-manage-btn timeline-theme-color-manage-btn">${chrome.i18n.getMessage('timelineThemeColorManageButton') || '设置'}</button>
+                </div>
+            </div>
+            ${divider}
+            <div class="setting-section">
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-label">${chrome.i18n.getMessage('timelineAICompleteToastTitle') || '回复完成提醒'}</div>
+                        <div class="setting-hint">${chrome.i18n.getMessage('timelineAICompleteToastHint') || 'AI 回复完成且当前不在最新位置时显示提醒'}</div>
+                    </div>
+                    <label class="ait-toggle-switch">
+                        <input type="checkbox" id="ai-complete-toast-toggle">
+                        <span class="ait-toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+            ${divider}
+            <div class="setting-section">
+                <div class="setting-item">
+                    <div class="setting-info">
                         <div class="setting-label"><svg class="setting-label-icon setting-label-icon-pin" viewBox="0 0 24 24" fill="rgb(255, 125, 3)" stroke="rgb(255, 125, 3)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1 1 1 0 0 1 1 1z"/></svg>${chrome.i18n.getMessage('pxmzkv')}</div>
                         <div class="setting-hint">${chrome.i18n.getMessage('kzxvpm')}</div>
                     </div>
@@ -106,6 +129,10 @@ class TimelineSettingsTab extends BaseTab {
             this._showPlatformManageModal();
         });
 
+        this.addEventListener(scrollArea.querySelector('.timeline-theme-color-manage-btn'), 'click', () => {
+            this._showThemeColorModal();
+        });
+
         return container;
     }
     
@@ -147,6 +174,28 @@ class TimelineSettingsTab extends BaseTab {
             });
         }
         
+        // 1. 处理 AI 回复完成提醒开关（默认开启）
+        const aiCompleteToastCheckbox = document.getElementById('ai-complete-toast-toggle');
+        if (aiCompleteToastCheckbox) {
+            try {
+                const result = await chrome.storage.local.get('timelineAICompleteToastEnabled');
+                aiCompleteToastCheckbox.checked = result.timelineAICompleteToastEnabled !== false;
+            } catch (e) {
+                console.error('[TimelineSettingsTab] Failed to load AI complete toast state:', e);
+                aiCompleteToastCheckbox.checked = true;
+            }
+
+            this.addEventListener(aiCompleteToastCheckbox, 'change', async (e) => {
+                try {
+                    const enabled = e.target.checked;
+                    await chrome.storage.local.set({ timelineAICompleteToastEnabled: enabled });
+                } catch (e) {
+                    console.error('[TimelineSettingsTab] Failed to save AI complete toast state:', e);
+                    aiCompleteToastCheckbox.checked = !aiCompleteToastCheckbox.checked;
+                }
+            });
+        }
+
         // 1. 处理闪记开关（默认开启）
         const notepadCheckbox = document.getElementById('notepad-toggle');
         if (notepadCheckbox) {
@@ -300,8 +349,92 @@ class TimelineSettingsTab extends BaseTab {
         });
     }
 
+    async _showThemeColorModal() {
+        const platforms = getPlatformsByFeature('timeline');
+        const result = await chrome.storage.local.get('timelineActiveColorByPlatform');
+        const activeColorByPlatform = result.timelineActiveColorByPlatform || {};
+        const activeColorOptions = getTimelineActiveColorOptions();
+        const themeColorLabel = chrome.i18n.getMessage('timelineThemeColorLabel') || '时间轴主题色';
+
+        const overlay = document.createElement('div');
+        overlay.className = 'starred-platform-modal-overlay';
+
+        const items = platforms.map(p => {
+            const logoHtml = p.logoPath
+                ? `<img src="${chrome.runtime.getURL(p.logoPath)}" alt="${p.name}">`
+                : `<span>${p.name.charAt(0)}</span>`;
+            const selectedColorId = resolveTimelineActiveColorId(p.id, activeColorByPlatform);
+            const colorItems = activeColorOptions.map(option => `
+                <button
+                    type="button"
+                    class="timeline-active-color-btn ${option.id === selectedColorId ? 'selected' : ''}"
+                    data-platform-id="${p.id}"
+                    data-color-id="${option.id}"
+                    style="--timeline-color-option: ${option.color};"
+                    aria-label="${themeColorLabel} ${option.color}"
+                    aria-pressed="${option.id === selectedColorId ? 'true' : 'false'}"
+                ></button>
+            `).join('');
+
+            return `
+                <div class="timeline-theme-color-item">
+                    <div class="starred-platform-info timeline-theme-color-platform">
+                        <div class="starred-platform-logo">${logoHtml}</div>
+                        <span class="starred-platform-name">${p.name}</span>
+                    </div>
+                    <div class="timeline-active-color-options" aria-label="${themeColorLabel}">
+                        ${colorItems}
+                    </div>
+                </div>`;
+        }).join('');
+
+        overlay.innerHTML = `
+            <div class="starred-platform-modal timeline-theme-color-modal">
+                <div class="starred-platform-modal-header">
+                    <span>${themeColorLabel}</span>
+                    <button class="starred-platform-modal-close">✕</button>
+                </div>
+                <div class="starred-platform-modal-body">${items}</div>
+            </div>`;
+
+        document.body.appendChild(overlay);
+
+        const close = () => overlay.remove();
+        overlay.querySelector('.starred-platform-modal-close').addEventListener('click', close);
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+
+        const setSelectedColor = (platformId, colorId) => {
+            overlay.querySelectorAll(`.timeline-active-color-btn[data-platform-id="${platformId}"]`).forEach(btn => {
+                const selected = btn.dataset.colorId === colorId;
+                btn.classList.toggle('selected', selected);
+                btn.setAttribute('aria-pressed', selected ? 'true' : 'false');
+            });
+        };
+
+        overlay.querySelectorAll('.timeline-active-color-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const platformId = btn.dataset.platformId;
+                const colorId = btn.dataset.colorId;
+                if (!isTimelineActiveColorId(colorId)) return;
+
+                try {
+                    const result = await chrome.storage.local.get('timelineActiveColorByPlatform');
+                    const cur = result.timelineActiveColorByPlatform || {};
+                    if (colorId === getDefaultTimelineActiveColorId(platformId)) {
+                        delete cur[platformId];
+                    } else {
+                        cur[platformId] = colorId;
+                    }
+                    await chrome.storage.local.set({ timelineActiveColorByPlatform: cur });
+                    setSelectedColor(platformId, colorId);
+                } catch (e) {
+                    console.error('[TimelineSettingsTab] Failed to save active color:', e);
+                }
+            });
+        });
+    }
+
     unmounted() {
         super.unmounted();
     }
 }
-

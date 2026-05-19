@@ -787,5 +787,20 @@
   },
   "timelineAICompleteNotLatestToast": {
     "message": "Odpowiedź $1 została zakończona."
+  },
+  "timelineAICompleteToastTitle": {
+    "message": "Przypomnienie o zakończeniu odpowiedzi"
+  },
+  "timelineAICompleteToastHint": {
+    "message": "Pokaż przypomnienie, gdy odpowiedź AI się zakończy, a Ty nie jesteś w najnowszym miejscu"
+  },
+  "timelineThemeColorLabel": {
+    "message": "Kolor motywu osi czasu"
+  },
+  "timelineThemeColorHint": {
+    "message": "Ustaw kolor motywu aktywnego znacznika osi czasu dla każdej platformy"
+  },
+  "timelineThemeColorManageButton": {
+    "message": "Ustaw"
   }
 }

@@ -787,5 +787,20 @@
   },
   "timelineAICompleteNotLatestToast": {
     "message": "La réponse de $1 est terminée."
+  },
+  "timelineAICompleteToastTitle": {
+    "message": "Rappel de réponse terminée"
+  },
+  "timelineAICompleteToastHint": {
+    "message": "Afficher un rappel quand la réponse de l’IA est terminée et que vous n’êtes pas à la dernière position"
+  },
+  "timelineThemeColorLabel": {
+    "message": "Couleur du thème de la chronologie"
+  },
+  "timelineThemeColorHint": {
+    "message": "Définir la couleur du thème du repère actif de la chronologie pour chaque plateforme"
+  },
+  "timelineThemeColorManageButton": {
+    "message": "Configurer"
   }
 }

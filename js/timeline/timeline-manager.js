@@ -60,8 +60,12 @@ class TimelineManager {
         this.onKeyDown = null;
         // ✅ 键盘导航功能启用状态（内存缓存，默认开启）
         this.arrowKeysNavigationEnabled = true;
+        // ✅ AI 回复完成提醒启用状态（内存缓存，默认开启）
+        this.aiCompleteToastEnabled = true;
         // ✅ 平台设置（内存缓存）
         this.platformSettings = {};
+        // ✅ 时间轴激活节点颜色设置（内存缓存）
+        this.timelineActiveColorByPlatform = {};
         // Timers and RAF IDs
         this.scrollRafId = null;
         this.activeChangeTimer = null;
@@ -182,8 +186,13 @@ class TimelineManager {
         await this.loadPins();
         // ✅ 加载键盘导航功能状态
         await this.loadArrowKeysNavigationState();
+        // ✅ 加载 AI 回复完成提醒状态
+        await this.loadAICompleteToastState();
         // ✅ 加载平台设置
         await this.loadPlatformSettings();
+        // ✅ 加载激活节点颜色设置
+        await this.loadTimelineActiveColorSettings();
+        this.applyTimelineActiveColor();
         
         // Trigger initial rendering after a short delay to ensure DOM is stable
         // This fixes the bug where nodes don't appear until scroll
@@ -254,6 +263,7 @@ class TimelineManager {
             wrapper.appendChild(timelineBar);
         }
         this.ui.timelineBar = timelineBar;
+        this.applyTimelineActiveColor();
         
         // Apply site-specific position from adapter to wrapper
         const position = this.adapter.getTimelinePosition();
@@ -1870,10 +1880,21 @@ class TimelineManager {
                 if (changes.arrowKeysNavigationEnabled) {
                     this.arrowKeysNavigationEnabled = changes.arrowKeysNavigationEnabled.newValue !== false;
                 }
+
+                // ✅ 监听 AI 回复完成提醒状态变化
+                if (changes.timelineAICompleteToastEnabled) {
+                    this.aiCompleteToastEnabled = changes.timelineAICompleteToastEnabled.newValue !== false;
+                }
                 
                 // ✅ 监听平台设置变化
                 if (changes.timelinePlatformSettings) {
                     this.platformSettings = changes.timelinePlatformSettings.newValue || {};
+                }
+
+                // ✅ 监听时间轴激活节点颜色变化
+                if (changes.timelineActiveColorByPlatform) {
+                    this.timelineActiveColorByPlatform = changes.timelineActiveColorByPlatform.newValue || {};
+                    this.applyTimelineActiveColor();
                 }
                 
                 // 更新收藏按钮显示状态
@@ -2880,6 +2901,7 @@ class TimelineManager {
     }
 
     maybeShowAICompleteNotLatestToast() {
+        if (!this.aiCompleteToastEnabled) return;
         if (!this.isPlatformEnabled()) return;
         if (!this.markers || this.markers.length <= 1) return;
         if (this.ui.wrapper && this.ui.wrapper.style.display === 'none') return;
@@ -3439,6 +3461,21 @@ class TimelineManager {
     }
 
     /**
+     * ✅ 加载 AI 回复完成提醒状态
+     */
+    async loadAICompleteToastState() {
+        try {
+            const result = await chrome.storage.local.get('timelineAICompleteToastEnabled');
+            // 默认开启（!== false）
+            this.aiCompleteToastEnabled = result.timelineAICompleteToastEnabled !== false;
+        } catch (e) {
+            console.error('[Timeline] Failed to load AI complete toast state:', e);
+            // 读取失败，默认开启
+            this.aiCompleteToastEnabled = true;
+        }
+    }
+
+    /**
      * ✅ 加载平台设置
      */
     async loadPlatformSettings() {
@@ -3449,6 +3486,30 @@ class TimelineManager {
             console.error('[Timeline] Failed to load platform settings:', e);
             this.platformSettings = {};
         }
+    }
+
+    /**
+     * ✅ 加载时间轴激活节点颜色设置
+     */
+    async loadTimelineActiveColorSettings() {
+        try {
+            const result = await chrome.storage.local.get('timelineActiveColorByPlatform');
+            this.timelineActiveColorByPlatform = result.timelineActiveColorByPlatform || {};
+        } catch (e) {
+            console.error('[Timeline] Failed to load active color settings:', e);
+            this.timelineActiveColorByPlatform = {};
+        }
+    }
+
+    /**
+     * ✅ 应用当前平台的时间轴激活节点颜色
+     */
+    applyTimelineActiveColor() {
+        if (!this.ui.timelineBar) return;
+
+        const platformId = getCurrentPlatform()?.id || 'default';
+        const color = resolveTimelineActiveColor(platformId, this.timelineActiveColorByPlatform);
+        this.ui.timelineBar.style.setProperty('--ait-timeline-dot-active-color', color);
     }
 
     /**

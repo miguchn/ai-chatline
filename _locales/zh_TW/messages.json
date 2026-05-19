@@ -844,5 +844,20 @@
   },
   "timelineAICompleteNotLatestToast": {
     "message": "$1 回覆已完成"
+  },
+  "timelineAICompleteToastTitle": {
+    "message": "回覆完成提醒"
+  },
+  "timelineAICompleteToastHint": {
+    "message": "AI 回覆完成且目前不在最新位置時顯示提醒"
+  },
+  "timelineThemeColorLabel": {
+    "message": "時間軸主題色"
+  },
+  "timelineThemeColorHint": {
+    "message": "為不同平台設定時間軸啟用節點的主題色"
+  },
+  "timelineThemeColorManageButton": {
+    "message": "設定"
   }
 }

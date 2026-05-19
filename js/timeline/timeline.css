@@ -171,6 +171,7 @@ html[data-timeline-theme="dark"] .ait-chat-timeline-bar {
     border-radius: 50%;
     background-color: var(--ait-timeline-dot-color);
     transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+    z-index: 1;
 }
 
 /* Enhance visibility and interaction feedback on hover */
@@ -186,12 +187,26 @@ html[data-timeline-theme="dark"] .ait-timeline-dot:not(.active):not(.starred):ho
 }
 /* Style for the currently active dot */
 .ait-timeline-dot.active::after {
-    box-shadow: 0 0 0 var(--timeline-active-ring) var(--ait-timeline-dot-active-color);
+    box-shadow: none;
 }
 
-/* ✅✅ 深色主题下激活节点 */
-html[data-timeline-theme="dark"] .ait-timeline-dot.active::after {
-    box-shadow: 0 0 0 var(--timeline-active-ring) var(--ait-timeline-dot-active-color);
+.ait-timeline-dot.active:not(.starred)::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: calc(var(--ait-timeline-dot-size) + 2 * var(--timeline-active-ring));
+    height: calc(var(--ait-timeline-dot-size) + 2 * var(--timeline-active-ring));
+    border-radius: 50%;
+    background: var(--ait-timeline-dot-active-color);
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.ait-timeline-dot.active:not(.starred):hover::before {
+    transform: translate(-50%, -50%) scale(1.15);
 }
 
 /* ✅ 已收藏的标记点：橙色五角星（使用 clip-path 裁剪）*/
@@ -226,7 +241,7 @@ html[data-timeline-theme="dark"] .ait-timeline-dot.active::after {
     width: calc(var(--timeline-star-size) + 2 * var(--timeline-star-ring));
     height: calc(var(--timeline-star-size) + 2 * var(--timeline-star-ring));
     transform: translate(-50%, -50%);
-    background-color: var(--ait-timeline-dot-active-color); /* 紫色边框 */
+    background: var(--ait-timeline-dot-active-color);
     /* 五角星形状（与收藏按钮 SVG 路径完全一致）*/
     clip-path: polygon(
         50% 8.33%, 
@@ -240,7 +255,7 @@ html[data-timeline-theme="dark"] .ait-timeline-dot.active::after {
         8.33% 38.63%, 
         37.125% 34.42%
     );
-    z-index: -1; /* 在 ::after 下方 */
+    z-index: 0; /* 在 ::after 下方 */
     /* 添加缩放过渡效果 */
     transition: transform 0.15s ease;
 }
@@ -643,23 +658,47 @@ html[data-timeline-theme="dark"] .ait-chat-timeline-bar.ait-compact-mode {
     height: 3px;
 }
 
-/* 紧凑模式：激活节点 - 紫色边框 */
+/* 紧凑模式：激活节点 - 主题色边框 */
 .ait-compact-mode .ait-timeline-dot.active::after {
-    box-shadow: 0 0 0 2px var(--ait-timeline-dot-active-color);
+    box-shadow: none;
 }
 
 html[data-timeline-theme="dark"] .ait-compact-mode .ait-timeline-dot.active::after {
-    box-shadow: 0 0 0 2px var(--ait-timeline-dot-active-color);
+    box-shadow: none;
 }
 
-/* 紧凑模式：收藏+激活 - 橙色横线+紫色边框 */
+/* 紧凑模式：收藏+激活 - 橙色横线+主题色边框 */
 .ait-compact-mode .ait-timeline-dot.starred.active::after {
     background-color: var(--timeline-star-color);
-    box-shadow: 0 0 0 2px var(--ait-timeline-dot-active-color);
+    box-shadow: none;
 }
 
-/* 紧凑模式：隐藏收藏+激活的 ::before 伪元素（五角星边框） */
+/* 紧凑模式：用背景层绘制激活横线边框，支持纯色和渐变 */
+.ait-compact-mode .ait-timeline-dot.active:not(.starred)::before,
 .ait-compact-mode .ait-timeline-dot.starred.active::before {
-    display: none;
+    content: '';
+    position: absolute;
+    left: auto;
+    right: 2px;
+    top: 50%;
+    width: calc(var(--timeline-compact-line-width-long) + 4px);
+    height: calc(var(--timeline-compact-line-height) + 4px);
+    border-radius: 999px;
+    background: var(--ait-timeline-dot-active-color);
+    clip-path: none;
+    transform: translateY(-50%);
+    transition: width 0.15s ease, height 0.15s ease;
+    pointer-events: none;
+    z-index: 0;
+    display: block;
 }
 
+.ait-compact-mode .ait-timeline-dot.line-odd.active:not(.starred)::before,
+.ait-compact-mode .ait-timeline-dot.starred.line-odd.active::before {
+    width: calc(var(--timeline-compact-line-width-short) + 4px);
+}
+
+.ait-compact-mode .ait-timeline-dot.active:hover::before {
+    width: 28px;
+    height: 7px;
+}

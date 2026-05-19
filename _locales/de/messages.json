@@ -787,5 +787,20 @@
   },
   "timelineAICompleteNotLatestToast": {
     "message": "$1 Antwort ist abgeschlossen."
+  },
+  "timelineAICompleteToastTitle": {
+    "message": "Antwort-Ende-Erinnerung"
+  },
+  "timelineAICompleteToastHint": {
+    "message": "Zeigt eine Erinnerung an, wenn die KI-Antwort fertig ist und du nicht an der neuesten Position bist"
+  },
+  "timelineThemeColorLabel": {
+    "message": "Timeline-Designfarbe"
+  },
+  "timelineThemeColorHint": {
+    "message": "Lege die Themenfarbe der aktiven Timeline-Markierung pro Plattform fest"
+  },
+  "timelineThemeColorManageButton": {
+    "message": "Einstellen"
   }
 }

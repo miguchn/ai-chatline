@@ -787,5 +787,20 @@
   },
   "timelineAICompleteNotLatestToast": {
     "message": "$1 का जवाब पूरा हो गया है।"
+  },
+  "timelineAICompleteToastTitle": {
+    "message": "जवाब पूरा होने की याद दिलाएँ"
+  },
+  "timelineAICompleteToastHint": {
+    "message": "जब AI का जवाब पूरा हो जाए और आप नवीनतम स्थिति पर न हों, तो रिमाइंडर दिखाएँ"
+  },
+  "timelineThemeColorLabel": {
+    "message": "टाइमलाइन थीम रंग"
+  },
+  "timelineThemeColorHint": {
+    "message": "हर प्लेटफ़ॉर्म के लिए सक्रिय टाइमलाइन मार्कर का थीम रंग सेट करें"
+  },
+  "timelineThemeColorManageButton": {
+    "message": "सेट करें"
   }
 }

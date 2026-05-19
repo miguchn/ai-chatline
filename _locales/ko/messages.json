@@ -838,5 +838,20 @@
   },
   "timelineAICompleteNotLatestToast": {
     "message": "$1 답변이 완료되었습니다."
+  },
+  "timelineAICompleteToastTitle": {
+    "message": "답변 완료 알림"
+  },
+  "timelineAICompleteToastHint": {
+    "message": "AI 답변이 완료되었고 최신 위치에 있지 않을 때 알림을 표시합니다"
+  },
+  "timelineThemeColorLabel": {
+    "message": "타임라인 테마 색상"
+  },
+  "timelineThemeColorHint": {
+    "message": "플랫폼별 활성 타임라인 마커 테마 색상을 설정합니다"
+  },
+  "timelineThemeColorManageButton": {
+    "message": "설정"
   }
 }

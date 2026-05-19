@@ -787,5 +787,20 @@
   },
   "timelineAICompleteNotLatestToast": {
     "message": "$1 đã trả lời xong."
+  },
+  "timelineAICompleteToastTitle": {
+    "message": "Nhắc khi trả lời xong"
+  },
+  "timelineAICompleteToastHint": {
+    "message": "Hiển thị nhắc nhở khi AI trả lời xong và bạn không ở vị trí mới nhất"
+  },
+  "timelineThemeColorLabel": {
+    "message": "Màu chủ đề dòng thời gian"
+  },
+  "timelineThemeColorHint": {
+    "message": "Đặt màu chủ đề cho mốc dòng thời gian đang hoạt động theo từng nền tảng"
+  },
+  "timelineThemeColorManageButton": {
+    "message": "Thiết lập"
   }
 }

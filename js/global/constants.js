@@ -340,6 +340,62 @@ function platformSupportsFeature(platformId, feature) {
     return platform?.features?.[feature] === true;
 }
 
+// ==================== 时间轴激活节点颜色配置 ====================
+
+/**
+ * 时间轴激活节点颜色选项
+ * 存储时只保存 color id，实际颜色从这里解析，避免散落十六进制颜色值。
+ */
+const TIMELINE_ACTIVE_COLOR_OPTIONS = [
+    { id: 'black', color: '#0d0d0d' },
+    { id: 'blue', color: '#3964fe' },
+    { id: 'purple', color: '#6128FF' },
+    { id: 'gemini', color: 'linear-gradient(135deg, #4285F4 0%, #8E75FF 45%, #A142F4 100%)' }
+];
+
+/**
+ * 不同平台的默认激活色。
+ * 用户未选择时使用这里的默认值；用户选择默认色时不写入 storage。
+ */
+const TIMELINE_ACTIVE_COLOR_DEFAULT_BY_PLATFORM = {
+    chatgpt: 'black',
+    deepseek: 'blue',
+    gemini: 'gemini',
+    default: 'purple'
+};
+
+function getTimelineActiveColorOptions() {
+    return TIMELINE_ACTIVE_COLOR_OPTIONS.slice();
+}
+
+function getDefaultTimelineActiveColorId(platformId) {
+    return TIMELINE_ACTIVE_COLOR_DEFAULT_BY_PLATFORM[platformId] ||
+        TIMELINE_ACTIVE_COLOR_DEFAULT_BY_PLATFORM.default;
+}
+
+function getTimelineActiveColorOption(colorId) {
+    return TIMELINE_ACTIVE_COLOR_OPTIONS.find(option => option.id === colorId);
+}
+
+function isTimelineActiveColorId(colorId) {
+    return Boolean(getTimelineActiveColorOption(colorId));
+}
+
+function resolveTimelineActiveColorId(platformId, activeColorSettings = {}) {
+    const savedColorId = activeColorSettings?.[platformId];
+    if (savedColorId && isTimelineActiveColorId(savedColorId)) {
+        return savedColorId;
+    }
+    return getDefaultTimelineActiveColorId(platformId);
+}
+
+function resolveTimelineActiveColor(platformId, activeColorSettings = {}) {
+    const colorId = resolveTimelineActiveColorId(platformId, activeColorSettings);
+    return getTimelineActiveColorOption(colorId)?.color ||
+        getTimelineActiveColorOption(TIMELINE_ACTIVE_COLOR_DEFAULT_BY_PLATFORM.default)?.color ||
+        '#6128FF';
+}
+
 // ==================== 代码运行器语言配置 ====================
 
 /**

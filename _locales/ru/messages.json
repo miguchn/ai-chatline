@@ -787,5 +787,20 @@
   },
   "timelineAICompleteNotLatestToast": {
     "message": "Ответ $1 завершён."
+  },
+  "timelineAICompleteToastTitle": {
+    "message": "Напоминание о завершении ответа"
+  },
+  "timelineAICompleteToastHint": {
+    "message": "Показывать напоминание, когда ответ ИИ завершён, а вы не на последней позиции"
+  },
+  "timelineThemeColorLabel": {
+    "message": "Цвет темы таймлайна"
+  },
+  "timelineThemeColorHint": {
+    "message": "Настройте цвет темы активного маркера таймлайна для каждой платформы"
+  },
+  "timelineThemeColorManageButton": {
+    "message": "Настроить"
   }
 }

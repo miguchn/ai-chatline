@@ -787,5 +787,20 @@
   },
   "timelineAICompleteNotLatestToast": {
     "message": "การตอบกลับของ $1 เสร็จสมบูรณ์แล้ว"
+  },
+  "timelineAICompleteToastTitle": {
+    "message": "แจ้งเตือนเมื่อตอบเสร็จ"
+  },
+  "timelineAICompleteToastHint": {
+    "message": "แสดงการแจ้งเตือนเมื่อ AI ตอบเสร็จและคุณไม่ได้อยู่ที่ตำแหน่งล่าสุด"
+  },
+  "timelineThemeColorLabel": {
+    "message": "สีธีมไทม์ไลน์"
+  },
+  "timelineThemeColorHint": {
+    "message": "ตั้งค่าสีธีมของเครื่องหมายไทม์ไลน์ที่ใช้งานสำหรับแต่ละแพลตฟอร์ม"
+  },
+  "timelineThemeColorManageButton": {
+    "message": "ตั้งค่า"
   }
 }

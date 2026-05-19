@@ -811,5 +811,20 @@
   },
   "timelineAICompleteNotLatestToast": {
     "message": "$1 reply is complete."
+  },
+  "timelineAICompleteToastTitle": {
+    "message": "Reply completion reminder"
+  },
+  "timelineAICompleteToastHint": {
+    "message": "Show a reminder when an AI reply finishes while you are not at the latest position"
+  },
+  "timelineThemeColorLabel": {
+    "message": "Timeline theme colour"
+  },
+  "timelineThemeColorHint": {
+    "message": "Set the active timeline marker theme colour for each platform"
+  },
+  "timelineThemeColorManageButton": {
+    "message": "Set"
   }
 }

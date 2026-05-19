@@ -787,5 +787,20 @@
   },
   "timelineAICompleteNotLatestToast": {
     "message": "La respuesta de $1 ha finalizado."
+  },
+  "timelineAICompleteToastTitle": {
+    "message": "Aviso al completar respuesta"
+  },
+  "timelineAICompleteToastHint": {
+    "message": "Muestra un aviso cuando la respuesta de la IA termina y no estás en la posición más reciente"
+  },
+  "timelineThemeColorLabel": {
+    "message": "Color del tema de la línea de tiempo"
+  },
+  "timelineThemeColorHint": {
+    "message": "Configura el color del tema del marcador activo de la línea de tiempo para cada plataforma"
+  },
+  "timelineThemeColorManageButton": {
+    "message": "Configurar"
   }
 }

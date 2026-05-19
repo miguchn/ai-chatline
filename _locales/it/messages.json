@@ -787,5 +787,20 @@
   },
   "timelineAICompleteNotLatestToast": {
     "message": "La risposta di $1 è completata."
+  },
+  "timelineAICompleteToastTitle": {
+    "message": "Promemoria risposta completata"
+  },
+  "timelineAICompleteToastHint": {
+    "message": "Mostra un promemoria quando la risposta AI è completata e non sei nella posizione più recente"
+  },
+  "timelineThemeColorLabel": {
+    "message": "Colore tema della timeline"
+  },
+  "timelineThemeColorHint": {
+    "message": "Imposta il colore tema dell’indicatore attivo della timeline per ogni piattaforma"
+  },
+  "timelineThemeColorManageButton": {
+    "message": "Imposta"
   }
 }

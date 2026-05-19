@@ -787,5 +787,20 @@
   },
   "timelineAICompleteNotLatestToast": {
     "message": "Balasan $1 selesai."
+  },
+  "timelineAICompleteToastTitle": {
+    "message": "Pengingat balasan selesai"
+  },
+  "timelineAICompleteToastHint": {
+    "message": "Tampilkan pengingat saat balasan AI selesai dan Anda tidak berada di posisi terbaru"
+  },
+  "timelineThemeColorLabel": {
+    "message": "Warna tema linimasa"
+  },
+  "timelineThemeColorHint": {
+    "message": "Atur warna tema penanda timeline aktif untuk setiap platform"
+  },
+  "timelineThemeColorManageButton": {
+    "message": "Atur"
   }
 }

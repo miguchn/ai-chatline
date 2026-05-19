@@ -838,5 +838,20 @@
   },
   "timelineAICompleteNotLatestToast": {
     "message": "$1 の返信が完了しました。"
+  },
+  "timelineAICompleteToastTitle": {
+    "message": "返信完了リマインダー"
+  },
+  "timelineAICompleteToastHint": {
+    "message": "AI の返信が完了し、最新位置にいないときに通知を表示します"
+  },
+  "timelineThemeColorLabel": {
+    "message": "タイムラインのテーマカラー"
+  },
+  "timelineThemeColorHint": {
+    "message": "プラットフォームごとにタイムラインのアクティブマーカーのテーマカラーを設定します"
+  },
+  "timelineThemeColorManageButton": {
+    "message": "設定"
   }
 }
