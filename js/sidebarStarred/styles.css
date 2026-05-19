@@ -7,7 +7,8 @@
  */
 
 .ait-sidebar-starred { padding: 10px 0 5px 10px; }
-.ait-sidebar-starred.gemini { padding-bottom: 0; }
+.ait-sidebar-starred.gemini { padding-top: 0; }
+.ait-sidebar-starred.gemini .ait-ss-header { padding-top: 0; padding-left: 0; padding-right: 0; }
 .ait-sidebar-starred.chatgpt { padding-top: 0; padding-left: 0; margin-top: -10px; }
 .ait-sidebar-starred.doubao { padding-top: 0; padding-left: 0; padding-bottom: 10px; margin-left: -6px; margin-top: -5px; }
 .ait-sidebar-starred.kimi { margin-left: -12px; }

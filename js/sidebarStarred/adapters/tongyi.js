@@ -31,7 +31,7 @@ class TongyiSidebarStarredAdapter extends BaseSidebarStarredAdapter {
         if (!sidebar) return null;
         const viewContainer = sidebar.querySelector('.tongyiDI-view-container');
         if (!viewContainer?.parentElement) return null;
-        return viewContainer.parentElement.querySelector(':scope > .desktop-no-drag') || viewContainer;
+        return viewContainer.parentElement.querySelector(':scope > .desktop-no-drag');
     }
 
     findSidebarContainer() {

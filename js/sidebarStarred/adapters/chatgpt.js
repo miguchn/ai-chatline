@@ -19,7 +19,7 @@ class ChatGPTSidebarStarredAdapter extends BaseSidebarStarredAdapter {
     findSidebarContainer() {
         const history = document.getElementById('history');
         if (history?.parentElement?.parentElement) return history.parentElement.parentElement;
-        return document.querySelector('nav') || null;
+        return null;
     }
 
     findInsertionPoint() {

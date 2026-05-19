@@ -48,17 +48,13 @@ class ClaudeSidebarStarredAdapter extends BaseSidebarStarredAdapter {
 
     findSidebarContainer() {
         const section = this._findHistorySection();
-        return section?.parentElement || this._findScrollableArea();
+        return section?.parentElement || null;
     }
 
     findInsertionPoint() {
         const section = this._findHistorySection();
         if (section?.parentElement) {
             return { parent: section.parentElement, reference: section, position: 'before' };
-        }
-        const scrollable = this._findScrollableArea();
-        if (scrollable?.firstElementChild) {
-            return { parent: scrollable.firstElementChild, reference: null, position: 'append' };
         }
         return null;
     }

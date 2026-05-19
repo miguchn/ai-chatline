@@ -8,44 +8,34 @@
  *         ├── .side-nav-entry-container  (New Chat)
  *         ├── .gems-list-container       (Gems)
  *         ├── .ait-sidebar-starred       ← 收藏区域（插入位置）
- *         └── .chat-history              ← 聊天历史（参考锚点）
+ *         └── [data-test-id="chats-expandable-section"]  ← 聊天历史（参考锚点）
  *
  * 策略：
- *   findSidebarContainer → .chat-history 的父元素（INFINITE-SCROLLER）
- *   findInsertionPoint   → insertBefore(.chat-history)
+ *   findSidebarContainer → chats-expandable-section 的父元素
+ *   findInsertionPoint   → insertBefore(chats-expandable-section)
  */
 
 class GeminiSidebarStarredAdapter extends BaseSidebarStarredAdapter {
+    static CHATS_SECTION_SELECTOR = '[data-test-id="chats-expandable-section"]';
+
     matches() {
         return matchesPlatform(location.href, 'gemini');
     }
 
-    findSidebarContainer() {
-        const chatHistory = document.querySelector('.chat-history');
-        if (chatHistory?.parentElement) return chatHistory.parentElement;
+    _getChatsSectionAnchor() {
+        return document.querySelector(GeminiSidebarStarredAdapter.CHATS_SECTION_SELECTOR);
+    }
 
-        return document.querySelector('side-navigation-v2') || null;
+    findSidebarContainer() {
+        const chatsSection = this._getChatsSectionAnchor();
+        return chatsSection?.parentElement || null;
     }
 
     findInsertionPoint() {
-        const chatHistory = document.querySelector('.chat-history');
-        if (chatHistory && chatHistory.parentElement) {
-            return { parent: chatHistory.parentElement, reference: chatHistory, position: 'before' };
+        const chatsSection = this._getChatsSectionAnchor();
+        if (chatsSection?.parentElement) {
+            return { parent: chatsSection.parentElement, reference: chatsSection, position: 'before' };
         }
-
-        // fallback：从 conversation 元素向上找可滚动容器
-        const conv = document.querySelector('[data-test-id="conversation"]');
-        if (conv) {
-            let el = conv.parentElement;
-            while (el && el !== document.body) {
-                const style = getComputedStyle(el);
-                if (style.overflowY === 'auto' || style.overflowY === 'scroll') {
-                    return { parent: el, reference: null, position: 'prepend' };
-                }
-                el = el.parentElement;
-            }
-        }
-
         return null;
     }
 
