@@ -784,5 +784,8 @@
   },
   "hideStarredFromListHint": {
     "message": "सक्षम होने पर, फ़ोल्डर में जोड़ी गई बातचीत साइडबार सूची से छिपा दी जाएगी"
+  },
+  "timelineAICompleteNotLatestToast": {
+    "message": "$1 का जवाब पूरा हो गया है।"
   }
 }

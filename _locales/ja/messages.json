@@ -835,5 +835,8 @@
   },
   "hideStarredFromListHint": {
     "message": "有効にすると、フォルダに追加された会話がサイドバーのリストから非表示になります"
+  },
+  "timelineAICompleteNotLatestToast": {
+    "message": "$1 の返信が完了しました。"
   }
 }

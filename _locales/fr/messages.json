@@ -784,5 +784,8 @@
   },
   "hideStarredFromListHint": {
     "message": "Lorsqu'activé, les conversations ajoutées aux dossiers seront masquées de la barre latérale"
+  },
+  "timelineAICompleteNotLatestToast": {
+    "message": "La réponse de $1 est terminée."
   }
 }

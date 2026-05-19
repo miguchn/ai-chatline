@@ -784,5 +784,8 @@
   },
   "hideStarredFromListHint": {
     "message": "Quando attivato, le conversazioni nelle cartelle verranno nascoste dalla barra laterale"
+  },
+  "timelineAICompleteNotLatestToast": {
+    "message": "La risposta di $1 è completata."
   }
 }

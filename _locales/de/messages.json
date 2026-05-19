@@ -784,5 +784,8 @@
   },
   "hideStarredFromListHint": {
     "message": "Wenn aktiviert, werden Unterhaltungen in Ordnern aus der Seitenleiste ausgeblendet"
+  },
+  "timelineAICompleteNotLatestToast": {
+    "message": "$1 Antwort ist abgeschlossen."
   }
 }

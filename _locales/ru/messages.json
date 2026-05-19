@@ -784,5 +784,8 @@
   },
   "hideStarredFromListHint": {
     "message": "При включении разговоры, добавленные в папки, будут скрыты из боковой панели"
+  },
+  "timelineAICompleteNotLatestToast": {
+    "message": "Ответ $1 завершён."
   }
 }

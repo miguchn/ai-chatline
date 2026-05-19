@@ -784,5 +784,8 @@
   },
   "hideStarredFromListHint": {
     "message": "เมื่อเปิดใช้งาน การสนทนาที่เพิ่มในโฟลเดอร์จะถูกซ่อนจากรายการแถบด้านข้าง"
+  },
+  "timelineAICompleteNotLatestToast": {
+    "message": "การตอบกลับของ $1 เสร็จสมบูรณ์แล้ว"
   }
 }

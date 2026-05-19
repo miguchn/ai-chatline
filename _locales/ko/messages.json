@@ -835,5 +835,8 @@
   },
   "hideStarredFromListHint": {
     "message": "활성화하면 폴더에 추가된 대화가 사이드바 목록에서 숨겨집니다"
+  },
+  "timelineAICompleteNotLatestToast": {
+    "message": "$1 답변이 완료되었습니다."
   }
 }

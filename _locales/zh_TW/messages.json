@@ -841,5 +841,8 @@
   },
   "hideStarredFromListHint": {
     "message": "開啟後，已加入資料夾的對話將從原版側邊欄列表中隱藏"
+  },
+  "timelineAICompleteNotLatestToast": {
+    "message": "$1 回覆已完成"
   }
 }

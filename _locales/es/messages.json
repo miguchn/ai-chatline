@@ -784,5 +784,8 @@
   },
   "hideStarredFromListHint": {
     "message": "Al activarlo, las conversaciones añadidas a carpetas se ocultarán de la barra lateral"
+  },
+  "timelineAICompleteNotLatestToast": {
+    "message": "La respuesta de $1 ha finalizado."
   }
 }

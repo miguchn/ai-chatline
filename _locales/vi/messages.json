@@ -784,5 +784,8 @@
   },
   "hideStarredFromListHint": {
     "message": "Khi bật, các cuộc trò chuyện đã thêm vào thư mục sẽ bị ẩn khỏi danh sách thanh bên"
+  },
+  "timelineAICompleteNotLatestToast": {
+    "message": "$1 đã trả lời xong."
   }
 }
