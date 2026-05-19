@@ -120,9 +120,12 @@ class GlobalToastManager {
      * @param {HTMLElement} options.target - 目标元素（相对定位）
      * @param {number} options.duration - 显示时长（覆盖默认）
      * @param {string} options.position - 位置（覆盖默认）
-     * @param {Object} options.color - 颜色配置对象 {light: {backgroundColor, textColor, borderColor}, dark: {...}}
+     * @param {Object|false} options.color - 颜色配置对象；传 false 时跳过内联配色
      * @param {string} options.icon - 图标
      * @param {number} options.gap - 与目标元素的距离
+     * @param {string} options.className - 额外 CSS 类名
+     * @param {string} options.iconType - 内置图标类型（如 check，优先于 icon）
+     * @param {boolean} options.useClassStyles - 是否跳过默认视觉样式，由 CSS 类接管
      */
     show(type, message, options = {}) {
         try {
@@ -233,26 +236,38 @@ class GlobalToastManager {
         // 创建 DOM
         const element = document.createElement('div');
         element.className = 'global-toast';
-        
-        // 基础样式
-        element.style.cssText = `
+        const useClassStyles = config.useClassStyles === true;
+        if (config.className) {
+            config.className.split(/\s+/).filter(Boolean).forEach(cls => element.classList.add(cls));
+        }
+        if (useClassStyles) {
+            element.classList.add('global-toast-class-styled');
+        }
+
+        const layoutStyles = `
             position: fixed;
             display: flex;
             align-items: center;
             gap: 8px;
+            z-index: 2147483647;
+            pointer-events: none;
+            white-space: nowrap;
+            max-width: 400px;
+        `;
+        const defaultVisualStyles = `
             padding: 10px 16px;
             border-radius: 12px;
             font-size: 13px;
             font-weight: 500;
             box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.06);
-            z-index: 2147483647;
-            pointer-events: none;
             opacity: 0;
             transition: opacity 0.15s ease, transform 0.15s ease;
             transform: translateY(-10px);
-            white-space: nowrap;
-            max-width: 400px;
         `;
+
+        element.style.cssText = useClassStyles
+            ? layoutStyles
+            : `${layoutStyles}${defaultVisualStyles}`;
         
         // 应用配置的颜色（根据当前主题模式）
         if (config.color) {
@@ -272,8 +287,12 @@ class GlobalToastManager {
         }
         
         // 添加图标（如果有）
-        if (config.icon) {
+        if (config.iconType) {
+            const iconSpan = this._createIconElement(config.iconType);
+            if (iconSpan) element.appendChild(iconSpan);
+        } else if (config.icon) {
             const iconSpan = document.createElement('span');
+            iconSpan.className = 'global-toast-icon';
             iconSpan.style.fontSize = '16px';
             iconSpan.textContent = config.icon;
             element.appendChild(iconSpan);
@@ -294,6 +313,34 @@ class GlobalToastManager {
             timer: null,
             id: Date.now() + Math.random()
         };
+    }
+
+    /**
+     * 创建内置图标元素，避免通过 HTML 字符串注入图标
+     */
+    _createIconElement(iconType) {
+        if (iconType !== 'check') return null;
+
+        const iconSpan = document.createElement('span');
+        iconSpan.className = 'global-toast-icon';
+
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('width', '14');
+        svg.setAttribute('height', '14');
+        svg.setAttribute('viewBox', '0 0 14 14');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('aria-hidden', 'true');
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', 'M2.75 7.25L5.75 10.25L11.25 3.75');
+        path.setAttribute('stroke', 'currentColor');
+        path.setAttribute('stroke-width', '1.75');
+        path.setAttribute('stroke-linecap', 'round');
+        path.setAttribute('stroke-linejoin', 'round');
+
+        svg.appendChild(path);
+        iconSpan.appendChild(svg);
+        return iconSpan;
     }
     
     /**
@@ -404,15 +451,17 @@ class GlobalToastManager {
         } else {
             // 隐藏动画
             element.classList.remove('visible');
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(-10px)';
+            if (toastInstance.config.useClassStyles !== true) {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(-10px)';
+            }
             
             // 等待动画完成后移除
             setTimeout(() => {
                 if (element.parentNode) {
                     element.parentNode.removeChild(element);
                 }
-            }, 200);
+            }, toastInstance.config.useClassStyles === true ? 320 : 200);
         }
     }
     
@@ -485,6 +534,9 @@ if (!document.getElementById('global-toast-styles')) {
         
         .global-toast.visible {
             opacity: 1 !important;
+        }
+
+        .global-toast.visible:not(.global-toast-class-styled) {
             transform: translateY(0) !important;
         }
     `;
@@ -499,4 +551,3 @@ if (typeof window.globalToastManager === 'undefined') {
         debug: false  // 生产环境关闭，调试时可设为 true
     });
 }
-

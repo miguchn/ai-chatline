@@ -2900,10 +2900,13 @@ class TimelineManager {
         const anchor = this.getAICompleteToastAnchor();
 
         window.globalToastManager.info(message, anchor, {
-            duration: 2600,
-            icon: '✅',
+            duration: 3500,
+            iconType: 'check',
+            color: false,
+            className: 'ait-ai-complete-toast',
+            useClassStyles: true,
             position: 'left',
-            gap: 12
+            gap: 10
         });
     }
 
@@ -2916,8 +2919,8 @@ class TimelineManager {
         anchor.className = 'ait-timeline-ai-complete-toast-anchor';
         anchor.style.cssText = [
             'position: fixed',
-            'top: 52px',
-            'right: 16px',
+            'top: 72px',
+            'right: 26px',
             'width: 1px',
             'height: 1px',
             'pointer-events: none',

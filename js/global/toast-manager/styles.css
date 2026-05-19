@@ -65,3 +65,64 @@ html[data-timeline-theme="dark"] .timeline-copy-feedback {
     opacity: 1;
 }
 
+/* AI 回复完成提示 - 右上角胶囊 Toast */
+.global-toast.ait-ai-complete-toast {
+    padding: 7px 14px 7px 7px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    gap: 10px;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background: rgba(255, 255, 255, 0.9);
+    color: #1f2937;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow:
+        0 1px 2px rgba(15, 23, 42, 0.04),
+        0 8px 24px rgba(15, 23, 42, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.65);
+    opacity: 0;
+    transform: translateX(14px) scale(0.96);
+    transition:
+        opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.global-toast.ait-ai-complete-toast .global-toast-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: linear-gradient(145deg, #22c55e 0%, #15803d 100%);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(21, 128, 61, 0.34);
+}
+
+.global-toast.ait-ai-complete-toast .global-toast-icon svg {
+    display: block;
+}
+
+.global-toast.ait-ai-complete-toast.visible {
+    opacity: 1 !important;
+    transform: translateX(0) scale(1) !important;
+}
+
+html[data-timeline-theme="dark"] .global-toast.ait-ai-complete-toast,
+html.dark .global-toast.ait-ai-complete-toast {
+    background: rgba(28, 28, 30, 0.88);
+    color: #f5f5f7;
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.24),
+        0 10px 28px rgba(0, 0, 0, 0.36),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+html[data-timeline-theme="dark"] .global-toast.ait-ai-complete-toast .global-toast-icon,
+html.dark .global-toast.ait-ai-complete-toast .global-toast-icon {
+    box-shadow: 0 2px 10px rgba(21, 128, 61, 0.3);
+}
