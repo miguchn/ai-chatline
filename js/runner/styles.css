@@ -48,6 +48,11 @@
     transition: all 0.15s ease !important;
 }
 
+/* Gemini code-block 容器内按钮单独设置偏移 */
+code-block .runner-code-run-btn {
+    top: 80px;
+}
+
 .runner-code-run-btn:hover {
     background: var(--runner-accent-hover) !important;
     background-color: #6d28d9 !important;

@@ -252,12 +252,6 @@
     border-radius: 12px;
 }
 
-.changelog-rating-icon {
-    flex-shrink: 0;
-    font-size: 20px;
-    line-height: 1;
-}
-
 .changelog-rating-text {
     flex: 1;
     font-size: 12px;

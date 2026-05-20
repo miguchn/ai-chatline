@@ -183,10 +183,6 @@ class ChangelogModal {
         const isEdge = /Edg/i.test(navigator.userAgent);
         const storeName = isEdge ? 'Edge' : 'Chrome';
 
-        const ratingIcon = document.createElement('span');
-        ratingIcon.className = 'changelog-rating-icon';
-        ratingIcon.textContent = '⭐';
-
         const ratingText = document.createElement('span');
         ratingText.className = 'changelog-rating-text';
         ratingText.textContent = lang === 'zh'
@@ -200,9 +196,8 @@ class ChangelogModal {
         ratingBtn.className = 'changelog-rating-btn';
         ratingBtn.href = storeUrl;
         ratingBtn.target = '_blank';
-        ratingBtn.textContent = lang === 'zh' ? '前往评分' : 'Rate it';
+        ratingBtn.textContent = lang === 'zh' ? '⭐ 前往评分' : '⭐ Rate it';
 
-        ratingBar.appendChild(ratingIcon);
         ratingBar.appendChild(ratingText);
         ratingBar.appendChild(ratingBtn);
 

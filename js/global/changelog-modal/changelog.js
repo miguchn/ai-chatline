@@ -12,34 +12,26 @@
  */
 
 const CHANGELOG_DATA = {
-    id: '4.6.6',
+    id: '2026052001',
     // 'icon' = 提示词按钮左侧显示 Logo + 小红点（温和提示）
     // 'popup' = 自动弹窗展示更新内容（强提醒）
     displayMode: 'icon',
 
     features: [
         {
-            zh: '文件夹新增「去重模式」，已收藏的对话可从原版侧边栏隐藏',
-            en: 'Added "dedup mode" for starred items — hide starred conversations from native sidebar'
+            zh: '时间轴主题色：支持为不同 AI 平台设置激活节点颜色',
+            en: 'Timeline theme colors: set active node colors for different AI platforms'
         },
         {
-            zh: '侧边栏收藏区新增设置入口（齿轮图标）',
-            en: 'Added settings shortcut (gear icon) in sidebar starred header'
+            zh: 'AI 回复完成提醒：当你停留在历史节点时，回复完成会及时提示',
+            en: 'AI reply completion reminders: get notified when a reply finishes while viewing an earlier node'
         }
     ],
 
     improvements: [
         {
-            zh: '修复 Ctrl+A 全选复制时会包含插件 UI 文本的问题',
-            en: 'Fixed Ctrl+A copying extension UI text into clipboard'
-        },
-        {
-            zh: '修复插件导致 QQ 邮箱等页面布局异常的问题',
-            en: 'Fixed plugin causing layout issues on QQ Mail and similar pages'
-        },
-        {
-            zh: '修复豆包页面 LaTeX 公式无法复制的问题',
-            en: 'Fixed LaTeX formula copy not working on Doubao'
+            zh: '修复 Gemini 页面改版后，侧边栏收藏文件夹显示位置异常的问题',
+            en: 'Fixed incorrect starred folder placement after Gemini’s page structure update'
         }
     ]
 };

@@ -98,6 +98,7 @@ function build() {
             `-x ".gitignore" ` +
             `-x "node_modules/*" ` +
             `-x ".DS_Store" ` +
+            `-x "*/.DS_Store" ` +
             `-x "*.md" ` +
             `-x ".cursor/*" ` +
             `-x "*.zip" ` +
