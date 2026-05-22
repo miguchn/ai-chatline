@@ -159,8 +159,9 @@
 
 ## 💬 联系与反馈
 
-- **问题反馈**：请在当前项目仓库的 Issues 中提交
+- **作者**：MiguCHN
+- **问题反馈**：欢迎发邮件到 miguchn@gmail.com，看到就会回复~
 
 ## 🙏 致谢
 
-本项目基于开源项目 chatgpt-conversation-timeline 进行开发，感谢原作者的开源贡献。
+本项目基于开源项目 chatgpt-conversation-timeline 进行开发，感谢原作者的开源贡献，也感谢每一位为开源生态添砖加瓦的开发者——正是你们的分享与付出，让这些好想法得以延续和生长。

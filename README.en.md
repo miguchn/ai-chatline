@@ -159,8 +159,9 @@ Supporting **42 languages** with global coverage.
 
 ## 💬 Contact & Support
 
-- **Bug reports**: Please use the Issues page of this project repository
+- **Author**: MiguCHN
+- **Bug reports / Feedback**: Feel free to email miguchn@gmail.com — the author will get back to you as soon as possible~
 
 ## 🙏 Credits
 
-Built upon the open-source project chatgpt-conversation-timeline. Thanks to the original author for the open source contribution.
+Built upon the open-source project chatgpt-conversation-timeline. Thanks to the original author for the open source contribution, and to every developer who contributes to the open-source ecosystem — your generosity and dedication keep great ideas alive and evolving.
