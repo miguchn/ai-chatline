@@ -4184,6 +4184,7 @@ class TimelineManager {
      * ✅ 渲染所有图钉（独立于节点渲染）
      */
     renderPinMarkers() {
+        if (!this.ui.timelineBar) return;
         // 清除所有旧的图钉
         const oldPins = this.ui.timelineBar.querySelectorAll('.timeline-pin-marker');
         oldPins.forEach(pin => pin.remove());
