@@ -25,6 +25,10 @@ function getTabClass(name) {
     }
 }
 
+function isExtensionContextInvalidatedError(error) {
+    return String(error?.message || error).includes('Extension context invalidated');
+}
+
 /**
  * Tab 配置数组（按显示顺序排列）
  * - id: tab 的唯一标识
@@ -32,7 +36,7 @@ function getTabClass(name) {
  */
 const TAB_CONFIG = [
     { id: 'about', className: 'AboutTab' },
-    { id: 'timeline-settings', className: 'TimelineSettingsTab' },
+    { id: 'timeline', className: 'TimelineSettingsTab' },
     { id: 'starred', className: 'StarredTab' },
     { id: 'prompt', className: 'PromptTab' },
     { id: 'smart-input-box', className: 'SmartInputBoxTab' },
@@ -69,12 +73,18 @@ function registerAllTabs() {
             continue;
         }
         
-        const tabInstance = new TabClass();
-        if (typeof tabInstance.shouldShow === 'function' && !tabInstance.shouldShow()) {
-            continue;
+        try {
+            const tabInstance = new TabClass();
+            if (typeof tabInstance.shouldShow === 'function' && !tabInstance.shouldShow()) {
+                continue;
+            }
+            pm.registerTab(tabInstance);
+        } catch (error) {
+            if (!isExtensionContextInvalidatedError(error)) {
+                console.error(`[TabRegistry] Failed to register tab "${config.id}":`, error);
+            }
         }
-        pm.registerTab(tabInstance);
-        }
+    }
 }
 
 /**

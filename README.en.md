@@ -1,35 +1,25 @@
 <div align="center">
-  <img src="./icons/icon128.png" alt="Timeline Logo" width="80" height="80">
-  <h1>Timeline</h1>
-  <p><strong>Browser-based AI chat enhancement extension</strong><br>Supports GPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, NotebookLM and all major AI platforms</p>
+  <img src="./icons/icon128.png" alt="ChatLine Logo" width="80" height="80">
+  <h1>ChatLine</h1>
+  <p><strong>Browser enhancement for AI chat pages</strong><br>Forked from the open-source Timeline project, ChatLine focuses on timeline navigation, history positioning, improved conversation browsing, and conversation data archiving.</p>
 
   <p>
-    <a href="https://chromewebstore.google.com/detail/timeline-ai-chat/fgebdnlceacaiaeikopldglhffljjlhh"><img src="https://img.shields.io/badge/Chrome-Install-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Chrome"></a>
-    <a href="https://microsoftedge.microsoft.com/addons/detail/ai-timeline%EF%BC%9A%E5%8A%A9%E4%BD%A0%E4%BD%BF%E7%94%A8-ai-%E6%95%88%E7%8E%87%E7%BF%BB%E5%80%8D-/ekednjjojnhlajfobalaaihkibbdcbab"><img src="https://img.shields.io/badge/Edge-Install-0078D7?style=for-the-badge&logo=microsoftedge&logoColor=white" alt="Edge"></a>
-    <a href="https://addons.mozilla.org/en-US/firefox/addon/ai-timeline-ai"><img src="https://img.shields.io/badge/Firefox-Install-FF7139?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Firefox"></a>
-  </p>
-  <p>
-    <img src="https://img.shields.io/badge/Users-30,000+-brightgreen?style=flat-square" alt="Users">
+    <img src="https://img.shields.io/badge/project-ai--chat--timeline-181717?style=flat-square" alt="Project">
     <img src="https://img.shields.io/badge/License-GPL--3.0-blue?style=flat-square" alt="License">
-    <a href="https://github.com/houyanchao/AITimeline"><img src="https://img.shields.io/badge/GitHub-Open_Source-181717?style=flat-square&logo=github" alt="GitHub"></a>
   </p>
 
   <h4><a href="./README.md">简体中文</a> | <strong>English</strong></h4>
 
-  <img src="./READMEIMAGE/index.png" alt="Timeline Demo" width="800">
+  <img src="./READMEIMAGE/index.png" alt="ChatLine Demo" width="800">
 </div>
 
 <br>
 
 ## 📥 Install
 
-> After installation, open any AI website and start chatting — no extra setup needed.
+> ChatLine is currently in fork-initialization stage. Store installation channels will be added after the release path is finalized.
 
-| Browser | Install Link |
-|---------|-------------|
-| Chrome | 👉 [Chrome Web Store](https://chromewebstore.google.com/detail/timeline-ai-chat/fgebdnlceacaiaeikopldglhffljjlhh) |
-| Edge | 👉 [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ai-timeline%EF%BC%9A%E5%8A%A9%E4%BD%A0%E4%BD%BF%E7%94%A8-ai-%E6%95%88%E7%8E%87%E7%BF%BB%E5%80%8D-/ekednjjojnhlajfobalaaihkibbdcbab) |
-| Firefox | 👉 [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/ai-timeline-ai) |
+For development and testing, load this repository directory through your browser's extension developer mode. After installation, open a supported AI chat page and start using it with no extra setup.
 
 ## 🎯 Key Features
 
@@ -119,15 +109,15 @@
 | ChatGPT | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
 | Gemini | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | DeepSeek | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
-| Claude | ✅ | ✅ | ✅ | — | ✅ | — | ✅ | — |
+| Claude | ✅ | ✅ | ✅ | — | ✅ | ✅ | ✅ | — |
 | Kimi | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
 | Doubao | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
 | Qwen | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
 | Qwen Intl | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
-| Grok | ✅ | ✅ | ✅ | ✅ | ✅ | — | — | — |
-| Perplexity | ✅ | ✅ | ✅ | — | ✅ | — | — | — |
-| Yuanbao | ✅ | ✅ | ✅ | ✅ | ✅ | — | — | — |
-| Yiyan | ✅ | ✅ | — | — | ✅ | — | — | — |
+| Grok | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — | — |
+| Perplexity | ✅ | ✅ | ✅ | — | ✅ | ✅ | — | — |
+| Yuanbao | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — | — |
+| Yiyan | ✅ | ✅ | — | — | ✅ | ✅ | — | — |
 | NotebookLM | — | ✅ | ✅ | — | ✅ | — | — | — |
 
 > 💡 **Formula Copy** and **Code Runner** work on all pages — they activate automatically when matching content is detected.
@@ -169,15 +159,8 @@ Supporting **42 languages** with global coverage.
 
 ## 💬 Contact & Support
 
-- **Bug reports**: [GitHub Issues](../../issues)
-- **Email**: houyanchao@outlook.com
+- **Bug reports**: Please use the Issues page of this project repository
 
 ## 🙏 Credits
 
-Built upon [chatgpt-conversation-timeline](https://github.com/Reborn14/chatgpt-conversation-timeline). Thanks to the original author for the open source contribution.
-
----
-
-<div align="center">
-  <p>If you find it useful, please <a href="https://github.com/houyanchao/AITimeline">⭐ Star</a> to support</p>
-</div>
+Built upon the open-source project chatgpt-conversation-timeline. Thanks to the original author for the open source contribution.

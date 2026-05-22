@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline: ChatGPT & Gemini Chat Ditingkatkan"
+    "message": "ChatLine: ChatGPT & Gemini Chat Ditingkatkan"
   },
   "extDescription": {
-    "message": "Timeline, folder, perpustakaan prompt, hewan peliharaan virtual. Mendukung DeepSeek, Claude & semua platform AI."
+    "message": "Ekstensi browser untuk halaman chat AI. Fork dari Timeline dengan navigasi timeline, pencarian riwayat, peningkatan penelusuran, dan arsip percakapan."
   },
   "qwxpzm": {
     "message": "Favorit"
@@ -501,7 +501,7 @@
     "message": "Tentang ekstensi"
   },
   "aboutPluginContent": {
-    "message": "Timeline adalah ekstensi produktivitas untuk percakapan AI di browser, dengan timeline, folder, sorotan teks, salin rumus LaTeX, prompt kustom, dan banyak lagi — ledakkan efisiensi Anda. Mendukung ChatGPT, Gemini, Claude, DeepSeek, Kimi, Doubao, Qwen dan semua platform AI utama."
+    "message": "ChatLine adalah ekstensi browser untuk halaman chat AI. Dikembangkan sebagai fork dari proyek open-source Timeline, ChatLine berfokus pada navigasi timeline, pencarian posisi dalam riwayat, peningkatan penelusuran percakapan, dan pengarsipan data percakapan. Mendukung platform chat AI utama seperti ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, dan NotebookLM."
   },
   "aboutDataSecurityTitle": {
     "message": "Keamanan Data"
@@ -513,13 +513,13 @@
     "message": "Umpan Balik"
   },
   "aboutDeveloperContent": {
-    "message": "Proyek ini dipelihara bersama oleh saya dan Claude Opus 4.6, dengan ritme 1–2 versi baru setiap minggu. Untuk meminta fitur atau melaporkan bug, hubungi saya melalui saluran di bawah (saya pasti akan membalas ketika melihatnya):"
+    "message": "ChatLine dikelola sebagai fork ai-chat-timeline. Untuk meminta fitur atau melaporkan bug, gunakan halaman Issues di repositori proyek ini."
   },
   "aboutShareTitle": {
     "message": "Rekomendasikan ke teman"
   },
   "aboutShareContent": {
-    "message": "Jika Timeline berguna, silakan tulis ulasan di Xiaohongshu, Bilibili, X, Reddit, YouTube, atau platform lainnya, dan bagikan ke teman sekelas dan teman agar lebih banyak orang bisa menggunakannya. Terima kasih. ❤️"
+    "message": "Jika ChatLine bermanfaat, rekomendasikan kepada orang yang sering membaca, mencari, dan mengarsipkan percakapan AI. Penulis: 咪咕看见小黑. Email: miguchn@gmail.com. Jika mengalami masalah saat menggunakan atau memiliki saran peningkatan, Anda dapat mengirim masukan melalui email kapan saja."
   },
   "nativeMenuStarToFolder": {
     "message": "Star to Folder"
@@ -651,7 +651,7 @@
     "message": "Dokumentasi"
   },
   "changelogTitle": {
-    "message": "Timeline diperbarui!"
+    "message": "ChatLine diperbarui!"
   },
   "changelogSubtitle": {
     "message": "Digunakan oleh $1 pengguna. Versi baru, pengalaman lebih baik."

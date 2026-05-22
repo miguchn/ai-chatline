@@ -344,7 +344,7 @@ class TimelineManager {
             questionListBtn = document.createElement('button');
             questionListBtn.className = 'ait-question-list-btn';
             questionListBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>';
-            questionListBtn.setAttribute('aria-label', chrome.i18n.getMessage('questionListTitle') || 'Questions');
+            questionListBtn.setAttribute('aria-label', TimelineUtils.i18n('questionListTitle', 'Questions'));
             questionListBtn.style.display = 'none';
 
             questionListBtn.addEventListener('mouseenter', () => {
@@ -352,7 +352,7 @@ class TimelineManager {
                     'question-list-btn',
                     'button',
                     questionListBtn,
-                    chrome.i18n.getMessage('questionListTitle') || 'Questions',
+                    TimelineUtils.i18n('questionListTitle', 'Questions'),
                     { placement: 'left' }
                 );
             });
@@ -375,7 +375,7 @@ class TimelineManager {
             starredBtn = document.createElement('button');
             starredBtn.className = 'timeline-starred-btn';
             starredBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>';
-            starredBtn.setAttribute('aria-label', chrome.i18n.getMessage('hkjvnr'));
+            starredBtn.setAttribute('aria-label', TimelineUtils.i18n('hkjvnr', 'Search starred'));
             // ✅ 初始状态：隐藏，等时间轴渲染完成后再显示
             starredBtn.style.display = 'none';
             
@@ -385,7 +385,7 @@ class TimelineManager {
                     'starred-btn',
                     'button',
                     starredBtn,
-                    chrome.i18n.getMessage('vnkxpm'),
+                    TimelineUtils.i18n('vnkxpm', 'Starred'),
                     { placement: 'left' }
                 );
             });
@@ -414,7 +414,7 @@ class TimelineManager {
                     'notepad-btn',
                     'button',
                     notepadBtn,
-                    chrome.i18n.getMessage('notepadTitle') || '闪记',
+                    TimelineUtils.i18n('notepadTitle', '闪记'),
                     { placement: 'left' }
                 );
             });
@@ -430,6 +430,32 @@ class TimelineManager {
             notepadBtn.classList.add('active');
         }
         this.ui.notepadBtn = notepadBtn;
+
+        // ✅ 添加固定设置入口（保留提问列表内原设置按钮不变）
+        let settingsBtn = document.querySelector('.timeline-settings-btn');
+        if (!settingsBtn) {
+            settingsBtn = document.createElement('button');
+            settingsBtn.className = 'timeline-settings-btn';
+            settingsBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>';
+            settingsBtn.setAttribute('aria-label', TimelineUtils.i18n('sidebarStarredManage', 'Settings'));
+            
+            settingsBtn.addEventListener('mouseenter', () => {
+                window.globalTooltipManager.show(
+                    'timeline-settings-btn',
+                    'button',
+                    settingsBtn,
+                    TimelineUtils.i18n('sidebarStarredManage', 'Settings'),
+                    { placement: 'left' }
+                );
+            });
+            
+            settingsBtn.addEventListener('mouseleave', () => {
+                window.globalTooltipManager.hide();
+            });
+            
+            wrapper.appendChild(settingsBtn);
+        }
+        this.ui.settingsBtn = settingsBtn;
         
         // ✅ 收藏按钮使用相对定位，不需要动态计算位置
         
@@ -561,11 +587,10 @@ class TimelineManager {
      */
     shouldShowCollapseButton() {
         try {
-            const selector = this.adapter.getUserMessageSelector();
-            if (!selector || !this.conversationContainer) return true;
+            if (!this.conversationContainer) return true;
             
             // 只查第一个消息体，所有消息布局一致
-            const firstMsg = this.conversationContainer.querySelector(selector);
+            const firstMsg = this.adapter.getUserMessageElements(this.conversationContainer)[0];
             if (!firstMsg) return true;
             
             const rect = firstMsg.getBoundingClientRect();
@@ -685,7 +710,9 @@ class TimelineManager {
             starChatBtn.style.backgroundColor = 'rgba(0, 0, 0, 0.05)';
             
             const isStarred = await this.isChatStarred();
-            const tooltipText = isStarred ? chrome.i18n.getMessage('bpxjkw') : chrome.i18n.getMessage('zmvkpx');
+            const tooltipText = isStarred
+                ? TimelineUtils.i18n('bpxjkw', '取消收藏')
+                : TimelineUtils.i18n('zmvkpx', '收藏到文件夹');
             
             window.globalTooltipManager?.show(
                 'star-chat-btn',
@@ -735,7 +762,9 @@ class TimelineManager {
                 }
                 
                 // 更新 tooltip 文本
-                const newText = nowStarred ? chrome.i18n.getMessage('bpxjkw') : chrome.i18n.getMessage('zmvkpx');
+                const newText = nowStarred
+                    ? TimelineUtils.i18n('bpxjkw', '取消收藏')
+                    : TimelineUtils.i18n('zmvkpx', '收藏到文件夹');
                 window.globalTooltipManager?.updateContent(newText);
                 
                 // 显示 toast
@@ -746,9 +775,9 @@ class TimelineManager {
                     };
                     
                     if (result.action === 'star') {
-                        window.globalToastManager.success(chrome.i18n.getMessage('kxpmzv'), null, { color: toastColor });
+                        window.globalToastManager.success(TimelineUtils.i18n('kxpmzv', '已收藏'), null, { color: toastColor });
                     } else if (result.action === 'unstar') {
-                        window.globalToastManager.info(chrome.i18n.getMessage('pzmvkx'), null, { color: toastColor });
+                        window.globalToastManager.info(TimelineUtils.i18n('pzmvkx', '已取消收藏'), null, { color: toastColor });
                     }
                 }
             }
@@ -765,11 +794,11 @@ class TimelineManager {
         }
         
         return await window.globalInputModal.show({
-            title: chrome.i18n.getMessage('vkpxzm'),
+            title: TimelineUtils.i18n('vkpxzm', '编辑'),
             defaultValue: currentText,
-            placeholder: chrome.i18n.getMessage('zmxvkp'),
+            placeholder: TimelineUtils.i18n('zmxvkp', '标题'),
             required: true,
-            requiredMessage: chrome.i18n.getMessage('pzmkvx'),
+            requiredMessage: TimelineUtils.i18n('pzmkvx', '请输入内容'),
             maxLength: 100
         });
     }
@@ -811,9 +840,9 @@ class TimelineManager {
                 const defaultTheme = this.adapter.getDefaultChatTheme?.() || '';
                 
                 const result = await window.starInputModal.show({
-                    title: chrome.i18n.getMessage('zmvkpx'),
+                    title: TimelineUtils.i18n('zmvkpx', '收藏到文件夹'),
                     defaultValue: defaultTheme,
-                    placeholder: chrome.i18n.getMessage('zmxvkp'),
+                    placeholder: TimelineUtils.i18n('zmxvkp', '标题'),
                     folderManager: this.folderManager,
                     defaultFolderId: null
                 });
@@ -859,11 +888,11 @@ class TimelineManager {
             const defaultTheme = this.adapter.getDefaultChatTheme?.() || '';
             
         return await window.globalInputModal.show({
-            title: chrome.i18n.getMessage('qwxpzm'),
+            title: TimelineUtils.i18n('qwxpzm', '设置主题'),
             defaultValue: defaultTheme,
-            placeholder: chrome.i18n.getMessage('zmxvkp'),
+            placeholder: TimelineUtils.i18n('zmxvkp', '标题'),
             required: true,
-            requiredMessage: chrome.i18n.getMessage('mzpxvk'),
+            requiredMessage: TimelineUtils.i18n('mzpxvk', '请输入主题'),
             maxLength: 100
         });
     }
@@ -904,8 +933,7 @@ class TimelineManager {
 
         if (window.questionListPopup) window.questionListPopup.onMarkersRebuilt();
 
-        const selector = this.adapter.getUserMessageSelector();
-        let userTurnElements = this.conversationContainer.querySelectorAll(selector);
+        let userTurnElements = this.adapter.getUserMessageElements(this.conversationContainer);
         
         // Reset visible window to avoid cleaning with stale indices after rebuild
         this.visibleRange = { start: 0, end: -1 };
@@ -940,6 +968,13 @@ class TimelineManager {
         userTurnElements = elementsArray.sort((a, b) => 
             rectsMap.get(a).top - rectsMap.get(b).top
         );
+
+        // 统一会话消息提取入口：平台 adapter 只负责差异化 ID/文本解析
+        const fiberTexts = this.adapter.extractFiberTexts?.() || new Map();
+        const conversationMessages = this.adapter.extractConversationMessages({
+            elements: userTurnElements,
+            context: { fiberTexts }
+        });
         
         /**
          * ✅ 性能优化：只在节点真正变化时重新计算位置
@@ -960,10 +995,7 @@ class TimelineManager {
         
         // 生成当前节点的 ID 集合
         const currentNodeIds = new Set();
-        userTurnElements.forEach((el, index) => {
-            const id = this.adapter.generateTurnId(el, index);
-            currentNodeIds.add(id);
-        });
+        conversationMessages.forEach(message => currentNodeIds.add(message.id));
         
         // 判断节点是否变化：数量变化 或 ID 集合变化 或 DOM 引用失效
         const nodeCountChanged = userTurnElements.length !== this._renderedNodeCount;
@@ -1111,10 +1143,7 @@ class TimelineManager {
         // Build markers with normalized position along conversation
         this.markerMap.clear();
         
-        // 调用 fiber bridge 提取文本（仅 ChatGPT 等实现了该方法的平台）
-        const fiberTexts = this.adapter.extractFiberTexts?.() || new Map();
-        
-        this.markers = Array.from(userTurnElements).map((el, index, arr) => {
+        this.markers = Array.from(userTurnElements).map((el, index) => {
             /**
              * ✅ 节点位置信息：
              * 
@@ -1138,16 +1167,15 @@ class TimelineManager {
             let visualN = offsetFromStart / contentSpan;
             visualN = Math.round(Math.max(0, Math.min(1, visualN)) * 1000000) / 1000000;
             
-            const id = this.adapter.generateTurnId(el, index);
-            
-            // 优先使用 fiber 文本，回退到 DOM 提取
-            const turnIdRaw = el.getAttribute?.('data-turn-id');
-            const fiberText = turnIdRaw ? fiberTexts.get(turnIdRaw) : null;
+            const message = conversationMessages[index] || {
+                id: this.adapter.generateTurnId(el, index),
+                text: this.adapter.extractMessageText(el, index, { fiberTexts })
+            };
             
             const m = {
-                id: id,
+                id: message.id,
                 element: el,
-                summary: fiberText || this.adapter.extractText(el),
+                summary: message.text,
                 offsetTop,      // 节点顶部距离（像素）- 用于激活判断
                 offsetBottom,   // 节点结束位置（像素）
                 visualN,        // 原始位置比例（0~1）
@@ -1290,6 +1318,18 @@ class TimelineManager {
         }
         
         this.perfEnd('recalc');
+    }
+
+    createConversationExport() {
+        const fiberTexts = this.adapter.extractFiberTexts?.() || new Map();
+        const markerElements = (this.markers || [])
+            .map(marker => marker.element)
+            .filter(element => element?.isConnected);
+        return this.adapter.createConversationExport({
+            root: this.conversationContainer || document,
+            elements: markerElements.length ? markerElements : undefined,
+            context: { fiberTexts }
+        });
     }
     
     setupObservers() {
@@ -1435,8 +1475,7 @@ class TimelineManager {
 
     // Ensure our conversation/scroll containers are still current after DOM replacements
     ensureContainersUpToDate() {
-        const selector = this.adapter.getUserMessageSelector();
-        const first = document.querySelector(selector);
+        const first = this.adapter.getUserMessageElements(document)[0];
         if (!first) return;
         
         const newConv = this.adapter.findConversationContainer(first);
@@ -1506,8 +1545,7 @@ class TimelineManager {
         if (!this.intersectionObserver || !this.conversationContainer) return;
         this.intersectionObserver.disconnect();
         this.visibleUserTurns.clear();
-        const selector = this.adapter.getUserMessageSelector();
-        const userTurns = this.conversationContainer.querySelectorAll(selector);
+        const userTurns = this.adapter.getUserMessageElements(this.conversationContainer);
         userTurns.forEach(el => this.intersectionObserver.observe(el));
     }
 
@@ -1917,6 +1955,16 @@ class TimelineManager {
                 window.panelModal.show('starred');
             }
         });
+
+        // ✅ 固定设置入口：与提问列表里的设置按钮保持同一目标页面
+        window.eventDelegateManager.on('click', '.timeline-settings-btn', () => {
+            if (window.questionListPopup && window.questionListPopup.visible) {
+                window.questionListPopup.hide();
+            }
+            if (window.panelModal) {
+                window.panelModal.show('timeline');
+            }
+        });
         
         // ✅ 闪记按钮点击事件
         window.eventDelegateManager.on('click', '.ait-notepad-btn', () => {
@@ -1939,7 +1987,13 @@ class TimelineManager {
         
         // ✅ 初始化时间记录器（解耦模块，确保 adapter 已就绪）
         if (typeof initChatTimeRecorder === 'function') {
-            initChatTimeRecorder();
+            Promise.resolve(initChatTimeRecorder()).finally(() => {
+                if (window.AIStateMonitor && this.adapter) {
+                    window.AIStateMonitor.getInstance().start(this.adapter);
+                }
+            });
+        } else if (window.AIStateMonitor && this.adapter) {
+            window.AIStateMonitor.getInstance().start(this.adapter);
         }
     }
     
@@ -2308,7 +2362,7 @@ class TimelineManager {
         
         // 时间标签（从节点 DOM 读取）
         const marker = this.markerMap.get(id);
-        const timeStr = marker?.element?.getAttribute('data-ait-time');
+        const timeStr = this.getMarkerTimeLabel(marker);
         if (timeStr) {
             const timeTag = document.createElement('span');
             timeTag.className = 'timeline-tooltip-time';
@@ -2338,8 +2392,8 @@ class TimelineManager {
         pinSpan.dataset.targetTurnId = id;
         if (!isPinned) pinSpan.classList.add('not-pinned');
         pinSpan.dataset.tip = isPinned
-            ? (chrome.i18n.getMessage('unpinAction') || '取消标记重点')
-            : (chrome.i18n.getMessage('pinAction') || '标记重点');
+            ? TimelineUtils.i18n('unpinAction', '取消标记重点')
+            : TimelineUtils.i18n('pinAction', '标记重点');
         pinSpan.addEventListener('click', async (e) => {
             e.stopPropagation();
             window.globalTooltipManager.hideOverlay();
@@ -2349,8 +2403,8 @@ class TimelineManager {
                 const nowPinned = this.pinned.has(turnId);
                 pinSpan.classList.toggle('not-pinned', !nowPinned);
                 pinSpan.dataset.tip = nowPinned
-                    ? (chrome.i18n.getMessage('unpinAction') || '取消标记重点')
-                    : (chrome.i18n.getMessage('pinAction') || '标记重点');
+                    ? TimelineUtils.i18n('unpinAction', '取消标记重点')
+                    : TimelineUtils.i18n('pinAction', '标记重点');
             }
         });
         pinSpan.addEventListener('mouseenter', () => {
@@ -2366,8 +2420,8 @@ class TimelineManager {
         starSpan.dataset.targetTurnId = id;
         if (!isStarred) starSpan.classList.add('not-starred');
         starSpan.dataset.tip = isStarred
-            ? (chrome.i18n.getMessage('unstarAction') || '取消收藏')
-            : (chrome.i18n.getMessage('starAction') || '收藏到文件夹');
+            ? TimelineUtils.i18n('unstarAction', '取消收藏')
+            : TimelineUtils.i18n('starAction', '收藏到文件夹');
         starSpan.addEventListener('click', async (e) => {
             e.stopPropagation();
             window.globalTooltipManager.hideOverlay();
@@ -2380,15 +2434,15 @@ class TimelineManager {
                 };
                 if (result.action === 'star') {
                     starSpan.classList.remove('not-starred');
-                    starSpan.dataset.tip = chrome.i18n.getMessage('unstarAction') || '取消收藏';
+                    starSpan.dataset.tip = TimelineUtils.i18n('unstarAction', '取消收藏');
                     if (window.globalToastManager) {
-                        window.globalToastManager.success(chrome.i18n.getMessage('kxpmzv'), null, { color: toastColor });
+                        window.globalToastManager.success(TimelineUtils.i18n('kxpmzv', '已收藏'), null, { color: toastColor });
                     }
                 } else if (result.action === 'unstar') {
                     starSpan.classList.add('not-starred');
-                    starSpan.dataset.tip = chrome.i18n.getMessage('starAction') || '收藏到文件夹';
+                    starSpan.dataset.tip = TimelineUtils.i18n('starAction', '收藏到文件夹');
                     if (window.globalToastManager) {
-                        window.globalToastManager.info(chrome.i18n.getMessage('pzmvkx'), null, { color: toastColor });
+                        window.globalToastManager.info(TimelineUtils.i18n('pzmvkx', '已取消收藏'), null, { color: toastColor });
                     }
                 }
             }
@@ -2409,6 +2463,18 @@ class TimelineManager {
         container.appendChild(actions);
         
         return container;
+    }
+
+    /**
+     * 获取 marker 对应的时间标签。
+     * 不同平台会把标签挂在消息元素本身或其内部气泡上，这里统一读取实际目标。
+     */
+    getMarkerTimeLabel(marker) {
+        if (!marker?.element) return '';
+        const cached = window.chatTimeRecorder?.getTimeLabelForTurnId?.(marker.id);
+        if (cached) return cached;
+        const target = this.adapter.getTimeLabelTarget?.(marker.element) || marker.element;
+        return target?.getAttribute?.('data-ait-time') || marker.element.getAttribute?.('data-ait-time') || '';
     }
     
     /**
@@ -2917,8 +2983,7 @@ class TimelineManager {
         if (activeIndex < 0 || activeIndex >= this.markers.length - 1) return;
 
         const platformName = getCurrentPlatform()?.name || 'AI';
-        const message = chrome.i18n.getMessage('timelineAICompleteNotLatestToast', platformName) ||
-            `${platformName} 回复已完成`;
+        const message = TimelineUtils.i18n('timelineAICompleteNotLatestToast', `${platformName} 回复已完成`, platformName);
         const anchor = this.getAICompleteToastAnchor();
 
         window.globalToastManager.info(message, anchor, {
@@ -3290,6 +3355,12 @@ class TimelineManager {
         if (typeof destroyChatTimeRecorder === 'function') {
             destroyChatTimeRecorder();
         }
+        if (window.AIStateMonitor) {
+            window.AIStateMonitor.getInstance().stop();
+        }
+        if (window.timelineManager === this) {
+            window.timelineManager = null;
+        }
 
         this.visibleUserTurns.clear();
         
@@ -3450,11 +3521,13 @@ class TimelineManager {
      */
     async loadArrowKeysNavigationState() {
         try {
-            const result = await chrome.storage.local.get('arrowKeysNavigationEnabled');
+            const enabled = await StorageAdapter.get('arrowKeysNavigationEnabled');
             // 默认开启（!== false）
-            this.arrowKeysNavigationEnabled = result.arrowKeysNavigationEnabled !== false;
+            this.arrowKeysNavigationEnabled = enabled !== false;
         } catch (e) {
-            console.error('[Timeline] Failed to load arrow keys navigation state:', e);
+            if (!TimelineUtils.isExtensionContextInvalidated(e)) {
+                console.error('[Timeline] Failed to load arrow keys navigation state:', e);
+            }
             // 读取失败，默认开启
             this.arrowKeysNavigationEnabled = true;
         }
@@ -3465,11 +3538,13 @@ class TimelineManager {
      */
     async loadAICompleteToastState() {
         try {
-            const result = await chrome.storage.local.get('timelineAICompleteToastEnabled');
+            const enabled = await StorageAdapter.get('timelineAICompleteToastEnabled');
             // 默认开启（!== false）
-            this.aiCompleteToastEnabled = result.timelineAICompleteToastEnabled !== false;
+            this.aiCompleteToastEnabled = enabled !== false;
         } catch (e) {
-            console.error('[Timeline] Failed to load AI complete toast state:', e);
+            if (!TimelineUtils.isExtensionContextInvalidated(e)) {
+                console.error('[Timeline] Failed to load AI complete toast state:', e);
+            }
             // 读取失败，默认开启
             this.aiCompleteToastEnabled = true;
         }
@@ -3480,10 +3555,11 @@ class TimelineManager {
      */
     async loadPlatformSettings() {
         try {
-            const result = await chrome.storage.local.get('timelinePlatformSettings');
-            this.platformSettings = result.timelinePlatformSettings || {};
+            this.platformSettings = await StorageAdapter.get('timelinePlatformSettings') || {};
         } catch (e) {
-            console.error('[Timeline] Failed to load platform settings:', e);
+            if (!TimelineUtils.isExtensionContextInvalidated(e)) {
+                console.error('[Timeline] Failed to load platform settings:', e);
+            }
             this.platformSettings = {};
         }
     }
@@ -3493,10 +3569,11 @@ class TimelineManager {
      */
     async loadTimelineActiveColorSettings() {
         try {
-            const result = await chrome.storage.local.get('timelineActiveColorByPlatform');
-            this.timelineActiveColorByPlatform = result.timelineActiveColorByPlatform || {};
+            this.timelineActiveColorByPlatform = await StorageAdapter.get('timelineActiveColorByPlatform') || {};
         } catch (e) {
-            console.error('[Timeline] Failed to load active color settings:', e);
+            if (!TimelineUtils.isExtensionContextInvalidated(e)) {
+                console.error('[Timeline] Failed to load active color settings:', e);
+            }
             this.timelineActiveColorByPlatform = {};
         }
     }
@@ -3518,6 +3595,7 @@ class TimelineManager {
     cleanupNodeTimeLabels() {
         document.querySelectorAll('[data-ait-time]').forEach(el => {
             el.removeAttribute('data-ait-time');
+            el.classList?.remove('ait-time-label-target');
         });
     }
 
@@ -3675,7 +3753,7 @@ class TimelineManager {
             const isTempId = tempMatch && parseInt(tempMatch[1], 10) < 1000;
             if (isTempId) {
                 if (window.globalToastManager) {
-                    window.globalToastManager.info(chrome.i18n.getMessage('pleaseWait') || '请稍等，节点ID正在加载...');
+                    window.globalToastManager.info(TimelineUtils.i18n('pleaseWait', '请稍等，节点ID正在加载...'));
                 }
                 return { success: false, action: null };
             }
@@ -3734,9 +3812,9 @@ class TimelineManager {
             }
             
             const result = await window.starInputModal.show({
-                title: chrome.i18n.getMessage('zmvkpx'),
+                title: TimelineUtils.i18n('zmvkpx', '收藏到文件夹'),
                 defaultValue: m.summary,
-                placeholder: chrome.i18n.getMessage('zmxvkp'),
+                placeholder: TimelineUtils.i18n('zmxvkp', '标题'),
                 folderManager: this.folderManager,
                 defaultFolderId: null
             });
@@ -3879,7 +3957,7 @@ class TimelineManager {
     // ✅ 显示复制成功的反馈提示（使用全局 Toast 管理器）
     showCopyFeedback(targetElement) {
         window.globalToastManager.success(
-            chrome.i18n.getMessage('xpzmvk'),
+            TimelineUtils.i18n('xpzmvk', '已复制'),
             targetElement
         );
     }
@@ -3912,9 +3990,8 @@ class TimelineManager {
         // 同步显示闪记按钮（受开关控制，默认开启）
         if (this.ui.notepadBtn) {
             try {
-                const result = await chrome.storage.local.get('aitNotepadEnabled');
-                const enabled = result.aitNotepadEnabled !== false;
-                this.ui.notepadBtn.style.display = enabled ? 'flex' : 'none';
+                const enabled = await StorageAdapter.get('aitNotepadEnabled');
+                this.ui.notepadBtn.style.display = enabled !== false ? 'flex' : 'none';
             } catch (e) {
                 this.ui.notepadBtn.style.display = 'flex';
             }
@@ -4022,7 +4099,7 @@ class TimelineManager {
             const isTempId = tempMatch && parseInt(tempMatch[1], 10) < 1000;
             if (isTempId) {
                 if (window.globalToastManager) {
-                    window.globalToastManager.info(chrome.i18n.getMessage('pleaseWait') || '请稍等，节点ID正在加载...');
+                    window.globalToastManager.info(TimelineUtils.i18n('pleaseWait', '请稍等，节点ID正在加载...'));
                 }
                 return false;
             }

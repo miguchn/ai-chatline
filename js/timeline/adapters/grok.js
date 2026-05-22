@@ -37,6 +37,19 @@ class GrokAdapter extends SiteAdapter {
         return element.querySelector('p.break-words') || element;
     }
 
+    getAssistantTimeLabelTarget(element, index, context = {}) {
+        const assistant = this.findFirstFollowingElement(
+            element,
+            context.userElements?.[index + 1],
+            [
+                '.items-start[id]',
+                '[data-testid="message-bubble"]'
+            ],
+            context.root || document
+        );
+        return assistant?.querySelector('p.break-words, .markdown, p') || assistant;
+    }
+
     isConversationRoute(pathname) {
         // Grok 对话 URL: /c/xxx 或分享页面 /share/xxx
         return pathname.includes('/c/') || pathname.includes('/share/');

@@ -56,6 +56,16 @@ class DeepSeekAdapter extends SiteAdapter {
         return element.querySelector('div') || element;
     }
 
+    getAssistantTimeLabelTarget(element, index, context = {}) {
+        const assistant = this.findFirstFollowingElement(
+            element,
+            context.userElements?.[index + 1],
+            '.ds-message',
+            context.root || document
+        );
+        return assistant?.querySelector('div') || assistant;
+    }
+
     isConversationRoute(pathname) {
         // DeepSeek 对话 URL: /a/chat/s/{id} 或分享页面 /share/{id}
         return pathname.includes('/a/chat/s/') || pathname.includes('/share/');
@@ -141,4 +151,3 @@ class DeepSeekAdapter extends SiteAdapter {
     }
     
 }
-

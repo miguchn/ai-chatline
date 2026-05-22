@@ -40,6 +40,17 @@ class SidebarStarredManager {
         });
     }
 
+    _i18n(key, fallback = '') {
+        if (typeof TimelineUtils !== 'undefined' && TimelineUtils.i18n) {
+            return TimelineUtils.i18n(key, fallback);
+        }
+        try {
+            return chrome.i18n.getMessage(key) || fallback;
+        } catch {
+            return fallback;
+        }
+    }
+
     // ==================== 生命周期 ====================
 
     async init() {
@@ -107,19 +118,19 @@ class SidebarStarredManager {
 
         const title = document.createElement('span');
         title.className = 'ait-ss-title';
-        title.textContent = chrome.i18n.getMessage('vnkxpm') || 'Starred';
+        title.textContent = this._i18n('vnkxpm', 'Starred');
 
         const helpBtn = document.createElement('button');
         helpBtn.className = 'ait-ss-add-btn ait-ss-help-btn';
         helpBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>';
         helpBtn.addEventListener('mouseenter', () => {
             if (!window.globalTooltipManager) return;
-            const desc = chrome.i18n.getMessage('starredHelpDesc') || '文件夹，分类整理对话，告别杂乱无章。';
-            const tipsTitle = chrome.i18n.getMessage('starredHelpTipsTitle') || '使用小技巧：';
-            const tip1 = chrome.i18n.getMessage('starredHelpTip1') || '拖动对话到文件夹。';
-            const tip2 = chrome.i18n.getMessage('starredHelpTip2') || '拖动文件夹中的对话调整位置。';
-            const tip3 = chrome.i18n.getMessage('starredHelpTip3') || '拖动二级文件夹调整位置。';
-            const tip4 = chrome.i18n.getMessage('starredHelpTip4') || '双击文件夹或对话，快速编辑。';
+            const desc = this._i18n('starredHelpDesc', '文件夹，分类整理对话，告别杂乱无章。');
+            const tipsTitle = this._i18n('starredHelpTipsTitle', '使用小技巧：');
+            const tip1 = this._i18n('starredHelpTip1', '拖动对话到文件夹。');
+            const tip2 = this._i18n('starredHelpTip2', '拖动文件夹中的对话调整位置。');
+            const tip3 = this._i18n('starredHelpTip3', '拖动二级文件夹调整位置。');
+            const tip4 = this._i18n('starredHelpTip4', '双击文件夹或对话，快速编辑。');
             const html = `<div style="font-size:12px;line-height:1.6">`
                 + `<div style="font-size:13px;font-weight:600;margin-bottom:6px">${desc}</div>`
                 + `<div style="font-weight:600;margin-bottom:4px">${tipsTitle}</div>`

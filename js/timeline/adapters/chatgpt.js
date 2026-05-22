@@ -102,6 +102,12 @@ class ChatGPTAdapter extends SiteAdapter {
         return text || '[图片或文件]';
     }
 
+    extractMessageText(element, index, context = {}) {
+        const turnIdRaw = element.getAttribute?.('data-turn-id');
+        const fiberText = turnIdRaw ? context.fiberTexts?.get(turnIdRaw) : null;
+        return fiberText || this.extractText(element, index, context);
+    }
+
     /**
      * 通过 MAIN world 的 fiber bridge 同步提取所有用户消息文本
      * 用于补充/覆盖 DOM 提取（解决虚拟滚动导致的文本丢失问题）
@@ -143,7 +149,20 @@ class ChatGPTAdapter extends SiteAdapter {
      * ChatGPT: 使用 [data-message-id] 子元素
      */
     getTimeLabelTarget(element) {
-        return element.querySelector('[data-message-id]') || null;
+        return element.querySelector('[data-message-id]') || element;
+    }
+
+    getAssistantTimeLabelTarget(element, index, context = {}) {
+        const assistant = this.findFirstFollowingElement(
+            element,
+            context.userElements?.[index + 1],
+            [
+                '[data-turn="assistant"][data-turn-id]',
+                '[data-message-author-role="assistant"]'
+            ],
+            context.root || document
+        );
+        return assistant?.querySelector('[data-message-id]') || assistant;
     }
 
     isConversationRoute(pathname) {
@@ -290,4 +309,3 @@ class ChatGPTAdapter extends SiteAdapter {
         return !!(submitButton && submitButton.getAttribute('data-testid') === 'stop-button');
     }
 }
-

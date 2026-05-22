@@ -1,35 +1,25 @@
 <div align="center">
-  <img src="./icons/icon128.png" alt="Timeline Logo" width="80" height="80">
-  <h1>Timeline</h1>
-  <p><strong>浏览器端 AI 对话增强插件</strong><br>支持 GPT、Gemini、DeepSeek、Kimi、千问、Claude、元宝、NotebookLM 等所有主流 AI 平台</p>
+  <img src="./icons/icon128.png" alt="ChatLine Logo" width="80" height="80">
+  <h1>ChatLine</h1>
+  <p><strong>面向 AI 对话页面的浏览器增强插件</strong><br>基于开源项目 Timeline 二次开发，提供时间线导航、历史定位、对话浏览增强与对话数据归档能力。<br>支持 GPT、Gemini、DeepSeek、Kimi、千问、Claude、元宝、NotebookLM 等所有主流 AI 平台</p>
 
   <p>
-    <a href="https://chromewebstore.google.com/detail/timeline-ai-chat/fgebdnlceacaiaeikopldglhffljjlhh"><img src="https://img.shields.io/badge/Chrome-安装-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Chrome"></a>
-    <a href="https://microsoftedge.microsoft.com/addons/detail/ai-timeline%EF%BC%9A%E5%8A%A9%E4%BD%A0%E4%BD%BF%E7%94%A8-ai-%E6%95%88%E7%8E%87%E7%BF%BB%E5%80%8D-/ekednjjojnhlajfobalaaihkibbdcbab"><img src="https://img.shields.io/badge/Edge-安装-0078D7?style=for-the-badge&logo=microsoftedge&logoColor=white" alt="Edge"></a>
-    <a href="https://addons.mozilla.org/en-US/firefox/addon/ai-timeline-ai"><img src="https://img.shields.io/badge/Firefox-安装-FF7139?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Firefox"></a>
-  </p>
-  <p>
-    <img src="https://img.shields.io/badge/用户-30,000+-brightgreen?style=flat-square" alt="Users">
+    <img src="https://img.shields.io/badge/项目-ai--chat--timeline-181717?style=flat-square" alt="Project">
     <img src="https://img.shields.io/badge/许可证-GPL--3.0-blue?style=flat-square" alt="License">
-    <a href="https://github.com/houyanchao/AITimeline"><img src="https://img.shields.io/badge/GitHub-开源-181717?style=flat-square&logo=github" alt="GitHub"></a>
   </p>
 
   <h4><strong>简体中文</strong> | <a href="./README.en.md">English</a></h4>
 
-  <img src="./READMEIMAGE/index.png" alt="Timeline 效果展示" width="800">
+  <img src="./READMEIMAGE/index.png" alt="ChatLine 效果展示" width="800">
 </div>
 
 <br>
 
 ## 📥 安装
 
-> 安装后打开任意 AI 网站开始对话即可使用，无需额外配置。
+> ChatLine 当前处于二开初始化阶段，正式发布渠道确定后再补充商店安装方式。
 
-| 浏览器 | 安装链接 |
-|--------|---------|
-| Chrome | 👉 [Chrome 应用商店](https://chromewebstore.google.com/detail/timeline-ai-chat/fgebdnlceacaiaeikopldglhffljjlhh) |
-| Edge | 👉 [Edge 应用商店](https://microsoftedge.microsoft.com/addons/detail/ai-timeline%EF%BC%9A%E5%8A%A9%E4%BD%A0%E4%BD%BF%E7%94%A8-ai-%E6%95%88%E7%8E%87%E7%BF%BB%E5%80%8D-/ekednjjojnhlajfobalaaihkibbdcbab) |
-| Firefox | 👉 [Firefox 应用商店](https://addons.mozilla.org/en-US/firefox/addon/ai-timeline-ai) |
+开发调试时可通过浏览器扩展的开发者模式加载本仓库目录。安装后打开支持的 AI 对话页面即可使用，无需额外配置。
 
 ## 🎯 核心功能
 
@@ -119,15 +109,15 @@
 | ChatGPT | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
 | Gemini | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | DeepSeek | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
-| Claude | ✅ | ✅ | ✅ | — | ✅ | — | ✅ | — |
+| Claude | ✅ | ✅ | ✅ | — | ✅ | ✅ | ✅ | — |
 | Kimi | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
 | 豆包 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
 | 千问 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
 | Qwen 国际版 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
-| Grok | ✅ | ✅ | ✅ | ✅ | ✅ | — | — | — |
-| Perplexity | ✅ | ✅ | ✅ | — | ✅ | — | — | — |
-| 元宝 | ✅ | ✅ | ✅ | ✅ | ✅ | — | — | — |
-| 文心一言 | ✅ | ✅ | — | — | ✅ | — | — | — |
+| Grok | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — | — |
+| Perplexity | ✅ | ✅ | ✅ | — | ✅ | ✅ | — | — |
+| 元宝 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — | — |
+| 文心一言 | ✅ | ✅ | — | — | ✅ | ✅ | — | — |
 | NotebookLM | — | ✅ | ✅ | — | ✅ | — | — | — |
 
 > 💡 **公式复制**和**代码运行器**不受平台限制，在所有页面上检测到对应内容即自动激活。
@@ -169,15 +159,8 @@
 
 ## 💬 联系与反馈
 
-- **问题反馈**：[GitHub Issues](../../issues)
-- **邮件联系**：houyanchao@outlook.com
+- **问题反馈**：请在当前项目仓库的 Issues 中提交
 
 ## 🙏 致谢
 
-本项目基于 [chatgpt-conversation-timeline](https://github.com/Reborn14/chatgpt-conversation-timeline) 进行开发，感谢原作者的开源贡献。
-
----
-
-<div align="center">
-  <p>如果觉得好用，欢迎 <a href="https://github.com/houyanchao/AITimeline">⭐ Star</a> 支持一下</p>
-</div>
+本项目基于开源项目 chatgpt-conversation-timeline 进行开发，感谢原作者的开源贡献。

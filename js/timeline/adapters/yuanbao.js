@@ -30,6 +30,25 @@ class YuanbaoAdapter extends SiteAdapter {
         return text || '[图片或文件]';
     }
 
+    getTimeLabelTarget(element) {
+        return element;
+    }
+
+    getAssistantTimeLabelTarget(element, index, context = {}) {
+        const assistant = this.findFirstFollowingElement(
+            element,
+            context.userElements?.[index + 1],
+            [
+                '[class*="agent"] [class$="-content-text"]',
+                '[class*="assistant"] [class$="-content-text"]',
+                '[class*="bot"] [class$="-content-text"]',
+                '[class*="markdown"]'
+            ],
+            context.root || document
+        );
+        return assistant?.querySelector('[class$="-content-text"], [class*="markdown"], p') || assistant;
+    }
+
     isConversationRoute(pathname) {
         // 元宝对话 URL: /chat/{variable}/{id}
         return pathname.includes('/chat/');
@@ -86,4 +105,3 @@ class YuanbaoAdapter extends SiteAdapter {
     }
     
 }
-

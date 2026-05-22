@@ -61,6 +61,20 @@ class TongyiAdapter extends SiteAdapter {
         return element.querySelector('[class*="bubble"]') || element;
     }
 
+    getAssistantTimeLabelTarget(element, index, context = {}) {
+        const assistant = this.findFirstFollowingElement(
+            element,
+            context.userElements?.[index + 1],
+            [
+                '[class*="answerItem"]',
+                '[class*="answer-item"]',
+                '[class*="responseItem"]'
+            ],
+            context.root || document
+        );
+        return assistant?.querySelector('[class*="bubble"], .markdown, p') || assistant;
+    }
+
     isConversationRoute(pathname) {
         // 通义千问对话 URL:
         // 对话: /chat/{id}
@@ -142,4 +156,3 @@ class TongyiAdapter extends SiteAdapter {
     }
     
 }
-

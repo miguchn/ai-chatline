@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline：ChatGPT、Gemini 对话增强"
+    "message": "ChatLine：ChatGPT、Gemini 对话增强"
   },
   "extDescription": {
-    "message": "时间轴、文件夹、提示词库、电子宠物，支持 DeepSeek、Claude、豆包等所有 AI 平台。"
+    "message": "面向 AI 对话页面的浏览器增强插件，基于 Timeline 二次开发，提供时间线导航、历史定位、对话浏览增强与数据归档能力。"
   },
   "qwxpzm": {
     "message": "收藏"
@@ -606,7 +606,7 @@
     "message": "插件简介"
   },
   "aboutPluginContent": {
-    "message": "Timeline 是专为浏览器端 AI 对话开发的提效插件，拥有 时间轴、文件夹、文本高亮、复制 LaTeX 公式、自定义提示词等超多功能，把效率拉爆。支持 ChatGPT、Gemini、Claude、DeepSeek、Kimi、豆包、千问等所有主流 AI 平台。"
+    "message": "ChatLine 是一款面向 AI 对话页面的浏览器增强插件，基于开源项目 Timeline 二次开发，主要提供时间线导航、历史定位、对话浏览增强和对话数据归档能力。支持 ChatGPT、Gemini、DeepSeek、Kimi、千问、Claude、元宝、NotebookLM 等主流 AI 对话平台。"
   },
   "aboutDataSecurityTitle": {
     "message": "数据安全"
@@ -618,13 +618,13 @@
     "message": "提需求"
   },
   "aboutDeveloperContent": {
-    "message": "本项目由我和 Claude Opus 4.6 共同维护，每周 1~2 新版本的更新节奏。如果想提需求或反馈 bug，可通过以下渠道进行反馈（我看到一定会回复）："
+    "message": "ChatLine 作为 ai-chat-timeline 的二次开发版本维护。如果想提需求或反馈 bug，请通过当前项目仓库的 Issues 提交。"
   },
   "aboutShareTitle": {
     "message": "推荐给朋友"
   },
   "aboutShareContent": {
-    "message": "如果 Timeline 插件好用，欢迎在 小红书、B站、X、Reddit、YouTube 等平台发帖推荐，也欢迎分享给朋友、同学，让更多人用上它。谢谢。❤️"
+    "message": "如果 ChatLine 对你有帮助，欢迎推荐给经常阅读、定位和归档 AI 对话的朋友。作者：咪咕看见小黑。邮箱：miguchn@gmail.com。如在使用过程中遇到问题或有优化建议，可通过邮箱随时反馈。"
   },
   "nativeMenuStarToFolder": {
     "message": "收藏到文件夹"
@@ -756,7 +756,7 @@
     "message": "功能文档"
   },
   "changelogTitle": {
-    "message": "Timeline 更新啦！"
+    "message": "ChatLine 更新啦！"
   },
   "changelogSubtitle": {
     "message": "$1 用户在用，新版本体验再升级。"

@@ -32,6 +32,20 @@ class PerplexityAdapter extends SiteAdapter {
         return text || '[图片或文件]';
     }
 
+    getAssistantTimeLabelTarget(element, index, context = {}) {
+        const assistant = this.findFirstFollowingElement(
+            element,
+            context.userElements?.[index + 1],
+            [
+                '[data-testid="answer"]',
+                '.prose',
+                '.answer-content'
+            ],
+            context.root || document
+        );
+        return assistant?.querySelector('.prose, p') || assistant;
+    }
+
     isConversationRoute(pathname) {
         // Perplexity 对话 URL: /search/xxx 或 /thread/xxx
         return pathname.includes('/search/') || pathname.includes('/thread/');
@@ -89,5 +103,4 @@ class PerplexityAdapter extends SiteAdapter {
         return !!stopBtn;
     }
 }
-
 

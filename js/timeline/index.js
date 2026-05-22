@@ -43,13 +43,14 @@ async function isPlatformEnabled() {
             return false; // 平台不支持该功能
         }
         
-        const result = await chrome.storage.local.get('timelinePlatformSettings');
-        const settings = result.timelinePlatformSettings || {};
+        const settings = await StorageAdapter.get('timelinePlatformSettings') || {};
         
         // 默认启用（!== false）
         return settings[platform.id] !== false;
     } catch (e) {
-        console.error('[Timeline] Failed to check platform enabled:', e);
+        if (!TimelineUtils.isExtensionContextInvalidated(e)) {
+            console.error('[Timeline] Failed to check platform enabled:', e);
+        }
         return true; // 出错默认启用
     }
 }
@@ -61,8 +62,7 @@ function canInitialize() {
     }
     if (!currentAdapter) return false;
     
-    const selector = currentAdapter.getUserMessageSelector();
-    return document.querySelector(selector) !== null;
+    return currentAdapter.getUserMessageElements(document).length > 0;
 }
 
 // Initialize timeline with retry mechanism (exponential backoff)
@@ -153,11 +153,8 @@ function initializeTimeline() {
         timelineManagerInstance.init().catch(err => {});
     } catch (err) {
     }
-    
-    // ✅ 启动 AI 状态监控（事件驱动，替代各模块的 setInterval 轮询）
-    if (window.AIStateMonitor && currentAdapter) {
-        window.AIStateMonitor.getInstance().start(currentAdapter);
-    }
+    // AIStateMonitor 由 TimelineManager 在 ChatTimeRecorder 初始化后启动，
+    // 避免新会话第一条消息生成中出现事件监听竞态。
 }
 
 async function handleUrlChange() {
@@ -205,7 +202,7 @@ async function handleUrlChange() {
 
 // ✅ 监听平台设置变化，动态启用/禁用时间轴
 function setupPlatformSettingsListener() {
-    chrome.storage.onChanged.addListener((changes, areaName) => {
+    StorageAdapter.addChangeListener((changes, areaName) => {
         if (areaName !== 'local') return;
         
         // 监听平台设置变化
@@ -259,8 +256,7 @@ if (!adapterRegistry.isSupportedSite()) {
     
     // ✅ 修复：先检查DOM中是否已存在用户消息（SPA路由切换场景）
     const checkAndInit = () => {
-        const selector = currentAdapter ? currentAdapter.getUserMessageSelector() : null;
-        if (selector && document.querySelector(selector)) {
+        if (currentAdapter && currentAdapter.getUserMessageElements(document).length > 0) {
             if (isConversationRoute()) {
                 // Use retry mechanism for initial load as well
                 initVersion++;

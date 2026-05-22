@@ -7,14 +7,40 @@
  * - 控制各平台的箭头键导航功能
  */
 
+function isTimelineTabExtensionContextInvalidated(error) {
+    return String(error?.message || error).includes('Extension context invalidated');
+}
+
+function timelineTabI18n(key, fallback = '', substitutions) {
+    try {
+        return chrome.i18n.getMessage(key, substitutions) || fallback;
+    } catch (error) {
+        return fallback;
+    }
+}
+
+function timelineTabGetURL(path) {
+    try {
+        return chrome.runtime.getURL(path);
+    } catch (error) {
+        return '';
+    }
+}
+
 class TimelineSettingsTab extends BaseTab {
     constructor() {
         super();
         this.id = 'timeline';
-        this.name = chrome.i18n.getMessage('pxkmvz');
+        this.name = timelineTabI18n('pxkmvz', '时间轴');
         this.icon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <circle cx="12" cy="12" r="9"/>
         </svg>`;
+    }
+
+    _handleExtensionError(scope, error) {
+        if (!isTimelineTabExtensionContextInvalidated(error)) {
+            console.error(`[TimelineSettingsTab] ${scope}:`, error);
+        }
     }
     
     /**
@@ -33,8 +59,8 @@ class TimelineSettingsTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${chrome.i18n.getMessage('chatTimeLabelTitle')}</div>
-                        <div class="setting-hint">${chrome.i18n.getMessage('chatTimeLabelHint')}</div>
+                        <div class="setting-label">${timelineTabI18n('chatTimeLabelTitle', '显示对话时间')}</div>
+                        <div class="setting-hint">${timelineTabI18n('chatTimeLabelHint', '在对话消息旁显示时间标签')}</div>
                     </div>
                     <label class="ait-toggle-switch">
                         <input type="checkbox" id="chat-time-label-toggle">
@@ -46,18 +72,18 @@ class TimelineSettingsTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${chrome.i18n.getMessage('timelineThemeColorLabel') || '时间轴主题色'}</div>
-                        <div class="setting-hint">${chrome.i18n.getMessage('timelineThemeColorHint') || '为不同平台设置时间轴激活节点的主题色'}</div>
+                        <div class="setting-label">${timelineTabI18n('timelineThemeColorLabel', '时间轴主题色')}</div>
+                        <div class="setting-hint">${timelineTabI18n('timelineThemeColorHint', '为不同平台设置时间轴激活节点的主题色')}</div>
                     </div>
-                    <button class="starred-manage-btn timeline-theme-color-manage-btn">${chrome.i18n.getMessage('timelineThemeColorManageButton') || '设置'}</button>
+                    <button class="starred-manage-btn timeline-theme-color-manage-btn">${timelineTabI18n('timelineThemeColorManageButton', '设置')}</button>
                 </div>
             </div>
             ${divider}
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${chrome.i18n.getMessage('timelineAICompleteToastTitle') || '回复完成提醒'}</div>
-                        <div class="setting-hint">${chrome.i18n.getMessage('timelineAICompleteToastHint') || 'AI 回复完成且当前不在最新位置时显示提醒'}</div>
+                        <div class="setting-label">${timelineTabI18n('timelineAICompleteToastTitle', '回复完成提醒')}</div>
+                        <div class="setting-hint">${timelineTabI18n('timelineAICompleteToastHint', 'AI 回复完成且当前不在最新位置时显示提醒')}</div>
                     </div>
                     <label class="ait-toggle-switch">
                         <input type="checkbox" id="ai-complete-toast-toggle">
@@ -69,8 +95,8 @@ class TimelineSettingsTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label"><svg class="setting-label-icon setting-label-icon-pin" viewBox="0 0 24 24" fill="rgb(255, 125, 3)" stroke="rgb(255, 125, 3)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1 1 1 0 0 1 1 1z"/></svg>${chrome.i18n.getMessage('pxmzkv')}</div>
-                        <div class="setting-hint">${chrome.i18n.getMessage('kzxvpm')}</div>
+                        <div class="setting-label"><svg class="setting-label-icon setting-label-icon-pin" viewBox="0 0 24 24" fill="rgb(255, 125, 3)" stroke="rgb(255, 125, 3)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1 1 1 0 0 1 1 1z"/></svg>${timelineTabI18n('pxmzkv', '长按标记重点')}</div>
+                        <div class="setting-hint">${timelineTabI18n('kzxvpm', '长按时间轴节点可标记重点对话')}</div>
                     </div>
                     <label class="ait-toggle-switch">
                         <input type="checkbox" id="long-press-mark-toggle">
@@ -82,8 +108,8 @@ class TimelineSettingsTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${chrome.i18n.getMessage('notepadTitle')}</div>
-                        <div class="setting-hint">${chrome.i18n.getMessage('notepadToggleHint')}</div>
+                        <div class="setting-label">${timelineTabI18n('notepadTitle', '闪记')}</div>
+                        <div class="setting-hint">${timelineTabI18n('notepadToggleHint', '在时间轴底部显示闪记入口')}</div>
                     </div>
                     <label class="ait-toggle-switch">
                         <input type="checkbox" id="notepad-toggle">
@@ -95,8 +121,8 @@ class TimelineSettingsTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${chrome.i18n.getMessage('vkpmzx')}</div>
-                        <div class="setting-hint">${chrome.i18n.getMessage('xpvmkz')}</div>
+                        <div class="setting-label">${timelineTabI18n('vkpmzx', '上下键导航')}</div>
+                        <div class="setting-hint">${timelineTabI18n('xpvmkz', '按上下方向键快速浏览对话历史')}</div>
                     </div>
                     <label class="ait-toggle-switch">
                         <input type="checkbox" id="arrow-keys-nav-toggle">
@@ -117,20 +143,20 @@ class TimelineSettingsTab extends BaseTab {
         bottomSection.innerHTML = `
             <div class="setting-item">
                 <div class="setting-info">
-                    <div class="setting-label">${chrome.i18n.getMessage('timelineDisplayLabel') || '显示时间轴'}</div>
-                    <div class="setting-hint">${chrome.i18n.getMessage('mzkvxp')}</div>
+                    <div class="setting-label">${timelineTabI18n('timelineDisplayLabel', '显示时间轴')}</div>
+                    <div class="setting-hint">${timelineTabI18n('mzkvxp', '控制哪些平台显示时间轴')}</div>
                 </div>
-                <button class="starred-manage-btn">${chrome.i18n.getMessage('promptBtnSwitch') || '开关'}</button>
+                <button class="starred-manage-btn">${timelineTabI18n('promptBtnSwitch', '开关')}</button>
             </div>
         `;
         container.appendChild(bottomSection);
 
         this.addEventListener(bottomSection.querySelector('.starred-manage-btn'), 'click', () => {
-            this._showPlatformManageModal();
+            this._showPlatformManageModal().catch(error => this._handleExtensionError('Failed to show platform modal', error));
         });
 
         this.addEventListener(scrollArea.querySelector('.timeline-theme-color-manage-btn'), 'click', () => {
-            this._showThemeColorModal();
+            this._showThemeColorModal().catch(error => this._handleExtensionError('Failed to show theme color modal', error));
         });
 
         return container;
@@ -151,7 +177,7 @@ class TimelineSettingsTab extends BaseTab {
                 // 默认值为 true（开启）
                 chatTimeLabelCheckbox.checked = result.chatTimeLabelEnabled !== false;
             } catch (e) {
-                console.error('[TimelineSettingsTab] Failed to load chat time label state:', e);
+                this._handleExtensionError('Failed to load chat time label state', e);
                 chatTimeLabelCheckbox.checked = true;
             }
             
@@ -168,7 +194,7 @@ class TimelineSettingsTab extends BaseTab {
                         window.chatTimeRecorder.updateLabelVisibility(enabled);
                     }
                 } catch (e) {
-                    console.error('[TimelineSettingsTab] Failed to save chat time label state:', e);
+                    this._handleExtensionError('Failed to save chat time label state', e);
                     chatTimeLabelCheckbox.checked = !chatTimeLabelCheckbox.checked;
                 }
             });
@@ -181,7 +207,7 @@ class TimelineSettingsTab extends BaseTab {
                 const result = await chrome.storage.local.get('timelineAICompleteToastEnabled');
                 aiCompleteToastCheckbox.checked = result.timelineAICompleteToastEnabled !== false;
             } catch (e) {
-                console.error('[TimelineSettingsTab] Failed to load AI complete toast state:', e);
+                this._handleExtensionError('Failed to load AI complete toast state', e);
                 aiCompleteToastCheckbox.checked = true;
             }
 
@@ -190,7 +216,7 @@ class TimelineSettingsTab extends BaseTab {
                     const enabled = e.target.checked;
                     await chrome.storage.local.set({ timelineAICompleteToastEnabled: enabled });
                 } catch (e) {
-                    console.error('[TimelineSettingsTab] Failed to save AI complete toast state:', e);
+                    this._handleExtensionError('Failed to save AI complete toast state', e);
                     aiCompleteToastCheckbox.checked = !aiCompleteToastCheckbox.checked;
                 }
             });
@@ -239,7 +265,7 @@ class TimelineSettingsTab extends BaseTab {
                 
                 // 显示 toast 提示
                 if (window.globalToastManager) {
-                    const message = chrome.i18n.getMessage('qoytxz');
+                    const message = timelineTabI18n('qoytxz', '该功能默认开启');
                     window.globalToastManager.info(message, e.target, {
                         duration: 2200,
                         icon: '',  // 不显示图标
@@ -269,7 +295,7 @@ class TimelineSettingsTab extends BaseTab {
                 // 默认值为 true（开启）
                 checkbox.checked = result.arrowKeysNavigationEnabled !== false;
             } catch (e) {
-                console.error('[TimelineSettingsTab] Failed to load state:', e);
+                this._handleExtensionError('Failed to load state', e);
                 // 读取失败，默认开启
                 checkbox.checked = true;
             }
@@ -282,7 +308,7 @@ class TimelineSettingsTab extends BaseTab {
                     // 保存到 Storage
                     await chrome.storage.local.set({ arrowKeysNavigationEnabled: enabled });
                 } catch (e) {
-                    console.error('[TimelineSettingsTab] Failed to save state:', e);
+                    this._handleExtensionError('Failed to save state', e);
                     
                     // 保存失败，恢复checkbox状态
                     checkbox.checked = !checkbox.checked;
@@ -302,8 +328,9 @@ class TimelineSettingsTab extends BaseTab {
         overlay.className = 'starred-platform-modal-overlay';
 
         const items = platforms.map(p => {
-            const logoHtml = p.logoPath
-                ? `<img src="${chrome.runtime.getURL(p.logoPath)}" alt="${p.name}">`
+            const logoUrl = p.logoPath ? timelineTabGetURL(p.logoPath) : '';
+            const logoHtml = logoUrl
+                ? `<img src="${logoUrl}" alt="${p.name}">`
                 : `<span>${p.name.charAt(0)}</span>`;
             return `
                 <div class="starred-platform-item">
@@ -321,7 +348,7 @@ class TimelineSettingsTab extends BaseTab {
         overlay.innerHTML = `
             <div class="starred-platform-modal">
                 <div class="starred-platform-modal-header">
-                    <span>${chrome.i18n.getMessage('mkvzpx')}</span>
+                    <span>${timelineTabI18n('mkvzpx', '支持的平台')}</span>
                     <button class="starred-platform-modal-close">✕</button>
                 </div>
                 <div class="starred-platform-modal-body">${items}</div>
@@ -335,15 +362,18 @@ class TimelineSettingsTab extends BaseTab {
 
         overlay.querySelectorAll('input[data-platform-id]').forEach(cb => {
             cb.addEventListener('change', async () => {
-                const cur = (await chrome.storage.local.get('timelinePlatformSettings')).timelinePlatformSettings || {};
-                cur[cb.dataset.platformId] = cb.checked;
-                await chrome.storage.local.set({ timelinePlatformSettings: cur });
+                try {
+                    const cur = (await chrome.storage.local.get('timelinePlatformSettings')).timelinePlatformSettings || {};
+                    cur[cb.dataset.platformId] = cb.checked;
+                    await chrome.storage.local.set({ timelinePlatformSettings: cur });
 
-                if (cb.dataset.platformId === 'grok' && !cb.checked) {
-                    try {
+                    if (cb.dataset.platformId === 'grok' && !cb.checked) {
                         const el = document.querySelector('.group\\/timeline');
                         if (el) el.style.display = '';
-                    } catch {}
+                    }
+                } catch (error) {
+                    this._handleExtensionError('Failed to save platform settings', error);
+                    cb.checked = !cb.checked;
                 }
             });
         });
@@ -354,14 +384,15 @@ class TimelineSettingsTab extends BaseTab {
         const result = await chrome.storage.local.get('timelineActiveColorByPlatform');
         const activeColorByPlatform = result.timelineActiveColorByPlatform || {};
         const activeColorOptions = getTimelineActiveColorOptions();
-        const themeColorLabel = chrome.i18n.getMessage('timelineThemeColorLabel') || '时间轴主题色';
+        const themeColorLabel = timelineTabI18n('timelineThemeColorLabel', '时间轴主题色');
 
         const overlay = document.createElement('div');
         overlay.className = 'starred-platform-modal-overlay';
 
         const items = platforms.map(p => {
-            const logoHtml = p.logoPath
-                ? `<img src="${chrome.runtime.getURL(p.logoPath)}" alt="${p.name}">`
+            const logoUrl = p.logoPath ? timelineTabGetURL(p.logoPath) : '';
+            const logoHtml = logoUrl
+                ? `<img src="${logoUrl}" alt="${p.name}">`
                 : `<span>${p.name.charAt(0)}</span>`;
             const selectedColorId = resolveTimelineActiveColorId(p.id, activeColorByPlatform);
             const colorItems = activeColorOptions.map(option => `
@@ -428,7 +459,7 @@ class TimelineSettingsTab extends BaseTab {
                     await chrome.storage.local.set({ timelineActiveColorByPlatform: cur });
                     setSelectedColor(platformId, colorId);
                 } catch (e) {
-                    console.error('[TimelineSettingsTab] Failed to save active color:', e);
+                    this._handleExtensionError('Failed to save active color', e);
                 }
             });
         });

@@ -68,6 +68,20 @@ class QwenAdapter extends SiteAdapter {
         return element.querySelector('.chat-user-message') || element;
     }
 
+    getAssistantTimeLabelTarget(element, index, context = {}) {
+        const assistant = this.findFirstFollowingElement(
+            element,
+            context.userElements?.[index + 1],
+            [
+                '.qwen-chat-message-assistant',
+                '.chat-assistant-message',
+                '[id^="qwen-chat-message-assistant"]'
+            ],
+            context.root || document
+        );
+        return assistant?.querySelector('.markdown-body, .assistant-message-content, .chat-assistant-message') || assistant;
+    }
+
     isConversationRoute(pathname) {
         return pathname.startsWith('/c/');
     }

@@ -20,9 +20,11 @@ class ChatTimeRecorder {
         // _renderTimeLabels 并发控制：避免短时间多次调用造成重复 storage 读
         this._renderInFlight = false;
         this._renderQueued = false;
+        this._timeLabelByTurnId = new Map();
         
         // 事件处理函数（绑定 this）
         this._boundOnAIStateChange = this._onAIStateChange.bind(this);
+        this._boundOnTimelineNodesChange = this._onTimelineNodesChange.bind(this);
     }
 
     /**
@@ -44,10 +46,17 @@ class ChatTimeRecorder {
      */
     _getUserTurnElements(adapter) {
         if (!adapter) return [];
-        const selector = adapter.getUserMessageSelector();
-        if (!selector) return [];
         const container = window.timelineManager?.conversationContainer || document;
-        return container.querySelectorAll(selector);
+        let elements = [];
+        if (typeof adapter.getUserMessageElements === 'function') {
+            elements = adapter.getUserMessageElements(container);
+        } else {
+            const selector = adapter.getUserMessageSelector();
+            elements = selector ? container.querySelectorAll(selector) : [];
+        }
+        return Array.from(elements).sort((a, b) =>
+            a.getBoundingClientRect().top - b.getBoundingClientRect().top
+        );
     }
 
     /**
@@ -72,11 +81,15 @@ class ChatTimeRecorder {
         
         const conversationKey = this.getConversationKey();
         if (!conversationKey) return;
+
+        // 先监听，再做异步 storage 初始化，避免新对话第一条消息生成中错过事件。
+        window.addEventListener('ai:stateChange', this._boundOnAIStateChange);
+        window.addEventListener('timeline:nodesChange', this._boundOnTimelineNodesChange);
         
         try {
             // 读取时间标签显示设置（默认开启）
-            const result = await chrome.storage.local.get('chatTimeLabelEnabled');
-            this._labelVisible = result.chatTimeLabelEnabled !== false;
+            const enabled = await StorageAdapter.get('chatTimeLabelEnabled');
+            this._labelVisible = enabled !== false;
             
             // 更新 lastVisit
             await ChatTimeStorageManager.updateLastVisit(conversationKey);
@@ -92,11 +105,13 @@ class ChatTimeRecorder {
             }
         }
         
-        // 监听 AI 状态变化（由 AIStateMonitor 派发）
-        window.addEventListener('ai:stateChange', this._boundOnAIStateChange);
-        
         // 初始渲染（页面已有节点时）
         this._renderTimeLabels();
+
+        // 如果初始化时 AI 已经在生成，说明可能是刚发送第一条消息后才完成初始化。
+        if (this._isAIGenerating()) {
+            await this._recordNewNodeTime();
+        }
     }
 
     /**
@@ -129,6 +144,39 @@ class ChatTimeRecorder {
             // AI 生成结束，兜底渲染时间标签
             // （生成过程中 DOM 可能重排/重建，导致已渲染的标签丢失）
             this._renderTimeLabels();
+        }
+    }
+
+    /**
+     * 时间轴节点变化兜底：多平台的发送/停止状态可能由属性变化触发，
+     * 这里在新用户消息出现时再确认一次，覆盖初始化竞态和虚拟 DOM 重建。
+     * @private
+     */
+    async _onTimelineNodesChange(event) {
+        if (!this.enabled) return;
+
+        if (this._isAIGenerating()) {
+            await this._recordNewNodeTime();
+        } else if (event?.detail?.previousCount > 0 && event.detail.currentCount > event.detail.previousCount) {
+            await this._recordNewNodesFromIndex(event.detail.previousCount);
+        } else {
+            this._renderTimeLabels();
+        }
+    }
+
+    /**
+     * 当前 AI 是否正在生成
+     * @private
+     */
+    _isAIGenerating() {
+        try {
+            if (window.AIStateMonitor?.getInstance?.().isGenerating) {
+                return true;
+            }
+            const adapter = this._getAdapter();
+            return !!adapter?.isAIGenerating?.();
+        } catch {
+            return false;
         }
     }
 
@@ -193,6 +241,29 @@ class ChatTimeRecorder {
             // 设置轮询检查 ID 变化
             this._pollForRealId(adapter, lastIndex);
         }
+    }
+
+    /**
+     * AI 状态检测失效或回答很快结束时，节点变化事件仍可补记新增用户消息。
+     * 只在非初始加载时调用，避免把历史会话误标为当前时间。
+     * @private
+     */
+    async _recordNewNodesFromIndex(startIndex) {
+        const adapter = this._getAdapter();
+        if (!adapter) return;
+
+        const userTurnElements = this._getUserTurnElements(adapter);
+        if (!userTurnElements || userTurnElements.length === 0) return;
+
+        const newNodes = userTurnElements.slice(startIndex).map((element, offset) => {
+            const index = startIndex + offset;
+            return {
+                nodeId: adapter.generateTurnId(element, index),
+                index
+            };
+        });
+
+        await this._recordNodes(newNodes, Date.now(), false);
     }
 
     /**
@@ -354,33 +425,46 @@ class ChatTimeRecorder {
             if (!timestamp) return;
             
             const formattedTime = this.formatNodeTime(timestamp);
+            this._timeLabelByTurnId.set(String(nodeId), formattedTime);
             
-            // 获取时间标签的实际渲染目标元素
-            const target = adapter.getTimeLabelTarget(element);
-            if (!target) return;
-            
-            if (position.paddingTop) {
-                target.style.paddingTop = position.paddingTop;
-            }
-            
-            // 检查是否已有时间标签且内容相同（避免不必要的 DOM 操作）
-            if (target.getAttribute('data-ait-time') === formattedTime) return;
-            
-            // 确保 target 有相对定位（::before 相对于 target 定位）
-            const computedStyle = window.getComputedStyle(target);
-            if (computedStyle.position === 'static') {
-                target.style.position = 'relative';
-            }
-            
-            // 设置时间数据属性（CSS ::before 通过 attr() 读取内容）
-            target.setAttribute('data-ait-time', formattedTime);
-            
-            // 通过 CSS 变量传递位置配置
-            if (position.top) target.style.setProperty('--ait-time-top', position.top);
-            if (position.right) target.style.setProperty('--ait-time-right', position.right);
-            if (position.left) target.style.setProperty('--ait-time-left', position.left);
-            if (position.bottom) target.style.setProperty('--ait-time-bottom', position.bottom);
+            const targets = typeof adapter.getTimeLabelTargets === 'function'
+                ? adapter.getTimeLabelTargets(element, index, {
+                    root: window.timelineManager?.conversationContainer || document,
+                    userElements: userTurnElements,
+                    nodeId
+                })
+                : [adapter.getTimeLabelTarget?.(element) || element];
+
+            targets.forEach(target => this._applyTimeLabelToTarget(target, formattedTime, position));
         });
+    }
+
+    _applyTimeLabelToTarget(target, formattedTime, position = {}) {
+        if (!target || !formattedTime) return;
+
+        if (position.paddingTop) {
+            target.style.paddingTop = position.paddingTop;
+        }
+
+        if (target.getAttribute('data-ait-time') === formattedTime) return;
+
+        const computedStyle = window.getComputedStyle(target);
+        if (computedStyle.position === 'static') {
+            target.style.position = 'relative';
+        }
+
+        target.classList?.add('ait-time-label-target');
+        target.setAttribute('data-ait-time', formattedTime);
+
+        if (position.top) target.style.setProperty('--ait-time-top', position.top);
+        if (position.right) target.style.setProperty('--ait-time-right', position.right);
+        if (position.left) target.style.setProperty('--ait-time-left', position.left);
+        if (position.bottom) target.style.setProperty('--ait-time-bottom', position.bottom);
+    }
+
+    getTimeLabelForTurnId(turnId) {
+        if (!turnId) return '';
+        return this._timeLabelByTurnId.get(String(turnId)) || '';
     }
 
     /**
@@ -450,8 +534,10 @@ class ChatTimeRecorder {
             this._renderTimeLabels();
         } else {
             // 隐藏：移除所有时间标签（清除 data 属性即可，::before 自动消失）
+            this._timeLabelByTurnId.clear();
             document.querySelectorAll('[data-ait-time]').forEach(el => {
                 el.removeAttribute('data-ait-time');
+                el.classList?.remove('ait-time-label-target');
             });
         }
     }
@@ -462,9 +548,11 @@ class ChatTimeRecorder {
     destroy() {
         // 移除事件监听
         window.removeEventListener('ai:stateChange', this._boundOnAIStateChange);
+        window.removeEventListener('timeline:nodesChange', this._boundOnTimelineNodesChange);
         
         // 清理状态
         this._pendingRecord = null;
+        this._timeLabelByTurnId.clear();
         this.enabled = false;
     }
 }
@@ -480,7 +568,7 @@ function initChatTimeRecorder() {
         window.chatTimeRecorder.destroy();
     }
     window.chatTimeRecorder = new ChatTimeRecorder();
-    window.chatTimeRecorder.init();
+    return window.chatTimeRecorder.init();
 }
 
 /**

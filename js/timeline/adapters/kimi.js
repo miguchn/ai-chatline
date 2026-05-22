@@ -35,6 +35,20 @@ class KimiAdapter extends SiteAdapter {
         return element.querySelector('.user-content') || element;
     }
 
+    getAssistantTimeLabelTarget(element, index, context = {}) {
+        const assistant = this.findFirstFollowingElement(
+            element,
+            context.userElements?.[index + 1],
+            [
+                '.chat-content-item:not(:has(.user-content))',
+                '.assistant-content',
+                '.markdown'
+            ],
+            context.root || document
+        );
+        return assistant?.querySelector('.assistant-content, .markdown, .segment-content') || assistant;
+    }
+
     isConversationRoute(pathname) {
         // Kimi 对话 URL: /chat/{id} 或分享页面 /share/{id}
         return pathname.includes('/chat/') || pathname.includes('/share/');
@@ -106,4 +120,3 @@ class KimiAdapter extends SiteAdapter {
         return !!(sendButtonContainer && sendButtonContainer.classList.contains('stop'));
     }
 }
-

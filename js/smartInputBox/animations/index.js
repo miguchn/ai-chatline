@@ -159,8 +159,11 @@ class InputBoxAnimationManager {
             });
             clickTarget.addEventListener('mouseenter', () => {
                 if (window.globalTooltipManager) {
-                    window.globalTooltipManager.show('anim-hint', 'button', clickTarget, 
-                        chrome.i18n.getMessage('animViewMore') || '更换宠物', 
+                    const msg = (typeof chrome !== 'undefined' && chrome.i18n && chrome.i18n.getMessage)
+                        ? (chrome.i18n.getMessage('animViewMore') || '更换宠物')
+                        : '更换宠物';
+                    window.globalTooltipManager.show('anim-hint', 'button', clickTarget,
+                        msg,
                         { style: 'mini', placement: 'top' }
                     );
                 }

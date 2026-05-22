@@ -120,6 +120,20 @@ class GeminiAdapter extends SiteAdapter {
         const firstLine = element.querySelector('.query-text-line');
         return firstLine || element;
     }
+
+    getAssistantTimeLabelTarget(element, index, context = {}) {
+        const assistant = this.findFirstFollowingElement(
+            element,
+            context.userElements?.[index + 1],
+            [
+                'model-response',
+                '.model-response',
+                '[data-test-id="model-response"]'
+            ],
+            context.root || document
+        );
+        return assistant?.querySelector('.markdown, .model-response-text, message-content, p') || assistant;
+    }
     
     /**
      * 获取时间标签位置配置

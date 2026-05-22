@@ -78,6 +78,8 @@ class DOMObserverManager {
         this._bodySubscribers = new Map();  // id -> { callback, filter, debounce, throttle, debounceTimer, lastThrottleTime, target }
         this._bodyObserver = null;
         this._bodyObserverHasCharacterData = false;  // 当前 observer 是否监听 characterData
+        this._bodyObserverHasAttributes = false;     // 当前 observer 是否监听 attributes
+        this._bodyObserverAttributeFilterKey = '';    // 当前 attributes 监听的属性集合
 
         // ===== Theme Observer（属性变化）=====
         this._themeSubscribers = new Map();  // id -> { callback }
@@ -105,10 +107,13 @@ class DOMObserverManager {
      * @param {boolean} [options.filter.hasAddedNodes] - 只在有新增节点时触发
      * @param {boolean} [options.filter.hasRemovedNodes] - 只在有删除节点时触发
      * @param {boolean} [options.filter.hasCharacterData] - 只在有文本变化时触发
+     * @param {boolean} [options.filter.hasAttributes] - 只在有属性变化时触发
      * @param {string} [options.target] - CSS 选择器，只关心匹配的元素
      * @param {number} [options.debounce] - 防抖时间（毫秒）- DOM 停止变化后才执行
      * @param {number} [options.throttle] - 节流时间（毫秒）- DOM 持续变化时每隔一段时间执行
      * @param {boolean} [options.characterData] - 是否监听文本变化（默认 false）
+     * @param {boolean} [options.attributes] - 是否监听属性变化（默认 false）
+     * @param {string[]} [options.attributeFilter] - 监听的属性名列表
      * @returns {Function} 取消订阅函数
      * 
      * 执行策略说明：
@@ -117,7 +122,7 @@ class DOMObserverManager {
      * - 同时设置: 持续变化时定时执行 + 变化结束后兜底执行
      */
     subscribeBody(id, options) {
-        const { callback, filter = {}, target, debounce = 0, throttle = 0, characterData = false } = options;
+        const { callback, filter = {}, target, debounce = 0, throttle = 0, characterData = false, attributes = false, attributeFilter = null } = options;
 
         if (!callback || typeof callback !== 'function') {
             throw new Error('callback is required and must be a function');
@@ -137,7 +142,9 @@ class DOMObserverManager {
             throttle,
             debounceTimer: null,
             lastThrottleTime: 0,  // 上次节流执行时间
-            characterData
+            characterData,
+            attributes,
+            attributeFilter
         });
 
         const modeDesc = throttle && debounce 
@@ -181,15 +188,33 @@ class DOMObserverManager {
      * 确保 body observer 已启动（或更新配置）
      */
     _ensureBodyObserver() {
-        // 检查是否有订阅者需要 characterData
+        // 检查是否有订阅者需要 characterData / attributes
         const needsCharacterData = Array.from(this._bodySubscribers.values())
             .some(s => s.characterData);
+        const needsAttributes = Array.from(this._bodySubscribers.values())
+            .some(s => s.attributes);
+        const hasUnfilteredAttributes = Array.from(this._bodySubscribers.values())
+            .some(s => s.attributes && !Array.isArray(s.attributeFilter));
+        const attributeFilterSet = new Set();
+        for (const subscriber of this._bodySubscribers.values()) {
+            if (subscriber.attributes && Array.isArray(subscriber.attributeFilter)) {
+                subscriber.attributeFilter.forEach(name => {
+                    if (name) attributeFilterSet.add(name);
+                });
+            }
+        }
+        const attributeFilter = (!hasUnfilteredAttributes && attributeFilterSet.size > 0)
+            ? Array.from(attributeFilterSet).sort()
+            : undefined;
+        const attributeFilterKey = attributeFilter ? attributeFilter.join('\n') : '';
 
         // 如果 observer 已存在，检查是否需要更新配置
         if (this._bodyObserver) {
             // 如果新订阅者需要 characterData 但当前没开启，需要重启
-            if (needsCharacterData && !this._bodyObserverHasCharacterData) {
-                this._log('[Body] Restarting observer to enable characterData');
+            if ((needsCharacterData && !this._bodyObserverHasCharacterData) ||
+                (needsAttributes && !this._bodyObserverHasAttributes) ||
+                (needsAttributes && this._bodyObserverHasAttributes && attributeFilterKey !== this._bodyObserverAttributeFilterKey)) {
+                this._log('[Body] Restarting observer to enable additional mutation types');
                 this._stopBodyObserver();
             } else {
                 return;  // 配置无需更新
@@ -201,13 +226,20 @@ class DOMObserverManager {
         });
 
         try {
-            this._bodyObserver.observe(document.body, {
+            const observerOptions = {
                 childList: true,
                 subtree: true,
-                characterData: needsCharacterData
-            });
+                characterData: needsCharacterData,
+                attributes: needsAttributes
+            };
+            if (needsAttributes && attributeFilter) {
+                observerOptions.attributeFilter = attributeFilter;
+            }
+            this._bodyObserver.observe(document.body, observerOptions);
             this._bodyObserverHasCharacterData = needsCharacterData;
-            this._log(`[Body] Observer started (characterData: ${needsCharacterData})`);
+            this._bodyObserverHasAttributes = needsAttributes;
+            this._bodyObserverAttributeFilterKey = attributeFilterKey;
+            this._log(`[Body] Observer started (characterData: ${needsCharacterData}, attributes: ${needsAttributes})`);
         } catch (e) {
             console.error('[DOMObserverManager] Failed to start body observer:', e);
         }
@@ -220,6 +252,9 @@ class DOMObserverManager {
         if (this._bodyObserver) {
             this._bodyObserver.disconnect();
             this._bodyObserver = null;
+            this._bodyObserverHasCharacterData = false;
+            this._bodyObserverHasAttributes = false;
+            this._bodyObserverAttributeFilterKey = '';
             this._log('[Body] Observer stopped');
         }
     }
@@ -253,7 +288,10 @@ class DOMObserverManager {
         const addedNodes = [];
         const removedNodes = [];
         const characterDataNodes = [];  // 文本变化的父元素
+        const attributeNodes = [];
+        const attributeNames = new Set();
         let hasCharacterData = false;
+        let hasAttributes = false;
 
         for (const mutation of mutations) {
             if (mutation.type === 'childList') {
@@ -274,6 +312,14 @@ class DOMObserverManager {
                 if (parentEl) {
                     characterDataNodes.push(parentEl);
                 }
+            } else if (mutation.type === 'attributes') {
+                hasAttributes = true;
+                if (mutation.target?.nodeType === Node.ELEMENT_NODE) {
+                    attributeNodes.push(mutation.target);
+                }
+                if (mutation.attributeName) {
+                    attributeNames.add(mutation.attributeName);
+                }
             }
         }
 
@@ -282,9 +328,12 @@ class DOMObserverManager {
             addedNodes,
             removedNodes,
             characterDataNodes: [...new Set(characterDataNodes)],  // 去重
+            attributeNodes: [...new Set(attributeNodes)],
+            attributeNames: Array.from(attributeNames),
             hasAddedNodes: addedNodes.length > 0,
             hasRemovedNodes: removedNodes.length > 0,
-            hasCharacterData
+            hasCharacterData,
+            hasAttributes
         };
 
         // 分发给各订阅者
@@ -310,6 +359,7 @@ class DOMObserverManager {
         if (filter.hasAddedNodes && !mutationData.hasAddedNodes) return;
         if (filter.hasRemovedNodes && !mutationData.hasRemovedNodes) return;
         if (filter.hasCharacterData && !mutationData.hasCharacterData) return;
+        if (filter.hasAttributes && !mutationData.hasAttributes) return;
 
         // 目标选择器过滤
         let relevantData = mutationData;
@@ -717,4 +767,3 @@ class DOMObserverManager {
 if (typeof window !== 'undefined') {
     window.DOMObserverManager = DOMObserverManager;
 }
-

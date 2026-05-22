@@ -25,7 +25,7 @@ const { execSync } = require('child_process');
 const ROOT = path.resolve(__dirname, '..');
 const MANIFEST_PATH = path.join(ROOT, 'manifest.json');
 const FIREFOX_MANIFEST_PATH = path.join(ROOT, 'manifest.firefox.json');
-const DEFAULT_GECKO_ID = 'ai-timeline@timeline4ai.com';
+const DEFAULT_GECKO_ID = 'chatline@ai-chat-timeline';
 
 function parseArgs() {
     const args = {};
@@ -74,7 +74,7 @@ function build() {
     const args = parseArgs();
     const geckoId = args['gecko-id'] || DEFAULT_GECKO_ID;
     const version = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf-8')).version;
-    const zipName = `AIChatTimeline-v${version}-firefox.zip`;
+    const zipName = `ChatLine-v${version}-firefox.zip`;
     const zipPath = path.join(ROOT, zipName);
 
     console.log(`[Firefox Build] Version: ${version}`);

@@ -45,6 +45,24 @@ const TIMELINE_CONFIG = {
 
 const TimelineUtils = {
     /**
+     * Chrome throws this after an extension reload while old content scripts keep running.
+     */
+    isExtensionContextInvalidated(error) {
+        return String(error?.message || error).includes('Extension context invalidated');
+    },
+
+    /**
+     * Safely read an i18n message.
+     */
+    i18n(key, fallback = '', substitutions) {
+        try {
+            return chrome.i18n.getMessage(key, substitutions) || fallback;
+        } catch {
+            return fallback;
+        }
+    },
+
+    /**
      * Safely clear a timeout
      */
     clearTimerSafe(timer) {
@@ -181,11 +199,39 @@ const TimelineUtils = {
  * 注意：v4.1.0 之前使用 chrome.storage.sync，已迁移至 local
  */
 const StorageAdapter = {
+    _getLocalStorageValue(key) {
+        try {
+            const value = localStorage.getItem(key);
+            return value ? JSON.parse(value) : undefined;
+        } catch {
+            return undefined;
+        }
+    },
+
+    _setLocalStorageValue(key, value) {
+        try {
+            localStorage.setItem(key, JSON.stringify(value));
+        } catch {}
+    },
+
+    _removeLocalStorageValue(key) {
+        try {
+            localStorage.removeItem(key);
+        } catch {}
+    },
+
     /**
      * 检查是否支持 chrome.storage
      */
     isChromeStorageAvailable() {
-        return typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local;
+        try {
+            return typeof chrome !== 'undefined' &&
+                !!chrome.runtime?.id &&
+                !!chrome.storage &&
+                !!chrome.storage.local;
+        } catch {
+            return false;
+        }
     },
 
     /**
@@ -273,22 +319,27 @@ const StorageAdapter = {
      * @returns {Promise<any>} - 返回存储的值
      */
     async get(key) {
-        try {
-            if (this.isChromeStorageAvailable()) {
-                // 使用 chrome.storage.local（跨网站、本地存储）
-                return new Promise((resolve) => {
+        if (this.isChromeStorageAvailable()) {
+            // 使用 chrome.storage.local（跨网站、本地存储）
+            return new Promise((resolve) => {
+                try {
                     chrome.storage.local.get([key], (result) => {
-                        resolve(result[key]);
+                        try {
+                            if (chrome.runtime?.lastError) {
+                                resolve(this._getLocalStorageValue(key));
+                                return;
+                            }
+                        } catch {}
+                        resolve(result?.[key]);
                     });
-                });
-            } else {
-                // 降级到 localStorage（仅当前网站）
-                const value = localStorage.getItem(key);
-                return value ? JSON.parse(value) : undefined;
-            }
-        } catch (e) {
-            return undefined;
+                } catch {
+                    resolve(this._getLocalStorageValue(key));
+                }
+            });
         }
+
+        // 降级到 localStorage（仅当前网站）
+        return this._getLocalStorageValue(key);
     },
 
     /**
@@ -298,21 +349,27 @@ const StorageAdapter = {
      * @returns {Promise<void>}
      */
     async set(key, value) {
-        try {
-            if (this.isChromeStorageAvailable()) {
-                // 使用 chrome.storage.local（跨网站、本地存储）
-                return new Promise((resolve) => {
+        if (this.isChromeStorageAvailable()) {
+            // 使用 chrome.storage.local（跨网站、本地存储）
+            return new Promise((resolve) => {
+                try {
                     chrome.storage.local.set({ [key]: value }, () => {
+                        try {
+                            if (chrome.runtime?.lastError) {
+                                this._setLocalStorageValue(key, value);
+                            }
+                        } catch {}
                         resolve();
                     });
-                });
-            } else {
-                // 降级到 localStorage（仅当前网站）
-                localStorage.setItem(key, JSON.stringify(value));
-            }
-        } catch (e) {
-            // Silently fail
+                } catch {
+                    this._setLocalStorageValue(key, value);
+                    resolve();
+                }
+            });
         }
+
+        // 降级到 localStorage（仅当前网站）
+        this._setLocalStorageValue(key, value);
     },
 
     /**
@@ -321,21 +378,27 @@ const StorageAdapter = {
      * @returns {Promise<void>}
      */
     async remove(key) {
-        try {
-            if (this.isChromeStorageAvailable()) {
-                // 使用 chrome.storage.local（跨网站、本地存储）
-                return new Promise((resolve) => {
+        if (this.isChromeStorageAvailable()) {
+            // 使用 chrome.storage.local（跨网站、本地存储）
+            return new Promise((resolve) => {
+                try {
                     chrome.storage.local.remove([key], () => {
+                        try {
+                            if (chrome.runtime?.lastError) {
+                                this._removeLocalStorageValue(key);
+                            }
+                        } catch {}
                         resolve();
                     });
-                });
-            } else {
-                // 降级到 localStorage（仅当前网站）
-                localStorage.removeItem(key);
-            }
-        } catch (e) {
-            // Silently fail
+                } catch {
+                    this._removeLocalStorageValue(key);
+                    resolve();
+                }
+            });
         }
+
+        // 降级到 localStorage（仅当前网站）
+        this._removeLocalStorageValue(key);
     },
 
     /**
@@ -344,38 +407,50 @@ const StorageAdapter = {
      * @returns {Promise<Object>} - 返回匹配的键值对对象
      */
     async getAllByPrefix(prefix) {
-        try {
-            if (this.isChromeStorageAvailable()) {
-                // 使用 chrome.storage.local（跨网站、本地存储）
-                return new Promise((resolve) => {
+        if (this.isChromeStorageAvailable()) {
+            // 使用 chrome.storage.local（跨网站、本地存储）
+            return new Promise((resolve) => {
+                try {
                     chrome.storage.local.get(null, (items) => {
+                        try {
+                            if (chrome.runtime?.lastError) {
+                                resolve(this._getAllLocalStorageByPrefix(prefix));
+                                return;
+                            }
+                        } catch {}
                         const result = {};
-                        Object.keys(items).forEach(key => {
+                        Object.keys(items || {}).forEach(key => {
                             if (key.startsWith(prefix)) {
                                 result[key] = items[key];
                             }
                         });
                         resolve(result);
                     });
-                });
-            } else {
-                // 降级到 localStorage（仅当前网站）
-                const result = {};
-                for (let i = 0; i < localStorage.length; i++) {
-                    const key = localStorage.key(i);
-                    if (key && key.startsWith(prefix)) {
-                        try {
-                            result[key] = JSON.parse(localStorage.getItem(key));
-                        } catch {
-                            result[key] = localStorage.getItem(key);
-                        }
+                } catch {
+                    resolve(this._getAllLocalStorageByPrefix(prefix));
+                }
+            });
+        }
+
+        // 降级到 localStorage（仅当前网站）
+        return this._getAllLocalStorageByPrefix(prefix);
+    },
+
+    _getAllLocalStorageByPrefix(prefix) {
+        const result = {};
+        try {
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && key.startsWith(prefix)) {
+                    try {
+                        result[key] = JSON.parse(localStorage.getItem(key));
+                    } catch {
+                        result[key] = localStorage.getItem(key);
                     }
                 }
-                return result;
             }
-        } catch (e) {
-            return {};
-        }
+        } catch {}
+        return result;
     },
 
     /**

@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline：ChatGPT、Gemini 對話增強"
+    "message": "ChatLine：ChatGPT、Gemini 對話增強"
   },
   "extDescription": {
-    "message": "時間軸、資料夾、提示詞庫、電子寵物，支持 DeepSeek、Claude、豆包等所有 AI 平台。"
+    "message": "面向 AI 對話頁面的瀏覽器增強外掛，基於 Timeline 二次開發，提供時間軸導覽、歷史定位、對話瀏覽增強與資料歸檔能力。"
   },
   "qwxpzm": {
     "message": "收藏"
@@ -543,7 +543,7 @@
     "message": "插件簡介"
   },
   "aboutPluginContent": {
-    "message": "Timeline 是專為瀏覽器端 AI 對話開發的提效插件，擁有時間軸、資料夾、文字醒目標示、複製 LaTeX 公式、自訂提示詞等超多功能，把效率拉爆。支援 ChatGPT、Gemini、Claude、DeepSeek、Kimi、豆包、千問等所有主流 AI 平台。"
+    "message": "ChatLine 是一款面向 AI 對話頁面的瀏覽器增強外掛，基於開源專案 Timeline 二次開發，主要提供時間軸導覽、歷史定位、對話瀏覽增強和對話資料歸檔能力。支援 ChatGPT、Gemini、DeepSeek、Kimi、千問、Claude、元寶、NotebookLM 等主流 AI 對話平台。"
   },
   "aboutDataSecurityTitle": {
     "message": "數據安全"
@@ -555,13 +555,13 @@
     "message": "提需求"
   },
   "aboutDeveloperContent": {
-    "message": "本專案由我和 Claude Opus 4.6 共同維護，每週 1~2 新版本的更新節奏。如果想提需求或回饋 bug，可透過以下管道進行回饋（我看到一定會回覆）："
+    "message": "ChatLine 作為 ai-chat-timeline 的二次開發版本維護。如果想提需求或回報 bug，請透過目前專案儲存庫的 Issues 提交。"
   },
   "aboutShareTitle": {
     "message": "推薦給朋友"
   },
   "aboutShareContent": {
-    "message": "如果 Timeline 插件好用，歡迎在小紅書、B站、X、Reddit、YouTube 等平台發帖推薦，也歡迎分享給朋友、同學，讓更多人用上它。謝謝。❤️"
+    "message": "如果 ChatLine 對你有幫助，歡迎推薦給經常閱讀、定位和歸檔 AI 對話的朋友。作者：咪咕看见小黑。信箱：miguchn@gmail.com。如在使用過程中遇到問題或有優化建議，可隨時透過信箱回饋。"
   },
   "formulaCopyGeneric": {
     "message": "複製公式"
@@ -708,7 +708,7 @@
     "message": "功能文檔"
   },
   "changelogTitle": {
-    "message": "Timeline 更新啦！"
+    "message": "ChatLine 更新啦！"
   },
   "changelogSubtitle": {
     "message": "$1 用戶在用，新版本體驗再升級。"

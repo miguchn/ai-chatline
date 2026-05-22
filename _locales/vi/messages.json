@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline: ChatGPT & Gemini chat nâng cao"
+    "message": "ChatLine: ChatGPT & Gemini chat nâng cao"
   },
   "extDescription": {
-    "message": "Dòng thời gian, thư mục, thư viện prompt, thú cưng ảo. Hỗ trợ DeepSeek, Claude và tất cả nền tảng AI."
+    "message": "Tiện ích trình duyệt cho trang chat AI. Fork từ Timeline với điều hướng dòng thời gian, định vị lịch sử, duyệt hội thoại tốt hơn và lưu trữ."
   },
   "qwxpzm": {
     "message": "Yêu thích"
@@ -501,7 +501,7 @@
     "message": "Về tiện ích"
   },
   "aboutPluginContent": {
-    "message": "Timeline là tiện ích tăng năng suất cho hội thoại AI trên trình duyệt, bao gồm dòng thời gian, thư mục, đánh dấu văn bản, sao chép công thức LaTeX, prompt tùy chỉnh và nhiều tính năng khác — bùng nổ hiệu suất. Hỗ trợ ChatGPT, Gemini, Claude, DeepSeek, Kimi, Doubao, Qwen và tất cả nền tảng AI chính."
+    "message": "ChatLine là tiện ích trình duyệt cho các trang chat AI. Được phát triển tiếp từ dự án mã nguồn mở Timeline, ChatLine tập trung vào điều hướng dòng thời gian, định vị lịch sử, tăng cường duyệt hội thoại và lưu trữ dữ liệu hội thoại. Hỗ trợ ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, NotebookLM và các nền tảng chat AI phổ biến."
   },
   "aboutDataSecurityTitle": {
     "message": "Bảo mật dữ liệu"
@@ -513,13 +513,13 @@
     "message": "Phản hồi"
   },
   "aboutDeveloperContent": {
-    "message": "Dự án này được tôi và Claude Opus 4.6 cùng duy trì, với nhịp độ 1–2 phiên bản mới mỗi tuần. Để yêu cầu tính năng hoặc báo lỗi, hãy liên hệ qua các kênh bên dưới (tôi chắc chắn sẽ trả lời khi thấy):"
+    "message": "ChatLine được duy trì dưới dạng fork ai-chat-timeline. Để đề xuất tính năng hoặc báo lỗi, vui lòng dùng trang Issues của repository dự án này."
   },
   "aboutShareTitle": {
     "message": "Giới thiệu cho bạn bè"
   },
   "aboutShareContent": {
-    "message": "Nếu bạn thấy Timeline hữu ích, hãy viết đánh giá trên Xiaohongshu, Bilibili, X, Reddit, YouTube hoặc các nền tảng khác, và chia sẻ với bạn học và bạn bè để nhiều người hơn có thể sử dụng. Cảm ơn. ❤️"
+    "message": "Nếu ChatLine hữu ích, hãy giới thiệu cho những người thường đọc lại, tìm kiếm và lưu trữ hội thoại AI. Tác giả: 咪咕看见小黑. Email: miguchn@gmail.com. Nếu gặp vấn đề trong quá trình sử dụng hoặc có đề xuất cải thiện, bạn có thể gửi phản hồi qua email bất cứ lúc nào."
   },
   "nativeMenuStarToFolder": {
     "message": "Star to Folder"
@@ -651,7 +651,7 @@
     "message": "Tài liệu"
   },
   "changelogTitle": {
-    "message": "Timeline đã cập nhật!"
+    "message": "ChatLine đã cập nhật!"
   },
   "changelogSubtitle": {
     "message": "$1 người dùng đang sử dụng. Phiên bản mới, trải nghiệm tốt hơn."

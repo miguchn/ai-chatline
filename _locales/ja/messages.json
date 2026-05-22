@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline：ChatGPT・Gemini チャット強化"
+    "message": "ChatLine：ChatGPT・Gemini チャット強化"
   },
   "extDescription": {
-    "message": "タイムライン、フォルダ、プロンプト集、バーチャルペット。DeepSeek・Claude など全 AI プラットフォーム対応。"
+    "message": "AI チャットページ向けのブラウザ拡張。Timeline をベースに、タイムライン移動、履歴位置の特定、閲覧補助、会話アーカイブを提供します。"
   },
   "qwxpzm": {
     "message": "お気に入り"
@@ -552,7 +552,7 @@
     "message": "プラグイン紹介"
   },
   "aboutPluginContent": {
-    "message": "Timeline はブラウザ上の AI 会話専用の生産性プラグイン。タイムライン、フォルダー、テキストハイライト、LaTeX 数式コピー、カスタムプロンプトなど多数の機能で効率を爆上げ。ChatGPT、Gemini、Claude、DeepSeek、Kimi、Doubao、Qwen など全ての主要 AI プラットフォームに対応。"
+    "message": "ChatLine は AI チャットページ向けのブラウザ拡張です。オープンソースの Timeline プロジェクトをベースに二次開発され、タイムラインナビゲーション、履歴位置の特定、会話閲覧の強化、会話データのアーカイブに重点を置いています。ChatGPT、Gemini、DeepSeek、Kimi、Qwen、Claude、Yuanbao、NotebookLM など主要な AI チャットプラットフォームをサポートします。"
   },
   "aboutDataSecurityTitle": {
     "message": "データセキュリティ"
@@ -564,13 +564,13 @@
     "message": "フィードバック"
   },
   "aboutDeveloperContent": {
-    "message": "このプロジェクトは私と Claude Opus 4.6 が共同で管理しており、毎週1~2件の新バージョンをリリースしています。機能リクエストやバグ報告は以下のチャンネルからご連絡ください（見つけ次第必ずご返信します）："
+    "message": "ChatLine は ai-chat-timeline fork として保守されています。機能要望や bug 報告は、このプロジェクトリポジトリの Issues ページから送信してください。"
   },
   "aboutShareTitle": {
     "message": "友達にすすめる"
   },
   "aboutShareContent": {
-    "message": "Timeline が便利だと感じたら、小紅書、Bilibili、X、Reddit、YouTube などでおすすめ投稿していただけると嬉しいです。友人やクラスメートへの共有も大歓迎です。より多くの人に届きますように。ありがとうございます。❤️"
+    "message": "ChatLine が役に立ったら、AI 会話をよく読み返し、探し、保存する人におすすめしてください。作者: 咪咕看见小黑。メール: miguchn@gmail.com。利用中に問題が発生した場合や改善提案がある場合は、いつでもメールでフィードバックできます。"
   },
   "nativeMenuStarToFolder": {
     "message": "フォルダにスター"
@@ -702,7 +702,7 @@
     "message": "機能ドキュメント"
   },
   "changelogTitle": {
-    "message": "Timeline アップデート！"
+    "message": "ChatLine アップデート！"
   },
   "changelogSubtitle": {
     "message": "$1 ユーザーが利用中。新バージョンで体験をさらに向上。"

@@ -72,14 +72,17 @@ class AIStateMonitor {
         this._generating = false;
         
         // 搭便车在 body observer 上：停止按钮的出现/消失是 DOM 节点变化，
-        // body observer 天然能捕获到，不需要额外的 setInterval
+        // 以及按钮属性切换（例如 ChatGPT 的 data-testid）都会触发检查。
         if (window.DOMObserverManager) {
             this._unsubscribe = window.DOMObserverManager.getInstance().subscribeBody('ai-state-monitor', {
                 callback: () => this._checkState(),
-                filter: { hasAddedNodes: true },
-                debounce: 300
+                debounce: 120,
+                attributes: true,
+                attributeFilter: ['aria-label', 'class', 'data-testid', 'disabled', 'id', 'style']
             });
         }
+
+        this._checkState();
     }
 
     /**

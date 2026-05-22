@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline: ChatGPT e Gemini chat melhorado"
+    "message": "ChatLine: ChatGPT e Gemini chat melhorado"
   },
   "extDescription": {
-    "message": "Cronologia, pastas, biblioteca de prompts, pet virtual. Compatível com DeepSeek, Claude e todas as plataformas IA."
+    "message": "Extensão de navegador para páginas de chat com IA. Fork do Timeline com navegação temporal, localização no histórico, melhor leitura e arquivo."
   },
   "qwxpzm": {
     "message": "Favorito"
@@ -501,7 +501,7 @@
     "message": "Sobre a extensão"
   },
   "aboutPluginContent": {
-    "message": "Timeline é uma extensão de produtividade para conversas com IA no navegador, com timeline, pastas, destaque de texto, cópia de fórmulas LaTeX, prompts personalizados e muito mais — leve a sua eficiência ao máximo. Compatível com ChatGPT, Gemini, Claude, DeepSeek, Kimi, Doubao, Qwen e todas as principais plataformas de IA."
+    "message": "ChatLine é uma extensão de navegador para páginas de chat com IA. Desenvolvida como fork do projeto open-source Timeline, foca-se em navegação por timeline, localização no histórico, melhor exploração de conversas e arquivo de dados de conversas. Suporta plataformas principais como ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao e NotebookLM."
   },
   "aboutDataSecurityTitle": {
     "message": "Segurança de dados"
@@ -513,13 +513,13 @@
     "message": "Feedback"
   },
   "aboutDeveloperContent": {
-    "message": "Este projeto é co-mantido por mim e pelo Claude Opus 4.6, com um ritmo de 1 a 2 novas versões por semana. Para solicitar uma funcionalidade ou reportar um bug, contacte-me através dos canais abaixo (responderei assim que vir):"
+    "message": "ChatLine é mantido como o fork ai-chat-timeline. Para pedir funcionalidades ou reportar bugs, use a página Issues do repositório deste projeto."
   },
   "aboutShareTitle": {
     "message": "Recomendar a amigos"
   },
   "aboutShareContent": {
-    "message": "Se achar o Timeline útil, sinta-se à vontade para publicar uma avaliação no Xiaohongshu, Bilibili, X, Reddit, YouTube ou outras plataformas, e partilhá-lo com colegas e amigos para que mais pessoas o possam usar. Obrigado. ❤️"
+    "message": "Se o ChatLine for útil, recomende-o a quem lê, reencontra e arquiva conversas com IA com frequência. Autor: 咪咕看见小黑. Email: miguchn@gmail.com. Se encontrar problemas durante a utilização ou tiver sugestões de melhoria, pode enviar feedback por email a qualquer momento."
   },
   "nativeMenuStarToFolder": {
     "message": "Star to Folder"
@@ -651,7 +651,7 @@
     "message": "Documentação"
   },
   "changelogTitle": {
-    "message": "Timeline atualizado!"
+    "message": "ChatLine atualizado!"
   },
   "changelogSubtitle": {
     "message": "Usado por $1 utilizadores. Nova versão, melhor experiência."

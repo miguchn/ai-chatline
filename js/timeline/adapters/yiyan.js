@@ -34,6 +34,20 @@ class YiyanAdapter extends SiteAdapter {
         return element.querySelector('span') || element;
     }
 
+    getAssistantTimeLabelTarget(element, index, context = {}) {
+        const assistant = this.findFirstFollowingElement(
+            element,
+            context.userElements?.[index + 1],
+            [
+                '[class*="answer"]',
+                '[class*="bot"]',
+                '[class*="markdown"]'
+            ],
+            context.root || document
+        );
+        return assistant?.querySelector('[class*="markdown"], p, span') || assistant;
+    }
+
     isConversationRoute(pathname) {
         // 文心一言对话 URL: /chat/{id}
         return pathname.includes('/chat/');
@@ -99,4 +113,3 @@ class YiyanAdapter extends SiteAdapter {
         return !!stopBtn;
     }
 }
-

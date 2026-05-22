@@ -105,6 +105,16 @@ class DoubaoAdapter extends SiteAdapter {
         return element.querySelector('[data-plugin-identifier]') || element;
     }
 
+    getAssistantTimeLabelTarget(element, index, context = {}) {
+        const assistant = this.findFirstFollowingElement(
+            element,
+            context.userElements?.[index + 1],
+            '[data-message-id]:not(.justify-end)',
+            context.root || document
+        );
+        return assistant?.querySelector('[data-plugin-identifier], .markdown, p') || assistant;
+    }
+
     isConversationRoute(pathname) {
         // Doubao conversation URLs: /chat/数字ID
         return pathname.includes('/chat/');
@@ -187,4 +197,3 @@ class DoubaoAdapter extends SiteAdapter {
     }
     
 }
-

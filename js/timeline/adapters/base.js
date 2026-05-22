@@ -30,6 +30,18 @@ class SiteAdapter {
     }
 
     /**
+     * Get all user message elements for the current conversation.
+     * Adapters can override this when a platform needs custom filtering beyond CSS selectors.
+     * @param {ParentNode} root - DOM root to search within
+     * @returns {Element[]}
+     */
+    getUserMessageElements(root = document) {
+        const selector = this.getUserMessageSelector();
+        if (!selector || !root?.querySelectorAll) return [];
+        return Array.from(root.querySelectorAll(selector));
+    }
+
+    /**
      * Generate unique ID for a message (using index)
      * @param {Element} element - Message DOM element
      * @param {number} index - Message index in the list
@@ -48,6 +60,55 @@ class SiteAdapter {
         const text = (element.textContent || '').trim();
         return text || '[图片或文件]';
     }
+
+    /**
+     * Extract user message text for timeline display and export.
+     * Platform adapters should keep platform-specific DOM parsing in extractText().
+     * @param {Element} element
+     * @param {number} index
+     * @param {Object} context
+     * @returns {string}
+     */
+    extractMessageText(element, index, context = {}) {
+        return this.extractText(element, index, context);
+    }
+
+    /**
+     * Build a normalized, platform-agnostic conversation message list.
+     * This is the common export surface; adapters only need to customize selectors,
+     * turn IDs, and text extraction.
+     * @param {Object} options
+     * @returns {Array<{id:string,index:number,text:string,element:Element}>}
+     */
+    extractConversationMessages(options = {}) {
+        const root = options.root || document;
+        const elements = options.elements || this.getUserMessageElements(root);
+        const context = options.context || {};
+        return Array.from(elements).map((element, index) => ({
+            id: this.generateTurnId(element, index),
+            index,
+            text: this.extractMessageText(element, index, context),
+            element
+        }));
+    }
+
+    /**
+     * Create a portable export payload for the current conversation.
+     * UI callers can consume this without knowing the active AI platform.
+     * @param {Object} options
+     * @returns {Object}
+     */
+    createConversationExport(options = {}) {
+        const pathname = options.pathname || location.pathname;
+        const messages = this.extractConversationMessages(options).map(({ element, ...message }) => message);
+        return {
+            platform: this.constructor?.name?.replace(/Adapter$/, '').toLowerCase() || 'unknown',
+            conversationId: this.extractConversationId(pathname),
+            url: options.url || location.href,
+            exportedAt: new Date().toISOString(),
+            messages
+        };
+    }
     
     /**
      * 获取时间标签的渲染目标元素
@@ -56,6 +117,74 @@ class SiteAdapter {
      */
     getTimeLabelTarget(element) {
         return element; // 默认返回消息元素本身
+    }
+
+    /**
+     * Get all DOM targets that should show this turn's time.
+     * Default is the user turn target; adapters may include the paired assistant
+     * response when the platform exposes a reliable message container.
+     * @param {Element} element - User turn element
+     * @param {number} index - User turn index
+     * @param {Object} context - { root, userElements }
+     * @returns {Element[]}
+     */
+    getTimeLabelTargets(element, index, context = {}) {
+        const targets = [];
+        const userTarget = this.getTimeLabelTarget(element) || element;
+        if (userTarget) targets.push(userTarget);
+
+        const assistantTarget = this.getAssistantTimeLabelTarget?.(element, index, context);
+        if (assistantTarget) targets.push(assistantTarget);
+
+        return targets.filter((target, targetIndex, arr) =>
+            target && arr.indexOf(target) === targetIndex
+        );
+    }
+
+    /**
+     * Optional adapter hook for the assistant response paired with a user turn.
+     * Returns null by default to keep unsupported platforms unchanged.
+     */
+    getAssistantTimeLabelTarget() {
+        return null;
+    }
+
+    /**
+     * Find the first element matching selector(s) after sourceElement and before
+     * the next user turn. Used by adapters to attach the same turn timestamp to
+     * the assistant reply without changing timeline node semantics.
+     */
+    findFirstFollowingElement(sourceElement, boundaryElement, selectors, root = document) {
+        if (!sourceElement || !root?.querySelectorAll) return null;
+        const selector = Array.isArray(selectors) ? selectors.filter(Boolean).join(', ') : selectors;
+        if (!selector) return null;
+
+        const isFollowingSource = (candidate) => {
+            try {
+                return !!(sourceElement.compareDocumentPosition(candidate) & Node.DOCUMENT_POSITION_FOLLOWING);
+            } catch {
+                return false;
+            }
+        };
+        const isBeforeBoundary = (candidate) => {
+            if (!boundaryElement) return true;
+            try {
+                return !!(candidate.compareDocumentPosition(boundaryElement) & Node.DOCUMENT_POSITION_FOLLOWING);
+            } catch {
+                return true;
+            }
+        };
+
+        try {
+            return Array.from(root.querySelectorAll(selector)).find(candidate =>
+                candidate !== sourceElement &&
+                !sourceElement.contains(candidate) &&
+                isFollowingSource(candidate) &&
+                isBeforeBoundary(candidate)
+            ) || null;
+        } catch {
+            return null;
+        }
     }
     
     /**
@@ -160,4 +289,3 @@ class SiteAdapter {
     }
     
 }
-

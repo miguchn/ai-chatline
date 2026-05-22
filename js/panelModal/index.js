@@ -18,6 +18,10 @@
  * window.panelModal.registerTab(tab); // 注册新 tab
  */
 
+function isPanelModalExtensionContextInvalidated(error) {
+    return String(error?.message || error).includes('Extension context invalidated');
+}
+
 class PanelModal {
     constructor() {
         this.container = null;
@@ -84,7 +88,7 @@ class PanelModal {
         // 标题（关闭按钮右侧）
         const sidebarTitle = document.createElement('span');
         sidebarTitle.className = 'ait-panel-modal-sidebar-title';
-        sidebarTitle.textContent = 'Timeline';
+        sidebarTitle.textContent = 'ChatLine';
         
         sidebarHeader.appendChild(this.closeBtn);
         sidebarHeader.appendChild(sidebarTitle);
@@ -333,7 +337,15 @@ class PanelModal {
         
         // 渲染新 tab 内容
         this.content.innerHTML = '';
-        const tabContent = tab.render();
+        let tabContent = null;
+        try {
+            tabContent = tab.render();
+        } catch (error) {
+            if (!isPanelModalExtensionContextInvalidated(error)) {
+                console.error(`[PanelModal] Failed to render tab "${tabId}":`, error);
+            }
+            return;
+        }
         if (tabContent) {
             this.content.appendChild(tabContent);
         }
@@ -352,7 +364,17 @@ class PanelModal {
         
         // 调用 tab 的 mounted 钩子
         if (tab.mounted) {
-            tab.mounted();
+            try {
+                Promise.resolve(tab.mounted()).catch(error => {
+                    if (!isPanelModalExtensionContextInvalidated(error)) {
+                        console.error(`[PanelModal] Failed to mount tab "${tabId}":`, error);
+                    }
+                });
+            } catch (error) {
+                if (!isPanelModalExtensionContextInvalidated(error)) {
+                    console.error(`[PanelModal] Failed to mount tab "${tabId}":`, error);
+                }
+            }
         }
     }
     
@@ -425,9 +447,15 @@ if (typeof window !== 'undefined') {
     // 见 tab-registry.js 中的 registerTimelineTabs()
 
     // 监听来自 background 的消息（点击扩展图标时触发）
-    chrome.runtime.onMessage.addListener((request) => {
-        if (request.type === 'OPEN_PANEL_MODAL' && window.panelModal) {
-            window.panelModal.show();
+    try {
+        chrome.runtime.onMessage.addListener((request) => {
+            if (request.type === 'OPEN_PANEL_MODAL' && window.panelModal) {
+                window.panelModal.show();
+            }
+        });
+    } catch (error) {
+        if (!isPanelModalExtensionContextInvalidated(error)) {
+            console.error('[PanelModal] Failed to attach runtime message listener:', error);
         }
-    });
+    }
 }

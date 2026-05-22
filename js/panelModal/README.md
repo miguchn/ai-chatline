@@ -206,11 +206,10 @@ function initializePanelModalTabs(timelineManager) {
 
 ## 💬 反馈弹窗
 
-左下角 Footer 区域包含反馈入口，点击后会弹出反馈选择弹窗，提供两种反馈方式：
+左下角 Footer 区域包含反馈入口，点击后会弹出反馈选择弹窗。
 
 ### 反馈方式
-1. **邮箱**: houyanchao@outlook.com（点击后打开邮件客户端）
-2. **飞书表单**: 在线提交反馈（点击后在新标签页打开）
+请通过当前项目仓库的 Issues 提交反馈。
 
 ### 相关方法
 - `_showFeedbackModal()`: 显示反馈弹窗
@@ -236,4 +235,3 @@ function initializePanelModalTabs(timelineManager) {
 - 🔍 **搜索 tab**: 搜索对话内容
 - 📝 **笔记 tab**: 为对话添加笔记
 - 🎨 **主题 tab**: 主题切换
-

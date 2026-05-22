@@ -31,16 +31,20 @@ class HighlightManager {
     }
 
     async init() {
-        const result = await chrome.storage.local.get([this._enabledKey, this._colorKey, this._styleKey]);
-        this.isEnabled = result[this._enabledKey] !== false;
-        if (result[this._colorKey]) this.currentColor = result[this._colorKey];
-        if (result[this._styleKey]) this.currentStyle = result[this._styleKey];
+        const [enabled, color, style] = await Promise.all([
+            this._storageGet(this._enabledKey),
+            this._storageGet(this._colorKey),
+            this._storageGet(this._styleKey)
+        ]);
+        this.isEnabled = enabled !== false;
+        if (color) this.currentColor = color;
+        if (style) this.currentStyle = style;
 
         if (this.isEnabled) {
             this.restoreHighlights();
         }
 
-        chrome.storage.onChanged.addListener((changes, area) => {
+        this._storageChangeHandler = (changes, area) => {
             if (area !== 'local') return;
             if (changes[this._enabledKey]) {
                 this.isEnabled = changes[this._enabledKey].newValue !== false;
@@ -53,7 +57,82 @@ class HighlightManager {
             if (changes[this._styleKey]) {
                 this.currentStyle = changes[this._styleKey].newValue || 'solid';
             }
-        });
+        };
+        this._addStorageChangeListener(this._storageChangeHandler);
+    }
+
+    async _storageGet(key) {
+        if (typeof StorageAdapter !== 'undefined') {
+            return StorageAdapter.get(key);
+        }
+        try {
+            if (chrome.storage.local.get.length >= 2) {
+                return await new Promise((resolve) => {
+                    chrome.storage.local.get([key], (result) => {
+                        try {
+                            if (chrome.runtime?.lastError) {
+                                resolve(this._localStorageGet(key));
+                                return;
+                            }
+                        } catch {}
+                        resolve(result?.[key]);
+                    });
+                });
+            }
+            const result = await chrome.storage.local.get(key);
+            return result?.[key];
+        } catch {
+            return this._localStorageGet(key);
+        }
+    }
+
+    async _storageSet(key, value) {
+        if (typeof StorageAdapter !== 'undefined') {
+            return StorageAdapter.set(key, value);
+        }
+        try {
+            if (chrome.storage.local.set.length >= 2) {
+                await new Promise((resolve) => {
+                    chrome.storage.local.set({ [key]: value }, () => {
+                        try {
+                            if (chrome.runtime?.lastError) {
+                                this._localStorageSet(key, value);
+                            }
+                        } catch {}
+                        resolve();
+                    });
+                });
+                return;
+            }
+            await chrome.storage.local.set({ [key]: value });
+        } catch {
+            this._localStorageSet(key, value);
+        }
+    }
+
+    _localStorageGet(key) {
+        try {
+            const value = localStorage.getItem(key);
+            return value ? JSON.parse(value) : undefined;
+        } catch {
+            return undefined;
+        }
+    }
+
+    _localStorageSet(key, value) {
+        try {
+            localStorage.setItem(key, JSON.stringify(value));
+        } catch {}
+    }
+
+    _addStorageChangeListener(handler) {
+        if (typeof StorageAdapter !== 'undefined' && StorageAdapter.addChangeListener) {
+            StorageAdapter.addChangeListener(handler);
+            return;
+        }
+        try {
+            chrome.storage.onChanged.addListener(handler);
+        } catch {}
     }
 
     // ==================== TreeWalker 工具 ====================
@@ -554,8 +633,7 @@ class HighlightManager {
     }
 
     async _loadAllData() {
-        const result = await chrome.storage.local.get(this._storageKey);
-        return result[this._storageKey] || {};
+        return await this._storageGet(this._storageKey) || {};
     }
 
     async _saveHighlight(hl) {
@@ -563,7 +641,7 @@ class HighlightManager {
         const allData = await this._loadAllData();
         if (!allData[url]) allData[url] = [];
         allData[url].push(hl);
-        await chrome.storage.local.set({ [this._storageKey]: allData });
+        await this._storageSet(this._storageKey, allData);
     }
 
     async _removeFromStorage(id) {
@@ -572,7 +650,7 @@ class HighlightManager {
         if (!allData[url]) return;
         allData[url] = allData[url].filter(h => h.id !== id);
         if (allData[url].length === 0) delete allData[url];
-        await chrome.storage.local.set({ [this._storageKey]: allData });
+        await this._storageSet(this._storageKey, allData);
     }
 
     async getHighlightById(id) {
@@ -588,7 +666,7 @@ class HighlightManager {
         const hl = allData[url].find(h => h.id === id);
         if (!hl) return;
         Object.assign(hl, updates);
-        await chrome.storage.local.set({ [this._storageKey]: allData });
+        await this._storageSet(this._storageKey, allData);
 
         const marks = document.querySelectorAll(`mark.ait-highlight[data-hl-id="${id}"]`);
         marks.forEach(mark => {
@@ -603,17 +681,17 @@ class HighlightManager {
 
     async setColor(color) {
         this.currentColor = color;
-        await chrome.storage.local.set({ [this._colorKey]: color });
+        await this._storageSet(this._colorKey, color);
     }
 
     async setStyle(style) {
         this.currentStyle = style;
-        await chrome.storage.local.set({ [this._styleKey]: style });
+        await this._storageSet(this._styleKey, style);
     }
 
     async setEnabled(enabled) {
         this.isEnabled = enabled;
-        await chrome.storage.local.set({ [this._enabledKey]: enabled });
+        await this._storageSet(this._enabledKey, enabled);
         if (enabled) this.restoreHighlights();
         else this.clearAllMarks();
     }

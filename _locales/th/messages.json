@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline: ChatGPT และ Gemini แชทเสริม"
+    "message": "ChatLine: ChatGPT และ Gemini แชทเสริม"
   },
   "extDescription": {
-    "message": "ไทม์ไลน์ โฟลเดอร์ คลังพรอมต์ สัตว์เลี้ยงเสมือน รองรับ DeepSeek, Claude และแพลตฟอร์ม AI ทั้งหมด"
+    "message": "ส่วนขยายเบราว์เซอร์สำหรับหน้าแชท AI พัฒนาต่อจาก Timeline พร้อมนำทางไทม์ไลน์ ค้นตำแหน่งประวัติ อ่านง่ายขึ้น และเก็บถาวรบทสนทนา"
   },
   "qwxpzm": {
     "message": "รายการโปรด"
@@ -501,7 +501,7 @@
     "message": "เกี่ยวกับส่วนขยาย"
   },
   "aboutPluginContent": {
-    "message": "Timeline เป็นส่วนขยายเพิ่มประสิทธิภาพสำหรับการสนทนา AI บนเบราว์เซอร์ มีไทม์ไลน์ โฟลเดอร์ ไฮไลต์ข้อความ คัดลอกสูตร LaTeX พรอมต์กำหนดเอง และอีกมากมาย — ระเบิดประสิทธิภาพ รองรับ ChatGPT, Gemini, Claude, DeepSeek, Kimi, Doubao, Qwen และแพลตฟอร์ม AI หลักทั้งหมด"
+    "message": "ChatLine เป็นส่วนขยายเบราว์เซอร์สำหรับหน้าแชท AI พัฒนาต่อจากโปรเจกต์โอเพนซอร์ส Timeline โดยเน้นการนำทางด้วยไทม์ไลน์ การค้นตำแหน่งในประวัติ การอ่านบทสนทนาที่สะดวกขึ้น และการเก็บถาวรข้อมูลบทสนทนา รองรับ ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, NotebookLM และแพลตฟอร์มแชท AI หลักอื่น ๆ"
   },
   "aboutDataSecurityTitle": {
     "message": "ความปลอดภัยของข้อมูล"
@@ -513,13 +513,13 @@
     "message": "แจ้งความต้องการ"
   },
   "aboutDeveloperContent": {
-    "message": "โปรเจกต์นี้ดูแลร่วมกันโดยฉันและ Claude Opus 4.6 โดยมีจังหวะการอัปเดต 1–2 เวอร์ชันใหม่ต่อสัปดาห์ หากต้องการขอฟีเจอร์หรือรายงานบั๊ก ติดต่อฉันผ่านช่องทางด้านล่าง (ฉันจะตอบกลับแน่นอนเมื่อเห็น):"
+    "message": "ChatLine ดูแลในฐานะ fork ของ ai-chat-timeline หากต้องการขอฟีเจอร์หรือรายงาน bug โปรดใช้หน้า Issues ของ repository โปรเจกต์นี้"
   },
   "aboutShareTitle": {
     "message": "แนะนำให้เพื่อน"
   },
   "aboutShareContent": {
-    "message": "หาก Timeline ใช้ดี ยินดีหากเขียนรีวิวบน Xiaohongshu, Bilibili, X, Reddit, YouTube หรือแพลตฟอร์มอื่น ๆ และแบ่งปันให้เพื่อนร่วมชั้นและเพื่อน เพื่อให้คนอื่นได้ใช้ด้วย ขอบคุณ ❤️"
+    "message": "หาก ChatLine มีประโยชน์ โปรดแนะนำให้คนที่ต้องอ่าน ค้นหา และเก็บบทสนทนา AI อยู่บ่อย ๆ ผู้เขียน: 咪咕看见小黑. อีเมล: miguchn@gmail.com. หากพบปัญหาระหว่างใช้งานหรือมีข้อเสนอแนะเพื่อปรับปรุง สามารถส่งความคิดเห็นทางอีเมลได้ทุกเมื่อ"
   },
   "nativeMenuStarToFolder": {
     "message": "Star to Folder"
@@ -651,7 +651,7 @@
     "message": "เอกสารฟีเจอร์"
   },
   "changelogTitle": {
-    "message": "Timeline อัปเดตแล้ว!"
+    "message": "ChatLine อัปเดตแล้ว!"
   },
   "changelogSubtitle": {
     "message": "ผู้ใช้ $1 คนกำลังใช้งาน เวอร์ชันใหม่ ประสบการณ์ที่ดียิ่งขึ้น"

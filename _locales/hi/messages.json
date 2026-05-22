@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Timeline: ChatGPT और Gemini चैट संवर्धित"
+    "message": "ChatLine: ChatGPT और Gemini चैट संवर्धित"
   },
   "extDescription": {
-    "message": "टाइमलाइन, फ़ोल्डर, प्रॉम्प्ट लाइब्रेरी, वर्चुअल पेट। DeepSeek, Claude और सभी AI प्लेटफ़ॉर्म का समर्थन।"
+    "message": "AI चैट पेजों के लिए ब्राउज़र एक्सटेंशन। Timeline पर आधारित fork, टाइमलाइन नेविगेशन, इतिहास定位, बेहतर ब्राउज़िंग और आर्काइविंग के साथ।"
   },
   "qwxpzm": {
     "message": "पसंदीदा"
@@ -501,7 +501,7 @@
     "message": "एक्सटेंशन के बारे में"
   },
   "aboutPluginContent": {
-    "message": "Timeline ब्राउज़र-आधारित AI संवाद के लिए एक उत्पादकता एक्सटेंशन है, जिसमें टाइमलाइन, फ़ोल्डर, टेक्स्ट हाइलाइटिंग, LaTeX सूत्र कॉपी, कस्टम प्रॉम्प्ट और बहुत कुछ शामिल है — दक्षता को चरम पर ले जाएं। ChatGPT, Gemini, Claude, DeepSeek, Kimi, Doubao, Qwen और सभी प्रमुख AI प्लेटफॉर्मों के साथ संगत।"
+    "message": "ChatLine AI चैट पेजों के लिए एक ब्राउज़र एक्सटेंशन है। यह ओपन-सोर्स Timeline प्रोजेक्ट पर आधारित fork है और टाइमलाइन नेविगेशन, इतिहास में स्थिति खोजने, बातचीत पढ़ने के अनुभव को बेहतर बनाने और बातचीत डेटा को आर्काइव करने पर केंद्रित है। यह ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao और NotebookLM जैसे प्रमुख AI चैट प्लेटफ़ॉर्म का समर्थन करता है।"
   },
   "aboutDataSecurityTitle": {
     "message": "डेटा सुरक्षा"
@@ -513,13 +513,13 @@
     "message": "फ़ीडबैक"
   },
   "aboutDeveloperContent": {
-    "message": "यह प्रोजेक्ट मेरे और Claude Opus 4.6 द्वारा संयुक्त रूप से मेंटेन किया जाता है, हर हफ्ते 1–2 नए वर्शन के साथ। फीचर रिक्वेस्ट करने या बग रिपोर्ट करने के लिए नीचे दिए चैनल से संपर्क करें (देखने पर मैं जरूर जवाब दूंगा):"
+    "message": "ChatLine को ai-chat-timeline fork के रूप में बनाए रखा जाता है। फीचर अनुरोध या bug रिपोर्ट के लिए कृपया इस प्रोजेक्ट repository के Issues पेज का उपयोग करें।"
   },
   "aboutShareTitle": {
     "message": "दोस्तों को सुझाएं"
   },
   "aboutShareContent": {
-    "message": "अगर Timeline आपको उपयोगी लगे, तो Xiaohongshu, Bilibili, X, Reddit, YouTube या अन्य प्लेटफ़ॉर्म पर रिव्यू लिखें, और सहपाठियों और दोस्तों के साथ शेयर करें ताकि और लोग इसका उपयोग कर सकें। धन्यवाद। ❤️"
+    "message": "यदि ChatLine आपके लिए उपयोगी है, तो इसे उन लोगों को सुझाएँ जो AI बातचीत को पढ़ते, ढूँढते और संग्रहित करते हैं। लेखक: 咪咕看见小黑. ईमेल: miguchn@gmail.com. उपयोग के दौरान कोई समस्या आए या सुधार सुझाव हों, तो आप कभी भी ईमेल से प्रतिक्रिया भेज सकते हैं।"
   },
   "nativeMenuStarToFolder": {
     "message": "Star to Folder"
@@ -651,7 +651,7 @@
     "message": "फ़ीचर डॉक्स"
   },
   "changelogTitle": {
-    "message": "Timeline अपडेट हुआ!"
+    "message": "ChatLine अपडेट हुआ!"
   },
   "changelogSubtitle": {
     "message": "$1 उपयोगकर्ता उपयोग कर रहे हैं। नया संस्करण, बेहतर अनुभव।"

@@ -103,7 +103,7 @@ const SITE_INFO = [
             smartInput: false,
             inputAnimation: false,
             quickAsk: true,
-            chatTimes: false  // 提问时间记录
+            chatTimes: true  // 提问时间记录
         }
     },
     {
@@ -160,7 +160,7 @@ const SITE_INFO = [
             smartInput: true,
             inputAnimation: true,
             quickAsk: true,
-            chatTimes: false  // 提问时间记录
+            chatTimes: true  // 提问时间记录
         }
     },
     {
@@ -174,7 +174,7 @@ const SITE_INFO = [
             inputAnimation: true,
             quickAsk: true,
             quickAskPosition: 'bottomLeft',
-            chatTimes: false  // 提问时间记录
+            chatTimes: true  // 提问时间记录
         }
     },
     {
@@ -188,7 +188,7 @@ const SITE_INFO = [
             inputAnimation: false,
             quickAsk: true,
             quickAskPosition: 'bottomLeft',
-            chatTimes: false  // 提问时间记录
+            chatTimes: true  // 提问时间记录
         }
     },
     {
@@ -202,7 +202,7 @@ const SITE_INFO = [
             inputAnimation: false,
             quickAsk: true,
             quickAskPosition: 'bottomLeft',
-            chatTimes: false,  // 提问时间记录
+            chatTimes: true,  // 提问时间记录
             sidebarStarred: true  // 侧边栏收藏列表
         }
     },

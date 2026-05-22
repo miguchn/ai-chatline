@@ -40,6 +40,20 @@ class ClaudeAdapter extends SiteAdapter {
         return pElement || element;
     }
 
+    getAssistantTimeLabelTarget(element, index, context = {}) {
+        const assistant = this.findFirstFollowingElement(
+            element,
+            context.userElements?.[index + 1],
+            [
+                '[data-testid="assistant-message"]',
+                '[data-is-streaming]',
+                '.font-claude-message'
+            ],
+            context.root || document
+        );
+        return assistant?.querySelector('p') || assistant;
+    }
+
     isConversationRoute(pathname) {
         // Claude 对话 URL: /chat/{uuid} 或分享页面 /share/{uuid}
         // UUID 格式: 78721a47-289d-46ad-b497-a47ec784247c
@@ -105,4 +119,3 @@ class ClaudeAdapter extends SiteAdapter {
         return !!stopPath;
     }
 }
-
