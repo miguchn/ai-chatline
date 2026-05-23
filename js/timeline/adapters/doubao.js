@@ -15,7 +15,69 @@ class DoubaoAdapter extends SiteAdapter {
     }
 
     getUserMessageSelector() {
-        return '[data-message-id].justify-end';
+        return [
+            '[data-message-id].justify-end',
+            '[data-message-author-role="user"]',
+            '[data-message-role="user"]',
+            '[data-role="user"]',
+            '[data-author="user"]'
+        ].join(', ');
+    }
+
+    getUserMessageElements(root = document) {
+        const selectors = [
+            this.getUserMessageSelector(),
+            '[data-message-id]'
+        ].join(', ');
+        const raw = Array.from(root.querySelectorAll?.(selectors) || []);
+        const normalized = raw.map(element => this._normalizeMessageElement(element));
+        const elements = Array.from(new Set(normalized))
+            .filter(element => this._isUserMessageElement(element))
+            .sort((a, b) => {
+                if (a === b) return 0;
+                return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+            });
+        return elements.filter(element =>
+            !elements.some(other => other !== element && other.contains(element))
+        );
+    }
+
+    _normalizeMessageElement(element) {
+        if (!element?.closest) return element;
+        return element.closest('[data-message-id]') || element;
+    }
+
+    _detectMessageRole(element) {
+        if (!element) return null;
+        const roleSource = element.closest?.('[data-message-author-role], [data-message-role], [data-role], [data-author]') || element;
+        const attrText = [
+            roleSource.getAttribute?.('data-message-author-role'),
+            roleSource.getAttribute?.('data-message-role'),
+            roleSource.getAttribute?.('data-role'),
+            roleSource.getAttribute?.('data-author'),
+            element.getAttribute?.('aria-label'),
+            roleSource.getAttribute?.('aria-label')
+        ].join(' ').toLowerCase();
+
+        if (/\b(user|human|question|prompt)\b/.test(attrText)) return 'user';
+        if (/\b(assistant|ai|bot|answer|response)\b/.test(attrText)) return 'assistant';
+
+        let current = element;
+        for (let depth = 0; current && current !== document.body && depth < 4; depth++) {
+            const classText = String(current.className || '').toLowerCase();
+            if (classText.includes('justify-end')) return 'user';
+            if (classText.includes('justify-start')) return 'assistant';
+            current = current.parentElement;
+        }
+
+        return null;
+    }
+
+    _isUserMessageElement(element) {
+        if (!element || element.nodeType !== Node.ELEMENT_NODE) return false;
+        if (this._detectMessageRole(element) !== 'user') return false;
+        const text = (element.textContent || '').trim();
+        return !!text || !!element.querySelector?.('img, video, audio, canvas, [class*="file"], [class*="attachment"]');
     }
 
     /**
@@ -106,13 +168,45 @@ class DoubaoAdapter extends SiteAdapter {
     }
 
     getAssistantTimeLabelTarget(element, index, context = {}) {
-        const assistant = this.findFirstFollowingElement(
+        const assistant = this._findFirstFollowingMessageByRole(
             element,
             context.userElements?.[index + 1],
-            '[data-message-id]:not(.justify-end)',
+            'assistant',
             context.root || document
         );
         return assistant?.querySelector('[data-plugin-identifier], .markdown, p') || assistant;
+    }
+
+    _findFirstFollowingMessageByRole(sourceElement, boundaryElement, role, root = document) {
+        if (!sourceElement || !root?.querySelectorAll) return null;
+        const candidates = Array.from(root.querySelectorAll('[data-message-id], [data-message-author-role], [data-message-role], [data-role]'));
+
+        const isFollowingSource = (candidate) => {
+            try {
+                return !!(sourceElement.compareDocumentPosition(candidate) & Node.DOCUMENT_POSITION_FOLLOWING);
+            } catch {
+                return false;
+            }
+        };
+        const isBeforeBoundary = (candidate) => {
+            if (!boundaryElement) return true;
+            try {
+                return !!(candidate.compareDocumentPosition(boundaryElement) & Node.DOCUMENT_POSITION_FOLLOWING);
+            } catch {
+                return true;
+            }
+        };
+
+        return candidates
+            .map(candidate => this._normalizeMessageElement(candidate))
+            .filter((candidate, candidateIndex, all) => candidate && all.indexOf(candidate) === candidateIndex)
+            .find(candidate =>
+                candidate !== sourceElement &&
+                !sourceElement.contains(candidate) &&
+                isFollowingSource(candidate) &&
+                isBeforeBoundary(candidate) &&
+                this._detectMessageRole(candidate) === role
+            ) || null;
     }
 
     isConversationRoute(pathname) {

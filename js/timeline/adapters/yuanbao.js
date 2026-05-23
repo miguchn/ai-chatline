@@ -128,10 +128,9 @@ class YuanbaoAdapter extends SiteAdapter {
     }
 
     isConversationRoute(pathname) {
-        return pathname === '/' ||
-            pathname === '/chat' ||
-            pathname.startsWith('/chat/') ||
-            !!document.querySelector(this.getUserMessageSelector());
+        const hasMessages = !!document.querySelector(this.getUserMessageSelector());
+        return pathname.startsWith('/chat/') ||
+            ((pathname === '/' || pathname === '/chat') && hasMessages);
     }
 
     extractConversationId(pathname) {
@@ -213,21 +212,36 @@ class YuanbaoAdapter extends SiteAdapter {
     
     /**
      * 检测 AI 是否正在生成回答
-     * 元宝: 优先识别停止/生成中按钮，找不到发送按钮时降级认为正在生成
+     * 元宝: 仅识别输入区内可见的停止/生成中按钮，避免非会话页误判
      * @returns {boolean}
      */
     isAIGenerating() {
-        const stopButton = document.querySelector([
+        const inputScope = document.querySelector([
+            '.agent-chat__input-box',
+            '.agent-dialogue__content--common__input',
+            '.chat-input-container',
+            '[class*="agent-chat__input-box"]',
+            '[class*="agent-dialogue__content--common__input"]'
+        ].join(', ')) || document;
+
+        const stopButton = inputScope.querySelector([
             '[class*="stop"]',
             '[aria-label*="停止"]',
             '[aria-label*="Stop"]',
             '[class*="generating"]'
         ].join(', '));
-        if (stopButton) return true;
+        if (stopButton && this._isVisible(stopButton)) return true;
 
-        const sendBtn = document.getElementById('yuanbao-send-btn') ||
-            document.querySelector('.icon-send, [class*="send-btn"], [aria-label*="发送"], [aria-label*="Send"]');
-        return !sendBtn;
+        return false;
+    }
+
+    _isVisible(element) {
+        if (!element) return false;
+        const style = window.getComputedStyle(element);
+        return style.display !== 'none' &&
+            style.visibility !== 'hidden' &&
+            style.opacity !== '0' &&
+            element.getClientRects().length > 0;
     }
 
     _normalizeUserMessageElement(element) {

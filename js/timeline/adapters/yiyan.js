@@ -15,23 +15,116 @@ class YiyanAdapter extends SiteAdapter {
     }
 
     getUserMessageSelector() {
-        // 基于 class 前缀 "questionText" 识别用户消息
-        return '[class*="questionText"]';
+        // 基于多信号识别用户消息，保留 questionText 作为主路径
+        return [
+            '[class*="questionText"]',
+            '[class*="question-text"]',
+            '[class*="question"][data-msgid]',
+            '[class*="question"][data-message-id]',
+            '[data-message-author-role="user"]',
+            '[data-message-role="user"]',
+            '[data-role="user"]'
+        ].join(', ');
+    }
+
+    getUserMessageElements(root = document) {
+        const raw = Array.from(root.querySelectorAll?.(this.getUserMessageSelector()) || []);
+        const normalized = raw.map(element => this._normalizeUserMessageElement(element));
+        const elements = Array.from(new Set(normalized))
+            .filter(element => this._isValidUserMessageElement(element))
+            .sort((a, b) => {
+                if (a === b) return 0;
+                return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+            });
+        return elements.filter(element =>
+            !elements.some(other => other !== element && other.contains(element))
+        );
+    }
+
+    _normalizeUserMessageElement(element) {
+        if (!element?.closest) return element;
+        return element.closest([
+            '[class*="questionText"]',
+            '[class*="question-text"]',
+            '[class*="question"][data-msgid]',
+            '[class*="question"][data-message-id]',
+            '[data-message-author-role="user"]',
+            '[data-message-role="user"]',
+            '[data-role="user"]'
+        ].join(', ')) || element;
+    }
+
+    _isValidUserMessageElement(element) {
+        if (!element || element.nodeType !== Node.ELEMENT_NODE) return false;
+        const assistantSelector = [
+            '[class*="answer"]',
+            '[class*="bot"]',
+            '[class*="assistant"]',
+            '[data-message-author-role="assistant"]',
+            '[data-message-role="assistant"]',
+            '[data-role="assistant"]'
+        ].join(', ');
+        if (element.matches?.(assistantSelector) || element.closest?.(assistantSelector) || element.querySelector?.(assistantSelector)) {
+            return false;
+        }
+
+        const text = this._extractCleanText(element);
+        return !!text || !!element.querySelector?.('img, video, audio, canvas, [class*="file"], [class*="attachment"]');
     }
 
     generateTurnId(element, index) {
-        return `yiyan-${index}`;
+        const idSource = element.closest?.('[data-message-id], [data-msgid], [data-id], [id]');
+        const id = element.getAttribute?.('data-message-id') ||
+            element.getAttribute?.('data-msgid') ||
+            element.getAttribute?.('data-id') ||
+            idSource?.getAttribute?.('data-message-id') ||
+            idSource?.getAttribute?.('data-msgid') ||
+            idSource?.getAttribute?.('data-id') ||
+            idSource?.id;
+        return id ? `yiyan-${id}` : `yiyan-${index}`;
     }
 
     extractText(element) {
         // 文本在 span 子元素中
-        const span = element.querySelector('span');
-        const text = (span?.textContent || element.textContent || '').trim();
+        const content = element.querySelector('[class*="questionText"], [class*="question-text"], [class*="content"], span') || element;
+        const text = this._extractCleanText(content);
         return text || '[图片或文件]';
+    }
+
+    extractIndexFromTurnId(turnId) {
+        if (!turnId?.startsWith?.('yiyan-')) return null;
+        const part = turnId.substring(6);
+        const parsed = parseInt(part, 10);
+        return String(parsed) === part ? parsed : part;
+    }
+
+    generateTurnIdFromIndex(identifier) {
+        return `yiyan-${identifier}`;
+    }
+
+    findMarkerByStoredIndex(storedKey, markers, markerMap) {
+        if (storedKey === null || storedKey === undefined) return null;
+        const marker = markerMap?.get(`yiyan-${storedKey}`);
+        if (marker) return marker;
+        if (typeof storedKey === 'number' && storedKey >= 0 && storedKey < markers.length) {
+            return markers[storedKey];
+        }
+        return null;
+    }
+
+    _extractCleanText(element) {
+        if (!element) return '';
+        try {
+            const clone = element.cloneNode(true);
+            clone.querySelectorAll('button, svg, script, style, [aria-hidden="true"], [role="button"], [class*="toolbar"], [class*="operation"], [class*="action"], [class*="copy"], [class*="share"], [class*="feedback"]').forEach(node => node.remove());
+            return (clone.textContent || '').replace(/\s+/g, ' ').trim();
+        } catch {
+            return (element.textContent || '').replace(/\s+/g, ' ').trim();
+        }
     }
     
     getTimeLabelTarget(element) {
-        return element.querySelector('span') || element;
+        return element.querySelector('[class*="questionText"], [class*="question-text"], [class*="content"], span') || element;
     }
 
     getAssistantTimeLabelTarget(element, index, context = {}) {
@@ -41,7 +134,11 @@ class YiyanAdapter extends SiteAdapter {
             [
                 '[class*="answer"]',
                 '[class*="bot"]',
-                '[class*="markdown"]'
+                '[class*="assistant"]',
+                '[class*="markdown"]',
+                '[data-message-author-role="assistant"]',
+                '[data-message-role="assistant"]',
+                '[data-role="assistant"]'
             ],
             context.root || document
         );

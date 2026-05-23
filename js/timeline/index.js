@@ -32,6 +32,18 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function debugTimelineDetection(reason, details = {}) {
+    let enabled = false;
+    try {
+        enabled = localStorage.getItem('chatgptTimelineDebugPerf') === '1' ||
+            localStorage.getItem('qwenCnAdapterDebug') === '1' ||
+            localStorage.getItem('tongyiAdapterDebug') === '1' ||
+            (typeof GLOBAL_DEBUG !== 'undefined' && GLOBAL_DEBUG === true);
+    } catch {}
+    if (!enabled) return;
+    console.debug('[Timeline]', reason, details);
+}
+
 // Helper function: check if current platform is enabled
 async function isPlatformEnabled() {
     try {
@@ -60,9 +72,22 @@ function canInitialize() {
     if (!currentAdapter) {
         currentAdapter = adapterRegistry.detectAdapter();
     }
-    if (!currentAdapter) return false;
+    if (!currentAdapter) {
+        debugTimelineDetection('adapter-not-detected', {
+            platform: getCurrentPlatform()?.name || 'unknown',
+            url: location.href
+        });
+        return false;
+    }
     
-    return currentAdapter.getUserMessageElements(document).length > 0;
+    const elements = currentAdapter.getUserMessageElements(document);
+    currentAdapter._debug?.('can-initialize-check', {
+        adapter: currentAdapter.constructor?.name || 'unknown',
+        platform: getCurrentPlatform()?.name || 'unknown',
+        url: location.href,
+        userMessageCount: elements.length
+    });
+    return elements.length > 0;
 }
 
 // Initialize timeline with retry mechanism (exponential backoff)
@@ -133,6 +158,7 @@ function initializeTimeline() {
     }
     currentAdapter._debug?.('adapter-detected', {
         adapter: currentAdapter.constructor?.name || 'unknown',
+        platform: getCurrentPlatform()?.name || 'unknown',
         url: location.href
     });
     
@@ -252,6 +278,10 @@ function setupPlatformSettingsListener() {
 
 // Check if current site is supported before initializing
 if (!adapterRegistry.isSupportedSite()) {
+    debugTimelineDetection('unsupported-site', {
+        platform: getCurrentPlatform()?.name || 'unknown',
+        url: location.href
+    });
 } else {
     currentAdapter = adapterRegistry.detectAdapter();
     
