@@ -190,7 +190,7 @@ async function downloadFromDrive(token) {
 
 const SUPPORTED_DOMAINS = [
     'chatgpt.com', 'chat.openai.com', 'gemini.google.com', 'doubao.com',
-    'chat.deepseek.com', 'yiyan.baidu.com', 'qianwen.com', 'chat.qwen.ai',
+    'chat.deepseek.com', 'yiyan.baidu.com', 'qianwen.com', 'tongyi.aliyun.com', 'chat.qwen.ai',
     'kimi.com', 'kimi.moonshot.cn', 'yuanbao.tencent.com', 'grok.com',
     'perplexity.ai', 'claude.ai', 'notebooklm.google.com'
 ];

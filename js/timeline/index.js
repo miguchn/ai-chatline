@@ -131,6 +131,10 @@ function initializeTimeline() {
     if (!currentAdapter) {
         return;
     }
+    currentAdapter._debug?.('adapter-detected', {
+        adapter: currentAdapter.constructor?.name || 'unknown',
+        url: location.href
+    });
     
 
     if (timelineManagerInstance) {

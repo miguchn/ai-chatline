@@ -226,10 +226,22 @@ class TimelineManager {
     async findCriticalElements() {
         const selector = this.adapter.getUserMessageSelector();
         const firstTurn = await this.waitForElement(selector);
-        if (!firstTurn) return false;
+        if (!firstTurn) {
+            this.adapter._debug?.('critical-elements-missing', {
+                reason: 'first-user-message-not-found',
+                selector
+            });
+            return false;
+        }
         
         this.conversationContainer = this.adapter.findConversationContainer(firstTurn);
-        if (!this.conversationContainer) return false;
+        if (!this.conversationContainer) {
+            this.adapter._debug?.('critical-elements-missing', {
+                reason: 'conversation-container-not-found',
+                firstTurn: this.adapter._describeElement?.(firstTurn)
+            });
+            return false;
+        }
 
         let parent = this.conversationContainer;
         while (parent && parent !== document.body) {
@@ -245,6 +257,14 @@ class TimelineManager {
         // 如果没找到滚动容器，使用 document 作为备用（通用方案）
         if (!this.scrollContainer) {
             this.scrollContainer = document.scrollingElement || document.documentElement || document.body;
+            this.adapter._debug?.('scroll-container-fallback', {
+                container: this.adapter._describeElement?.(this.scrollContainer)
+            });
+        } else {
+            this.adapter._debug?.('scroll-container-found', {
+                conversationContainer: this.adapter._describeElement?.(this.conversationContainer),
+                scrollContainer: this.adapter._describeElement?.(this.scrollContainer)
+            });
         }
         
         return this.scrollContainer !== null;
@@ -974,6 +994,10 @@ class TimelineManager {
         this.visibleRange = { start: 0, end: -1 };
         // If the conversation is transiently empty (branch switching), don't wipe UI immediately
         if (userTurnElements.length === 0) {
+            this.adapter._debug?.('markers-empty', {
+                reason: 'no-user-elements-in-conversation-container',
+                conversationContainer: this.adapter._describeElement?.(this.conversationContainer)
+            });
             if (!this.zeroTurnsTimer) {
                 this.zeroTurnsTimer = setTimeout(() => {
                     this.zeroTurnsTimer = null;
