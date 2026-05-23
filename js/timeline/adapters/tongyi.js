@@ -16,11 +16,27 @@ class TongyiAdapter extends SiteAdapter {
 
     getUserMessageSelector() {
         // 基于 class 前缀 "questionItem" 识别用户消息容器
-        return '[class*="questionItem"]';
+        return [
+            '[class*="questionItem"]',
+            '[class*="question-item"]',
+            '.qwen-chat-message-user',
+            '[id^="qwen-chat-message-user"]',
+            '.chat-user-message'
+        ].join(', ');
+    }
+
+    getUserMessageElements(root = document) {
+        const raw = Array.from(root.querySelectorAll?.(this.getUserMessageSelector()) || []);
+        const normalized = raw.map(element =>
+            element.closest?.('[class*="questionItem"], [class*="question-item"], .qwen-chat-message-user, [id^="qwen-chat-message-user"]') || element
+        );
+        return Array.from(new Set(normalized)).filter(element =>
+            !element.querySelector?.('[class*="answerItem"], [class*="answer-item"], [class*="responseItem"], .qwen-chat-message-assistant, .chat-assistant-message')
+        );
     }
 
     generateTurnId(element, index) {
-        const msgId = element.getAttribute('data-msgid');
+        const msgId = element.getAttribute('data-msgid') || element.id;
         if (msgId) return `tongyi-${msgId}`;
         return `tongyi-${index}`;
     }
@@ -52,7 +68,7 @@ class TongyiAdapter extends SiteAdapter {
 
     extractText(element) {
         // 文本在 bubble-- 开头的 class 中
-        const bubble = element.querySelector('[class*="bubble"]');
+        const bubble = element.querySelector('[class*="bubble"], .user-message-content, .chat-user-message, [class*="user-message-content"]');
         const text = (bubble?.textContent || element.textContent || '').trim();
         return text || '[图片或文件]';
     }
@@ -68,7 +84,10 @@ class TongyiAdapter extends SiteAdapter {
             [
                 '[class*="answerItem"]',
                 '[class*="answer-item"]',
-                '[class*="responseItem"]'
+                '[class*="responseItem"]',
+                '.qwen-chat-message-assistant',
+                '.chat-assistant-message',
+                '[id^="qwen-chat-message-assistant"]'
             ],
             context.root || document
         );
@@ -80,7 +99,11 @@ class TongyiAdapter extends SiteAdapter {
         // 对话: /chat/{id}
         // 分享: /share?shareId={id}
         return pathname.startsWith('/chat/') || 
-               (pathname.startsWith('/share') && location.search.includes('shareId='));
+               pathname.startsWith('/c/') ||
+               pathname.startsWith('/share/') ||
+               pathname === '/' ||
+               (pathname.startsWith('/share') && location.search.includes('shareId=')) ||
+               !!document.querySelector(this.getUserMessageSelector());
     }
 
     extractConversationId(pathname) {
@@ -88,6 +111,14 @@ class TongyiAdapter extends SiteAdapter {
             // 对话 URL: /chat/{id}
             if (pathname.startsWith('/chat/')) {
                 const id = pathname.replace('/chat/', '').split('/')[0];
+                if (id) return id;
+            }
+            if (pathname.startsWith('/c/')) {
+                const id = pathname.replace('/c/', '').split('/')[0];
+                if (id) return id;
+            }
+            if (pathname.startsWith('/share/')) {
+                const id = pathname.replace('/share/', '').split('/')[0];
                 if (id) return id;
             }
             // 分享 URL: /share?shareId={id}
@@ -102,6 +133,9 @@ class TongyiAdapter extends SiteAdapter {
     }
 
     findConversationContainer(firstMessage) {
+        const container = document.querySelector('#chat-message-container, #chat-messages-scroll-container, [class*="chat-message-container"]');
+        if (container) return container;
+
         // 查找对话容器 - 使用 LCA（最近共同祖先）算法
         return ContainerFinder.findConversationContainer(firstMessage, {
             messageSelector: this.getUserMessageSelector()

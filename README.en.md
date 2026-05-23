@@ -157,6 +157,16 @@ Supporting **42 languages** with global coverage.
 - [ ] Optimize Gemini Canvas auto-open
 - [x] Cloud sync
 
+## 📝 Release Notes
+
+### v4.7
+
+New features:
+Added conversation export, supporting Markdown, Obsidian Markdown, TXT, JSON, and other formats for local archiving, knowledge management, and later reuse. Users can quickly export the current conversation from the chat page, then copy it to the clipboard or download it as a local file.
+
+Improvements:
+Improved multi-platform compatibility, especially for Doubao, Qwen, DeepSeek, and other domestic AI model platforms. Conversation content detection, role recognition, and export completeness are now more reliable across different AI platforms.
+
 ## 💬 Contact & Support
 
 - **Author**: MiguCHN

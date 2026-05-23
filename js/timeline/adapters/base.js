@@ -105,9 +105,19 @@ class SiteAdapter {
             platform: this.constructor?.name?.replace(/Adapter$/, '').toLowerCase() || 'unknown',
             conversationId: this.extractConversationId(pathname),
             url: options.url || location.href,
-            exportedAt: new Date().toISOString(),
+            exportedAt: typeof ConversationExportDateUtils !== 'undefined'
+                ? ConversationExportDateUtils.formatDateTime(Date.now())
+                : this._formatFallbackExportDateTime(Date.now()),
             messages
         };
+    }
+
+    _formatFallbackExportDateTime(value) {
+        const date = new Date(value);
+        const pad = (number, length = 2) => String(number).padStart(length, '0');
+        return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ` +
+            `${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}.` +
+            `${pad(Math.floor(date.getMilliseconds() / 10))}`;
     }
     
     /**

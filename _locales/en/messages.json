@@ -3,7 +3,7 @@
     "message": "ChatLine: ChatGPT & Gemini Chat Enhanced"
   },
   "extDescription": {
-    "message": "Browser enhancement for AI chat pages. Forked from Timeline, with timeline navigation, history positioning, browsing enhancements, and conversation archiving."
+    "message": "Enhance ChatGPT, Gemini, and other AI chats with timelines, history jumps, browsing tools, and conversation archiving."
   },
   "qwxpzm": {
     "message": "Star"
@@ -895,5 +895,17 @@
   },
   "timelineThemeColorManageButton": {
     "message": "Set"
+  },
+  "conversationExportTabName": {
+    "message": "Conversation Export"
+  },
+  "conversationExportToggleTitle": {
+    "message": "Enable conversation export"
+  },
+  "conversationExportToggleHint": {
+    "message": "When enabled, supported conversation pages show an export entry above the timeline."
+  },
+  "conversationExportButton": {
+    "message": "Export conversation"
   }
 }

@@ -22,11 +22,21 @@ class QwenAdapter extends SiteAdapter {
     }
 
     getUserMessageSelector() {
-        return '.qwen-chat-message-user';
+        return '.qwen-chat-message-user, [id^="qwen-chat-message-user"], .chat-user-message, [class*="chat-message-user"]';
+    }
+
+    getUserMessageElements(root = document) {
+        const raw = Array.from(root.querySelectorAll?.(this.getUserMessageSelector()) || []);
+        const normalized = raw.map(element =>
+            element.closest?.('.qwen-chat-message-user, [id^="qwen-chat-message-user"], [class*="chat-message-user"]') || element
+        );
+        return Array.from(new Set(normalized)).filter(element =>
+            !element.querySelector?.('.qwen-chat-message-assistant, [id^="qwen-chat-message-assistant"], .chat-assistant-message')
+        );
     }
 
     generateTurnId(element, index) {
-        const id = element.id;
+        const id = element.id || element.closest?.('[id^="qwen-chat-message-user"]')?.id;
         if (id && id !== 'qwen-chat-message-user-undefined' && id.length > 24) {
             return `qwen-${id}`;
         }
@@ -59,7 +69,7 @@ class QwenAdapter extends SiteAdapter {
     }
 
     extractText(element) {
-        const content = element.querySelector('.user-message-content');
+        const content = element.querySelector('.user-message-content, .chat-user-message, [class*="user-message-content"]');
         const text = (content?.textContent || element.textContent || '').trim();
         return text || '[图片或文件]';
     }
@@ -83,18 +93,28 @@ class QwenAdapter extends SiteAdapter {
     }
 
     isConversationRoute(pathname) {
-        return pathname.startsWith('/c/');
+        return pathname.startsWith('/c/') ||
+            pathname.startsWith('/chat/') ||
+            pathname.startsWith('/share/') ||
+            pathname === '/' ||
+            !!document.querySelector(this.getUserMessageSelector());
     }
 
     extractConversationId(pathname) {
         if (pathname.startsWith('/c/')) {
             return pathname.replace('/c/', '').split('/')[0] || null;
         }
+        if (pathname.startsWith('/chat/')) {
+            return pathname.replace('/chat/', '').split('/')[0] || null;
+        }
+        if (pathname.startsWith('/share/')) {
+            return pathname.replace('/share/', '').split('/')[0] || null;
+        }
         return null;
     }
 
     findConversationContainer(firstMessage) {
-        const container = document.querySelector('#chat-message-container');
+        const container = document.querySelector('#chat-message-container, #chat-messages-scroll-container, [class*="chat-message-container"]');
         if (container) return container;
         return ContainerFinder.findConversationContainer(firstMessage, {
             messageSelector: this.getUserMessageSelector()
