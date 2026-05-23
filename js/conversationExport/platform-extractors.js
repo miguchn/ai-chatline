@@ -368,6 +368,111 @@ class QwenConversationExtractor extends BasePlatformConversationExtractor {
     }
 }
 
+class YuanbaoConversationExtractor extends BasePlatformConversationExtractor {
+    constructor(base) {
+        super(base);
+        this.name = 'yuanbao-agent-chat-bubbles';
+    }
+
+    async extract({ root, timestamps }) {
+        const candidates = this._queryCandidates(root, [
+            '.agent-chat__bubble--human .agent-chat__bubble__content',
+            '.agent-chat__bubble--ai .agent-chat__bubble__content',
+            '.agent-chat__conv--human .agent-chat__bubble__content',
+            '.agent-chat__conv--ai .agent-chat__bubble__content',
+            '[class*="agent-chat__bubble--human"] [class*="agent-chat__bubble__content"]',
+            '[class*="agent-chat__bubble--ai"] [class*="agent-chat__bubble__content"]',
+            '[class*="agent-chat__conv--human"] [class*="agent-chat__bubble__content"]',
+            '[class*="agent-chat__conv--ai"] [class*="agent-chat__bubble__content"]',
+            '[data-message-author-role="user"]',
+            '[data-message-author-role="assistant"]',
+            '[data-message-role="user"]',
+            '[data-message-role="assistant"]',
+            '[data-role="user"]',
+            '[data-role="assistant"]'
+        ]);
+
+        const messages = this._messagesFromCandidates(this._dedupeYuanbaoCandidates(candidates), { timestamps });
+        this._debug(messages, candidates);
+        return messages;
+    }
+
+    _dedupeYuanbaoCandidates(candidates) {
+        return this.base._sortByDom(candidates.filter((element, index, all) => {
+            const role = this._roleOf(element);
+            if (!role) return false;
+            return !all.some(other =>
+                other !== element &&
+                other.contains(element) &&
+                this._roleOf(other) === role
+            );
+        }));
+    }
+
+    _roleOf(candidate) {
+        const text = [
+            candidate.getAttribute?.('data-message-author-role'),
+            candidate.getAttribute?.('data-message-role'),
+            candidate.getAttribute?.('data-role'),
+            candidate.id,
+            candidate.className,
+            candidate.closest?.('[class*="agent-chat__bubble"], [class*="agent-chat__conv"]')?.className
+        ].join(' ').toLowerCase();
+
+        if (text.includes('human') || /\b(user|question|prompt)\b/.test(text)) return 'user';
+        if (text.includes('ai') || /\b(assistant|answer|response|agent|bot)\b/.test(text)) return 'assistant';
+        return this.base._inferRoleFromElement(candidate, null);
+    }
+
+    _idOf(candidate, rawIndex, role, turnIndex) {
+        const idSource = candidate.closest?.('[data-message-id], [data-msgid], [data-id], [id]');
+        const id = candidate.getAttribute?.('data-message-id') ||
+            candidate.getAttribute?.('data-msgid') ||
+            candidate.getAttribute?.('data-id') ||
+            idSource?.getAttribute?.('data-message-id') ||
+            idSource?.getAttribute?.('data-msgid') ||
+            idSource?.getAttribute?.('data-id') ||
+            idSource?.id;
+        if (id) return `yuanbao-${id}-${role}`;
+        return `yuanbao-${role === 'user' ? turnIndex : `${turnIndex}-assistant-${rawIndex}`}`;
+    }
+
+    _contentOf(candidate, role) {
+        const selectors = role === 'user'
+            ? ['.hyc-content-text', '[class$="-content-text"]', '[class*="content-text"]', '[data-message-content]']
+            : ['.hyc-common-markdown', '[class*="common-markdown"]', '[class*="markdown"]', '[data-message-content]', 'p'];
+        return this.base._extractBestText(candidate, selectors, {
+            removeSelectors: [
+                'button',
+                '[role="button"]',
+                '[class*="toolbar"]',
+                '[class*="operation"]',
+                '[class*="action"]',
+                '[class*="copy"]',
+                '[class*="share"]',
+                '[class*="feedback"]'
+            ]
+        });
+    }
+
+    _debug(messages, candidates) {
+        let enabled = false;
+        try {
+            enabled = localStorage.getItem('yuanbaoAdapterDebug') === '1' ||
+                localStorage.getItem('conversationExportDebug') === '1' ||
+                (typeof GLOBAL_DEBUG !== 'undefined' && GLOBAL_DEBUG === true);
+        } catch {}
+        if (!enabled) return;
+
+        console.debug('[ConversationExport:Yuanbao]', {
+            candidates: candidates.length,
+            messages: messages.length,
+            userMessages: messages.filter(message => message.role === 'user').length,
+            assistantMessages: messages.filter(message => message.role === 'assistant').length
+        });
+    }
+}
+
 const ConversationPlatformExtractorRegistry = {
     get(platformId, base) {
         const registry = {
@@ -375,7 +480,8 @@ const ConversationPlatformExtractorRegistry = {
             deepseek: DeepSeekConversationExtractor,
             tongyi: TongyiConversationExtractor,
             qwen: QwenConversationExtractor,
-            kimi: KimiConversationExtractor
+            kimi: KimiConversationExtractor,
+            yuanbao: YuanbaoConversationExtractor
         };
         const ExtractorClass = registry[platformId];
         return ExtractorClass ? new ExtractorClass(base) : null;

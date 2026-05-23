@@ -113,7 +113,7 @@ const SITE_INFO = [
     },
     {
         id: 'tongyi',
-        sites: ['qianwen.com'],
+        sites: ['qianwen.com', 'tongyi.aliyun.com'],
         name: '千问',
         logoPath: 'images/logo/tongyi.webp',
         features: {

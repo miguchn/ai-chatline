@@ -2,12 +2,13 @@
  * Yuanbao (元宝) Adapter
  * 
  * Supports: yuanbao.tencent.com
- * Features: 使用 class 后缀匹配，URL 格式特殊
+ * Features: 使用元宝消息气泡 class + 文本 class 多信号识别，兼容 SPA/异步加载
  */
 
 class YuanbaoAdapter extends SiteAdapter {
     constructor() {
         super();
+        this._lastDebugLogAt = 0;
     }
 
     matches(url) {
@@ -15,23 +16,94 @@ class YuanbaoAdapter extends SiteAdapter {
     }
 
     getUserMessageSelector() {
-        // 使用属性选择器匹配 class 以 "-content-text" 结尾的元素
-        // 例如：hyc-content-text, abc-content-text 等
-        return '[class$="-content-text"]';
+        return [
+            '.agent-chat__bubble--human .agent-chat__bubble__content',
+            '.agent-chat__conv--human .agent-chat__bubble__content',
+            '[class*="agent-chat__bubble--human"] [class*="agent-chat__bubble__content"]',
+            '[class*="agent-chat__conv--human"] [class*="agent-chat__bubble__content"]',
+            '.agent-chat__bubble--human',
+            '.agent-chat__conv--human',
+            '[class*="agent-chat__bubble--human"]',
+            '[class*="agent-chat__conv--human"]',
+            '.hyc-content-text',
+            '[class$="-content-text"]',
+            '[class*="content-text"]',
+            '[data-message-author-role="user"]',
+            '[data-message-role="user"]',
+            '[data-role="user"]'
+        ].join(', ');
+    }
+
+    getUserMessageElements(root = document) {
+        const raw = Array.from(root.querySelectorAll?.(this.getUserMessageSelector()) || []);
+        if (raw.length === 0) {
+            this._debug('no-user-candidates', { root: this._describeElement(root) });
+            return [];
+        }
+
+        const normalized = raw.map(element => this._normalizeUserMessageElement(element));
+        const elements = Array.from(new Set(normalized))
+            .filter(element => this._isValidUserMessageElement(element))
+            .sort((a, b) => {
+                if (a === b) return 0;
+                return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+            });
+
+        if (elements.length === 0) {
+            this._debug('all-user-candidates-filtered', {
+                rawCount: raw.length,
+                samples: raw.slice(0, 3).map(element => this._describeElement(element))
+            });
+        }
+        return elements;
     }
 
     generateTurnId(element, index) {
-        return `yuanbao-${index}`;
+        const idSource = element.closest?.('[data-message-id], [data-msgid], [data-id], [id]');
+        const id = element.getAttribute?.('data-message-id') ||
+            element.getAttribute?.('data-msgid') ||
+            element.getAttribute?.('data-id') ||
+            idSource?.getAttribute?.('data-message-id') ||
+            idSource?.getAttribute?.('data-msgid') ||
+            idSource?.getAttribute?.('data-id') ||
+            idSource?.id;
+        return id ? `yuanbao-${id}` : `yuanbao-${index}`;
+    }
+
+    generateTurnIdFromIndex(identifier) {
+        return `yuanbao-${identifier}`;
+    }
+
+    extractIndexFromTurnId(turnId) {
+        if (!turnId?.startsWith?.('yuanbao-')) return null;
+        const part = turnId.substring(8);
+        const parsed = parseInt(part, 10);
+        return String(parsed) === part ? parsed : part;
+    }
+
+    findMarkerByStoredIndex(storedKey, markers, markerMap) {
+        if (storedKey === null || storedKey === undefined) return null;
+        const marker = markerMap?.get(`yuanbao-${storedKey}`);
+        if (marker) return marker;
+        if (typeof storedKey === 'number' && storedKey >= 0 && storedKey < markers.length) {
+            return markers[storedKey];
+        }
+        return null;
     }
 
     extractText(element) {
-        // 文本直接在元素中
-        const text = (element.textContent || '').trim();
+        const content = element.querySelector?.([
+            '.hyc-content-text',
+            '[class$="-content-text"]',
+            '[class*="content-text"]',
+            '[data-message-content]'
+        ].join(', ')) || element;
+        const text = this._extractCleanText(content);
         return text || '[图片或文件]';
     }
 
     getTimeLabelTarget(element) {
-        return element;
+        return element.querySelector?.('.hyc-content-text, [class$="-content-text"], [class*="content-text"]') || element;
     }
 
     getAssistantTimeLabelTarget(element, index, context = {}) {
@@ -39,28 +111,38 @@ class YuanbaoAdapter extends SiteAdapter {
             element,
             context.userElements?.[index + 1],
             [
-                '[class*="agent"] [class$="-content-text"]',
-                '[class*="assistant"] [class$="-content-text"]',
-                '[class*="bot"] [class$="-content-text"]',
-                '[class*="markdown"]'
+                '.agent-chat__bubble--ai .agent-chat__bubble__content',
+                '.agent-chat__conv--ai .agent-chat__bubble__content',
+                '[class*="agent-chat__bubble--ai"] [class*="agent-chat__bubble__content"]',
+                '[class*="agent-chat__conv--ai"] [class*="agent-chat__bubble__content"]',
+                '.hyc-common-markdown',
+                '[class*="common-markdown"]',
+                '[class*="markdown"]',
+                '[data-message-author-role="assistant"]',
+                '[data-message-role="assistant"]',
+                '[data-role="assistant"]'
             ],
             context.root || document
         );
-        return assistant?.querySelector('[class$="-content-text"], [class*="markdown"], p') || assistant;
+        return assistant?.querySelector('.hyc-common-markdown, [class*="common-markdown"], [class*="markdown"], p') || assistant;
     }
 
     isConversationRoute(pathname) {
-        // 元宝对话 URL: /chat/{variable}/{id}
-        return pathname.includes('/chat/');
+        return pathname === '/' ||
+            pathname === '/chat' ||
+            pathname.startsWith('/chat/') ||
+            !!document.querySelector(this.getUserMessageSelector());
     }
 
     extractConversationId(pathname) {
         try {
-            // 从 /chat/naQivTmsDa/21187e6f-054c-4fee-b92b-c2386be40b65 提取最后一段作为对话 ID
+            const params = new URLSearchParams(location.search);
+            const queryId = params.get('conversationId') || params.get('chatId') || params.get('id');
+            if (queryId) return queryId;
+
             const segments = pathname.split('/').filter(Boolean);
-            // 假设格式为 ['chat', 'variable', 'id']
-            if (segments.length >= 3 && segments[0] === 'chat') {
-                return segments[segments.length - 1]; // 返回最后一段
+            if (segments[0] === 'chat' && segments.length >= 2) {
+                return segments[segments.length - 1];
             }
             return null;
         } catch {
@@ -69,10 +151,45 @@ class YuanbaoAdapter extends SiteAdapter {
     }
 
     findConversationContainer(firstMessage) {
-        // 查找对话容器 - 使用 LCA（最近共同祖先）算法
-        return ContainerFinder.findConversationContainer(firstMessage, {
+        const containerSelectors = [
+            '#chat-content',
+            '.agent-chat__list__content-wrapper',
+            '.agent-chat__list',
+            '.agent-chat__container',
+            '.agent-dialogue__content--common__content',
+            '.agent-dialogue__content',
+            '[class*="agent-chat__list__content-wrapper"]',
+            '[class*="agent-chat__list"]',
+            '[class*="agent-chat__container"]',
+            '[class*="agent-dialogue__content--common__content"]',
+            '[class*="agent-dialogue__content"]',
+            'main',
+            '[role="main"]'
+        ];
+
+        for (const selector of containerSelectors) {
+            const candidates = Array.from(document.querySelectorAll(selector)).filter(el =>
+                el.contains(firstMessage) && this.getUserMessageElements(el).length > 0
+            );
+            const container = this._pickNearestContainer(candidates);
+            if (container) {
+                this._debug('container-found', { selector, container: this._describeElement(container) });
+                return container;
+            }
+        }
+
+        const users = this.getUserMessageElements(document);
+        const lca = users.length > 1 ? ContainerFinder.findLowestCommonAncestor(users) : null;
+        if (lca && lca !== document.body && lca !== document.documentElement) {
+            this._debug('container-found-lca', { container: this._describeElement(lca) });
+            return lca;
+        }
+
+        const fallback = ContainerFinder.findConversationContainer(firstMessage, {
             messageSelector: this.getUserMessageSelector()
         });
+        this._debug('container-found-fallback', { container: this._describeElement(fallback) });
+        return fallback;
     }
 
     getTimelinePosition() {
@@ -96,12 +213,126 @@ class YuanbaoAdapter extends SiteAdapter {
     
     /**
      * 检测 AI 是否正在生成回答
-     * 元宝: 当 #yuanbao-send-btn 元素不存在时，表示正在生成
+     * 元宝: 优先识别停止/生成中按钮，找不到发送按钮时降级认为正在生成
      * @returns {boolean}
      */
     isAIGenerating() {
-        const sendBtn = document.getElementById('yuanbao-send-btn');
+        const stopButton = document.querySelector([
+            '[class*="stop"]',
+            '[aria-label*="停止"]',
+            '[aria-label*="Stop"]',
+            '[class*="generating"]'
+        ].join(', '));
+        if (stopButton) return true;
+
+        const sendBtn = document.getElementById('yuanbao-send-btn') ||
+            document.querySelector('.icon-send, [class*="send-btn"], [aria-label*="发送"], [aria-label*="Send"]');
         return !sendBtn;
+    }
+
+    _normalizeUserMessageElement(element) {
+        if (!element?.closest) return element;
+        const humanBubble = element.closest([
+            '.agent-chat__bubble--human',
+            '.agent-chat__conv--human',
+            '[class*="agent-chat__bubble--human"]',
+            '[class*="agent-chat__conv--human"]',
+            '[data-message-author-role="user"]',
+            '[data-message-role="user"]',
+            '[data-role="user"]'
+        ].join(', '));
+        if (humanBubble) {
+            return humanBubble.querySelector('.agent-chat__bubble__content, [class*="agent-chat__bubble__content"]') || humanBubble;
+        }
+
+        return element.closest('.agent-chat__bubble__content, [class*="agent-chat__bubble__content"]') || element;
+    }
+
+    _isValidUserMessageElement(element) {
+        if (!element || element.nodeType !== Node.ELEMENT_NODE) return false;
+
+        const aiSelector = [
+            '.agent-chat__bubble--ai',
+            '.agent-chat__conv--ai',
+            '[class*="agent-chat__bubble--ai"]',
+            '[class*="agent-chat__conv--ai"]',
+            '.hyc-common-markdown',
+            '[class*="common-markdown"]',
+            '[data-message-author-role="assistant"]',
+            '[data-message-role="assistant"]',
+            '[data-role="assistant"]'
+        ].join(', ');
+        if (element.matches?.(aiSelector) || element.closest?.(aiSelector) || element.querySelector?.(aiSelector)) {
+            return false;
+        }
+
+        const role = (
+            element.getAttribute('data-message-author-role') ||
+            element.getAttribute('data-message-role') ||
+            element.getAttribute('data-role') ||
+            ''
+        ).toLowerCase();
+        if (role && role !== 'user' && role !== 'human') return false;
+
+        const text = this._extractCleanText(element);
+        return !!text || !!element.querySelector?.('img, video, audio, canvas, [class*="file"], [class*="attachment"]');
+    }
+
+    _extractCleanText(element) {
+        if (!element) return '';
+        try {
+            const clone = element.cloneNode(true);
+            clone.querySelectorAll([
+                'button',
+                'svg',
+                'script',
+                'style',
+                '[aria-hidden="true"]',
+                '[role="button"]',
+                '[class*="toolbar"]',
+                '[class*="operation"]',
+                '[class*="action"]',
+                '[class*="copy"]',
+                '[class*="share"]',
+                '[class*="feedback"]'
+            ].join(', ')).forEach(node => node.remove());
+            return (clone.textContent || '').replace(/\s+/g, ' ').trim();
+        } catch {
+            return (element.textContent || '').replace(/\s+/g, ' ').trim();
+        }
+    }
+
+    _pickNearestContainer(candidates) {
+        return candidates.reduce((nearest, candidate) => {
+            if (!nearest) return candidate;
+            return nearest.contains(candidate) ? candidate : nearest;
+        }, null);
+    }
+
+    _debug(reason, details = {}) {
+        let enabled = false;
+        try {
+            enabled = localStorage.getItem('yuanbaoAdapterDebug') === '1' ||
+                localStorage.getItem('chatgptTimelineDebugPerf') === '1' ||
+                (typeof GLOBAL_DEBUG !== 'undefined' && GLOBAL_DEBUG === true);
+        } catch {}
+        if (!enabled) return;
+
+        const now = Date.now();
+        if (now - this._lastDebugLogAt < 1000) return;
+        this._lastDebugLogAt = now;
+        console.debug('[YuanbaoAdapter]', reason, details);
+    }
+
+    _describeElement(element) {
+        if (!element) return null;
+        const className = typeof element.className === 'string' ? element.className : '';
+        return {
+            tag: element.tagName?.toLowerCase?.(),
+            id: element.id || '',
+            className: className.slice(0, 160),
+            text: (element.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80)
+        };
     }
     
 }
