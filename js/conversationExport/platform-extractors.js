@@ -280,9 +280,16 @@ class TongyiConversationExtractor extends BasePlatformConversationExtractor {
         const candidates = this._queryCandidates(root, [
             '[class*="questionItem"]',
             '[class*="question-item"]',
+            '[class^="questionItem-"]',
+            '[class^="questionItem_"]',
+            '[class*="askItem"]',
+            '[class*="ask-item"]',
             '[class*="answerItem"]',
             '[class*="answer-item"]',
+            '[class^="answerItem-"]',
+            '[class^="answerItem_"]',
             '[class*="responseItem"]',
+            '[class*="response-item"]',
             '.qwen-chat-message-user',
             '.qwen-chat-message-assistant',
             '.chat-user-message',
@@ -296,8 +303,8 @@ class TongyiConversationExtractor extends BasePlatformConversationExtractor {
     _roleOf(candidate) {
         const classText = String(candidate.className || '').toLowerCase();
         const idText = String(candidate.id || '').toLowerCase();
-        if (classText.includes('questionitem') || classText.includes('question-item')) return 'user';
-        if (classText.includes('answeritem') || classText.includes('answer-item') || classText.includes('responseitem')) return 'assistant';
+        if (classText.includes('questionitem') || classText.includes('question-item') || classText.includes('askitem') || classText.includes('ask-item')) return 'user';
+        if (classText.includes('answeritem') || classText.includes('answer-item') || classText.includes('responseitem') || classText.includes('response-item')) return 'assistant';
         if (idText.includes('qwen-chat-message-user') || classText.includes('chat-message-user') || classText.includes('chat-user-message')) return 'user';
         if (idText.includes('qwen-chat-message-assistant') || classText.includes('chat-message-assistant') || classText.includes('chat-assistant-message')) return 'assistant';
         return this.base._inferRoleFromElement(candidate, 'assistant');
@@ -310,7 +317,10 @@ class TongyiConversationExtractor extends BasePlatformConversationExtractor {
 
     _contentOf(candidate) {
         return this.base._extractBestText(candidate, [
+            '[class*="contentBox"] [class*="bubble"]',
+            '[class*="content-box"] [class*="bubble"]',
             '[class*="bubble"]',
+            '[class*="questionText"], [class*="question-text"]',
             '.user-message-content',
             '.assistant-message-content',
             '.chat-user-message',
@@ -321,6 +331,93 @@ class TongyiConversationExtractor extends BasePlatformConversationExtractor {
             '[class*="content"]',
             'article'
         ]);
+    }
+}
+
+class YiyanConversationExtractor extends BasePlatformConversationExtractor {
+    constructor(base) {
+        super(base);
+        this.name = 'yiyan-question-answer-stream';
+    }
+
+    async extract({ root, timestamps }) {
+        const candidates = this._queryCandidates(root, [
+            '[class*="questionText"]',
+            '[class*="question-text"]',
+            '[class*="question"][data-msgid]',
+            '[class*="question"][data-message-id]',
+            '[data-message-author-role="user"]',
+            '[data-message-role="user"]',
+            '[data-role="user"]',
+            '[class*="answer"]',
+            '[class*="bot"]',
+            '[class*="assistant"]',
+            '[class*="markdown"]',
+            '[data-message-author-role="assistant"]',
+            '[data-message-role="assistant"]',
+            '[data-role="assistant"]'
+        ]);
+        return this._messagesFromCandidates(this._dedupeYiyanCandidates(candidates), { timestamps });
+    }
+
+    _dedupeYiyanCandidates(candidates) {
+        return this.base._sortByDom(candidates.filter((element, index, all) => {
+            const role = this._roleOf(element);
+            if (!role) return false;
+            return !all.some(other =>
+                other !== element &&
+                other.contains(element) &&
+                this._roleOf(other) === role
+            );
+        }));
+    }
+
+    _roleOf(candidate) {
+        const text = [
+            candidate.getAttribute?.('data-message-author-role'),
+            candidate.getAttribute?.('data-message-role'),
+            candidate.getAttribute?.('data-role'),
+            candidate.id,
+            candidate.className,
+            candidate.closest?.('[data-message-author-role], [data-message-role], [data-role]')?.getAttribute?.('data-message-author-role'),
+            candidate.closest?.('[data-message-author-role], [data-message-role], [data-role]')?.getAttribute?.('data-message-role'),
+            candidate.closest?.('[data-message-author-role], [data-message-role], [data-role]')?.getAttribute?.('data-role')
+        ].join(' ').toLowerCase();
+
+        if (text.includes('questiontext') || text.includes('question-text') || /\b(user|human|question|prompt)\b/.test(text)) return 'user';
+        if (text.includes('answer') || text.includes('bot') || text.includes('assistant') || text.includes('markdown')) return 'assistant';
+        return this.base._inferRoleFromElement(candidate, null);
+    }
+
+    _idOf(candidate, rawIndex, role, turnIndex) {
+        const idSource = candidate.closest?.('[data-message-id], [data-msgid], [data-id], [id]');
+        const id = candidate.getAttribute?.('data-message-id') ||
+            candidate.getAttribute?.('data-msgid') ||
+            candidate.getAttribute?.('data-id') ||
+            idSource?.getAttribute?.('data-message-id') ||
+            idSource?.getAttribute?.('data-msgid') ||
+            idSource?.getAttribute?.('data-id') ||
+            idSource?.id;
+        if (id) return role === 'user' ? `yiyan-${id}` : `yiyan-${id}-assistant`;
+        return `yiyan-${role === 'user' ? turnIndex : `${turnIndex}-assistant-${rawIndex}`}`;
+    }
+
+    _contentOf(candidate, role) {
+        const selectors = role === 'user'
+            ? ['[class*="questionText"]', '[class*="question-text"]', '[class*="content"]', 'span']
+            : ['[class*="markdown"]', '[class*="answer"]', '[class*="bot"]', '[class*="assistant"]', '[class*="content"]', 'p'];
+        return this.base._extractBestText(candidate, selectors, {
+            removeSelectors: [
+                'button',
+                '[role="button"]',
+                '[class*="toolbar"]',
+                '[class*="operation"]',
+                '[class*="action"]',
+                '[class*="copy"]',
+                '[class*="share"]',
+                '[class*="feedback"]'
+            ]
+        });
     }
 }
 
@@ -433,7 +530,7 @@ class YuanbaoConversationExtractor extends BasePlatformConversationExtractor {
             idSource?.getAttribute?.('data-msgid') ||
             idSource?.getAttribute?.('data-id') ||
             idSource?.id;
-        if (id) return `yuanbao-${id}-${role}`;
+        if (id) return role === 'user' ? `yuanbao-${id}` : `yuanbao-${id}-${role}`;
         return `yuanbao-${role === 'user' ? turnIndex : `${turnIndex}-assistant-${rawIndex}`}`;
     }
 
@@ -478,6 +575,7 @@ const ConversationPlatformExtractorRegistry = {
         const registry = {
             doubao: DoubaoConversationExtractor,
             deepseek: DeepSeekConversationExtractor,
+            yiyan: YiyanConversationExtractor,
             tongyi: TongyiConversationExtractor,
             qwen: QwenConversationExtractor,
             kimi: KimiConversationExtractor,

@@ -225,7 +225,11 @@ class TimelineManager {
     
     async findCriticalElements() {
         const selector = this.adapter.getUserMessageSelector();
-        const firstTurn = await this.waitForElement(selector);
+        let firstTurn = this.adapter.getUserMessageElements(document)[0];
+        if (!firstTurn) {
+            await this.waitForElement(selector);
+            firstTurn = this.adapter.getUserMessageElements(document)[0];
+        }
         if (!firstTurn) {
             this.adapter._debug?.('critical-elements-missing', {
                 reason: 'first-user-message-not-found',
@@ -243,15 +247,18 @@ class TimelineManager {
             return false;
         }
 
-        let parent = this.conversationContainer;
-        while (parent && parent !== document.body) {
-            const style = window.getComputedStyle(parent);
-            const overflowY = style.overflowY;
-            if (overflowY === 'auto' || overflowY === 'scroll') {
-                this.scrollContainer = parent;
-                break;
+        this.scrollContainer = this.adapter.getScrollContainer?.(this.conversationContainer, firstTurn) || null;
+        if (!this.scrollContainer) {
+            let parent = this.conversationContainer;
+            while (parent && parent !== document.body) {
+                const style = window.getComputedStyle(parent);
+                const overflowY = style.overflowY;
+                if (overflowY === 'auto' || overflowY === 'scroll') {
+                    this.scrollContainer = parent;
+                    break;
+                }
+                parent = parent.parentElement;
             }
-            parent = parent.parentElement;
         }
         
         // 如果没找到滚动容器，使用 document 作为备用（通用方案）
@@ -1567,14 +1574,16 @@ class TimelineManager {
         // ✅ Padding 状态由 adapter.isAIGenerating() 实时控制
 
         // Find (or re-find) scroll container
-        let parent = newConv;
-        let newScroll = null;
-        while (parent && parent !== document.body) {
-            const style = window.getComputedStyle(parent);
-            if (style.overflowY === 'auto' || style.overflowY === 'scroll') {
-                newScroll = parent; break;
+        let newScroll = this.adapter.getScrollContainer?.(newConv, this.adapter.getUserMessageElements(newConv)[0]) || null;
+        if (!newScroll) {
+            let parent = newConv;
+            while (parent && parent !== document.body) {
+                const style = window.getComputedStyle(parent);
+                if (style.overflowY === 'auto' || style.overflowY === 'scroll') {
+                    newScroll = parent; break;
+                }
+                parent = parent.parentElement;
             }
-            parent = parent.parentElement;
         }
         if (!newScroll) newScroll = document.scrollingElement || document.documentElement || document.body;
         this.scrollContainer = newScroll;
