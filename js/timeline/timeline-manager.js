@@ -62,6 +62,8 @@ class TimelineManager {
         this.arrowKeysNavigationEnabled = true;
         // ✅ AI 回复完成提醒启用状态（内存缓存，默认开启）
         this.aiCompleteToastEnabled = true;
+        // ✅ 对话导出启用状态（内存缓存，默认关闭）
+        this.conversationExportEnabled = false;
         // ✅ 平台设置（内存缓存）
         this.platformSettings = {};
         // ✅ 时间轴激活节点颜色设置（内存缓存）
@@ -190,9 +192,12 @@ class TimelineManager {
         await this.loadAICompleteToastState();
         // ✅ 加载平台设置
         await this.loadPlatformSettings();
+        // ✅ 加载对话导出开关
+        await this.loadConversationExportState();
         // ✅ 加载激活节点颜色设置
         await this.loadTimelineActiveColorSettings();
         this.applyTimelineActiveColor();
+        this.updateConversationExportButtonVisibility();
         
         // Trigger initial rendering after a short delay to ensure DOM is stable
         // This fixes the bug where nodes don't appear until scroll
@@ -264,6 +269,36 @@ class TimelineManager {
         }
         this.ui.timelineBar = timelineBar;
         this.applyTimelineActiveColor();
+
+        // ✅ 添加对话导出按钮（在时间轴最上方）
+        let conversationExportBtn = wrapper.querySelector('.ait-conversation-export-btn');
+        if (!conversationExportBtn) {
+            conversationExportBtn = document.createElement('button');
+            conversationExportBtn.className = 'ait-conversation-export-btn';
+            conversationExportBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg>';
+            conversationExportBtn.setAttribute('aria-label', TimelineUtils.i18n('conversationExportButton', '导出对话'));
+            conversationExportBtn.style.display = 'none';
+
+            conversationExportBtn.addEventListener('mouseenter', () => {
+                window.globalTooltipManager.show(
+                    'conversation-export-btn',
+                    'button',
+                    conversationExportBtn,
+                    TimelineUtils.i18n('conversationExportButton', '导出对话'),
+                    { placement: 'left' }
+                );
+            });
+
+            conversationExportBtn.addEventListener('mouseleave', () => {
+                window.globalTooltipManager.hide();
+            });
+        }
+        if (conversationExportBtn.parentElement !== wrapper) {
+            wrapper.insertBefore(conversationExportBtn, timelineBar);
+        } else if (conversationExportBtn.nextElementSibling !== timelineBar) {
+            wrapper.insertBefore(conversationExportBtn, timelineBar);
+        }
+        this.ui.conversationExportBtn = conversationExportBtn;
         
         // Apply site-specific position from adapter to wrapper
         const position = this.adapter.getTimelinePosition();
@@ -1929,6 +1964,15 @@ class TimelineManager {
                     this.platformSettings = changes.timelinePlatformSettings.newValue || {};
                 }
 
+                // ✅ 监听对话导出开关变化
+                if (changes.conversationExportEnabled) {
+                    this.conversationExportEnabled = changes.conversationExportEnabled.newValue === true;
+                    this.updateConversationExportButtonVisibility();
+                    if (!this.conversationExportEnabled && typeof ConversationExportPanel !== 'undefined') {
+                        ConversationExportPanel.hide?.();
+                    }
+                }
+
                 // ✅ 监听时间轴激活节点颜色变化
                 if (changes.timelineActiveColorByPlatform) {
                     this.timelineActiveColorByPlatform = changes.timelineActiveColorByPlatform.newValue || {};
@@ -1963,6 +2007,19 @@ class TimelineManager {
             }
             if (window.panelModal) {
                 window.panelModal.show('timeline');
+            }
+        });
+
+        // ✅ 对话导出按钮点击事件
+        window.eventDelegateManager.on('click', '.ait-conversation-export-btn', () => {
+            if (!this.conversationExportEnabled) return;
+            if (window.questionListPopup && window.questionListPopup.visible) {
+                window.questionListPopup.hide();
+            }
+            if (typeof ConversationExportPanel !== 'undefined') {
+                ConversationExportPanel.show({ adapter: this.adapter });
+            } else if (window.globalToastManager) {
+                window.globalToastManager.error('导出模块未加载');
             }
         });
         
@@ -3424,6 +3481,14 @@ class TimelineManager {
         
         // ✅ 修复：清理收藏按钮
         TimelineUtils.removeElementSafe(this.ui.starredBtn);
+
+        // ✅ 清理对话导出按钮和面板
+        TimelineUtils.removeElementSafe(this.ui.conversationExportBtn);
+        try {
+            if (typeof ConversationExportPanel !== 'undefined') {
+                ConversationExportPanel.hide?.();
+            }
+        } catch {}
         
         // ✅ 清理闪记按钮，并关闭面板
         if (window.notepadManager && window.notepadManager.isOpen) {
@@ -3561,6 +3626,21 @@ class TimelineManager {
                 console.error('[Timeline] Failed to load platform settings:', e);
             }
             this.platformSettings = {};
+        }
+    }
+
+    /**
+     * ✅ 加载对话导出开关状态
+     */
+    async loadConversationExportState() {
+        try {
+            const enabled = await StorageAdapter.get('conversationExportEnabled');
+            this.conversationExportEnabled = enabled === true;
+        } catch (e) {
+            if (!TimelineUtils.isExtensionContextInvalidated(e)) {
+                console.error('[Timeline] Failed to load conversation export state:', e);
+            }
+            this.conversationExportEnabled = false;
         }
     }
 
@@ -3982,6 +4062,7 @@ class TimelineManager {
         if (this.ui.questionListBtn) {
             this.ui.questionListBtn.style.display = 'flex';
         }
+        this.updateConversationExportButtonVisibility();
         if (!this.ui.starredBtn) return;
         
         // 隐藏收藏按钮（功能已合并到提问列表中）
@@ -4006,6 +4087,18 @@ class TimelineManager {
             // 没有收藏记录：添加灰色类
             this.ui.starredBtn.classList.add('no-starred-data');
         }
+    }
+
+    /**
+     * ✅ 更新对话导出按钮显隐
+     */
+    updateConversationExportButtonVisibility() {
+        const button = this.ui.conversationExportBtn;
+        if (!button) return;
+
+        const platform = typeof getCurrentPlatform === 'function' ? getCurrentPlatform() : null;
+        const supported = platform?.features?.conversationExport === true;
+        button.style.display = this.conversationExportEnabled && supported ? 'flex' : 'none';
     }
     
     // ✅ 设置导航数据（用于跨页面导航）

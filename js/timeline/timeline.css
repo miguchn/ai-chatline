@@ -16,6 +16,7 @@
 
 /* ✅ 时间轴包装容器（包含时间轴和收藏按钮） */
 .ait-chat-timeline-wrapper {
+    --ait-timeline-vertical-offset: clamp(-24px, -3vh, -16px);
     position: fixed;
     /* Position values (top, right) are set by JavaScript based on site adapter */
     top: 60px; /* Default fallback */
@@ -25,6 +26,7 @@
     flex-direction: column;
     align-items: flex-end;
     gap: 10px; /* 时间轴和收藏按钮之间的间距 */
+    transform: translateY(var(--ait-timeline-vertical-offset));
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
@@ -32,13 +34,13 @@
 .ait-chat-timeline-wrapper.ait-collapsed {
     opacity: 0;
     pointer-events: none;
-    transform: translateX(20px);
+    transform: translateX(20px) translateY(var(--ait-timeline-vertical-offset));
 }
 
 /* ✅ 时间轴收起/展开切换按钮 */
 .timeline-toggle-btn {
     position: fixed;
-    top: 50%; /* 垂直居中 */
+    top: calc(50% + clamp(-24px, -3vh, -16px)); /* 与时间轴整体上移保持一致 */
     right: 1px; /* 固定在屏幕右侧 */
     z-index: 31; /* 高于时间轴 */
     width: 24px;

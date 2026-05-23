@@ -16,29 +16,41 @@ class DeepSeekAdapter extends SiteAdapter {
     }
 
     getUserMessageSelector() {
-        /**
-         * 动态检测用户消息父容器的 class
-         * 
-         * DeepSeek 中每条消息（.ds-message）被包裹在一个带有动态哈希 class 的父容器中，
-         * 用户消息和 AI 回复的父容器 class 不同。
-         * 第一个 .ds-message 一定是用户消息，通过其父元素的 class 来识别所有用户消息。
-         */
-        if (!this._userMessageParentClass) {
-            const firstMessage = document.querySelector('.ds-message');
-            if (firstMessage?.parentElement) {
-                const parentClass = firstMessage.parentElement.classList[0];
-                if (parentClass) {
-                    this._userMessageParentClass = parentClass;
-                }
-            }
-        }
-        
-        if (this._userMessageParentClass) {
-            return `.${this._userMessageParentClass} > .ds-message`;
-        }
-        
-        // 备用：如果检测失败，返回所有 ds-message（会包含 AI 回复，但至少能工作）
         return '.ds-message';
+    }
+
+    getUserMessageElements(root = document) {
+        const messages = Array.from(root.querySelectorAll?.('.ds-message') || []);
+        if (messages.length === 0) return [];
+
+        const users = messages.filter((element, index) =>
+            this.detectDeepSeekMessageRole(element, messages, index) === 'user'
+        );
+        if (users.length > 0) return users;
+
+        // DeepSeek occasionally ships fully hashed wrappers without stable role markers.
+        // Keep the timeline usable by falling back to the usual user/assistant alternation.
+        return messages.filter((_, index) => index % 2 === 0);
+    }
+
+    detectDeepSeekMessageRole(element, allMessages = null, index = -1) {
+        if (!element) return null;
+
+        const explicitRole = this._inferDeepSeekRoleFromText(this._collectRoleText(element));
+        if (explicitRole) return explicitRole;
+
+        const layoutRole = this._inferDeepSeekRoleFromLayout(element);
+        if (layoutRole) return layoutRole;
+
+        const parentClass = this._getDetectedUserParentClass(allMessages);
+        if (parentClass && element.parentElement?.classList?.contains(parentClass)) {
+            return 'user';
+        }
+
+        if (Number.isFinite(index) && index >= 0) {
+            return index % 2 === 0 ? 'user' : 'assistant';
+        }
+        return null;
     }
 
     generateTurnId(element, index) {
@@ -47,7 +59,7 @@ class DeepSeekAdapter extends SiteAdapter {
 
     extractText(element) {
         // 从第一个子 div 提取文本
-        const firstDiv = element.querySelector('div');
+        const firstDiv = element.querySelector('.ds-markdown, [class*="content"], div');
         const text = (firstDiv?.textContent || '').trim();
         return text || '[图片或文件]';
     }
@@ -94,6 +106,79 @@ class DeepSeekAdapter extends SiteAdapter {
         return ContainerFinder.findConversationContainer(firstMessage, {
             messageSelector: this.getUserMessageSelector()
         });
+    }
+
+    _getDetectedUserParentClass(messages = null) {
+        if (this._userMessageParentClass) return this._userMessageParentClass;
+
+        const candidates = Array.from(messages || document.querySelectorAll('.ds-message') || []);
+        const userLike = candidates.find(element => this._inferDeepSeekRoleFromLayout(element) === 'user');
+        const parentClass = userLike?.parentElement?.classList?.[0];
+        if (parentClass) this._userMessageParentClass = parentClass;
+
+        return this._userMessageParentClass;
+    }
+
+    _collectRoleText(element) {
+        const values = [];
+        let current = element;
+        for (let depth = 0; current && current !== document.body && depth < 5; depth++) {
+            values.push(
+                current.getAttribute?.('data-role'),
+                current.getAttribute?.('data-author'),
+                current.getAttribute?.('data-message-author-role'),
+                current.getAttribute?.('aria-label'),
+                current.id,
+                current.className
+            );
+            current = current.parentElement;
+        }
+        return values.filter(Boolean).join(' ').toLowerCase();
+    }
+
+    _inferDeepSeekRoleFromText(text) {
+        if (/\b(user|human|question|query|prompt|mine|self)\b/.test(text)) return 'user';
+        if (/\b(assistant|ai|bot|answer|response|model)\b/.test(text)) return 'assistant';
+        return null;
+    }
+
+    _inferDeepSeekRoleFromLayout(element) {
+        const container = window.timelineManager?.conversationContainer || document.body;
+        let current = element;
+        for (let depth = 0; current && current !== document.body && depth < 5; depth++) {
+            try {
+                const style = window.getComputedStyle(current);
+                const classText = String(current.className || '').toLowerCase();
+                if (style.justifyContent === 'flex-end' ||
+                    style.alignItems === 'flex-end' ||
+                    style.textAlign === 'right' ||
+                    style.marginLeft === 'auto' ||
+                    classText.includes('justify-end') ||
+                    classText.includes('flex-end')) {
+                    return 'user';
+                }
+                if (style.justifyContent === 'flex-start' ||
+                    style.alignItems === 'flex-start' ||
+                    classText.includes('justify-start') ||
+                    classText.includes('flex-start')) {
+                    return 'assistant';
+                }
+            } catch {}
+            current = current.parentElement;
+        }
+
+        try {
+            const rect = element.getBoundingClientRect();
+            const containerRect = container?.getBoundingClientRect?.();
+            if (rect.width > 0 && containerRect?.width > 0) {
+                const center = rect.left + rect.width / 2;
+                const containerCenter = containerRect.left + containerRect.width / 2;
+                if (rect.width < containerRect.width * 0.75 && center > containerCenter + 40) return 'user';
+                if (center < containerCenter - 40) return 'assistant';
+            }
+        } catch {}
+
+        return null;
     }
 
     getTimelinePosition() {

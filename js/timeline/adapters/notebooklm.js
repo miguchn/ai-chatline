@@ -2,7 +2,9 @@
  * NotebookLM Adapter
  * 
  * Google NotebookLM 平台适配器
- * 当前仅默认启用追问功能；保留时间轴/导出所需的通用适配入口，便于后续开启
+ * 当前仅默认启用追问功能；保留时间轴/导出所需的通用适配入口，便于后续开启。
+ * TODO: SITE_INFO 中 NotebookLM 的 timeline=false，当前不会注入时间轴顶部导出按钮；
+ *       后续若需要在无时间轴页面展示导出入口，应新增独立页面入口而不是复用 TimelineManager。
  */
 
 class NotebookLMAdapter extends SiteAdapter {

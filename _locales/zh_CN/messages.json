@@ -895,5 +895,17 @@
   },
   "timelineThemeColorManageButton": {
     "message": "设置"
+  },
+  "conversationExportTabName": {
+    "message": "对话导出"
+  },
+  "conversationExportToggleTitle": {
+    "message": "开启对话导出"
+  },
+  "conversationExportToggleHint": {
+    "message": "开启后，在支持的平台对话页时间轴上方显示导出入口。"
+  },
+  "conversationExportButton": {
+    "message": "导出对话"
   }
 }

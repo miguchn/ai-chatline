@@ -12,26 +12,38 @@
  */
 
 const CHANGELOG_DATA = {
-    id: '2026052001',
+    id: '2026052201',
     // 'icon' = 提示词按钮左侧显示 Logo + 小红点（温和提示）
     // 'popup' = 自动弹窗展示更新内容（强提醒）
     displayMode: 'icon',
 
     features: [
         {
-            zh: '时间轴主题色：支持为不同 AI 平台设置激活节点颜色',
-            en: 'Timeline theme colors: set active node colors for different AI platforms'
+            zh: '新增对话导出功能，支持将当前 AI 对话导出为 Markdown、Obsidian Markdown、TXT、JSON 等格式，便于本地归档、知识沉淀和后续复用',
+            en: 'Added conversation export for the current AI chat, with Markdown, Obsidian Markdown, TXT, JSON, and other formats for local archiving and reuse'
         },
         {
-            zh: 'AI 回复完成提醒：当你停留在历史节点时，回复完成会及时提示',
-            en: 'AI reply completion reminders: get notified when a reply finishes while viewing an earlier node'
+            zh: '支持在对话页面快速导出当前会话内容，并提供复制到剪贴板和下载文件两种操作方式',
+            en: 'Export the current conversation directly from the chat page, with both copy-to-clipboard and file download actions'
+        },
+        {
+            zh: '新增对话导出开关配置，用户可在设置页中自主开启或关闭该能力',
+            en: 'Added a conversation export setting so users can enable or disable the feature from the settings panel'
         }
     ],
 
     improvements: [
         {
-            zh: '修复 Gemini 页面改版后，侧边栏收藏文件夹显示位置异常的问题',
-            en: 'Fixed incorrect starred folder placement after Gemini’s page structure update'
+            zh: '优化多平台适配能力，增强插件在豆包、千问、DeepSeek 等国产大模型平台下的兼容性和稳定性',
+            en: 'Improved multi-platform compatibility and stability for Doubao, Qwen, DeepSeek, and other domestic AI model platforms'
+        },
+        {
+            zh: '优化对话识别、内容采集和角色判断逻辑，提升时间轴展示与对话导出的完整性，减少角色错位和内容漏采集',
+            en: 'Improved conversation detection, content extraction, and role recognition to make timeline display and exports more complete'
+        },
+        {
+            zh: '保持 ChatGPT、Grok 等已适配平台能力稳定，不影响原有时间轴、收藏、文件夹、设置和数据同步功能',
+            en: 'Kept existing support stable for ChatGPT, Grok, and other adapted platforms without affecting timeline, bookmarks, folders, settings, or data sync'
         }
     ]
 };
