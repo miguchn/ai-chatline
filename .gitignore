@@ -13,6 +13,17 @@ $RECYCLE.BIN/
 # Linux
 *~
 
+# AI coding tools
+.claude/
+.cursor/
+.cursorrules
+.clinerules
+.windsurfrules
+.augment/
+.trae/
+.copilot/
+.github/copilot*
+
 # IDE & Editors
 .idea/
 .vscode/
