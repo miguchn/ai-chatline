@@ -59,5 +59,31 @@ class BaseSmartEnterAdapter {
     getPromptButtonOffset() {
         return { top: 0, left: 0 };
     }
-}
 
+    /**
+     * Detect whether the current page is generating a response.
+     * Platform-specific timeline adapters may replace this monitor later;
+     * this generic fallback keeps input-only pages able to drive pets.
+     */
+    isAIGenerating() {
+        const selectors = [
+            '[data-testid="stop-button"]',
+            '[data-testid="stop-generating-button"]',
+            '[aria-label="Stop"]',
+            '[aria-label*="Stop generating"]',
+            '[aria-label*="停止"]',
+            'button[class*="stop"]',
+            '[class*="stopDealBtn"]'
+        ];
+        const nodes = selectors.flatMap(selector => Array.from(document.querySelectorAll(selector)));
+        return nodes.some(node => {
+            const rect = node.getBoundingClientRect?.();
+            const style = window.getComputedStyle?.(node);
+            return (!rect || (rect.width > 0 && rect.height > 0)) &&
+                style?.display !== 'none' &&
+                style?.visibility !== 'hidden' &&
+                node.getAttribute?.('aria-disabled') !== 'true' &&
+                node.disabled !== true;
+        });
+    }
+}

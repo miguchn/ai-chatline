@@ -58,6 +58,10 @@ class AIStateMonitor {
         return this._generating;
     }
 
+    get currentAdapter() {
+        return this._adapter;
+    }
+
     /**
      * 启动监控
      * @param {Object} adapter - 平台适配器（需实现 isAIGenerating 方法）

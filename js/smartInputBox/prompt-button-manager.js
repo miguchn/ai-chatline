@@ -64,7 +64,7 @@ class PromptButtonManager {
         this._createUpdateButton();
         
         // 6. 检查是否启用
-        if (this._isPlatformEnabled()) {
+        if (this._shouldTrackInput()) {
             this._enable();
         }
     }
@@ -144,6 +144,19 @@ class PromptButtonManager {
             return true;
         }
     }
+
+    _isAnimationEnabled() {
+        try {
+            const platform = getCurrentPlatform();
+            return platform?.features?.inputAnimation === true;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    _shouldTrackInput() {
+        return this._isPlatformEnabled() || this._isAnimationEnabled();
+    }
     
     /**
      * 监听 Storage 变化
@@ -156,13 +169,13 @@ class PromptButtonManager {
             if (areaName === 'local') {
                 // 监听平台设置变化
                 if (changes.promptButtonPlatformSettings) {
-                this.platformSettings = changes.promptButtonPlatformSettings.newValue || {};
-                const shouldEnable = this._isPlatformEnabled();
-                
-                if (shouldEnable && !this.isEnabled) {
-                    this._enable();
-                } else if (!shouldEnable && this.isEnabled) {
-                    this._disable();
+                    this.platformSettings = changes.promptButtonPlatformSettings.newValue || {};
+                    const shouldEnable = this._shouldTrackInput();
+
+                    if (shouldEnable && !this.isEnabled) {
+                        this._enable();
+                    } else if (!shouldEnable && this.isEnabled) {
+                        this._disable();
                     }
                 }
                 
@@ -209,6 +222,19 @@ class PromptButtonManager {
         const platform = typeof getCurrentPlatform === 'function' ? getCurrentPlatform() : null;
         if (window.inputBoxAnimationManager && platform?.features?.inputAnimation === true) {
             window.inputBoxAnimationManager.init();
+            this._ensureAIStateMonitor();
+        }
+    }
+
+    _ensureAIStateMonitor() {
+        try {
+            const aiMon = window.AIStateMonitor?.getInstance?.();
+            if (!aiMon || aiMon.currentAdapter || typeof this.adapter?.isAIGenerating !== 'function') {
+                return;
+            }
+            aiMon.start(this.adapter);
+        } catch (e) {
+            // Pets are decorative; never block input features if state detection fails.
         }
     }
     
@@ -441,6 +467,8 @@ class PromptButtonManager {
         }
         
         try {
+            const promptEnabled = this._isPlatformEnabled();
+            const animationEnabled = this._isAnimationEnabled();
             // 获取定位参考元素（适配器可自定义，默认使用输入框）
             const referenceElement = this.adapter.getPositionReferenceElement?.(this.inputElement) || this.inputElement;
             const rect = referenceElement.getBoundingClientRect();
@@ -451,43 +479,52 @@ class PromptButtonManager {
                 return;
             }
             
-            // 获取按钮尺寸
-            this.buttonElement.style.visibility = 'hidden';
-            this.buttonElement.style.display = 'flex';
-            const buttonRect = this.buttonElement.getBoundingClientRect();
-            
-            // 获取平台偏移量
-            const offset = this.adapter.getPromptButtonOffset?.(this.inputElement) || { top: 0, left: 0 };
-            
-            // 计算位置：相对于参考元素左上角
-            const top = rect.top + offset.top;
-            const left = rect.left - buttonRect.width - this.config.gap + offset.left;
-            
-            // 边界检查
-            const safeTop = Math.max(8, Math.min(top, window.innerHeight - buttonRect.height - 8));
-            const safeLeft = Math.max(8, left);
-            
-            // 设置位置并显示
-            this.buttonElement.style.top = `${safeTop}px`;
-            this.buttonElement.style.left = `${safeLeft}px`;
-            this.buttonElement.style.visibility = 'visible';
-            
-            // 更新 Logo 按钮位置（在提示词按钮左侧）
-            if (this._updateBtnElement && this._hasUpdate) {
-                this._updateBtnElement.style.visibility = 'hidden';
-                this._updateBtnElement.style.display = 'flex';
-                const updateRect = this._updateBtnElement.getBoundingClientRect();
-                const updateLeft = Math.max(8, safeLeft - updateRect.width - this.config.updateBtnGap);
-                this._updateBtnElement.style.top = `${safeTop}px`;
-                this._updateBtnElement.style.left = `${updateLeft}px`;
-                this._updateBtnElement.style.visibility = 'visible';
-            } else if (this._updateBtnElement) {
-                this._updateBtnElement.style.display = 'none';
+            if (promptEnabled) {
+                // 获取按钮尺寸
+                this.buttonElement.style.visibility = 'hidden';
+                this.buttonElement.style.display = 'flex';
+                const buttonRect = this.buttonElement.getBoundingClientRect();
+
+                // 获取平台偏移量
+                const offset = this.adapter.getPromptButtonOffset?.(this.inputElement) || { top: 0, left: 0 };
+
+                // 计算位置：相对于参考元素左上角
+                const top = rect.top + offset.top;
+                const left = rect.left - buttonRect.width - this.config.gap + offset.left;
+
+                // 边界检查
+                const safeTop = Math.max(8, Math.min(top, window.innerHeight - buttonRect.height - 8));
+                const safeLeft = Math.max(8, left);
+
+                // 设置位置并显示
+                this.buttonElement.style.top = `${safeTop}px`;
+                this.buttonElement.style.left = `${safeLeft}px`;
+                this.buttonElement.style.visibility = 'visible';
+
+                // 更新 Logo 按钮位置（在提示词按钮左侧）
+                if (this._updateBtnElement && this._hasUpdate) {
+                    this._updateBtnElement.style.visibility = 'hidden';
+                    this._updateBtnElement.style.display = 'flex';
+                    const updateRect = this._updateBtnElement.getBoundingClientRect();
+                    const updateLeft = Math.max(8, safeLeft - updateRect.width - this.config.updateBtnGap);
+                    this._updateBtnElement.style.top = `${safeTop}px`;
+                    this._updateBtnElement.style.left = `${updateLeft}px`;
+                    this._updateBtnElement.style.visibility = 'visible';
+                } else if (this._updateBtnElement) {
+                    this._updateBtnElement.style.display = 'none';
+                }
+            } else {
+                this.buttonElement.style.display = 'none';
+                if (this._updateBtnElement) {
+                    this._updateBtnElement.style.display = 'none';
+                }
             }
 
-            if (window.inputBoxAnimationManager) {
-                const ref = this.adapter.getPositionReferenceElement?.(this.inputElement) || this.inputElement;
-                window.inputBoxAnimationManager.updatePosition(ref.getBoundingClientRect());
+            if (window.inputBoxAnimationManager && animationEnabled) {
+                this._ensureAIStateMonitor();
+                window.inputBoxAnimationManager.updatePosition(referenceElement.getBoundingClientRect());
+            } else if (window.inputBoxAnimationManager) {
+                window.inputBoxAnimationManager.hideActive();
             }
         } catch (e) {
             this._hideButton();

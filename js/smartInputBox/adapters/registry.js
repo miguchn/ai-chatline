@@ -43,6 +43,11 @@ class SmartEnterAdapterRegistry {
         if (typeof TongyiSmartEnterAdapter !== 'undefined') {
             this.adapters.push(new TongyiSmartEnterAdapter());
         }
+
+        // 注册文心一言适配器（主要用于输入动画定位）
+        if (typeof YiyanSmartEnterAdapter !== 'undefined') {
+            this.adapters.push(new YiyanSmartEnterAdapter());
+        }
         
         // 注册千问国际版适配器
         if (typeof QwenSmartEnterAdapter !== 'undefined') {
@@ -105,4 +110,3 @@ class SmartEnterAdapterRegistry {
 if (typeof window.smartEnterAdapterRegistry === 'undefined') {
     window.smartEnterAdapterRegistry = new SmartEnterAdapterRegistry();
 }
-

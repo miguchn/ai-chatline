@@ -109,16 +109,16 @@ For development and testing, load this repository directory through your browser
 | ChatGPT | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
 | Gemini | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | DeepSeek | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
-| Claude | ✅ | ✅ | ✅ | — | ✅ | ✅ | ✅ | — |
+| Claude | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
 | Kimi | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
 | Doubao | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
 | Qwen | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
 | Qwen Intl | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
 | Grok | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — | — |
-| Perplexity | ✅ | ✅ | ✅ | — | ✅ | ✅ | — | — |
+| Perplexity | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — | — |
 | Yuanbao | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — | — |
-| Yiyan | ✅ | ✅ | — | — | ✅ | ✅ | — | — |
-| NotebookLM | — | ✅ | ✅ | — | ✅ | — | — | — |
+| Yiyan | ✅ | ✅ | — | ✅ | ✅ | ✅ | — | — |
+| NotebookLM | — | ✅ | ✅ | ✅ | ✅ | — | — | — |
 
 > 💡 **Formula Copy** and **Code Runner** work on all pages — they activate automatically when matching content is detected.
 
@@ -159,12 +159,13 @@ Supporting **42 languages** with global coverage.
 
 ## 📝 Release Notes
 
-### v4.7.1
+### v3.7.2
 
-Improvements / Compatibility fixes:
-Improved Qwen and Qwen international compatibility for more stable timeline loading and node detection.
+New features:
+Added more digital pet choices, including kitten, puppy, and red panda, to make waiting for AI replies more delightful.
 
-Fixed Tencent Yuanbao compatibility issues and improved extension loading, timeline, conversation detection, and export stability.
+Improvements:
+Improved cross-platform support for chat width adjustment, so more AI platforms can resize conversation areas reliably.
 
 ## 💬 Contact & Support
 

@@ -62,7 +62,10 @@ const SITE_INFO = [
             stableNodeId: true,  // 使用稳定的节点 ID（父元素 id），需等待 id 分配后记录
             sidebarStarred: true,  // 侧边栏收藏列表
             chatWidth: {
-                selectors: ['.conversation-container', 'user-query']
+                targets: [
+                    { selector: '.conversation-container' },
+                    { selector: 'user-query', base: 'rect' }
+                ]
             }
         }
     },
@@ -79,7 +82,28 @@ const SITE_INFO = [
             conversationExport: true,
             chatTimes: true,  // 提问时间记录
             stableNodeId: true,  // 使用稳定的节点 ID（data-message-id），需等待 id 分配后记录
-            sidebarStarred: true  // 侧边栏收藏列表
+            sidebarStarred: true,  // 侧边栏收藏列表
+            chatWidth: {
+                targets: [
+                    {
+                        selector: '[data-message-id] [class*="max-w-"]',
+                        properties: ['max-width'],
+                        staticProperties: { width: '100%' }
+                    },
+                    {
+                        selector: '[data-message-id] [data-plugin-identifier]',
+                        base: 'rect',
+                        properties: ['max-width'],
+                        staticProperties: { width: '100%' }
+                    },
+                    {
+                        selector: '[data-message-id] .markdown, [data-message-id] [class*="markdown"]',
+                        base: 'rect',
+                        properties: ['max-width'],
+                        staticProperties: { width: '100%' }
+                    }
+                ]
+            }
         }
     },
     {
@@ -95,6 +119,12 @@ const SITE_INFO = [
             conversationExport: true,
             chatTimes: true,  // 提问时间记录
             sidebarStarred: true,  // 侧边栏收藏列表
+            chatWidth: {
+                targets: [
+                    { selector: '.ds-message', base: 'rect' },
+                    { selector: '.ds-markdown', base: 'rect' }
+                ]
+            }
         }
     },
     {
@@ -105,10 +135,17 @@ const SITE_INFO = [
         features: {
             timeline: true,
             smartInput: false,
-            inputAnimation: false,
+            inputAnimation: true,
             quickAsk: true,
             conversationExport: true,
-            chatTimes: true  // 提问时间记录
+            chatTimes: true,  // 提问时间记录
+            chatWidth: {
+                targets: [
+                    { selector: '[class*="chat"] [class*="message"]', base: 'rect' },
+                    { selector: '[class*="chat"] [class*="content"]', base: 'rect' },
+                    { selector: '[class*="answer"] [class*="content"]', base: 'rect' }
+                ]
+            }
         }
     },
     {
@@ -124,7 +161,16 @@ const SITE_INFO = [
             conversationExport: true,
             chatTimes: true,  // 提问时间记录
             stableNodeId: true,  // data-msgid 提供稳定节点 ID
-            sidebarStarred: true  // 侧边栏收藏列表
+            sidebarStarred: true,  // 侧边栏收藏列表
+            chatWidth: {
+                targets: [
+                    { selector: '#chat-message-container', base: 'rect' },
+                    { selector: '#chat-messages-scroll-container', base: 'rect' },
+                    { selector: '#scroll-list', base: 'rect' },
+                    { selector: '[class*="chatContent"]', base: 'rect' },
+                    { selector: '[class*="chat-content"]', base: 'rect' }
+                ]
+            }
         }
     },
     {
@@ -140,7 +186,15 @@ const SITE_INFO = [
             conversationExport: true,
             chatTimes: true,
             stableNodeId: true,
-            sidebarStarred: true
+            sidebarStarred: true,
+            chatWidth: {
+                targets: [
+                    { selector: '#chat-message-container', base: 'rect' },
+                    { selector: '#chat-messages-scroll-container', base: 'rect' },
+                    { selector: '[class*="chat-message-container"]', base: 'rect' },
+                    { selector: '[class*="message-list"]', base: 'rect' }
+                ]
+            }
         }
     },
     {
@@ -155,7 +209,13 @@ const SITE_INFO = [
             quickAsk: true,
             conversationExport: true,
             chatTimes: true,  // 提问时间记录
-            sidebarStarred: true  // 侧边栏收藏列表
+            sidebarStarred: true,  // 侧边栏收藏列表
+            chatWidth: {
+                targets: [
+                    { selector: '.chat-content-item', base: 'rect' },
+                    { selector: '.user-content', base: 'rect' }
+                ]
+            }
         }
     },
     {
@@ -169,7 +229,16 @@ const SITE_INFO = [
             inputAnimation: true,
             quickAsk: true,
             conversationExport: true,
-            chatTimes: true  // 提问时间记录
+            chatTimes: true,  // 提问时间记录
+            chatWidth: {
+                targets: [
+                    { selector: '#chat-content', base: 'rect' },
+                    { selector: '.agent-chat__list__content-wrapper', base: 'rect' },
+                    { selector: '.agent-chat__list', base: 'rect' },
+                    { selector: '.agent-chat__container', base: 'rect' },
+                    { selector: '[class*="agent-chat__list"]', base: 'rect' }
+                ]
+            }
         }
     },
     {
@@ -184,7 +253,27 @@ const SITE_INFO = [
             quickAsk: true,
             conversationExport: true,
             quickAskPosition: 'bottomLeft',
-            chatTimes: true  // 提问时间记录
+            chatTimes: true,  // 提问时间记录
+            chatWidth: {
+                targets: [
+                    {
+                        selector: '.max-w-\\[--content-max-width\\]',
+                        properties: ['max-width'],
+                        staticProperties: { width: '100%' }
+                    },
+                    {
+                        selector: '.flex.flex-col.items-center > div:not([class*="absolute"])',
+                        base: 'rect',
+                        properties: ['max-width'],
+                        staticProperties: { width: '100%' }
+                    },
+                    {
+                        selector: '.breakout, .relative.flex.h-full.flex-col.items-center, main',
+                        staticOnly: true,
+                        staticProperties: { 'max-width': 'none', width: '100%' }
+                    }
+                ]
+            }
         }
     },
     {
@@ -195,11 +284,23 @@ const SITE_INFO = [
         features: {
             timeline: true,
             smartInput: true,
-            inputAnimation: false,
+            inputAnimation: true,
             quickAsk: true,
             conversationExport: true,
             quickAskPosition: 'bottomLeft',
-            chatTimes: true  // 提问时间记录
+            chatTimes: true,  // 提问时间记录
+            chatWidth: {
+                targets: [
+                    {
+                        selector: 'main [class*="max-w-"]',
+                        properties: ['max-width'],
+                        staticProperties: { width: '100%' }
+                    },
+                    { selector: 'main article', base: 'rect' },
+                    { selector: 'main [class*="prose"]', base: 'rect' },
+                    { selector: 'main [data-testid*="thread"]', base: 'rect' }
+                ]
+            }
         }
     },
     {
@@ -210,12 +311,19 @@ const SITE_INFO = [
         features: {
             timeline: true,
             smartInput: true,
-            inputAnimation: false,
+            inputAnimation: true,
             quickAsk: true,
             conversationExport: true,
             quickAskPosition: 'bottomLeft',
             chatTimes: true,  // 提问时间记录
-            sidebarStarred: true  // 侧边栏收藏列表
+            sidebarStarred: true,  // 侧边栏收藏列表
+            chatWidth: {
+                targets: [
+                    { selector: '[data-testid="user-message"]', base: 'rect' },
+                    { selector: '[data-test-render-count]:has([data-testid="user-message"])', base: 'rect' },
+                    { selector: '.font-claude-message', base: 'rect' }
+                ]
+            }
         }
     },
     {
@@ -226,9 +334,16 @@ const SITE_INFO = [
         features: {
             timeline: false,
             smartInput: true,
-            inputAnimation: false,
+            inputAnimation: true,
             quickAsk: true,
-            conversationExport: true
+            conversationExport: true,
+            chatWidth: {
+                targets: [
+                    { selector: 'mat-sidenav-content main', base: 'rect' },
+                    { selector: '[class*="chat"] [class*="message"]', base: 'rect' },
+                    { selector: '[class*="chat"] [class*="content"]', base: 'rect' }
+                ]
+            }
         }
     }
 ];

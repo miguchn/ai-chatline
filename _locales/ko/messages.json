@@ -705,7 +705,7 @@
     "message": "ChatLine 업데이트!"
   },
   "changelogSubtitle": {
-    "message": "$1 사용자가 이용 중. 새 버전으로 더 나은 경험을 제공합니다."
+    "message": "새 버전에서 사용 경험이 더 좋아졌습니다."
   },
   "changelogFeatures": {
     "message": "새 기능"
@@ -853,5 +853,8 @@
   },
   "timelineThemeColorManageButton": {
     "message": "설정"
+  },
+  "changelogShareTip": {
+    "message": "이 확장 프로그램이 마음에 든다면 필요한 분들에게도 공유해 주세요."
   }
 }

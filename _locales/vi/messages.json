@@ -654,7 +654,7 @@
     "message": "ChatLine đã cập nhật!"
   },
   "changelogSubtitle": {
-    "message": "$1 người dùng đang sử dụng. Phiên bản mới, trải nghiệm tốt hơn."
+    "message": "Phiên bản mới, trải nghiệm tốt hơn."
   },
   "changelogFeatures": {
     "message": "Tính năng mới"
@@ -802,5 +802,8 @@
   },
   "timelineThemeColorManageButton": {
     "message": "Thiết lập"
+  },
+  "changelogShareTip": {
+    "message": "Nếu bạn thấy tiện ích này hữu ích, hãy chia sẻ với người có thể cần nó."
   }
 }

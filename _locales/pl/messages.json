@@ -654,7 +654,7 @@
     "message": "ChatLine zaktualizowany!"
   },
   "changelogSubtitle": {
-    "message": "Używane przez $1 użytkowników. Nowa wersja, lepsze doświadczenie."
+    "message": "Nowa wersja, lepsze doświadczenie."
   },
   "changelogFeatures": {
     "message": "Nowości"
@@ -802,5 +802,8 @@
   },
   "timelineThemeColorManageButton": {
     "message": "Ustaw"
+  },
+  "changelogShareTip": {
+    "message": "Jeśli to rozszerzenie jest dla Ciebie przydatne, udostępnij je osobom, którym może się przydać."
   }
 }
