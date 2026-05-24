@@ -239,6 +239,17 @@
     line-height: 1.55;
 }
 
+.changelog-share-tip {
+    margin: 8px 8px 4px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #f8fafc;
+    border: 1px solid rgba(37, 99, 235, 0.08);
+    color: #4b5563;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
 /* ==================== Rating Bar ==================== */
 
 .changelog-rating-bar {

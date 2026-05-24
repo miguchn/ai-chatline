@@ -20,8 +20,8 @@
             const platform = getCurrentPlatform();
             if (!platform) return false;
             
-            // 检查平台是否支持智能输入功能
-            return platform.features?.smartInput === true;
+            // 智能输入与输入动画共用输入框适配器；键盘增强仍由 smartInput 单独控制。
+            return platform.features?.smartInput === true || platform.features?.inputAnimation === true;
         } catch (e) {
             return false;
         }
@@ -86,4 +86,3 @@
     }
     
 })();
-

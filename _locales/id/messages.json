@@ -654,7 +654,7 @@
     "message": "ChatLine diperbarui!"
   },
   "changelogSubtitle": {
-    "message": "Digunakan oleh $1 pengguna. Versi baru, pengalaman lebih baik."
+    "message": "Versi baru, pengalaman lebih baik."
   },
   "changelogFeatures": {
     "message": "Fitur Baru"
@@ -802,5 +802,8 @@
   },
   "timelineThemeColorManageButton": {
     "message": "Atur"
+  },
+  "changelogShareTip": {
+    "message": "Jika ekstensi ini bermanfaat, silakan bagikan kepada orang yang mungkin membutuhkannya."
   }
 }

@@ -53,7 +53,8 @@ class WizardAnimation {
     }
 
     create(count) {
-        if (this._el) return;
+        if (this._el && document.documentElement.contains(this._el)) return;
+        this._el = null;
         const n = Math.min(count || 1, this.maxCount);
         let items = '';
         for (let i = 0; i < n - 1; i++) {
@@ -64,7 +65,7 @@ class WizardAnimation {
         el.className = 'ait-wizard-parade';
         el.style.display = 'none';
         el.innerHTML = `<div class="wizard-track"><div class="wizard-group">${items}</div></div>`;
-        document.body.appendChild(el);
+        (document.body || document.documentElement).appendChild(el);
         this._el = el;
     }
 
@@ -91,5 +92,10 @@ class WizardAnimation {
     }
 
     hide() { if (this._el) this._el.style.display = 'none'; }
-    destroy() { if (this._el?.parentNode) { this._el.parentNode.removeChild(this._el); this._el = null; } }
+    destroy() {
+        if (this._el?.parentNode) {
+            this._el.parentNode.removeChild(this._el);
+        }
+        this._el = null;
+    }
 }

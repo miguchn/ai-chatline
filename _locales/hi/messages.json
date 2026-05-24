@@ -654,7 +654,7 @@
     "message": "ChatLine अपडेट हुआ!"
   },
   "changelogSubtitle": {
-    "message": "$1 उपयोगकर्ता उपयोग कर रहे हैं। नया संस्करण, बेहतर अनुभव।"
+    "message": "नया संस्करण, बेहतर अनुभव।"
   },
   "changelogFeatures": {
     "message": "नई सुविधाएँ"
@@ -802,5 +802,8 @@
   },
   "timelineThemeColorManageButton": {
     "message": "सेट करें"
+  },
+  "changelogShareTip": {
+    "message": "अगर यह एक्सटेंशन आपको उपयोगी लगे, तो इसे ज़रूरतमंद लोगों के साथ साझा करें।"
   }
 }

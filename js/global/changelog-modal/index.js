@@ -157,8 +157,7 @@ class ChangelogModal {
 
         const subtitle = document.createElement('div');
         subtitle.className = 'changelog-modal-subtitle';
-        const userCount = '34,000+';
-        subtitle.textContent = chrome.i18n.getMessage('changelogSubtitle', [userCount]) || `${userCount} 用户在用，新版本体验再升级。`;
+        subtitle.textContent = chrome.i18n.getMessage('changelogSubtitle') || (lang === 'zh' ? '新版本体验继续升级。' : 'New version, smoother experience.');
 
         headerContent.appendChild(title);
         headerContent.appendChild(subtitle);
@@ -175,6 +174,14 @@ class ChangelogModal {
 
         this._renderSection(body, featTitle, '✨', features, lang);
         this._renderSection(body, improveTitle, '🔧', improvements, lang);
+
+        const shareTip = document.createElement('div');
+        shareTip.className = 'changelog-share-tip';
+        shareTip.textContent = chrome.i18n.getMessage('changelogShareTip') ||
+            (lang === 'zh'
+                ? '如果您觉得这个插件还不错，也欢迎分享给身边有需要的人。'
+                : 'If you find this extension useful, feel free to share it with someone who might need it.');
+        body.appendChild(shareTip);
 
         // Footer
         const footer = document.createElement('div');

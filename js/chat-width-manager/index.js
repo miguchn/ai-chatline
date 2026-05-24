@@ -38,7 +38,7 @@ class ChatWidthManager {
         if (!platform) return;
 
         const cfg = platform.features?.chatWidth;
-        if (!cfg || typeof cfg !== 'object') return;
+        if (!ChatWidthManager.isValidConfig(cfg)) return;
 
         this._config = cfg;
 
@@ -74,39 +74,164 @@ class ChatWidthManager {
         return !!this._config;
     }
 
+    static isValidConfig(cfg) {
+        if (!cfg || typeof cfg !== 'object') return false;
+        const targets = cfg.targets || cfg.selectors;
+        return Array.isArray(targets) && targets.length > 0;
+    }
+
+    canApplyToPage() {
+        if (!this._config) return false;
+        if (!document.body) return true;
+
+        return this._normalizeTargets().some(target => {
+            try {
+                if (target.staticOnly) {
+                    return false;
+                }
+                return Array.from(document.querySelectorAll(target.selector)).some(el =>
+                    !!this._getBaseWidthForElement(el, target)
+                );
+            } catch {
+                return false;
+            }
+        });
+    }
+
     // ==================== 内部方法 ====================
+
+    _normalizeTargets() {
+        if (!this._config) return [];
+        const rawTargets = this._config.targets || this._config.selectors || [];
+        return rawTargets
+            .map(target => {
+                if (typeof target === 'string') {
+                    return { selector: target, properties: ['max-width'], staticProperties: {}, staticOnly: false };
+                }
+                if (!target || typeof target !== 'object') return null;
+                const staticProperties = target.staticProperties && typeof target.staticProperties === 'object'
+                    ? target.staticProperties
+                    : {};
+                const properties = target.staticOnly
+                    ? []
+                    : (Array.isArray(target.properties) && target.properties.length > 0 ? target.properties : ['max-width']);
+                return {
+                    selector: target.selector,
+                    properties,
+                    staticProperties,
+                    staticOnly: target.staticOnly === true,
+                    base: target.base || 'maxWidth'
+                };
+            })
+            .filter(target => target?.selector);
+    }
+
+    _getTargetKey(target) {
+        return [
+            target.selector,
+            (target.properties || ['max-width']).join(','),
+            Object.entries(target.staticProperties || {}).map(([prop, value]) => `${prop}:${value}`).join(','),
+            target.staticOnly ? 'static' : '',
+            target.base || 'maxWidth'
+        ].join('::');
+    }
+
+    _getBaseWidthForElement(el, target) {
+        if (!el) return null;
+
+        const style = getComputedStyle(el);
+        const maxWidth = style.maxWidth;
+        if (this._isUsableCssWidth(maxWidth)) {
+            return maxWidth;
+        }
+
+        if (target.base === 'rect') {
+            const width = el.getBoundingClientRect?.().width || 0;
+            const viewportWidth = window.innerWidth || document.documentElement.clientWidth || 0;
+            if (width > 0 && (!viewportWidth || width < viewportWidth * 0.96)) {
+                return `${Math.round(width)}px`;
+            }
+        }
+
+        return null;
+    }
+
+    _isUsableCssWidth(value) {
+        if (!value) return false;
+        const normalized = String(value).trim().toLowerCase();
+        if (!normalized || ['none', 'auto', '100%', 'initial', 'inherit', 'unset'].includes(normalized)) {
+            return false;
+        }
+        if (/^calc\(/.test(normalized)) return true;
+        return /^-?[\d.]+(px|rem|em|ch|vw|vh|vmin|vmax)$/.test(normalized) && parseFloat(normalized) > 0;
+    }
 
     _watchForElements() {
         if (this._scale <= 100) return;
-        const { selectors } = this._config;
-        if (selectors.every(sel => this._originalWidths?.[sel])) return;
+        const targets = this._normalizeTargets();
+        if (targets.every(target => this._originalWidths?.[this._getTargetKey(target)])) return;
 
         const observer = new MutationObserver(() => {
-            if (!selectors.every(sel => document.querySelector(sel))) return;
-            observer.disconnect();
+            const hasUncachedMatch = targets.some(target =>
+                !this._originalWidths?.[this._getTargetKey(target)] &&
+                document.querySelector(target.selector)
+            );
+            if (!hasUncachedMatch) return;
             this._apply();
+            if (targets.every(target => this._originalWidths?.[this._getTargetKey(target)])) {
+                observer.disconnect();
+            }
         });
         observer.observe(document.body, { childList: true, subtree: true });
     }
 
     _snapshotOriginalWidths() {
-        const { selectors } = this._config;
+        const targets = this._normalizeTargets();
         if (!this._originalWidths) this._originalWidths = {};
 
-        const uncached = selectors.filter(sel => !this._originalWidths[sel]);
+        const uncached = targets.filter(target => !this._originalWidths[this._getTargetKey(target)]);
         if (uncached.length === 0) return;
 
         // 暂时清除注入样式，以读取页面原始 max-width
         if (this._styleEl) this._styleEl.textContent = '';
 
-        for (const sel of uncached) {
-            const candidates = document.querySelectorAll(sel);
-            for (const el of candidates) {
-                const val = getComputedStyle(el).maxWidth;
-                if (val && val !== 'none' && val !== '100%') {
-                    this._originalWidths[sel] = val;
-                    break;
+        for (const target of uncached) {
+            if (target.staticOnly) {
+                if (document.querySelector(target.selector)) {
+                    this._originalWidths[this._getTargetKey(target)] = {
+                        selector: target.selector,
+                        base: null,
+                        properties: [],
+                        staticProperties: target.staticProperties || {}
+                    };
                 }
+                continue;
+            }
+
+            const candidates = document.querySelectorAll(target.selector);
+            let bestVal = null;
+            let bestWidth = 0;
+            for (const el of candidates) {
+                const val = this._getBaseWidthForElement(el, target);
+                if (val) {
+                    const width = parseFloat(val) || 0;
+                    if (target.base !== 'rect') {
+                        bestVal = val;
+                        break;
+                    }
+                    if (width > bestWidth) {
+                        bestVal = val;
+                        bestWidth = width;
+                    }
+                }
+            }
+            if (bestVal) {
+                this._originalWidths[this._getTargetKey(target)] = {
+                    selector: target.selector,
+                    base: bestVal,
+                    properties: target.properties || ['max-width'],
+                    staticProperties: target.staticProperties || {}
+                };
             }
         }
     }
@@ -128,12 +253,18 @@ class ChatWidthManager {
         this._snapshotOriginalWidths();
 
         const pct = this._scale;
-        const entries = Object.entries(this._originalWidths);
+        const entries = Object.values(this._originalWidths);
         if (entries.length === 0) return;
 
-        const rules = entries.map(([sel, base]) =>
-            `${sel} { max-width: calc(${base} * ${pct} / 100) !important; }`
-        ).join('\n');
+        const rules = entries.map(({ selector, base, properties, staticProperties }) => {
+            const scaledDeclarations = base
+                ? (properties || ['max-width']).map(prop => `${prop}: calc(${base} * ${pct} / 100) !important;`)
+                : [];
+            const staticDeclarations = Object.entries(staticProperties || {})
+                .map(([prop, value]) => `${prop}: ${value} !important;`);
+            const declarations = scaledDeclarations.concat(staticDeclarations).join(' ');
+            return `${selector} { ${declarations} }`;
+        }).join('\n');
 
         this._styleEl.textContent = rules;
     }

@@ -678,7 +678,7 @@
     "message": "ChatLine 更新啦！"
   },
   "changelogSubtitle": {
-    "message": "$1 用戶在用，新版本體驗再升級。"
+    "message": "新版本體驗繼續升級。"
   },
   "changelogFeatures": {
     "message": "新功能"
@@ -826,5 +826,8 @@
   },
   "timelineThemeColorManageButton": {
     "message": "設定"
+  },
+  "changelogShareTip": {
+    "message": "如果你覺得這個外掛還不錯，也歡迎分享給身邊有需要的人。"
   }
 }

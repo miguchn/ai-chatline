@@ -12,21 +12,22 @@
  */
 
 const CHANGELOG_DATA = {
-    id: '2026052301',
+    id: '2026052401',
     // 'icon' = 提示词按钮左侧显示 Logo + 小红点（温和提示）
     // 'popup' = 自动弹窗展示更新内容（强提醒）
     displayMode: 'icon',
 
-    features: [],
+    features: [
+        {
+            zh: '电子宠物新增小猫、小狗、小熊猫等更多选择，让 AI 回复等待过程更轻松有趣',
+            en: 'Added more digital pet choices, including kitten, puppy, and red panda, to make waiting for AI replies more delightful'
+        }
+    ],
 
     improvements: [
         {
-            zh: '优化千问、千问国际版平台适配，提升时间轴加载和节点识别稳定性',
-            en: 'Improved Qwen and Qwen international compatibility for more stable timeline loading and node detection'
-        },
-        {
-            zh: '修复腾讯元宝平台适配异常，提升插件加载、时间轴、对话识别和导出稳定性',
-            en: 'Fixed Tencent Yuanbao compatibility issues and improved extension loading, timeline, conversation detection, and export stability'
+            zh: '优化对话宽度调节的跨平台适配，更多 AI 平台可稳定调整对话区域宽度',
+            en: 'Improved cross-platform support for chat width adjustment, so more AI platforms can resize conversation areas reliably'
         }
     ]
 };

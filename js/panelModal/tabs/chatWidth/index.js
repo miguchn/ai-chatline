@@ -17,7 +17,10 @@ class ChatWidthTab extends BaseTab {
     }
 
     shouldShow() {
-        return !!getCurrentPlatform()?.features?.chatWidth;
+        const cfg = getCurrentPlatform()?.features?.chatWidth;
+        if (!window.ChatWidthManager?.isValidConfig?.(cfg)) return false;
+        const mgr = window.ChatWidthManager?.getInstance?.();
+        return mgr ? mgr.canApplyToPage() : true;
     }
 
     render() {

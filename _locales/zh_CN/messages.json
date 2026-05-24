@@ -113,6 +113,15 @@
   "animWizard": {
     "message": "巫师学徒"
   },
+  "animCat": {
+    "message": "小猫散步"
+  },
+  "animDog": {
+    "message": "小狗小跑"
+  },
+  "animRedPanda": {
+    "message": "小熊猫漫步"
+  },
   "animTabEmpty": {
     "message": "暂无可用动画"
   },
@@ -759,7 +768,7 @@
     "message": "ChatLine 更新啦！"
   },
   "changelogSubtitle": {
-    "message": "$1 用户在用，新版本体验再升级。"
+    "message": "新版本体验继续升级。"
   },
   "changelogFeatures": {
     "message": "新功能"
@@ -907,5 +916,8 @@
   },
   "conversationExportButton": {
     "message": "导出对话"
+  },
+  "changelogShareTip": {
+    "message": "如果您觉得这个插件还不错，也欢迎分享给身边有需要的人。"
   }
 }
