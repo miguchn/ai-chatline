@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "ChatLine: ChatGPT, Gemini 채팅 강화"
+    "message": "ChatLine: AI 채팅 강화"
   },
   "extDescription": {
     "message": "AI 채팅 페이지용 브라우저 확장입니다. Timeline을 기반으로 타임라인 탐색, 기록 위치 찾기, 대화 탐색 개선, 데이터 보관을 제공합니다."
@@ -552,7 +552,7 @@
     "message": "플러그인 소개"
   },
   "aboutPluginContent": {
-    "message": "ChatLine은 AI 채팅 페이지용 브라우저 확장입니다. 오픈소스 Timeline 프로젝트를 기반으로 2차 개발되었으며, 타임라인 탐색, 기록 위치 찾기, 대화 탐색 개선, 대화 데이터 보관에 초점을 둡니다. ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, NotebookLM 등 주요 AI 채팅 플랫폼을 지원합니다."
+    "message": "ChatLine은 AI 채팅 페이지용 브라우저 확장입니다. 오픈소스 Timeline 프로젝트를 기반으로 2차 개발되었으며, 타임라인 탐색, 기록 위치 찾기, 대화 탐색 개선, 대화 데이터 보관에 초점을 둡니다. 여러 주요 AI 채팅 플랫폼을 지원합니다."
   },
   "aboutDataSecurityTitle": {
     "message": "데이터 보안"
@@ -856,5 +856,32 @@
   },
   "changelogShareTip": {
     "message": "이 확장 프로그램이 마음에 든다면 필요한 분들에게도 공유해 주세요."
+  },
+  "longConversationPerformanceTitle": {
+    "message": "Long Conversation Optimization"
+  },
+  "longConversationPerformanceHint": {
+    "message": "Automatically fold older messages after the set limit."
+  },
+  "longConversationThresholdLabel": {
+    "message": "After"
+  },
+  "longConversationMessageUnit": {
+    "message": "messages"
+  },
+  "longConversationKeepRecentLabel": {
+    "message": "Keep recent"
+  },
+  "longConversationKeepRecentUnit": {
+    "message": "messages visible"
+  },
+  "longConversationValidationKeepRecent": {
+    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+  },
+  "longConversationExpandMore": {
+    "message": "Expand more history"
+  },
+  "longConversationCollapsedTooltip": {
+    "message": "$1 older messages above are folded. Click to expand more."
   }
 }

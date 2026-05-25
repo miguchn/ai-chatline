@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "ChatLine：ChatGPT、Gemini 對話增強"
+    "message": "ChatLine：AI 對話增強"
   },
   "extDescription": {
     "message": "面向 AI 對話頁面的瀏覽器增強外掛，基於 Timeline 二次開發，提供時間軸導覽、歷史定位、對話瀏覽增強與資料歸檔能力。"
@@ -543,7 +543,7 @@
     "message": "插件簡介"
   },
   "aboutPluginContent": {
-    "message": "ChatLine 是一款面向 AI 對話頁面的瀏覽器增強外掛，基於開源專案 Timeline 二次開發，主要提供時間軸導覽、歷史定位、對話瀏覽增強和對話資料歸檔能力。支援 ChatGPT、Gemini、DeepSeek、Kimi、千問、Claude、元寶、NotebookLM 等主流 AI 對話平台。"
+    "message": "ChatLine 是一款面向 AI 對話頁面的瀏覽器增強外掛，基於開源專案 Timeline 二次開發，主要提供時間軸導覽、歷史定位、對話瀏覽增強和對話資料歸檔能力。支援多個主流 AI 對話平台。"
   },
   "aboutDataSecurityTitle": {
     "message": "數據安全"
@@ -862,5 +862,32 @@
   },
   "changelogShareTip": {
     "message": "如果你覺得這個外掛還不錯，也歡迎分享給身邊有需要的人。"
+  },
+  "longConversationPerformanceTitle": {
+    "message": "長對話效能最佳化"
+  },
+  "longConversationPerformanceHint": {
+    "message": "超過設定數量後，自動摺疊較早的歷史訊息。"
+  },
+  "longConversationThresholdLabel": {
+    "message": "超過"
+  },
+  "longConversationMessageUnit": {
+    "message": "則訊息後啟用"
+  },
+  "longConversationKeepRecentLabel": {
+    "message": "保留最近"
+  },
+  "longConversationKeepRecentUnit": {
+    "message": "則訊息不摺疊"
+  },
+  "longConversationValidationKeepRecent": {
+    "message": "保留數量需小於觸發數量，已自動修正"
+  },
+  "longConversationExpandMore": {
+    "message": "展開更多歷史訊息"
+  },
+  "longConversationCollapsedTooltip": {
+    "message": "上方 $1 則歷史對話已摺疊，點擊展開更多"
   }
 }

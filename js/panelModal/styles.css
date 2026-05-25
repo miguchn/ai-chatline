@@ -375,3 +375,151 @@
     }
 }
 
+/* ========== 暗黑模式 ========== */
+
+html[data-timeline-theme="dark"] .ait-panel-modal-wrapper {
+    background: #1e1e1e !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6) !important;
+}
+
+html[data-timeline-theme="dark"] .ait-panel-modal-sidebar {
+    background: #252525;
+    border-right-color: #333;
+}
+
+html[data-timeline-theme="dark"] .ait-panel-modal-sidebar-header {
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+html[data-timeline-theme="dark"] .ait-panel-modal-close {
+    color: #999;
+}
+
+html[data-timeline-theme="dark"] .ait-panel-modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ddd;
+}
+
+html[data-timeline-theme="dark"] .ait-panel-modal-tabs::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+html[data-timeline-theme="dark"] .panel-tab {
+    color: #aaa;
+}
+
+html[data-timeline-theme="dark"] .panel-tab:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ddd;
+}
+
+html[data-timeline-theme="dark"] .panel-tab.active {
+    background: rgba(116, 80, 255, 0.2);
+    color: #a78bfa;
+}
+
+html[data-timeline-theme="dark"] .ait-panel-modal-footer {
+    color: #777;
+}
+
+html[data-timeline-theme="dark"] .ait-panel-modal-footer-item svg {
+    color: #666;
+}
+
+html[data-timeline-theme="dark"] .ait-panel-modal-footer-version {
+    color: #a78bfa;
+    background: rgba(109, 40, 217, 0.15);
+    border-color: rgba(109, 40, 217, 0.3);
+}
+
+html[data-timeline-theme="dark"] .ait-panel-modal-main {
+    background: #1e1e1e;
+}
+
+html[data-timeline-theme="dark"] .ait-panel-modal-header {
+    background: #252525;
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+html[data-timeline-theme="dark"] .ait-panel-modal-title {
+    color: #e5e7eb;
+}
+
+html[data-timeline-theme="dark"] .ait-panel-modal-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* ========== 共享组件暗黑模式（setting 通用 / toggle / platform 列表） ========== */
+/* 注：使用 !important 确保在任意 CSS 加载顺序下覆盖各 tab 文件中定义的全局同类规则 */
+
+/* 通用设置项卡片（所有 tab 复用） */
+html[data-timeline-theme="dark"] .ait-panel-modal-content .setting-item {
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+html[data-timeline-theme="dark"] .ait-panel-modal-content .setting-item:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-timeline-theme="dark"] .ait-panel-modal-content .setting-label {
+    color: #e5e7eb !important;
+}
+
+html[data-timeline-theme="dark"] .ait-panel-modal-content .setting-label-icon {
+    color: #d1d5db !important;
+}
+
+html[data-timeline-theme="dark"] .ait-panel-modal-content .setting-hint {
+    color: #9ca3af !important;
+}
+
+/* 通用分隔线 */
+html[data-timeline-theme="dark"] .ait-panel-modal-content .divider {
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Toggle 开关（所有 tab 复用） */
+html[data-timeline-theme="dark"] .ait-toggle-slider {
+    background-color: #4b5563 !important;
+}
+
+html[data-timeline-theme="dark"] .ait-toggle-switch input:checked + .ait-toggle-slider {
+    background-color: #8b5cf6 !important;
+}
+
+html[data-timeline-theme="dark"] .ait-toggle-switch input:focus + .ait-toggle-slider {
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2) !important;
+}
+
+/* Platform 列表（智能输入框 / 代码运行器 / 收藏夹等复用） */
+html[data-timeline-theme="dark"] .platform-list-title {
+    color: #e5e7eb !important;
+}
+
+html[data-timeline-theme="dark"] .platform-list-hint {
+    color: #9ca3af !important;
+}
+
+html[data-timeline-theme="dark"] .platform-list-container {
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+html[data-timeline-theme="dark"] .platform-item:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+html[data-timeline-theme="dark"] .platform-name {
+    color: #e5e7eb !important;
+}
+
+html[data-timeline-theme="dark"] .platform-logo-placeholder {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #9ca3af !important;
+}
+
+/* highlight tab：列表型 setting-item hover 不变化 */
+html[data-timeline-theme="dark"] .ait-panel-modal-content .setting-item.hl-list-item,
+html[data-timeline-theme="dark"] .ait-panel-modal-content .setting-item.hl-list-item:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+

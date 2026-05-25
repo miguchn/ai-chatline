@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "ChatLine: ChatGPT & Gemini chat nâng cao"
+    "message": "ChatLine: Chat AI nâng cao"
   },
   "extDescription": {
     "message": "Tiện ích trình duyệt cho trang chat AI. Fork từ Timeline với điều hướng dòng thời gian, định vị lịch sử, duyệt hội thoại tốt hơn và lưu trữ."
@@ -501,7 +501,7 @@
     "message": "Về tiện ích"
   },
   "aboutPluginContent": {
-    "message": "ChatLine là tiện ích trình duyệt cho các trang chat AI. Được phát triển tiếp từ dự án mã nguồn mở Timeline, ChatLine tập trung vào điều hướng dòng thời gian, định vị lịch sử, tăng cường duyệt hội thoại và lưu trữ dữ liệu hội thoại. Hỗ trợ ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, NotebookLM và các nền tảng chat AI phổ biến."
+    "message": "ChatLine là tiện ích trình duyệt cho các trang chat AI. Được phát triển tiếp từ dự án mã nguồn mở Timeline, ChatLine tập trung vào điều hướng dòng thời gian, định vị lịch sử, tăng cường duyệt hội thoại và lưu trữ dữ liệu hội thoại. Hỗ trợ nhiều nền tảng chat AI phổ biến."
   },
   "aboutDataSecurityTitle": {
     "message": "Bảo mật dữ liệu"
@@ -805,5 +805,32 @@
   },
   "changelogShareTip": {
     "message": "Nếu bạn thấy tiện ích này hữu ích, hãy chia sẻ với người có thể cần nó."
+  },
+  "longConversationPerformanceTitle": {
+    "message": "Long Conversation Optimization"
+  },
+  "longConversationPerformanceHint": {
+    "message": "Automatically fold older messages after the set limit."
+  },
+  "longConversationThresholdLabel": {
+    "message": "After"
+  },
+  "longConversationMessageUnit": {
+    "message": "messages"
+  },
+  "longConversationKeepRecentLabel": {
+    "message": "Keep recent"
+  },
+  "longConversationKeepRecentUnit": {
+    "message": "messages visible"
+  },
+  "longConversationValidationKeepRecent": {
+    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+  },
+  "longConversationExpandMore": {
+    "message": "Expand more history"
+  },
+  "longConversationCollapsedTooltip": {
+    "message": "$1 older messages above are folded. Click to expand more."
   }
 }

@@ -152,20 +152,22 @@ Supporting **42 languages** with global coverage.
 
 - [x] Firefox browser support
 - [x] Cross-browser data sync
-- [ ] Fix GPT lag by hiding conversation nodes
+- [x] Fix GPT lag by hiding conversation nodes
 - [ ] One-click sync to NotebookLM
 - [ ] Optimize Gemini Canvas auto-open
 - [x] Cloud sync
 
 ## 📝 Release Notes
 
-### v3.7.2
+### v3.7.3
 
 New features:
-Added more digital pet choices, including kitten, puppy, and red panda, to make waiting for AI replies more delightful.
+Added long conversation performance optimization for ChatGPT, with automatic folding for older conversation content.
+
+Users can customize the trigger threshold and how many recent messages stay visible, reducing rendered content for smoother long chats.
 
 Improvements:
-Improved cross-platform support for chat width adjustment, so more AI platforms can resize conversation areas reliably.
+Improved dark mode support for the extension settings panel.
 
 ## 💬 Contact & Support
 

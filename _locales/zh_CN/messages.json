@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "ChatLine：ChatGPT、Gemini 对话增强"
+    "message": "ChatLine：AI 对话增强"
   },
   "extDescription": {
     "message": "面向 AI 对话页面的浏览器增强插件，基于 Timeline 二次开发，提供时间线导航、历史定位、对话浏览增强与数据归档能力。"
@@ -615,7 +615,7 @@
     "message": "插件简介"
   },
   "aboutPluginContent": {
-    "message": "ChatLine 是一款面向 AI 对话页面的浏览器增强插件，基于开源项目 Timeline 二次开发，主要提供时间线导航、历史定位、对话浏览增强和对话数据归档能力。支持 ChatGPT、Gemini、DeepSeek、Kimi、千问、Claude、元宝、NotebookLM 等主流 AI 对话平台。"
+    "message": "ChatLine 是一款面向 AI 对话页面的浏览器增强插件，基于开源项目 Timeline 二次开发，主要提供时间线导航、历史定位、对话浏览增强和对话数据归档能力。支持多个主流 AI 对话平台。"
   },
   "aboutDataSecurityTitle": {
     "message": "数据安全"
@@ -919,5 +919,32 @@
   },
   "changelogShareTip": {
     "message": "如果您觉得这个插件还不错，也欢迎分享给身边有需要的人。"
+  },
+  "longConversationPerformanceTitle": {
+    "message": "长对话性能优化"
+  },
+  "longConversationPerformanceHint": {
+    "message": "超过设定数量后，自动折叠较早的历史消息。"
+  },
+  "longConversationThresholdLabel": {
+    "message": "超过"
+  },
+  "longConversationMessageUnit": {
+    "message": "条消息后启用"
+  },
+  "longConversationKeepRecentLabel": {
+    "message": "保留最近"
+  },
+  "longConversationKeepRecentUnit": {
+    "message": "条消息不折叠"
+  },
+  "longConversationValidationKeepRecent": {
+    "message": "保留数量需小于触发数量，已自动修正"
+  },
+  "longConversationExpandMore": {
+    "message": "展开更多历史消息"
+  },
+  "longConversationCollapsedTooltip": {
+    "message": "上方 $1 条历史对话已折叠，点击展开更多"
   }
 }

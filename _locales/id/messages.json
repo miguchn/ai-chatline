@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "ChatLine: ChatGPT & Gemini Chat Ditingkatkan"
+    "message": "ChatLine: Chat AI Ditingkatkan"
   },
   "extDescription": {
     "message": "Ekstensi browser untuk halaman chat AI. Fork dari Timeline dengan navigasi timeline, pencarian riwayat, peningkatan penelusuran, dan arsip percakapan."
@@ -501,7 +501,7 @@
     "message": "Tentang ekstensi"
   },
   "aboutPluginContent": {
-    "message": "ChatLine adalah ekstensi browser untuk halaman chat AI. Dikembangkan sebagai fork dari proyek open-source Timeline, ChatLine berfokus pada navigasi timeline, pencarian posisi dalam riwayat, peningkatan penelusuran percakapan, dan pengarsipan data percakapan. Mendukung platform chat AI utama seperti ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, dan NotebookLM."
+    "message": "ChatLine adalah ekstensi browser untuk halaman chat AI. Dikembangkan sebagai fork dari proyek open-source Timeline, ChatLine berfokus pada navigasi timeline, pencarian posisi dalam riwayat, peningkatan penelusuran percakapan, dan pengarsipan data percakapan. Mendukung berbagai platform chat AI utama."
   },
   "aboutDataSecurityTitle": {
     "message": "Keamanan Data"
@@ -805,5 +805,32 @@
   },
   "changelogShareTip": {
     "message": "Jika ekstensi ini bermanfaat, silakan bagikan kepada orang yang mungkin membutuhkannya."
+  },
+  "longConversationPerformanceTitle": {
+    "message": "Long Conversation Optimization"
+  },
+  "longConversationPerformanceHint": {
+    "message": "Automatically fold older messages after the set limit."
+  },
+  "longConversationThresholdLabel": {
+    "message": "After"
+  },
+  "longConversationMessageUnit": {
+    "message": "messages"
+  },
+  "longConversationKeepRecentLabel": {
+    "message": "Keep recent"
+  },
+  "longConversationKeepRecentUnit": {
+    "message": "messages visible"
+  },
+  "longConversationValidationKeepRecent": {
+    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+  },
+  "longConversationExpandMore": {
+    "message": "Expand more history"
+  },
+  "longConversationCollapsedTooltip": {
+    "message": "$1 older messages above are folded. Click to expand more."
   }
 }

@@ -92,6 +92,93 @@
     line-height: 1.6;
 }
 
+.timeline-long-conversation-setting .setting-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.timeline-performance-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 16px;
+    margin-top: -1px;
+    background: rgba(17, 24, 39, 0.02);
+    border-top: 1px solid rgba(17, 24, 39, 0.06);
+    transition: opacity 0.2s, background 0.2s;
+}
+
+.timeline-performance-controls.disabled {
+    opacity: 0.45;
+    background: rgba(17, 24, 39, 0.01);
+}
+
+.timeline-performance-warning {
+    font-size: 11px;
+    color: #d97706;
+    line-height: 1.4;
+    padding: 6px 8px;
+    margin-top: 4px;
+    background: rgba(217, 119, 6, 0.08);
+    border-radius: 4px;
+    display: none;
+}
+
+.timeline-performance-warning.visible {
+    display: block;
+}
+
+.timeline-performance-control-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.timeline-performance-control-label {
+    font-size: 12px;
+    line-height: 1.4;
+    color: #4b5563;
+}
+
+.timeline-segmented-options {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px;
+    border: 1px solid rgba(17, 24, 39, 0.08);
+    border-radius: 8px;
+    background: rgba(17, 24, 39, 0.04);
+}
+
+.timeline-segmented-option {
+    min-width: 34px;
+    height: 26px;
+    padding: 0 9px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: #374151;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+}
+
+.timeline-segmented-option:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.timeline-segmented-option.selected {
+    background: #ffffff;
+    color: #111827;
+    box-shadow: 0 1px 2px rgba(17, 24, 39, 0.08), inset 0 0 0 1px rgba(17, 24, 39, 0.08);
+}
+
+.timeline-segmented-option:disabled {
+    cursor: default;
+}
+
 /* Toggle Switch */
 .ait-toggle-switch {
     position: relative;
@@ -341,6 +428,43 @@ html[data-timeline-theme="dark"] .timeline-theme-color-item:hover {
     background: rgba(255, 255, 255, 0.06);
 }
 
+html[data-timeline-theme="dark"] .timeline-performance-controls {
+    background: rgba(255, 255, 255, 0.03);
+    border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-timeline-theme="dark"] .timeline-performance-controls.disabled {
+    background: rgba(255, 255, 255, 0.015);
+}
+
+html[data-timeline-theme="dark"] .timeline-performance-warning {
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.1);
+}
+
+html[data-timeline-theme="dark"] .timeline-performance-control-label {
+    color: #d1d5db;
+}
+
+html[data-timeline-theme="dark"] .timeline-segmented-options {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+html[data-timeline-theme="dark"] .timeline-segmented-option {
+    color: #e5e7eb;
+}
+
+html[data-timeline-theme="dark"] .timeline-segmented-option:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+html[data-timeline-theme="dark"] .timeline-segmented-option.selected {
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
 html[data-timeline-theme="dark"] .timeline-active-color-options {
     border-color: rgba(255, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.06);
@@ -365,4 +489,47 @@ html[data-timeline-theme="dark"] .timeline-active-color-btn.selected {
 
 html[data-timeline-theme="dark"] .timeline-active-color-btn.selected::before {
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24), 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* ==================== 暗黑模式 - 设置通用元素 ==================== */
+
+html[data-timeline-theme="dark"] .timeline-settings .setting-item {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+html[data-timeline-theme="dark"] .timeline-settings .setting-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+html[data-timeline-theme="dark"] .timeline-settings .setting-label {
+    color: #e5e7eb;
+}
+
+html[data-timeline-theme="dark"] .timeline-settings .setting-hint {
+    color: #9ca3af;
+}
+
+html[data-timeline-theme="dark"] .timeline-settings .divider,
+html[data-timeline-theme="dark"] .timeline-settings-bottom-divider {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+html[data-timeline-theme="dark"] .timeline-settings .ait-toggle-slider {
+    background-color: #4b5563;
+}
+
+html[data-timeline-theme="dark"] .timeline-settings .ait-toggle-switch input:checked + .ait-toggle-slider {
+    background-color: #8b5cf6;
+}
+
+html[data-timeline-theme="dark"] .timeline-settings .ait-toggle-switch input:focus + .ait-toggle-slider {
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+html[data-timeline-theme="dark"] .starred-manage-btn {
+    background: #7c3aed;
+}
+
+html[data-timeline-theme="dark"] .starred-manage-btn:hover {
+    background: #6d28d9;
 }

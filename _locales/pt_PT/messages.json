@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "ChatLine: ChatGPT e Gemini chat melhorado"
+    "message": "ChatLine: Chat IA melhorado"
   },
   "extDescription": {
     "message": "Extensão de navegador para páginas de chat com IA. Fork do Timeline com navegação temporal, localização no histórico, melhor leitura e arquivo."
@@ -501,7 +501,7 @@
     "message": "Sobre a extensão"
   },
   "aboutPluginContent": {
-    "message": "ChatLine é uma extensão de navegador para páginas de chat com IA. Desenvolvida como fork do projeto open-source Timeline, foca-se em navegação por timeline, localização no histórico, melhor exploração de conversas e arquivo de dados de conversas. Suporta plataformas principais como ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao e NotebookLM."
+    "message": "ChatLine é uma extensão de navegador para páginas de chat com IA. Desenvolvida como fork do projeto open-source Timeline, foca-se em navegação por timeline, localização no histórico, melhor exploração de conversas e arquivo de dados de conversas. Suporta múltiplas plataformas de chat com IA."
   },
   "aboutDataSecurityTitle": {
     "message": "Segurança de dados"
@@ -805,5 +805,32 @@
   },
   "changelogShareTip": {
     "message": "Se esta extensão lhe for útil, partilhe-a com quem possa precisar dela."
+  },
+  "longConversationPerformanceTitle": {
+    "message": "Long Conversation Optimization"
+  },
+  "longConversationPerformanceHint": {
+    "message": "Automatically fold older messages after the set limit."
+  },
+  "longConversationThresholdLabel": {
+    "message": "After"
+  },
+  "longConversationMessageUnit": {
+    "message": "messages"
+  },
+  "longConversationKeepRecentLabel": {
+    "message": "Keep recent"
+  },
+  "longConversationKeepRecentUnit": {
+    "message": "messages visible"
+  },
+  "longConversationValidationKeepRecent": {
+    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+  },
+  "longConversationExpandMore": {
+    "message": "Expand more history"
+  },
+  "longConversationCollapsedTooltip": {
+    "message": "$1 older messages above are folded. Click to expand more."
   }
 }

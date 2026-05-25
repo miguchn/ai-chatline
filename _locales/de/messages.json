@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "ChatLine: ChatGPT & Gemini Chat-Verbesserung"
+    "message": "ChatLine: KI-Chat-Verbesserung"
   },
   "extDescription": {
     "message": "Browser-Erweiterung für KI-Chatseiten. Fork von Timeline mit Timeline-Navigation, Verlaufspositionierung, besserem Lesen von Gesprächen und Archivierung."
@@ -501,7 +501,7 @@
     "message": "Über diese Erweiterung"
   },
   "aboutPluginContent": {
-    "message": "ChatLine ist eine Browser-Erweiterung für KI-Chatseiten. Das Projekt basiert als Fork auf dem Open-Source-Projekt Timeline und konzentriert sich auf Timeline-Navigation, Verlaufspositionierung, verbessertes Durchsehen von Gesprächen und Archivierung von Gesprächsdaten. Unterstützt werden wichtige KI-Chatplattformen wie ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao und NotebookLM."
+    "message": "ChatLine ist eine Browser-Erweiterung für KI-Chatseiten. Das Projekt basiert als Fork auf dem Open-Source-Projekt Timeline und konzentriert sich auf Timeline-Navigation, Verlaufspositionierung, verbessertes Durchsehen von Gesprächen und Archivierung von Gesprächsdaten. Unterstützt mehrere führende KI-Chatplattformen."
   },
   "aboutDataSecurityTitle": {
     "message": "Datensicherheit"
@@ -805,5 +805,32 @@
   },
   "changelogShareTip": {
     "message": "Wenn dir diese Erweiterung gefällt, teile sie gern mit Menschen, die sie brauchen könnten."
+  },
+  "longConversationPerformanceTitle": {
+    "message": "Long Conversation Optimization"
+  },
+  "longConversationPerformanceHint": {
+    "message": "Automatically fold older messages after the set limit."
+  },
+  "longConversationThresholdLabel": {
+    "message": "After"
+  },
+  "longConversationMessageUnit": {
+    "message": "messages"
+  },
+  "longConversationKeepRecentLabel": {
+    "message": "Keep recent"
+  },
+  "longConversationKeepRecentUnit": {
+    "message": "messages visible"
+  },
+  "longConversationValidationKeepRecent": {
+    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+  },
+  "longConversationExpandMore": {
+    "message": "Expand more history"
+  },
+  "longConversationCollapsedTooltip": {
+    "message": "$1 older messages above are folded. Click to expand more."
   }
 }

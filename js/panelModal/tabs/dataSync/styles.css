@@ -268,3 +268,98 @@
     background: #fee2e2;
     color: #991b1b;
 }
+
+/* ==================== 暗黑模式 ==================== */
+
+html[data-timeline-theme="dark"] .sync-section {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+html[data-timeline-theme="dark"] .sync-title {
+    color: #e5e7eb;
+}
+
+html[data-timeline-theme="dark"] .sync-hint {
+    color: #9ca3af;
+}
+
+html[data-timeline-theme="dark"] .sync-divider {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+html[data-timeline-theme="dark"] .sync-btn {
+    background: #7c3aed;
+}
+
+html[data-timeline-theme="dark"] .sync-btn:hover {
+    background: #6d28d9;
+}
+
+html[data-timeline-theme="dark"] .local-sync-label {
+    color: #9ca3af;
+}
+
+html[data-timeline-theme="dark"] .import-option {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+html[data-timeline-theme="dark"] .import-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+html[data-timeline-theme="dark"] .import-option:has(input:checked) {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: #7c3aed;
+}
+
+html[data-timeline-theme="dark"] .option-radio {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+html[data-timeline-theme="dark"] .import-option:has(input:checked) .option-radio {
+    border-color: #a78bfa;
+}
+
+html[data-timeline-theme="dark"] .option-radio::after {
+    background: #a78bfa;
+}
+
+html[data-timeline-theme="dark"] .option-label {
+    color: #e5e7eb;
+}
+
+html[data-timeline-theme="dark"] .option-desc {
+    color: #9ca3af;
+}
+
+html[data-timeline-theme="dark"] .gdrive-download-btn {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #e5e7eb !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+html[data-timeline-theme="dark"] .gdrive-download-btn:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+html[data-timeline-theme="dark"] .gdrive-hint {
+    color: #6b7280;
+}
+
+html[data-timeline-theme="dark"] .sync-status.loading {
+    background: rgba(255, 255, 255, 0.06);
+    color: #d1d5db;
+}
+
+html[data-timeline-theme="dark"] .sync-status.success {
+    background: rgba(16, 185, 129, 0.15);
+    color: #6ee7b7;
+}
+
+html[data-timeline-theme="dark"] .sync-status.error {
+    background: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+}
