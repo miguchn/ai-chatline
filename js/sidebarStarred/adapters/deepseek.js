@@ -2,8 +2,8 @@
  * DeepSeek Sidebar Starred Adapter
  *
  * DeepSeek 侧边栏 DOM 结构：
- *   通过 img[src*="/user-avatar/"] 定位用户头像
- *   → 父元素的父元素的上一个兄弟元素 = 聊天记录列表容器
+ *   优先通过聊天链接 a[href*="/a/chat/s/"] 定位聊天记录滚动容器
+ *   降级通过 img[src*="/user-avatar/"] 定位用户头像
  *   收藏区域插在聊天记录列表容器的上方
  *
  * 策略：
@@ -17,10 +17,22 @@ class DeepSeekSidebarStarredAdapter extends BaseSidebarStarredAdapter {
     }
 
     _findHistoryContainer() {
+        // 优先通过聊天链接定位（不依赖用户头像，兼容未绑定微信的用户）
+        const chatLink = document.querySelector('a[href*="/a/chat/s/"]');
+        if (chatLink) {
+            const scrollArea = chatLink.closest('.ds-scroll-area');
+            if (scrollArea) return scrollArea;
+        }
+
+        // 降级方案：通过用户头像定位（仅适用于已绑定微信的用户）
         const avatar = document.querySelector('img[src*="/user-avatar/"]');
-        if (!avatar?.parentElement?.parentElement?.parentElement) return null;
-        const parent = avatar.parentElement.parentElement.parentElement;
-        return parent.querySelector('.ds-scroll-area') || null;
+        if (avatar?.parentElement?.parentElement?.parentElement) {
+            const parent = avatar.parentElement.parentElement.parentElement;
+            const scrollArea = parent.querySelector('.ds-scroll-area');
+            if (scrollArea) return scrollArea;
+        }
+
+        return null;
     }
 
     findSidebarContainer() {
