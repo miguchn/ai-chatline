@@ -832,5 +832,11 @@
   },
   "longConversationCollapsedTooltip": {
     "message": "$1 older messages above are folded. Click to expand more."
+  },
+  "highlightSettings": {
+    "message": "Paramètres"
+  },
+  "highlightConfirm": {
+    "message": "Confirmer"
   }
 }

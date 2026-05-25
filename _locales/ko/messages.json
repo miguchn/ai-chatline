@@ -883,5 +883,11 @@
   },
   "longConversationCollapsedTooltip": {
     "message": "$1 older messages above are folded. Click to expand more."
+  },
+  "highlightSettings": {
+    "message": "설정"
+  },
+  "highlightConfirm": {
+    "message": "확인"
   }
 }

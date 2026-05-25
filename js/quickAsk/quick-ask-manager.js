@@ -510,6 +510,12 @@ class QuickAskManager {
         this.currentSelection = null;
         this._savedRange = null;
     }
+
+    clearSelection() {
+        this._hideButton();
+        this.currentSelection = null;
+        this._savedRange = null;
+    }
     
     /**
      * 处理引用

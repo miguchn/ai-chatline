@@ -946,5 +946,11 @@
   },
   "longConversationCollapsedTooltip": {
     "message": "上方 $1 条历史对话已折叠，点击展开更多"
+  },
+  "highlightSettings": {
+    "message": "设置"
+  },
+  "highlightConfirm": {
+    "message": "确定"
   }
 }
