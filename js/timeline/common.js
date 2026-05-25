@@ -272,12 +272,12 @@ const StorageAdapter = {
                 
                 if (key.startsWith('chatTimelineStar:')) {
                     // 收藏数据：加上 key 字段，放入数组
-                    if (value && typeof value === 'object') {
+                    if (value && typeof value === 'object' && !Array.isArray(value)) {
                         starItems.push({ key, ...value });
                     }
                 } else if (key.startsWith('chatTimelinePin:')) {
                     // Pin 数据：加上 key 字段，放入数组
-                    if (value && typeof value === 'object') {
+                    if (value && typeof value === 'object' && !Array.isArray(value)) {
                         pinItems.push({ key, ...value });
                     }
                 } else {
