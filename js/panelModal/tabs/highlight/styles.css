@@ -188,3 +188,58 @@
     margin-top: 6px;
     line-height: 1.4;
 }
+
+/* ==================== 暗黑模式 ==================== */
+
+html[data-timeline-theme="dark"] .hl-style-name {
+    color: #e5e7eb;
+}
+
+html[data-timeline-theme="dark"] .hl-style-desc {
+    color: #6b7280;
+}
+
+html[data-timeline-theme="dark"] .hl-add-color-btn {
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #9ca3af;
+}
+
+html[data-timeline-theme="dark"] .hl-add-color-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #d1d5db;
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+html[data-timeline-theme="dark"] .hl-color-row:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+html[data-timeline-theme="dark"] .hl-color-swatch {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+html[data-timeline-theme="dark"] .hl-color-hex {
+    color: #9ca3af;
+}
+
+html[data-timeline-theme="dark"] .hl-color-move:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    color: #d1d5db;
+}
+
+html[data-timeline-theme="dark"] .hl-color-delete:hover {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+}
+
+html[data-timeline-theme="dark"] .hl-modal-color-preview {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+html[data-timeline-theme="dark"] .hl-modal-color-preview.valid {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+html[data-timeline-theme="dark"] .hl-modal-color-hint {
+    color: #6b7280;
+}

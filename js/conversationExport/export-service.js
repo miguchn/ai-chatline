@@ -14,15 +14,23 @@ class ConversationExportService {
     }
 
     async build(format) {
-        const payload = await this.extractor.extract();
-        if (!payload.messages || payload.messages.length === 0) {
-            throw new Error('未识别到可导出的会话内容');
-        }
+        const buildPayload = async () => {
+            const payload = await this.extractor.extract();
+            if (!payload.messages || payload.messages.length === 0) {
+                throw new Error('未识别到可导出的会话内容');
+            }
 
-        const content = this.formatters.format(payload, format);
-        const extension = this.formatters.extension(format);
-        const filename = this._buildFilename(payload, extension);
-        return { payload, content, filename };
+            const content = this.formatters.format(payload, format);
+            const extension = this.formatters.extension(format);
+            const filename = this._buildFilename(payload, extension);
+            return { payload, content, filename };
+        };
+
+        const optimizer = window.timelineManager?.longConversationOptimizer;
+        if (optimizer?.withAllRestored) {
+            return optimizer.withAllRestored(buildPayload, { reapply: true });
+        }
+        return buildPayload();
     }
 
     async copy(format) {

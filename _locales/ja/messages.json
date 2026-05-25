@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "ChatLine：ChatGPT・Gemini チャット強化"
+    "message": "ChatLine：AI チャット強化"
   },
   "extDescription": {
     "message": "AI チャットページ向けのブラウザ拡張。Timeline をベースに、タイムライン移動、履歴位置の特定、閲覧補助、会話アーカイブを提供します。"
@@ -552,7 +552,7 @@
     "message": "プラグイン紹介"
   },
   "aboutPluginContent": {
-    "message": "ChatLine は AI チャットページ向けのブラウザ拡張です。オープンソースの Timeline プロジェクトをベースに二次開発され、タイムラインナビゲーション、履歴位置の特定、会話閲覧の強化、会話データのアーカイブに重点を置いています。ChatGPT、Gemini、DeepSeek、Kimi、Qwen、Claude、Yuanbao、NotebookLM など主要な AI チャットプラットフォームをサポートします。"
+    "message": "ChatLine は AI チャットページ向けのブラウザ拡張です。オープンソースの Timeline プロジェクトをベースに二次開発され、タイムラインナビゲーション、履歴位置の特定、会話閲覧の強化、会話データのアーカイブに重点を置いています。複数の主要な AI チャットプラットフォームをサポートします。"
   },
   "aboutDataSecurityTitle": {
     "message": "データセキュリティ"
@@ -856,5 +856,32 @@
   },
   "changelogShareTip": {
     "message": "この拡張機能が便利だと感じたら、必要としている人にもぜひ共有してください。"
+  },
+  "longConversationPerformanceTitle": {
+    "message": "Long Conversation Optimization"
+  },
+  "longConversationPerformanceHint": {
+    "message": "Automatically fold older messages after the set limit."
+  },
+  "longConversationThresholdLabel": {
+    "message": "After"
+  },
+  "longConversationMessageUnit": {
+    "message": "messages"
+  },
+  "longConversationKeepRecentLabel": {
+    "message": "Keep recent"
+  },
+  "longConversationKeepRecentUnit": {
+    "message": "messages visible"
+  },
+  "longConversationValidationKeepRecent": {
+    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+  },
+  "longConversationExpandMore": {
+    "message": "Expand more history"
+  },
+  "longConversationCollapsedTooltip": {
+    "message": "$1 older messages above are folded. Click to expand more."
   }
 }

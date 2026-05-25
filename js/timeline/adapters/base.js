@@ -160,6 +160,15 @@ class SiteAdapter {
     }
 
     /**
+     * Optional hook for long-conversation performance optimization.
+     * Return the DOM nodes that can be visually collapsed for this user turn
+     * without removing the real conversation data from the page.
+     */
+    getLongConversationCollapseTargets() {
+        return null;
+    }
+
+    /**
      * Find the first element matching selector(s) after sourceElement and before
      * the next user turn. Used by adapters to attach the same turn timestamp to
      * the assistant reply without changing timeline node semantics.

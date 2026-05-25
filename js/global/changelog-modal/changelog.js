@@ -12,22 +12,22 @@
  */
 
 const CHANGELOG_DATA = {
-    id: '2026052401',
+    id: '2026052501',
     // 'icon' = 提示词按钮左侧显示 Logo + 小红点（温和提示）
     // 'popup' = 自动弹窗展示更新内容（强提醒）
     displayMode: 'icon',
 
     features: [
         {
-            zh: '电子宠物新增小猫、小狗、小熊猫等更多选择，让 AI 回复等待过程更轻松有趣',
-            en: 'Added more digital pet choices, including kitten, puppy, and red panda, to make waiting for AI replies more delightful'
+            zh: '新增长对话优化，可自动折叠历史消息，先支持 ChatGPT',
+            en: 'Added long conversation optimization with automatic history folding, starting with ChatGPT'
         }
     ],
 
     improvements: [
         {
-            zh: '优化对话宽度调节的跨平台适配，更多 AI 平台可稳定调整对话区域宽度',
-            en: 'Improved cross-platform support for chat width adjustment, so more AI platforms can resize conversation areas reliably'
+            zh: '插件设置页适配暗黑模式，夜间使用更清晰',
+            en: 'Improved dark mode support for the extension settings panel'
         }
     ]
 };

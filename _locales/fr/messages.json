@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "ChatLine : ChatGPT et Gemini améliorés"
+    "message": "ChatLine : Chat IA amélioré"
   },
   "extDescription": {
     "message": "Extension de navigateur pour pages de chat IA. Fork de Timeline avec navigation temporelle, repérage historique, lecture améliorée et archivage."
@@ -501,7 +501,7 @@
     "message": "Présentation"
   },
   "aboutPluginContent": {
-    "message": "ChatLine est une extension de navigateur pour les pages de chat IA. Issue du projet open-source Timeline, elle se concentre sur la navigation par timeline, le repérage dans l’historique, l’amélioration de la lecture des conversations et l’archivage des données de conversation. Elle prend en charge ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, NotebookLM et d’autres plateformes majeures."
+    "message": "ChatLine est une extension de navigateur pour les pages de chat IA. Issue du projet open-source Timeline, elle se concentre sur la navigation par timeline, le repérage dans l’historique, l’amélioration de la lecture des conversations et l’archivage des données de conversation. Elle prend en charge plusieurs plateformes majeures de chat IA."
   },
   "aboutDataSecurityTitle": {
     "message": "Sécurité des données"
@@ -805,5 +805,32 @@
   },
   "changelogShareTip": {
     "message": "Si cette extension vous est utile, n’hésitez pas à la partager avec quelqu’un qui pourrait en avoir besoin."
+  },
+  "longConversationPerformanceTitle": {
+    "message": "Long Conversation Optimization"
+  },
+  "longConversationPerformanceHint": {
+    "message": "Automatically fold older messages after the set limit."
+  },
+  "longConversationThresholdLabel": {
+    "message": "After"
+  },
+  "longConversationMessageUnit": {
+    "message": "messages"
+  },
+  "longConversationKeepRecentLabel": {
+    "message": "Keep recent"
+  },
+  "longConversationKeepRecentUnit": {
+    "message": "messages visible"
+  },
+  "longConversationValidationKeepRecent": {
+    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+  },
+  "longConversationExpandMore": {
+    "message": "Expand more history"
+  },
+  "longConversationCollapsedTooltip": {
+    "message": "$1 older messages above are folded. Click to expand more."
   }
 }

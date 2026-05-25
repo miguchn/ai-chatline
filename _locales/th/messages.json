@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "ChatLine: ChatGPT และ Gemini แชทเสริม"
+    "message": "ChatLine: แชท AI เสริม"
   },
   "extDescription": {
     "message": "ส่วนขยายเบราว์เซอร์สำหรับหน้าแชท AI พัฒนาต่อจาก Timeline พร้อมนำทางไทม์ไลน์ ค้นตำแหน่งประวัติ อ่านง่ายขึ้น และเก็บถาวรบทสนทนา"
@@ -501,7 +501,7 @@
     "message": "เกี่ยวกับส่วนขยาย"
   },
   "aboutPluginContent": {
-    "message": "ChatLine เป็นส่วนขยายเบราว์เซอร์สำหรับหน้าแชท AI พัฒนาต่อจากโปรเจกต์โอเพนซอร์ส Timeline โดยเน้นการนำทางด้วยไทม์ไลน์ การค้นตำแหน่งในประวัติ การอ่านบทสนทนาที่สะดวกขึ้น และการเก็บถาวรข้อมูลบทสนทนา รองรับ ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, NotebookLM และแพลตฟอร์มแชท AI หลักอื่น ๆ"
+    "message": "ChatLine เป็นส่วนขยายเบราว์เซอร์สำหรับหน้าแชท AI พัฒนาต่อจากโปรเจกต์โอเพนซอร์ส Timeline โดยเน้นการนำทางด้วยไทม์ไลน์ การค้นตำแหน่งในประวัติ การอ่านบทสนทนาที่สะดวกขึ้น และการเก็บถาวรข้อมูลบทสนทนา รองรับแพลตฟอร์มแชท AI หลักหลายแห่ง"
   },
   "aboutDataSecurityTitle": {
     "message": "ความปลอดภัยของข้อมูล"
@@ -805,5 +805,32 @@
   },
   "changelogShareTip": {
     "message": "หากคุณชอบส่วนขยายนี้ แบ่งปันให้คนที่อาจต้องใช้ได้เลย"
+  },
+  "longConversationPerformanceTitle": {
+    "message": "Long Conversation Optimization"
+  },
+  "longConversationPerformanceHint": {
+    "message": "Automatically fold older messages after the set limit."
+  },
+  "longConversationThresholdLabel": {
+    "message": "After"
+  },
+  "longConversationMessageUnit": {
+    "message": "messages"
+  },
+  "longConversationKeepRecentLabel": {
+    "message": "Keep recent"
+  },
+  "longConversationKeepRecentUnit": {
+    "message": "messages visible"
+  },
+  "longConversationValidationKeepRecent": {
+    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+  },
+  "longConversationExpandMore": {
+    "message": "Expand more history"
+  },
+  "longConversationCollapsedTooltip": {
+    "message": "$1 older messages above are folded. Click to expand more."
   }
 }

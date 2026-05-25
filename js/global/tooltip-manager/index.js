@@ -93,6 +93,27 @@ class GlobalTooltipManager {
                         }
                     }
                 },
+                'collapse-hint': {
+                    maxWidth: 260,
+                    showDelay: 0,
+                    hideDelay: 100,
+                    allowHover: false,
+                    className: 'timeline-tooltip-base',
+                    placement: 'left',
+                    gap: 8,
+                    color: {
+                        light: {
+                            backgroundColor: '#0d0d0d',
+                            textColor: '#ffffff',
+                            borderColor: '#0d0d0d'
+                        },
+                        dark: {
+                            backgroundColor: '#ffffff',
+                            textColor: '#1f2937',
+                            borderColor: '#e5e7eb'
+                        }
+                    }
+                },
                 formula: {
                     maxWidth: 300,
                     showDelay: 0,
@@ -1051,4 +1072,3 @@ if (typeof window.globalTooltipManager === 'undefined') {
         debug: false  // 生产环境关闭，调试时可设为 true
     });
 }
-

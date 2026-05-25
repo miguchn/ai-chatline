@@ -165,6 +165,29 @@ class ChatGPTAdapter extends SiteAdapter {
         return assistant?.querySelector('[data-message-id]') || assistant;
     }
 
+    getLongConversationCollapseTargets(element, index, context = {}) {
+        const targets = [];
+        if (element) targets.push(element);
+
+        const assistant = this.findFirstFollowingElement(
+            element,
+            context.userElements?.[index + 1],
+            [
+                '[data-turn="assistant"][data-turn-id]',
+                '[data-message-author-role="assistant"]'
+            ],
+            context.root || document
+        );
+        if (assistant) {
+            const assistantTurn = assistant.closest?.('[data-turn="assistant"][data-turn-id]') || assistant;
+            targets.push(assistantTurn);
+        }
+
+        return targets.filter((target, targetIndex, arr) =>
+            target && arr.indexOf(target) === targetIndex
+        );
+    }
+
     isConversationRoute(pathname) {
         const segs = pathname.split('/').filter(Boolean);
         

@@ -122,11 +122,33 @@ html[data-timeline-theme="dark"] .timeline-toggle-btn:active {
     contain: layout;
 }
 
+.ait-timeline-top-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    max-width: calc(100vw - 24px);
+    flex-shrink: 0;
+}
+
 /* ✅ 深色主题下添加微妙边框和光晕，增强时间轴的立体感 */
 html[data-timeline-theme="dark"] .ait-chat-timeline-bar {
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.4), 
                 0 0 1px rgba(255, 255, 255, 0.1),
                 inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.ait-lco-collapsed {
+    height: var(--ait-lco-collapsed-height, 120px) !important;
+    min-height: var(--ait-lco-collapsed-height, 120px) !important;
+    max-height: var(--ait-lco-collapsed-height, 120px) !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+    content-visibility: hidden !important;
+    contain: layout style paint !important;
+    contain-intrinsic-size: var(--ait-lco-collapsed-height, 120px) !important;
+    pointer-events: none !important;
 }
 
 /* Scrollable track to host all dots (long canvas) */
@@ -711,4 +733,105 @@ html[data-timeline-theme="dark"] .ait-compact-mode .ait-timeline-dot.active::aft
 .ait-compact-mode .ait-timeline-dot.active:hover::before {
     width: 28px;
     height: 7px;
+}
+
+/* 时间轴节点跟随消息折叠进入紧凑态，保留导航结构和点击恢复能力 */
+.ait-timeline-dot.ait-lco-dot-hidden {
+    opacity: 0.45;
+}
+
+.ait-timeline-dot.ait-lco-dot-hidden::after,
+.ait-compact-mode .ait-timeline-dot.ait-lco-dot-hidden::after,
+.ait-timeline-dot.ait-lco-dot-hidden.starred::after,
+.ait-timeline-dot.ait-lco-dot-hidden.active::after {
+    width: 4px;
+    height: 4px;
+    background-color: #a3a3a3;
+    box-shadow: none;
+}
+
+.ait-timeline-dot.ait-lco-dot-hidden:not(.active)::before {
+    display: none;
+}
+
+/* ============================================
+   ✅ 折叠提示节点 - 长对话优化功能
+   ============================================ */
+
+/* 折叠提示按钮（显示在时间轴顶部） */
+.ait-timeline-collapse-hint {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    z-index: 20;
+
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 3px;
+    min-width: 36px;
+    height: 20px;
+    padding: 0 6px;
+    box-sizing: border-box;
+
+    border: none;
+    border-radius: 10px;
+    background: rgba(17, 24, 39, 0.88);
+    color: #fff;
+    font-size: 11px;
+    line-height: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap !important;
+    writing-mode: horizontal-tb !important;
+    vertical-align: middle;
+
+    box-shadow: 0 2px 8px rgba(17, 24, 39, 0.18);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+
+.ait-timeline-collapse-hint-icon,
+.ait-timeline-collapse-hint-count {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 auto !important;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    white-space: nowrap !important;
+}
+
+.ait-timeline-collapse-hint-icon {
+    font-size: 12px;
+}
+
+.ait-timeline-collapse-hint:hover {
+    transform: scale(1.08);
+    box-shadow: 0 3px 10px rgba(17, 24, 39, 0.24);
+    background: rgba(17, 24, 39, 0.96);
+}
+
+.ait-timeline-collapse-hint:active {
+    transform: scale(0.96);
+    box-shadow: 0 1px 4px rgba(17, 24, 39, 0.18);
+}
+
+/* 深色模式 - 折叠提示 */
+html[data-timeline-theme="dark"] .ait-timeline-collapse-hint {
+    background: rgba(255, 255, 255, 0.92);
+    color: #111827;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+}
+
+html[data-timeline-theme="dark"] .ait-timeline-collapse-hint:hover {
+    background: #ffffff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.36);
+}
+
+html[data-timeline-theme="dark"] .ait-timeline-collapse-hint:active {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.28);
 }

@@ -194,3 +194,48 @@
     color: #374151;
     font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 }
+
+/* ==================== 暗黑模式 ==================== */
+
+html[data-timeline-theme="dark"] .formula-settings .setting-section {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+html[data-timeline-theme="dark"] .formula-settings .setting-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+html[data-timeline-theme="dark"] .formula-settings .format-inline-title {
+    color: #d1d5db;
+}
+
+html[data-timeline-theme="dark"] .formula-settings .format-option {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+html[data-timeline-theme="dark"] .formula-settings .format-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+html[data-timeline-theme="dark"] .formula-settings .format-option:has(input:checked) {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: #7c3aed;
+}
+
+html[data-timeline-theme="dark"] .formula-settings .format-radio {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+html[data-timeline-theme="dark"] .formula-settings .format-option:has(input:checked) .format-radio {
+    border-color: #a78bfa;
+}
+
+html[data-timeline-theme="dark"] .formula-settings .format-radio::after {
+    background: #a78bfa;
+}
+
+html[data-timeline-theme="dark"] .formula-settings .format-label {
+    color: #d1d5db;
+}

@@ -169,3 +169,19 @@
     color: #1f2937;
 }
 
+/* ==================== 暗黑模式 ==================== */
+
+html[data-timeline-theme="dark"] .smart-input-box-settings .divider {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+html[data-timeline-theme="dark"] .smart-enter-mode-trigger {
+    color: #a78bfa;
+    border-bottom-color: #a78bfa;
+}
+
+html[data-timeline-theme="dark"] .smart-enter-mode-trigger:hover {
+    color: #c4b5fd;
+    border-bottom-color: #c4b5fd;
+}
+

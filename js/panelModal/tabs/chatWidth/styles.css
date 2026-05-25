@@ -27,3 +27,17 @@
     color: #1f2937;
     letter-spacing: -0.5px;
 }
+
+/* ==================== 暗黑模式 ==================== */
+
+html[data-timeline-theme="dark"] .cw-preview-section {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+html[data-timeline-theme="dark"] .cw-preview-label {
+    color: #9ca3af;
+}
+
+html[data-timeline-theme="dark"] .cw-preview-value {
+    color: #e5e7eb;
+}

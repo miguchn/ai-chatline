@@ -64,6 +64,8 @@ class TimelineManager {
         this.aiCompleteToastEnabled = true;
         // ✅ 对话导出启用状态（内存缓存，默认关闭）
         this.conversationExportEnabled = false;
+        // ✅ 长对话性能优化模块（默认关闭，按平台配置启用）
+        this.longConversationOptimizer = null;
         // ✅ 平台设置（内存缓存）
         this.platformSettings = {};
         // ✅ 时间轴激活节点颜色设置（内存缓存）
@@ -196,6 +198,11 @@ class TimelineManager {
         await this.loadConversationExportState();
         // ✅ 加载激活节点颜色设置
         await this.loadTimelineActiveColorSettings();
+        // ✅ 初始化长对话性能优化（公共模块，当前 ChatGPT 优先验证）
+        if (typeof LongConversationOptimizer !== 'undefined') {
+            this.longConversationOptimizer = new LongConversationOptimizer(this.adapter, this);
+            await this.longConversationOptimizer.init();
+        }
         this.applyTimelineActiveColor();
         this.updateConversationExportButtonVisibility();
         
@@ -297,8 +304,18 @@ class TimelineManager {
         this.ui.timelineBar = timelineBar;
         this.applyTimelineActiveColor();
 
+        let topActions = wrapper.querySelector('.ait-timeline-top-actions');
+        if (!topActions) {
+            topActions = document.createElement('div');
+            topActions.className = 'ait-timeline-top-actions';
+            wrapper.insertBefore(topActions, timelineBar);
+        }
+        this.ui.topActions = topActions;
+        this.updateTimelineTopActionsVisibility();
+
         // ✅ 添加对话导出按钮（在时间轴最上方）
-        let conversationExportBtn = wrapper.querySelector('.ait-conversation-export-btn');
+        let conversationExportBtn = topActions.querySelector('.ait-conversation-export-btn') ||
+            wrapper.querySelector('.ait-conversation-export-btn');
         if (!conversationExportBtn) {
             conversationExportBtn = document.createElement('button');
             conversationExportBtn.className = 'ait-conversation-export-btn';
@@ -320,10 +337,8 @@ class TimelineManager {
                 window.globalTooltipManager.hide();
             });
         }
-        if (conversationExportBtn.parentElement !== wrapper) {
-            wrapper.insertBefore(conversationExportBtn, timelineBar);
-        } else if (conversationExportBtn.nextElementSibling !== timelineBar) {
-            wrapper.insertBefore(conversationExportBtn, timelineBar);
+        if (conversationExportBtn.parentElement !== topActions) {
+            topActions.appendChild(conversationExportBtn);
         }
         this.ui.conversationExportBtn = conversationExportBtn;
         
@@ -999,6 +1014,8 @@ class TimelineManager {
         
         // Reset visible window to avoid cleaning with stale indices after rebuild
         this.visibleRange = { start: 0, end: -1 };
+        this.timelineRenderMarkers = null;
+        this.timelineRenderMarkerSignature = '';
         // If the conversation is transiently empty (branch switching), don't wipe UI immediately
         if (userTurnElements.length === 0) {
             this.adapter._debug?.('markers-empty', {
@@ -1240,6 +1257,7 @@ class TimelineManager {
             
             const m = {
                 id: message.id,
+                index,
                 element: el,
                 summary: message.text,
                 offsetTop,      // 节点顶部距离（像素）- 用于激活判断
@@ -1320,6 +1338,7 @@ class TimelineManager {
         this.updateActiveDotUI();
         this.scheduleScrollSync();
         this.updateIntersectionObserverTargets();
+        this.longConversationOptimizer?.apply(userTurnElements);
         
         // ✅ 对外派发节点数量变化事件
         if (pendingNodesChange) {
@@ -1362,7 +1381,7 @@ class TimelineManager {
             if (marker && marker.element) {
                 // 延迟500ms，等待页面完全加载后再定位
                 setTimeout(() => {
-                    this.smoothScrollTo(marker.element);
+                    this.scrollToMarker(marker);
                 }, 500);
             }
         }).catch(() => {});
@@ -1373,7 +1392,7 @@ class TimelineManager {
             if (marker && marker.element) {
                 // 延迟500ms，等待页面完全加载后再定位
                 setTimeout(() => {
-                    this.smoothScrollTo(marker.element);
+                    this.scrollToMarker(marker);
                 }, 500);
             }
         }).catch(() => {});
@@ -1636,10 +1655,9 @@ class TimelineManager {
                 const targetId = dot.dataset.targetTurnId;
                 // Find target element by matching marker ID
                 const marker = this.markers.find(m => m.id === targetId);
-                const targetElement = marker?.element;
-                if (targetElement) {
+                if (marker?.element) {
                     // Only scroll; let scroll-based computation set active to avoid double-flash
-                    this.smoothScrollTo(targetElement);
+                    this.scrollToMarker(marker);
                 }
             }
         };
@@ -1703,7 +1721,7 @@ class TimelineManager {
                 }
                 
                 if (defaultMarker && defaultMarker.element) {
-                    this.smoothScrollTo(defaultMarker.element);
+                    this.scrollToMarker(defaultMarker);
                 }
                 return;
             }
@@ -1725,7 +1743,7 @@ class TimelineManager {
             // 获取目标节点并跳转
             const targetMarker = this.markers[targetIndex];
             if (targetMarker && targetMarker.element) {
-                this.smoothScrollTo(targetMarker.element);
+                this.scrollToMarker(targetMarker);
             }
         };
         document.addEventListener('keydown', this.onKeyDown);
@@ -2011,6 +2029,13 @@ class TimelineManager {
                     this.timelineActiveColorByPlatform = changes.timelineActiveColorByPlatform.newValue || {};
                     this.applyTimelineActiveColor();
                 }
+
+                const longConversationConfigKey = typeof LONG_CONVERSATION_OPTIMIZER_CONFIG_KEY !== 'undefined'
+                    ? LONG_CONVERSATION_OPTIMIZER_CONFIG_KEY
+                    : 'longConversationPerformanceConfig';
+                if (changes[longConversationConfigKey]) {
+                    this.longConversationOptimizer?.scheduleApply();
+                }
                 
                 // 更新收藏按钮显示状态
                 this.updateStarredBtnVisibility();
@@ -2174,7 +2199,7 @@ class TimelineManager {
         const marker = this.markers[targetIndex];
         if (!marker?.element) return false;
         
-        this.smoothScrollTo(marker.element);
+        this.scrollToMarker(marker);
         return true;
     }
     
@@ -2192,6 +2217,14 @@ class TimelineManager {
      */
     scrollToFirst() {
         return this.scrollToIndex(0);
+    }
+
+    scrollToMarker(marker) {
+        if (!marker?.element) return false;
+        const index = Number.isFinite(marker.index) ? marker.index : this.markers.indexOf(marker);
+        this.longConversationOptimizer?.restoreRangeAroundIndex(index);
+        this.smoothScrollTo(marker.element);
+        return true;
     }
     
     smoothScrollTo(targetElement, duration = 600) {
@@ -2247,6 +2280,15 @@ class TimelineManager {
         });
     }
 
+    isTimelineMarkerHidden(marker) {
+        return !!marker?.id && !!this.longConversationOptimizer?.collapsedTurnIds?.has(marker.id);
+    }
+
+    getTimelineRenderMarkers() {
+        const renderMarkers = this.markers.filter(marker => !this.isTimelineMarkerHidden(marker));
+        return renderMarkers.length > 0 ? renderMarkers : this.markers;
+    }
+
     debounce(func, delay) {
         let timeout;
         return (...args) => {
@@ -2288,7 +2330,9 @@ class TimelineManager {
      * 40-45px 之间 → 保持当前模式（滞后区间）
      */
     shouldBeCompactMode() {
-        const N = this.markers.length;
+        if (this.longConversationOptimizer?.collapsedCount > 0) return false;
+
+        const N = this.getTimelineRenderMarkers().length;
         if (N === 0) return false;
         
         const barHeight = this.ui.timelineBar?.clientHeight || 0;
@@ -2373,11 +2417,12 @@ class TimelineManager {
     // Lightweight correction: map cached n -> pixel, apply min-gap, write back updated n
     reapplyMinGapAfterResize() {
         this.perfStart('minGapIdle');
-        if (!this.ui.timelineBar || !this.ui.trackContent || this.markers.length === 0) return;
+        const renderMarkers = this.timelineRenderMarkers || this.getTimelineRenderMarkers();
+        if (!this.ui.timelineBar || !this.ui.trackContent || renderMarkers.length === 0) return;
         
         const trackPadding = this.getTrackPadding();
         const minGap = this.getMinGap();
-        const N = this.markers.length;
+        const N = renderMarkers.length;
         
         // ✅ 使用实际内容高度，确保有足够空间容纳所有节点的最小间距
         const barHeight = this.ui.timelineBar.clientHeight || 0;
@@ -2393,17 +2438,20 @@ class TimelineManager {
         
         // Use cached normalized positions (default 0)
         // ✅ 使用 visualN（圆点定位）而不是 n（激活判断）
-        const desired = this.markers.map(m => {
-            const vn = Math.max(0, Math.min(1, (m.visualN ?? 0)));
+        const useVisibleProjection = this.longConversationOptimizer?.collapsedCount > 0;
+        const desired = renderMarkers.map((m, index) => {
+            const vn = useVisibleProjection
+                ? (N <= 1 ? 0 : index / Math.max(1, N - 1))
+                : Math.max(0, Math.min(1, (m.visualN ?? 0)));
             return minTop + vn * usable;
         });
         const adjusted = this.applyMinGap(desired, minTop, maxTop, minGap);
-        for (let i = 0; i < this.markers.length; i++) {
+        for (let i = 0; i < renderMarkers.length; i++) {
             const top = adjusted[i];
             const vn = (top - minTop) / Math.max(1, usable);
             // ✅ 存储到 dotN（用于圆点 CSS 定位）
-            this.markers[i].dotN = Math.max(0, Math.min(1, vn));
-            try { this.markers[i].dotElement?.style.setProperty('--n', String(this.markers[i].dotN)); } catch {}
+            renderMarkers[i].dotN = Math.max(0, Math.min(1, vn));
+            try { renderMarkers[i].dotElement?.style.setProperty('--n', String(renderMarkers[i].dotN)); } catch {}
         }
         this.perfEnd('minGapIdle');
     }
@@ -2709,7 +2757,23 @@ class TimelineManager {
         
         const H = this.ui.timelineBar.clientHeight || 0;
         const pad = this.getTrackPadding();
-        const N = this.markers.length;
+        const renderMarkers = this.getTimelineRenderMarkers();
+        const renderMarkerSignature = renderMarkers.map(marker => marker.id).join('\u001f');
+        if (this.timelineRenderMarkerSignature !== renderMarkerSignature) {
+            (this.ui.trackContent || this.ui.timelineBar).querySelectorAll('.ait-timeline-dot').forEach(n => n.remove());
+            this.markers.forEach(marker => { marker.dotElement = null; });
+            this.visibleRange = { start: 0, end: -1 };
+            this.timelineRenderMarkerSignature = renderMarkerSignature;
+        }
+        const renderMarkerSet = new Set(renderMarkers);
+        this.markers.forEach(marker => {
+            if (!renderMarkerSet.has(marker) && marker.dotElement) {
+                try { marker.dotElement.remove(); } catch {}
+                marker.dotElement = null;
+            }
+        });
+
+        const N = renderMarkers.length;
         
         let adjusted;
         
@@ -2729,7 +2793,7 @@ class TimelineManager {
             
             const totalHeight = Math.max(0, N - 1) * actualGap;
             const startY = (H - totalHeight) / 2; // 垂直居中
-            adjusted = this.markers.map((_, i) => startY + i * actualGap);
+            adjusted = renderMarkers.map((_, i) => startY + i * actualGap);
         } else {
             // 正常模式：原有逻辑
             const minGap = this.getMinGap();
@@ -2739,11 +2803,18 @@ class TimelineManager {
             try { this.ui.trackContent.style.height = `${this.contentHeight}px`; } catch {}
 
             const usableC = Math.max(1, this.contentHeight - 2 * pad);
-            const desiredY = this.markers.map(m => pad + Math.max(0, Math.min(1, (m.visualN ?? 0))) * usableC);
+            const useVisibleProjection = this.longConversationOptimizer?.collapsedCount > 0;
+            const desiredY = renderMarkers.map((m, index) => {
+                const normalized = useVisibleProjection
+                    ? (N <= 1 ? 0 : index / Math.max(1, N - 1))
+                    : Math.max(0, Math.min(1, (m.visualN ?? 0)));
+                return pad + normalized * usableC;
+            });
             adjusted = this.applyMinGap(desiredY, pad, pad + usableC, minGap);
         }
         
         this.yPositions = adjusted;
+        this.timelineRenderMarkers = renderMarkers;
         
         // ✅ 更新 dotN（经过 minGap 调整的圆点定位值）
         const usableForN = Math.max(1, this.contentHeight - 2 * pad);
@@ -2751,9 +2822,9 @@ class TimelineManager {
             const top = adjusted[i];
             const dn = (top - pad) / usableForN;
             // dotN: 用于圆点 CSS 定位（经过 minGap 调整）
-            this.markers[i].dotN = Math.max(0, Math.min(1, dn));
-            if (this.markers[i].dotElement && !this.usePixelTop) {
-                try { this.markers[i].dotElement.style.setProperty('--n', String(this.markers[i].dotN)); } catch {}
+            renderMarkers[i].dotN = Math.max(0, Math.min(1, dn));
+            if (renderMarkers[i].dotElement && !this.usePixelTop) {
+                try { renderMarkers[i].dotElement.style.setProperty('--n', String(renderMarkers[i].dotN)); } catch {}
             }
         }
         if (this._cssVarTopSupported === null) {
@@ -2799,7 +2870,8 @@ class TimelineManager {
 
     updateVirtualRangeAndRender() {
         const localVersion = this.markersVersion;
-        if (!this.ui.track || !this.ui.trackContent || this.markers.length === 0) return;
+        const renderMarkers = this.timelineRenderMarkers || this.getTimelineRenderMarkers();
+        if (!this.ui.track || !this.ui.trackContent || renderMarkers.length === 0) return;
         const st = this.ui.track.scrollTop || 0;
         const vh = this.ui.track.clientHeight || 0;
         const buffer = Math.max(TIMELINE_CONFIG.VIRTUAL_BUFFER_MIN, vh);
@@ -2810,7 +2882,7 @@ class TimelineManager {
 
         let prevStart = this.visibleRange.start;
         let prevEnd = this.visibleRange.end;
-        const len = this.markers.length;
+        const len = renderMarkers.length;
         // Clamp previous indices into current bounds to avoid undefined access
         if (len > 0) {
             prevStart = Math.max(0, Math.min(prevStart, len - 1));
@@ -2818,11 +2890,11 @@ class TimelineManager {
         }
         if (prevEnd >= prevStart) {
             for (let i = prevStart; i < Math.min(start, prevEnd + 1); i++) {
-                const m = this.markers[i];
+                const m = renderMarkers[i];
                 if (m && m.dotElement) { try { m.dotElement.remove(); } catch {} m.dotElement = null; }
             }
             for (let i = Math.max(end + 1, prevStart); i <= prevEnd; i++) {
-                const m = this.markers[i];
+                const m = renderMarkers[i];
                 if (m && m.dotElement) { try { m.dotElement.remove(); } catch {} m.dotElement = null; }
             }
         } else {
@@ -2832,7 +2904,7 @@ class TimelineManager {
 
         const frag = document.createDocumentFragment();
         for (let i = start; i <= end; i++) {
-            const marker = this.markers[i];
+            const marker = renderMarkers[i];
             if (!marker) continue;
             if (!marker.dotElement) {
                 const dot = document.createElement('button');
@@ -3451,6 +3523,8 @@ class TimelineManager {
         if (window.timelineManager === this) {
             window.timelineManager = null;
         }
+        this.longConversationOptimizer?.destroy();
+        this.longConversationOptimizer = null;
 
         this.visibleUserTurns.clear();
         
@@ -4132,6 +4206,18 @@ class TimelineManager {
         const platform = typeof getCurrentPlatform === 'function' ? getCurrentPlatform() : null;
         const supported = platform?.features?.conversationExport === true;
         button.style.display = this.conversationExportEnabled && supported ? 'flex' : 'none';
+        this.updateTimelineTopActionsVisibility();
+    }
+
+    updateTimelineTopActionsVisibility() {
+        const topActions = this.ui.topActions;
+        if (!topActions) return;
+
+        const hasVisibleAction = Array.from(topActions.children || []).some(child => {
+            if (!(child instanceof HTMLElement)) return false;
+            return child.style.display !== 'none' && getComputedStyle(child).display !== 'none';
+        });
+        topActions.style.display = hasVisibleAction ? 'flex' : 'none';
     }
     
     // ✅ 设置导航数据（用于跨页面导航）

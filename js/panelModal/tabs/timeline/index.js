@@ -51,6 +51,39 @@ class TimelineSettingsTab extends BaseTab {
         container.className = 'timeline-settings';
 
         const divider = `<div class="divider"></div>`;
+        const longConversationSettingsSection = this._supportsLongConversationOptimize()
+            ? `
+            <div class="setting-section">
+                <div class="setting-item timeline-long-conversation-setting">
+                    <div class="setting-info">
+                        <div class="setting-label">${timelineTabI18n('longConversationPerformanceTitle', '长对话性能优化')}</div>
+                        <div class="setting-hint">${timelineTabI18n('longConversationPerformanceHint', '当对话消息超过指定数量后生效，仅折叠历史消息节点，不删除真实对话内容。')}</div>
+                    </div>
+                    <label class="ait-toggle-switch">
+                        <input type="checkbox" id="long-conversation-performance-toggle">
+                        <span class="ait-toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="timeline-performance-controls" id="timeline-performance-controls">
+                    <div class="timeline-performance-control-row">
+                        <span class="timeline-performance-control-label">${timelineTabI18n('longConversationThresholdLabel', '超过')}</span>
+                        <div class="timeline-segmented-options" data-setting="threshold">
+                            ${this._renderSegmentedOptions([20, 30, 50], 'threshold')}
+                        </div>
+                        <span class="timeline-performance-control-label">${timelineTabI18n('longConversationMessageUnit', '条消息后启用')}</span>
+                    </div>
+                    <div class="timeline-performance-control-row">
+                        <span class="timeline-performance-control-label">${timelineTabI18n('longConversationKeepRecentLabel', '保留最近')}</span>
+                        <div class="timeline-segmented-options" data-setting="keepRecent">
+                            ${this._renderSegmentedOptions([10, 20, 30, 40], 'keepRecent')}
+                        </div>
+                        <span class="timeline-performance-control-label">${timelineTabI18n('longConversationKeepRecentUnit', '条消息不折叠')}</span>
+                    </div>
+                    <div class="timeline-performance-warning" id="timeline-performance-warning"></div>
+                </div>
+            </div>
+            ${divider}`
+            : '';
 
         // ==================== 滚动区域 ====================
         const scrollArea = document.createElement('div');
@@ -92,6 +125,7 @@ class TimelineSettingsTab extends BaseTab {
                 </div>
             </div>
             ${divider}
+            ${longConversationSettingsSection}
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
@@ -161,6 +195,105 @@ class TimelineSettingsTab extends BaseTab {
 
         return container;
     }
+
+    _renderSegmentedOptions(values, settingName) {
+        return values.map(value => `
+            <button
+                type="button"
+                class="timeline-segmented-option"
+                data-setting="${settingName}"
+                data-value="${value}"
+                aria-pressed="false"
+            >${value}</button>
+        `).join('');
+    }
+
+    _supportsLongConversationOptimize() {
+        try {
+            return getCurrentPlatform?.()?.features?.supportsLongConversationOptimize === true;
+        } catch {
+            return false;
+        }
+    }
+
+    _getDefaultPerformanceConfig() {
+        if (typeof LongConversationOptimizerConfig !== 'undefined') {
+            return LongConversationOptimizerConfig.normalize();
+        }
+        return {
+            enabled: false,
+            threshold: 50,
+            keepRecent: 20,
+            platforms: { chatgpt: true }
+        };
+    }
+
+    _normalizePerformanceConfig(config) {
+        if (typeof LongConversationOptimizerConfig !== 'undefined') {
+            return LongConversationOptimizerConfig.normalize(config);
+        }
+        const defaults = this._getDefaultPerformanceConfig();
+        const threshold = [20, 30, 50].includes(Number(config?.threshold))
+            ? Number(config.threshold)
+            : defaults.threshold;
+        let keepRecent = [10, 20, 30, 40].includes(Number(config?.keepRecent))
+            ? Number(config.keepRecent)
+            : defaults.keepRecent;
+        if (keepRecent >= threshold) {
+            const validOptions = [10, 20, 30, 40].filter(value => value < threshold);
+            keepRecent = validOptions.length ? Math.max(...validOptions) : Math.max(1, threshold - 1);
+        }
+        return {
+            ...defaults,
+            ...(config || {}),
+            threshold,
+            keepRecent,
+            platforms: {
+                ...defaults.platforms,
+                ...((config || {}).platforms || {})
+            }
+        };
+    }
+
+    _performanceConfigKey() {
+        return typeof LONG_CONVERSATION_OPTIMIZER_CONFIG_KEY !== 'undefined'
+            ? LONG_CONVERSATION_OPTIMIZER_CONFIG_KEY
+            : 'longConversationPerformanceConfig';
+    }
+
+    _updatePerformanceControls(config) {
+        const normalized = this._normalizePerformanceConfig(config);
+        const controls = document.getElementById('timeline-performance-controls');
+        const toggle = document.getElementById('long-conversation-performance-toggle');
+        if (toggle) toggle.checked = normalized.enabled === true;
+        if (controls) controls.classList.toggle('disabled', normalized.enabled !== true);
+
+        document.querySelectorAll('.timeline-segmented-option').forEach(btn => {
+            const key = btn.dataset.setting;
+            const value = Number(btn.dataset.value);
+            const selected = String(normalized[key]) === btn.dataset.value;
+            btn.classList.toggle('selected', selected);
+            btn.setAttribute('aria-pressed', selected ? 'true' : 'false');
+
+            // Disable if feature is off, or if keepRecent >= threshold
+            let disabled = normalized.enabled !== true;
+            if (!disabled && key === 'keepRecent' && value >= normalized.threshold) {
+                disabled = true;
+            }
+            btn.disabled = disabled;
+        });
+
+        // Show warning if current config is invalid
+        const warningEl = document.getElementById('timeline-performance-warning');
+        if (warningEl) {
+            if (normalized.keepRecent >= normalized.threshold) {
+                warningEl.textContent = timelineTabI18n('longConversationValidationKeepRecent', '保留消息数必须小于触发阈值，已自动修正');
+                warningEl.classList.add('visible');
+            } else {
+                warningEl.classList.remove('visible');
+            }
+        }
+    }
     
     /**
      * Tab 激活时加载状态
@@ -219,6 +352,66 @@ class TimelineSettingsTab extends BaseTab {
                     this._handleExtensionError('Failed to save AI complete toast state', e);
                     aiCompleteToastCheckbox.checked = !aiCompleteToastCheckbox.checked;
                 }
+            });
+        }
+
+        // 1.1 处理长对话性能优化配置（默认关闭，仅支持平台展示）
+        if (this._supportsLongConversationOptimize()) {
+            const performanceToggle = document.getElementById('long-conversation-performance-toggle');
+            const performanceControls = document.getElementById('timeline-performance-controls');
+            const performanceConfigKey = this._performanceConfigKey();
+            let performanceConfig = this._getDefaultPerformanceConfig();
+            try {
+                const result = await chrome.storage.local.get(performanceConfigKey);
+                performanceConfig = this._normalizePerformanceConfig(result[performanceConfigKey] || {});
+            } catch (e) {
+                this._handleExtensionError('Failed to load long conversation performance config', e);
+            }
+            this._updatePerformanceControls(performanceConfig);
+
+            const savePerformanceConfig = async (patch) => {
+                try {
+                    const candidateConfig = {
+                        ...performanceConfig,
+                        ...patch
+                    };
+                    const shouldShowValidationWarning =
+                        Number(candidateConfig.keepRecent) >= Number(candidateConfig.threshold);
+                    const newConfig = this._normalizePerformanceConfig(candidateConfig);
+
+                    // Validate: keepRecent must be less than threshold
+                    if (shouldShowValidationWarning) {
+                        const warningEl = document.getElementById('timeline-performance-warning');
+                        if (warningEl) {
+                            warningEl.textContent = timelineTabI18n('longConversationValidationKeepRecent', '保留消息数必须小于触发阈值，已自动修正');
+                            warningEl.classList.add('visible');
+                            setTimeout(() => warningEl.classList.remove('visible'), 3000);
+                        }
+                    }
+
+                    performanceConfig = newConfig;
+                    await chrome.storage.local.set({ [performanceConfigKey]: performanceConfig });
+                    this._updatePerformanceControls(performanceConfig);
+                } catch (e) {
+                    this._handleExtensionError('Failed to save long conversation performance config', e);
+                    this._updatePerformanceControls(performanceConfig);
+                }
+            };
+
+            if (performanceToggle) {
+                this.addEventListener(performanceToggle, 'change', (e) => {
+                    savePerformanceConfig({ enabled: e.target.checked });
+                });
+            }
+
+            performanceControls?.querySelectorAll('.timeline-segmented-option').forEach(btn => {
+                this.addEventListener(btn, 'click', () => {
+                    if (btn.disabled) return;
+                    const key = btn.dataset.setting;
+                    const value = Number(btn.dataset.value);
+                    if (!key || !Number.isFinite(value)) return;
+                    savePerformanceConfig({ [key]: value });
+                });
             });
         }
 

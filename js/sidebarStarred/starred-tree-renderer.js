@@ -1061,7 +1061,13 @@ class StarredTreeRenderer {
             const tm = window.timelineManager;
             if (needsScroll && tm) {
                 const marker = this._findMarker(tm, nodeKey);
-                if (marker?.element) tm.smoothScrollTo(marker.element);
+                if (marker?.element) {
+                    if (typeof tm.scrollToMarker === 'function') {
+                        tm.scrollToMarker(marker);
+                    } else {
+                        tm.smoothScrollTo(marker.element);
+                    }
+                }
             }
             this.opts.onAfterNavigate();
         } else if (this._isSameSite(url)) {

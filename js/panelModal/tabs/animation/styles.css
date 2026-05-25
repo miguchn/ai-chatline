@@ -62,3 +62,25 @@
     color: #9ca3af;
     font-size: 14px;
 }
+
+/* ==================== 暗黑模式 ==================== */
+
+html[data-timeline-theme="dark"] .anim-tab-desc {
+    color: #9ca3af;
+}
+
+html[data-timeline-theme="dark"] .anim-tab-item {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+html[data-timeline-theme="dark"] .anim-tab-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+html[data-timeline-theme="dark"] .anim-tab-item-name {
+    color: #e5e7eb;
+}
+
+html[data-timeline-theme="dark"] .anim-tab-empty {
+    color: #6b7280;
+}
