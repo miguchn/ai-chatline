@@ -1,6 +1,6 @@
 /**
  * NotepadManager - 闪记管理器（多笔记模式）
- * 全局共享、持久化到 chrome.storage，纯文本
+ * 按平台/会话隔离，持久化到 chrome.storage，纯文本
  * 拖拽 / 调整大小交互逻辑与 FloatingRunnerContainer 保持一致
  */
 class NotepadManager {
@@ -26,12 +26,10 @@ class NotepadManager {
         this.locationEl = null;
         this.locationTextEl = null;
 
-        // 存储 key
-        this.NOTES_KEY = 'aitNotepadNotes';
+        // 存储 key：笔记内容按平台 + 当前会话路径隔离，避免跨平台/跨会话残留
+        this.BASE_NOTES_KEY = 'aitNotepadNotes';
+        this.NOTES_KEY = this._getScopedNotesKey();
         this.STATE_KEY = 'aitNotepadState';
-
-        // 兼容旧版单笔记数据迁移
-        this.OLD_STORAGE_KEY = 'aitNotepadContent';
 
         // 默认尺寸
         this.DEFAULT_WIDTH = 260;
@@ -57,6 +55,7 @@ class NotepadManager {
         this._onFocusCheck = null;
         this._onStorageChange = null;
         this._onWindowResize = null;
+        this._onUrlChange = null;
         this._isSaving = false;
 
         this.loadState();
@@ -68,9 +67,7 @@ class NotepadManager {
         } catch (e) {}
         this.createPanel();
         await this.loadNotes();
-        if (!this.notes.length) {
-            this.createNote();
-        } else {
+        if (this.notes.length) {
             this.openNote(this.notes[this.notes.length - 1].id);
         }
         this.bindEvents();
@@ -272,6 +269,11 @@ class NotepadManager {
             this.applyState();
         };
         window.addEventListener('resize', this._onWindowResize);
+
+        this._onUrlChange = () => {
+            this._handleUrlChange();
+        };
+        window.addEventListener('url:change', this._onUrlChange);
     }
 
     // ─── 视图切换 / 列表渲染 ──────────────────────────────────────────────────
@@ -576,6 +578,54 @@ class NotepadManager {
 
     // ─── Storage ──────────────────────────────────────────────────────────────
 
+    _getStorageContext() {
+        let platformId = location.hostname || 'unknown';
+        try {
+            const platform = typeof getCurrentPlatform === 'function' ? getCurrentPlatform() : null;
+            if (platform?.id) platformId = platform.id;
+        } catch (e) {}
+
+        const route = `${location.pathname || '/'}${location.search || ''}${location.hash || ''}`;
+        return `${platformId}:${location.origin}${route}`;
+    }
+
+    _getScopedNotesKey() {
+        return `${this.BASE_NOTES_KEY}:${this._getStorageContext()}`;
+    }
+
+    _switchContentContext() {
+        const nextKey = this._getScopedNotesKey();
+        if (nextKey === this.NOTES_KEY) return false;
+
+        this._flushCurrentNote();
+        clearTimeout(this.saveTimeout);
+        this.saveTimeout = null;
+
+        this.NOTES_KEY = nextKey;
+        this.notes = [];
+        this.activeNoteId = null;
+        this.currentView = 'edit';
+
+        if (this.textarea) this.textarea.value = '';
+        if (this.listContainer) this.listContainer.innerHTML = '';
+        this._updateListBtnVisibility();
+        return true;
+    }
+
+    async _handleUrlChange() {
+        if (!this._switchContentContext()) return;
+        if (!this.isOpen) return;
+
+        await this.loadNotes();
+        if (!this.isOpen) return;
+
+        if (!this.notes.length) {
+            this.createNote();
+        } else {
+            this.openNote(this.notes[this.notes.length - 1].id);
+        }
+    }
+
     scheduleSave() {
         clearTimeout(this.saveTimeout);
         this.saveTimeout = setTimeout(() => {
@@ -598,21 +648,12 @@ class NotepadManager {
 
     async loadNotes() {
         try {
-            const result = await chrome.storage.local.get([this.NOTES_KEY, this.OLD_STORAGE_KEY]);
+            this._switchContentContext();
+            this.notes = [];
+            const result = await chrome.storage.local.get([this.NOTES_KEY]);
 
             if (result[this.NOTES_KEY] && result[this.NOTES_KEY].length) {
                 this.notes = result[this.NOTES_KEY];
-            } else if (result[this.OLD_STORAGE_KEY]) {
-                const oldContent = result[this.OLD_STORAGE_KEY];
-                if (oldContent.trim()) {
-                    this.notes = [{
-                        id: Date.now().toString(36),
-                        content: oldContent,
-                        updatedAt: Date.now()
-                    }];
-                    this.saveNotes();
-                    try { chrome.storage.local.remove(this.OLD_STORAGE_KEY); } catch (e) {}
-                }
             }
         } catch (e) {}
     }
@@ -874,6 +915,10 @@ class NotepadManager {
         if (this._onWindowResize) {
             window.removeEventListener('resize', this._onWindowResize);
             this._onWindowResize = null;
+        }
+        if (this._onUrlChange) {
+            window.removeEventListener('url:change', this._onUrlChange);
+            this._onUrlChange = null;
         }
         clearTimeout(this.saveTimeout);
         this._flushCurrentNote();

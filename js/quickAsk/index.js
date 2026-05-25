@@ -86,6 +86,9 @@
         // 检测 URL 是否真的变化了
         if (location.href === currentUrl) return;
         currentUrl = location.href;
+        currentAdapter = null;
+        manager?.clearSelection?.();
+        window.getSelection()?.removeAllRanges();
         updateQuickAskState();
     }
     

@@ -883,5 +883,11 @@
   },
   "longConversationCollapsedTooltip": {
     "message": "$1 older messages above are folded. Click to expand more."
+  },
+  "highlightSettings": {
+    "message": "設定"
+  },
+  "highlightConfirm": {
+    "message": "確認"
   }
 }

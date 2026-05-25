@@ -856,5 +856,11 @@
   },
   "longConversationCollapsedTooltip": {
     "message": "上方 $1 則歷史對話已摺疊，點擊展開更多"
+  },
+  "highlightSettings": {
+    "message": "設定"
+  },
+  "highlightConfirm": {
+    "message": "確定"
   }
 }

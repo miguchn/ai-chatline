@@ -16,6 +16,14 @@
 (function () {
     'use strict';
 
+    function _msg(key, fallback) {
+        try {
+            return chrome.i18n.getMessage(key) || fallback;
+        } catch {
+            return fallback;
+        }
+    }
+
     const HIGHLIGHT_BTN_ICON = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>';
 
     const HL_DEFAULT_COLORS = HIGHLIGHT_DEFAULT_COLORS;
@@ -66,7 +74,7 @@
         popoverEl.innerHTML = `
             <div class="ait-hl-pop-header">
                 <div class="ait-hl-pop-colors">${colorButtons}</div>
-                <button class="ait-hl-pop-settings" title="${chrome.i18n.getMessage('highlightSettings') || '设置'}">${settingsIcon}</button>
+                <button class="ait-hl-pop-settings" title="${_msg('highlightSettings', '设置')}">${settingsIcon}</button>
             </div>
             <div class="ait-hl-pop-styles">
                 <button class="ait-hl-pop-style-btn" data-style="solid"><span class="ait-hl-pop-style-preview">AaBb</span></button>
@@ -75,11 +83,11 @@
                 <button class="ait-hl-pop-style-btn" data-style="textOnly"><span class="ait-hl-pop-style-preview">AaBb</span></button>
             </div>
             <div class="ait-hl-pop-note">
-                <textarea class="ait-hl-pop-input" rows="1" maxlength="140" placeholder="${chrome.i18n.getMessage('highlightAnnotationPlaceholder') || '想法…'}"></textarea>
-                <button class="ait-hl-pop-confirm" title="${chrome.i18n.getMessage('highlightConfirm') || '确定'}">
+                <textarea class="ait-hl-pop-input" rows="1" maxlength="140" placeholder="${_msg('highlightAnnotationPlaceholder', '想法…')}"></textarea>
+                <button class="ait-hl-pop-confirm" title="${_msg('highlightConfirm', '确定')}">
                     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </button>
-                <button class="ait-hl-pop-delete ait-hl-pop-edit-only" title="${chrome.i18n.getMessage('highlightRemoveYes') || '删除'}">${deleteIcon}</button>
+                <button class="ait-hl-pop-delete ait-hl-pop-edit-only" title="${_msg('highlightRemoveYes', '删除')}">${deleteIcon}</button>
             </div>
         `;
 
@@ -247,7 +255,7 @@
         if (fallbackApplied) updatePendingMarksStyle();
 
         const input = popoverEl.querySelector('.ait-hl-pop-input');
-        input.value = annotation;
+        if (input) input.value = annotation;
 
         popoverEl.style.display = 'block';
         popoverEl.classList.remove('visible');
@@ -514,7 +522,7 @@
         if (opts.showHighlight) {
             const hlBtn = document.createElement('button');
             hlBtn.className = 'ait-highlight-action';
-            hlBtn.innerHTML = `${HIGHLIGHT_BTN_ICON}<span>${chrome.i18n.getMessage('highlightMark') || '标注'}</span>`;
+            hlBtn.innerHTML = `${HIGHLIGHT_BTN_ICON}<span>${_msg('highlightMark', '标注')}</span>`;
             items.push(hlBtn);
         }
 
@@ -527,7 +535,7 @@
             }
             const copyBtn = document.createElement('button');
             copyBtn.className = 'ait-copy-action';
-            copyBtn.innerHTML = `${COPY_BTN_ICON}<span>${chrome.i18n.getMessage('mvkxpz') || '复制'}</span>`;
+            copyBtn.innerHTML = `${COPY_BTN_ICON}<span>${_msg('mvkxpz', '复制')}</span>`;
             items.push(copyBtn);
         }
 
@@ -589,13 +597,13 @@
             const toast = window.globalToastManager;
             if (ok) {
                 toast?.success?.(
-                    chrome.i18n.getMessage('xpzmvk') || '已复制',
+                    _msg('xpzmvk', '已复制'),
                     null,
                     { duration: 1600 }
                 );
             } else {
                 toast?.error?.(
-                    chrome.i18n.getMessage('kpzmvx') || '复制失败',
+                    _msg('kpzmvx', '复制失败'),
                     null,
                     { duration: 1600 }
                 );
@@ -603,7 +611,7 @@
         } catch (e) {
             console.error('[Highlight] copy failed:', e);
             window.globalToastManager?.error?.(
-                chrome.i18n.getMessage('kpzmvx') || '复制失败',
+                _msg('kpzmvx', '复制失败'),
                 null,
                 { duration: 1600 }
             );
@@ -732,7 +740,12 @@
         if (location.href === currentUrl) return;
         currentUrl = location.href;
 
+        hideStandaloneButton();
         hidePopover();
+        clearPendingMarks();
+        savedRange = null;
+        standaloneSavedRange = null;
+        window.getSelection()?.removeAllRanges();
         manager?.clearAllMarks();
         setTimeout(() => {
             if (manager?.isEnabled) manager.restoreHighlights();

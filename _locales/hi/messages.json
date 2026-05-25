@@ -832,5 +832,11 @@
   },
   "longConversationCollapsedTooltip": {
     "message": "$1 older messages above are folded. Click to expand more."
+  },
+  "highlightSettings": {
+    "message": "सेटिंग्स"
+  },
+  "highlightConfirm": {
+    "message": "पुष्टि करें"
   }
 }
