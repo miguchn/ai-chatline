@@ -254,7 +254,12 @@ const StorageAdapter = {
             // 从 sync 读取所有数据
             const syncData = await new Promise((resolve) => {
                 chrome.storage.sync.get(null, (items) => {
-                    resolve(items || {});
+                    if (chrome.runtime.lastError) {
+                        console.warn('[Common] sync read failed:', chrome.runtime.lastError.message);
+                        resolve({});
+                    } else {
+                        resolve(items || {});
+                    }
                 });
             });
             
@@ -298,13 +303,19 @@ const StorageAdapter = {
             // 保存到 local
             await new Promise((resolve) => {
                 chrome.storage.local.set(newLocalData, () => {
+                    if (chrome.runtime.lastError) {
+                        console.warn('[Common] local set failed:', chrome.runtime.lastError.message);
+                    }
                     resolve();
                 });
             });
-            
+
             // 清空 sync（迁移完成标志）
             await new Promise((resolve) => {
                 chrome.storage.sync.clear(() => {
+                    if (chrome.runtime.lastError) {
+                        console.warn('[Common] sync clear failed:', chrome.runtime.lastError.message);
+                    }
                     resolve();
                 });
             });
