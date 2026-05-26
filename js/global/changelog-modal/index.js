@@ -50,6 +50,10 @@ class ChangelogModal {
     _getReadVersion() {
         return new Promise(resolve => {
             try {
+                if (!chrome.storage?.local) {
+                    resolve(null);
+                    return;
+                }
                 chrome.storage.local.get(this.STORAGE_KEY, result => {
                     resolve(result?.[this.STORAGE_KEY] || null);
                 });
@@ -64,11 +68,12 @@ class ChangelogModal {
      */
     _markAsRead() {
         try {
+            if (!chrome.storage?.local) return;
             chrome.storage.local.set({
                 [this.STORAGE_KEY]: CHANGELOG_DATA.id
             });
         } catch (e) {
-            console.warn('[ChangelogModal] markAsRead error:', e);
+            // 扩展上下文失效时静默忽略
         }
     }
 

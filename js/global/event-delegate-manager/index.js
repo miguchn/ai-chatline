@@ -22,6 +22,7 @@ class EventDelegateManager {
         
         // 已绑定的事件类型
         this.boundEvents = new Set();
+        this.boundListeners = new Map();
         
         this._log('Event delegate manager initialized');
     }
@@ -33,6 +34,11 @@ class EventDelegateManager {
      * @param {Function} handler - 处理函数，接收 (event, matchedElement) 参数
      */
     on(eventType, selector, handler) {
+        if (!eventType || !selector || typeof handler !== 'function') {
+            this._log('Invalid handler ignored:', eventType, selector);
+            return () => {};
+        }
+
         // 初始化该事件类型的处理器 Map
         if (!this.handlers[eventType]) {
             this.handlers[eventType] = new Map();
@@ -45,6 +51,8 @@ class EventDelegateManager {
         this._bindEventType(eventType);
         
         this._log('Handler registered:', eventType, selector);
+
+        return () => this.off(eventType, selector, handler);
     }
     
     /**
@@ -52,10 +60,22 @@ class EventDelegateManager {
      * @param {string} eventType - 事件类型
      * @param {string} selector - CSS 选择器
      */
-    off(eventType, selector) {
-        if (this.handlers[eventType]) {
-            this.handlers[eventType].delete(selector);
-            this._log('Handler removed:', eventType, selector);
+    off(eventType, selector, handler) {
+        const handlersMap = this.handlers[eventType];
+        if (!handlersMap) return;
+
+        if (selector) {
+            if (!handler || handlersMap.get(selector) === handler) {
+                handlersMap.delete(selector);
+                this._log('Handler removed:', eventType, selector);
+            }
+        } else {
+            handlersMap.clear();
+            this._log('All handlers removed:', eventType);
+        }
+
+        if (handlersMap.size === 0) {
+            this._unbindEventType(eventType);
         }
     }
     
@@ -67,12 +87,29 @@ class EventDelegateManager {
         
         // 使用冒泡阶段，让原有的事件监听器先执行
         // 如果原有监听器失效，委托的监听器会兜底
-        document.addEventListener(eventType, (e) => {
+        const listener = (e) => {
             this._handleEvent(eventType, e);
-        }, false);
+        };
+
+        document.addEventListener(eventType, listener, false);
         
         this.boundEvents.add(eventType);
+        this.boundListeners.set(eventType, listener);
         this._log('Event type bound:', eventType);
+    }
+
+    /**
+     * 解绑 document 上的事件类型
+     */
+    _unbindEventType(eventType) {
+        const listener = this.boundListeners.get(eventType);
+        if (!listener) return;
+
+        document.removeEventListener(eventType, listener, false);
+        this.boundEvents.delete(eventType);
+        this.boundListeners.delete(eventType);
+        delete this.handlers[eventType];
+        this._log('Event type unbound:', eventType);
     }
     
     /**
@@ -82,10 +119,23 @@ class EventDelegateManager {
         const handlersMap = this.handlers[eventType];
         if (!handlersMap || handlersMap.size === 0) return;
         
+        // 遍历快照，避免 handler 内部注册/解绑影响当前事件分发
+        const handlers = Array.from(handlersMap.entries());
+
         // 遍历所有注册的选择器
-        for (const [selector, handler] of handlersMap) {
-            // 查找匹配的元素（从点击目标向上查找）
-            const matchedElement = e.target.closest(selector);
+        for (const [selector, handler] of handlers) {
+            let matchedElement = null;
+
+            try {
+                matchedElement = this._findMatchedElement(e, selector);
+            } catch (error) {
+                console.error('[EventDelegateManager] Selector error:', {
+                    eventType,
+                    selector,
+                    error
+                });
+                continue;
+            }
             
             if (matchedElement) {
                 this._log('Handler matched:', selector);
@@ -93,10 +143,51 @@ class EventDelegateManager {
                 try {
                     handler(e, matchedElement);
                 } catch (error) {
-                    console.error('[EventDelegateManager] Handler error:', error);
+                    console.error('[EventDelegateManager] Handler error:', {
+                        eventType,
+                        selector,
+                        target: matchedElement,
+                        error
+                    });
                 }
             }
         }
+    }
+
+    /**
+     * 查找匹配的元素，兼容 Text 节点和 Shadow DOM 事件路径
+     */
+    _findMatchedElement(e, selector) {
+        const path = typeof e.composedPath === 'function' ? e.composedPath() : [];
+        const candidates = [e.target, ...path];
+        const seen = new Set();
+
+        for (const candidate of candidates) {
+            const element = this._toElement(candidate);
+            if (!element || seen.has(element)) continue;
+            seen.add(element);
+
+            if (element.matches?.(selector)) {
+                return element;
+            }
+
+            const closest = element.closest?.(selector);
+            if (closest) {
+                return closest;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * 将事件目标规范化为 Element
+     */
+    _toElement(target) {
+        if (!target) return null;
+        if (target.nodeType === 1) return target;
+        if (target.parentElement) return target.parentElement;
+        return null;
     }
     
     /**
@@ -116,4 +207,3 @@ if (typeof window.eventDelegateManager === 'undefined') {
         debug: false
     });
 }
-

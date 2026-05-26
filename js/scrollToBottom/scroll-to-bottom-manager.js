@@ -182,6 +182,7 @@ class ScrollToBottomManager {
         window.eventDelegateManager?.on('click', '.ait-scroll-to-bottom-btn', (e) => {
             e.preventDefault();
             e.stopPropagation();
+            if (this.isDestroyed || !this.isEnabled) return;
             this._scrollToBottom();
         });
         
@@ -376,9 +377,13 @@ class ScrollToBottomManager {
      */
     _scrollToBottom() {
         // 优先使用时间轴的对外 API（正确处理虚拟滚动）
-        if (window.timelineManager?.scrollToLast) {
-            const success = window.timelineManager.scrollToLast();
-            if (success) return;
+        try {
+            if (window.timelineManager?.scrollToLast) {
+                const success = window.timelineManager.scrollToLast();
+                if (success) return;
+            }
+        } catch (e) {
+            console.warn('[ScrollToBottom] Timeline scroll failed, using native fallback:', e);
         }
         
         // fallback: 使用原生滚动（不支持时间轴的平台）
