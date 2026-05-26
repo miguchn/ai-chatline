@@ -201,10 +201,10 @@ class FormulaSourceParser {
     static latexToMathML(latex) {
         if (!latex) return null;
 
-        const engine = typeof temml !== 'undefined' ? temml : null;
-        if (!engine?.renderToString) return null;
-
         try {
+            const engine = typeof temml !== 'undefined' ? temml : null;
+            if (!engine?.renderToString) return null;
+
             const output = engine.renderToString(latex, {
                 displayMode: false,
                 xml: true,
@@ -214,7 +214,6 @@ class FormulaSourceParser {
             });
             return FormulaSourceParser.stripMathMLWrapper(output);
         } catch (e) {
-            console.warn('[FormulaSourceParser] LaTeX → MathML conversion error:', e);
             return null;
         }
     }
