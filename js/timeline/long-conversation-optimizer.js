@@ -2,8 +2,8 @@
  * Long Conversation Optimizer
  *
  * Collapses old rendered message DOM while keeping timeline data and real
- * conversation content intact. The module is platform-aware and currently only
- * opts ChatGPT in; other platforms can enable their own collapse targets later.
+ * conversation content intact. The module is platform-aware; each platform must
+ * opt in through SITE_INFO and provide stable collapse targets in its adapter.
  */
 
 const LONG_CONVERSATION_OPTIMIZER_CONFIG_KEY = 'longConversationPerformanceConfig';
@@ -14,7 +14,11 @@ const LongConversationOptimizerConfig = {
         threshold: 50,
         keepRecent: 20,
         platforms: {
-            chatgpt: true
+            chatgpt: true,
+            gemini: false,
+            doubao: false,
+            tongyi: false,
+            qwen: false
         }
     },
     THRESHOLDS: [20, 30, 50],
@@ -114,9 +118,12 @@ class LongConversationOptimizer {
     isPlatformSupported() {
         const platform = typeof getCurrentPlatform === 'function' ? getCurrentPlatform() : null;
         const platformId = platform?.id || this.getPlatformId();
+        const hasAdapterCollapseTargets = typeof this.adapter?.getLongConversationCollapseTargets === 'function' &&
+            (typeof SiteAdapter === 'undefined' ||
+                this.adapter.getLongConversationCollapseTargets !== SiteAdapter.prototype.getLongConversationCollapseTargets);
         return platform?.features?.supportsLongConversationOptimize === true &&
             this.config.platforms?.[platformId] === true &&
-            typeof this.adapter?.getLongConversationCollapseTargets === 'function';
+            hasAdapterCollapseTargets;
     }
 
     isEnabled() {

@@ -216,6 +216,22 @@ class TimelineSettingsTab extends BaseTab {
         }
     }
 
+    _getCurrentPerformancePlatformId() {
+        try {
+            return getCurrentPlatform?.()?.id || null;
+        } catch {
+            return null;
+        }
+    }
+
+    _isPerformanceEnabledForCurrentPlatform(config) {
+        const normalized = this._normalizePerformanceConfig(config);
+        const platformId = this._getCurrentPerformancePlatformId();
+        return normalized.enabled === true &&
+            !!platformId &&
+            normalized.platforms?.[platformId] === true;
+    }
+
     _getDefaultPerformanceConfig() {
         if (typeof LongConversationOptimizerConfig !== 'undefined') {
             return LongConversationOptimizerConfig.normalize();
@@ -263,10 +279,11 @@ class TimelineSettingsTab extends BaseTab {
 
     _updatePerformanceControls(config) {
         const normalized = this._normalizePerformanceConfig(config);
+        const platformEnabled = this._isPerformanceEnabledForCurrentPlatform(normalized);
         const controls = document.getElementById('timeline-performance-controls');
         const toggle = document.getElementById('long-conversation-performance-toggle');
-        if (toggle) toggle.checked = normalized.enabled === true;
-        if (controls) controls.classList.toggle('disabled', normalized.enabled !== true);
+        if (toggle) toggle.checked = platformEnabled;
+        if (controls) controls.classList.toggle('disabled', !platformEnabled);
 
         document.querySelectorAll('.timeline-segmented-option').forEach(btn => {
             const key = btn.dataset.setting;
@@ -276,7 +293,7 @@ class TimelineSettingsTab extends BaseTab {
             btn.setAttribute('aria-pressed', selected ? 'true' : 'false');
 
             // Disable if feature is off, or if keepRecent >= threshold
-            let disabled = normalized.enabled !== true;
+            let disabled = !platformEnabled;
             if (!disabled && key === 'keepRecent' && value >= normalized.threshold) {
                 disabled = true;
             }
@@ -400,7 +417,20 @@ class TimelineSettingsTab extends BaseTab {
 
             if (performanceToggle) {
                 this.addEventListener(performanceToggle, 'change', (e) => {
-                    savePerformanceConfig({ enabled: e.target.checked });
+                    const platformId = this._getCurrentPerformancePlatformId();
+                    if (!platformId) {
+                        e.target.checked = false;
+                        return;
+                    }
+
+                    const enabled = e.target.checked;
+                    savePerformanceConfig({
+                        enabled: enabled ? true : performanceConfig.enabled === true,
+                        platforms: {
+                            ...(performanceConfig.platforms || {}),
+                            [platformId]: enabled
+                        }
+                    });
                 });
             }
 

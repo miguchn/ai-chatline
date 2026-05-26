@@ -12,6 +12,10 @@ class ChangelogModal {
         this.STORAGE_KEY = 'ait-changelog-read-version';
         this.overlay = null;
         this._boundHandleEscape = this._handleEscape.bind(this);
+        this._version = '';
+        try {
+            this._version = chrome.runtime.getManifest().version || '';
+        } catch {}
     }
 
     /**
@@ -125,7 +129,7 @@ class ChangelogModal {
 
         const lang = this._getLang();
         const { features, improvements } = CHANGELOG_DATA;
-        const version = chrome.runtime.getManifest?.()?.version || '';
+        const version = this._version;
 
         const overlay = document.createElement('div');
         overlay.className = 'changelog-modal-overlay';

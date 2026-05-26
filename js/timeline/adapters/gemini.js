@@ -134,6 +134,28 @@ class GeminiAdapter extends SiteAdapter {
         );
         return assistant?.querySelector('.markdown, .model-response-text, message-content, p') || assistant;
     }
+
+    getLongConversationCollapseTargets(element, index, context = {}) {
+        const targets = [];
+        const userTurn = element?.parentElement?.id ? element.parentElement : element;
+        if (userTurn) targets.push(userTurn);
+
+        const assistant = this.findFirstFollowingElement(
+            element,
+            context.userElements?.[index + 1],
+            [
+                'model-response',
+                '.model-response',
+                '[data-test-id="model-response"]'
+            ],
+            context.root || document
+        );
+        if (assistant) targets.push(assistant);
+
+        return targets.filter((target, targetIndex, arr) =>
+            target && arr.indexOf(target) === targetIndex
+        );
+    }
     
     /**
      * 获取时间标签位置配置
