@@ -41,7 +41,7 @@ const SITE_INFO = [
             chatTimes: true,  // 提问时间记录
             stableNodeId: true,  // 使用稳定的节点 ID（data-message-id），需等待 id 分配后记录
             sidebarStarred: true,  // 侧边栏收藏列表
-            supportsLongConversationOptimize: true,  // 长对话性能优化内部验证，仅 ChatGPT 开放
+            supportsLongConversationOptimize: true,  // 长对话性能优化：已验证稳定
             chatWidth: {
                 selectors: ['.text-token-text-primary > div > div']
             }
@@ -62,6 +62,7 @@ const SITE_INFO = [
             chatTimes: true,  // 提问时间记录
             stableNodeId: true,  // 使用稳定的节点 ID（父元素 id），需等待 id 分配后记录
             sidebarStarred: true,  // 侧边栏收藏列表
+            supportsLongConversationOptimize: true,  // 长对话性能优化：已验证稳定
             chatWidth: {
                 targets: [
                     { selector: '.conversation-container' },
@@ -84,6 +85,7 @@ const SITE_INFO = [
             chatTimes: true,  // 提问时间记录
             stableNodeId: true,  // 使用稳定的节点 ID（data-message-id），需等待 id 分配后记录
             sidebarStarred: true,  // 侧边栏收藏列表
+            supportsLongConversationOptimize: true,  // 长对话性能优化：已验证稳定
             chatWidth: {
                 targets: [
                     {
@@ -163,6 +165,7 @@ const SITE_INFO = [
             chatTimes: true,  // 提问时间记录
             stableNodeId: true,  // data-msgid 提供稳定节点 ID
             sidebarStarred: true,  // 侧边栏收藏列表
+            supportsLongConversationOptimize: true,  // 长对话性能优化：已验证稳定
             chatWidth: {
                 targets: [
                     { selector: '#chat-message-container', base: 'rect' },
@@ -188,6 +191,7 @@ const SITE_INFO = [
             chatTimes: true,
             stableNodeId: true,
             sidebarStarred: true,
+            supportsLongConversationOptimize: true,  // 长对话性能优化：已验证稳定
             chatWidth: {
                 targets: [
                     { selector: '#chat-message-container', base: 'rect' },

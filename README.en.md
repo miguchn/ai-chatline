@@ -162,7 +162,7 @@ Supporting **42 languages** with global coverage.
 ### v3.7.3
 
 New features:
-Added long conversation performance optimization for ChatGPT, with automatic folding for older conversation content.
+Added long conversation performance optimization for ChatGPT, Gemini, Doubao, and Qwen International, with automatic folding for older conversation content.
 
 Users can customize the trigger threshold and how many recent messages stay visible, reducing rendered content for smoother long chats.
 

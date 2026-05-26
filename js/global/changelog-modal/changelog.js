@@ -12,15 +12,15 @@
  */
 
 const CHANGELOG_DATA = {
-    id: '2026052501',
+    id: '2026052601',
     // 'icon' = 提示词按钮左侧显示 Logo + 小红点（温和提示）
     // 'popup' = 自动弹窗展示更新内容（强提醒）
     displayMode: 'icon',
 
     features: [
         {
-            zh: '新增长对话优化，可自动折叠历史消息，先支持 ChatGPT',
-            en: 'Added long conversation optimization with automatic history folding, starting with ChatGPT'
+            zh: '长对话优化新增支持 Gemini、豆包、千问国际版',
+            en: 'Long conversation optimization now supports Gemini, Doubao, and Qwen International'
         }
     ],
 

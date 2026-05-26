@@ -413,6 +413,40 @@ class TongyiAdapter extends SiteAdapter {
         return assistant?.querySelector('[class*="bubble"], .markdown, .markdown-body, [class*="message-content"], [class*="MessageContent"], p') || assistant;
     }
 
+    getLongConversationCollapseTargets(element, index, context = {}) {
+        const targets = [];
+        if (element) targets.push(element);
+
+        const assistant = this.findFirstFollowingElement(
+            element,
+            context.userElements?.[index + 1],
+            [
+                '[class*="answerItem"]',
+                '[class*="answer-item"]',
+                '[class^="answerItem-"]',
+                '[class^="answerItem_"]',
+                '[class*="responseItem"]',
+                '[class*="response-item"]',
+                '.qwen-chat-message-assistant',
+                '.chat-assistant-message',
+                '[id^="qwen-chat-message-assistant"]',
+                '[class*="assistant-message"], [class*="AssistantMessage"]',
+                '[class*="message-assistant"], [class*="MessageAssistant"]',
+                '[data-message-author-role="assistant"]',
+                '[data-message-role="assistant"]',
+                '[data-role="assistant"]',
+                '[data-author="assistant"]',
+                '[data-sender="assistant"]'
+            ],
+            context.root || document
+        );
+        if (assistant) targets.push(assistant);
+
+        return targets.filter((target, targetIndex, arr) =>
+            target && arr.indexOf(target) === targetIndex
+        );
+    }
+
     isConversationRoute(pathname) {
         // 千问国内版对话 URL 模式：
         // 对话: /chat/{id}, /c/{id}

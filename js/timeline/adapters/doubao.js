@@ -177,6 +177,24 @@ class DoubaoAdapter extends SiteAdapter {
         return assistant?.querySelector('[data-plugin-identifier], .markdown, p') || assistant;
     }
 
+    getLongConversationCollapseTargets(element, index, context = {}) {
+        const targets = [];
+        const userMessage = this._normalizeMessageElement(element);
+        if (userMessage) targets.push(userMessage);
+
+        const assistant = this._findFirstFollowingMessageByRole(
+            element,
+            context.userElements?.[index + 1],
+            'assistant',
+            context.root || document
+        );
+        if (assistant) targets.push(assistant);
+
+        return targets.filter((target, targetIndex, arr) =>
+            target && arr.indexOf(target) === targetIndex
+        );
+    }
+
     _findFirstFollowingMessageByRole(sourceElement, boundaryElement, role, root = document) {
         if (!sourceElement || !root?.querySelectorAll) return null;
         const candidates = Array.from(root.querySelectorAll('[data-message-id], [data-message-author-role], [data-message-role], [data-role]'));
