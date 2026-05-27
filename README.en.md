@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./icons/icon128.png" alt="ChatLine Logo" width="80" height="80">
   <h1>ChatLine</h1>
-  <p><strong>Browser enhancement for AI chat pages</strong><br>Forked from the open-source Timeline project, ChatLine focuses on timeline navigation, history positioning, improved conversation browsing, and conversation data archiving.</p>
+  <p><strong>Browser-based enhancement tool for AI chats</strong><br>ChatLine adds timeline navigation, content organization, prompt reuse, code execution, and conversation archiving to mainstream AI chat platforms, helping users browse, manage, and review AI conversations more efficiently.</p>
 
   <p>
     <img src="https://img.shields.io/badge/project-ai--chat--timeline-181717?style=flat-square" alt="Project">
@@ -9,171 +9,127 @@
   </p>
 
   <h4><a href="./README.md">简体中文</a> | <strong>English</strong></h4>
-
-  <img src="./READMEIMAGE/index.png" alt="ChatLine Demo" width="800">
 </div>
 
-<br>
+## Contents
 
-## 📥 Install
+- [Install](#install)
+- [Screenshots](#screenshots)
+- [Key Features](#key-features)
+- [Supported Platforms](#supported-platforms)
+- [Data & Privacy](#data--privacy)
+- [Local Development](#local-development)
+- [Release Notes](#release-notes)
+- [Contact & Support](#contact--support)
+- [Acknowledgements](#acknowledgements)
 
-> ChatLine is currently in fork-initialization stage. Store installation channels will be added after the release path is finalized.
+## Install
 
-For development and testing, load this repository directory through your browser's extension developer mode. After installation, open a supported AI chat page and start using it with no extra setup.
+ChatLine can currently be loaded through your browser's extension developer mode. Store installation channels will be added after the release path is finalized.
 
-## 🎯 Key Features
+After installation, open a supported AI chat page and start using it with no extra setup.
 
-<table>
-  <tr>
-    <td width="50%">
+## Screenshots
 
-**Chat Timeline** — Vertical timeline for jumping to any conversation
+### Chat Timeline
 
-**Question List** — View all questions with pin, jump & bookmark
+![Chat Timeline](./READMEIMAGE/screenshot-01-timeline.png)
 
-**Bookmark System** — Save Q&As to folders, quick sidebar access
+Automatically maps conversation nodes so long chats remain easy to locate, review, and navigate.
 
-**Quick Notes** — Floating notepad to capture ideas on the fly
+### Prompt Management
 
-  </td>
-  <td width="50%">
+![Prompt Management](./READMEIMAGE/screenshot-02-prompts.png)
 
-**Quick Quote** — Select text and ask follow-up questions instantly
+Save frequently used prompts and insert them from the chat page with less repeated typing.
 
-**Prompt Library** — Save and insert favorite prompts with one click
+### Highlights & Notes
 
-**Code Runner** — Run JS/Python/TS/SQL and more code blocks inline
+![Highlights & Notes](./READMEIMAGE/screenshot-03-highlight.png)
 
-**Formula Copy** — One-click copy LaTeX / MathML source
+Highlight, annotate, and note important parts of AI responses while keeping useful context visible.
 
-  </td>
-  </tr>
-</table>
+### Conversation Export
 
-<details>
-<summary><strong>View full feature list (20 items)</strong></summary>
+![Conversation Export](./READMEIMAGE/screenshot-04-export.png)
 
-<br>
+Export AI conversations for archiving, sharing, and later review.
 
-### Core Features
+### More Enhancements
 
-| Feature | Description |
-|---------|-------------|
-| 🎯 **Chat Timeline** | Vertical timeline on the right side for quick navigation to any conversation |
-| 📋 **Question List** | View all questions in the thread with pin, jump, and bookmark support |
-| ⭐️ **Bookmark Conversations** | Save individual Q&As or entire chats to folders with notes |
-| 📂 **Bookmark Manager** | Manage bookmarks with folders, search, and quick navigation |
-| 📌 **Sidebar Bookmarks** | Inject bookmark list into the AI platform's native sidebar |
-| 📝 **Quick Notes** | Floating notepad to jot down ideas while chatting |
-| 🕐 **Chat Time Labels** | Show when each message was sent on the timeline |
+![More Enhancements](./READMEIMAGE/screenshot-05-more.png)
 
-### Input Enhancement
+Practical enhancements continue to grow around reading, organization, export, and page display.
 
-| Feature | Description |
-|---------|-------------|
-| ⏎ **Smart Enter** | Enter for new line, double-Enter to send |
-| 💬 **Prompt Library** | Save and reuse favorite prompts with one click |
-| 🔍 **Quick Quote** | Select AI response text and ask follow-up questions instantly |
-| 🎨 **Input Animations** | Fun animated characters above the input box during AI replies |
+## Key Features
 
-### Formula & Code
+- **Chat Timeline**: Automatically detects conversation nodes for fast positioning, review, and jumping.
+- **Folder Management**: Organize saved content, common materials, and conversation references by category.
+- **Prompt Management**: Save reusable prompts and insert them quickly when chatting.
+- **Code Runner**: Improves code-block viewing and execution inside AI conversations for common coding scenarios.
+- **Conversation Export**: Export AI chat content for archiving, sharing, and review.
+- **Highlights & Notes**: Mark key AI responses with highlights, colors, and notes.
+- **Quick Follow-up**: Select response text and quote it into a follow-up question with less manual copying.
+- **Formula & Diagram Enhancements**: Copy formula source and render Mermaid diagrams when matching content is detected.
+- **Page Enhancements**: Includes chat width, display optimization, scroll-to-bottom, digital pet, and related experience settings.
+- **Backup & Restore**: Supports JSON import/export and optional Google Drive sync for extension data.
 
-| Feature | Description |
-|---------|-------------|
-| 🧮 **Formula Copy** | Click math formulas to copy LaTeX / MathML source |
-| ▶️ **Code Runner** | Run code blocks with one click (JS/Python/TS/SQL/Lua/Ruby/HTML/JSON/Markdown) |
-| 📊 **Mermaid Diagrams** | Render Mermaid code blocks as diagrams with fullscreen view |
+## Supported Platforms
 
-### Navigation & Actions
-
-| Feature | Description |
-|---------|-------------|
-| ⌨️ **Keyboard Navigation** | Navigate between conversation nodes with arrow keys |
-| 📌 **Long-press Pin** | Long-press timeline nodes to mark/unmark as important |
-| ⬇️ **Scroll to Bottom** | Quick scroll to the latest message |
-
-### Data & Settings
-
-| Feature | Description |
-|---------|-------------|
-| ☁️ **Data Sync** | Google Drive cloud backup + JSON import/export |
-| ⚙️ **Settings Panel** | Multi-tab settings interface for all features |
-| 🌍 **Multi-language** | Supports 19 languages |
-
-</details>
-
-## 🌐 Supported Platforms
-
-| Platform | Timeline | Text Highlight | Smart Input | Animations | Quick Quote | Chat Times | Sidebar Bookmarks | Scroll to Bottom |
+| Platform | Timeline | Text Highlight | Smart Input | Animations | Quick Follow-up | Chat Times | Sidebar Bookmarks | Scroll to Bottom |
 |----------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| ChatGPT | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
+| ChatGPT | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | - |
 | Gemini | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| DeepSeek | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
-| Claude | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
-| Kimi | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
-| Doubao | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
-| Qwen | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
-| Qwen Intl | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
-| Grok | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — | — |
-| Perplexity | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — | — |
-| Yuanbao | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — | — |
-| Yiyan | ✅ | ✅ | — | ✅ | ✅ | ✅ | — | — |
-| NotebookLM | — | ✅ | ✅ | ✅ | ✅ | — | — | — |
+| DeepSeek | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | - |
+| Claude | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | - |
+| Kimi | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | - |
+| Doubao | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | - |
+| Qwen | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | - |
+| Qwen Intl | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | - |
+| Grok | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | - | - |
+| Perplexity | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | - | - |
+| Yuanbao | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | - | - |
+| Yiyan | ✅ | ✅ | - | ✅ | ✅ | ✅ | - | - |
+| NotebookLM | - | ✅ | ✅ | ✅ | ✅ | - | - | - |
 
-> 💡 **Formula Copy** and **Code Runner** work on all pages — they activate automatically when matching content is detected.
+> Formula Copy and Code Runner activate automatically when matching content is detected, regardless of the AI platform.
 
-## 🌍 Languages
+## Data & Privacy
 
-Supporting **42 languages** with global coverage.
+- ChatLine stores core extension data in the user's browser by default, including bookmarks, folders, prompts, extension settings, time labels, notes, and related local data.
+- The extension does not proactively collect, upload, or share chat content or personal information, and the project code does not include remote user-data collection logic.
+- Google Drive sync is optional and is enabled only after the user grants authorization. It is used for backing up and restoring extension data.
+- This project is open source, so its data-handling logic can be reviewed directly in the repository.
 
-<details>
-<summary>View full language list</summary>
+## Local Development
 
-| Language | Code | Language | Code | Language | Code |
-|----------|------|----------|------|----------|------|
-| 🇬🇧 English | en | 🇨🇳 简体中文 | zh_CN | 🇹🇼 繁體中文 | zh_TW |
-| 🇯🇵 日本語 | ja | 🇰🇷 한국어 | ko | 🇪🇸 Español | es |
-| 🇫🇷 Français | fr | 🇩🇪 Deutsch | de | 🇮🇹 Italiano | it |
-| 🇵🇹 Português | pt | 🇷🇺 Русский | ru | 🇳🇱 Nederlands | nl |
-| 🇵🇱 Polski | pl | 🇹🇷 Türkçe | tr | 🇸🇦 العربية | ar |
-| 🇮🇱 עברית | he | 🇮🇳 हिन्दी | hi | 🇹🇭 ไทย | th |
-| 🇻🇳 Tiếng Việt | vi | 🇮🇩 Bahasa Indonesia | id | 🇲🇾 Bahasa Melayu | ms |
-| 🇵🇭 Filipino | fil | 🇸🇪 Svenska | sv | 🇩🇰 Dansk | da |
-| 🇳🇴 Norsk | no | 🇫🇮 Suomi | fi | 🇮🇸 Íslenska | is |
-| 🇨🇿 Čeština | cs | 🇭🇺 Magyar | hu | 🇷🇴 Română | ro |
-| 🇺🇦 Українська | uk | 🇬🇷 Ελληνικά | el | 🇧🇬 Български | bg |
-| 🇭🇷 Hrvatski | hr | 🇷🇸 Српски | sr | 🇸🇰 Slovenčina | sk |
-| 🇱🇹 Lietuvių | lt | 🇱🇻 Latviešu | lv | 🇨🇦 Français (CA) | fr_CA |
-| 🇧🇩 বাংলা | bn | 🇰🇿 Қазақша | kk | 🇦🇿 Azərbaycan | az |
+This repository is a browser extension project. It does not require a complex frontend build process for everyday development, and the source directory can be loaded directly for debugging.
 
-</details>
+Chrome / Edge debugging:
 
-## 🗺️ Roadmap
+1. Open the browser extension management page, such as `chrome://extensions/` or `edge://extensions/`.
+2. Enable developer mode.
+3. Choose "Load unpacked".
+4. Select the root directory of this repository.
+5. After changing code, reload the extension from the extension management page and refresh the target AI platform page.
 
-- [x] Firefox browser support
-- [x] Cross-browser data sync
-- [x] Fix GPT lag by hiding conversation nodes
-- [ ] One-click sync to NotebookLM
-- [ ] Optimize Gemini Canvas auto-open
-- [x] Cloud sync
+Firefox debugging:
 
-## 📝 Release Notes
+- Open `about:debugging` and use "Load Temporary Add-on" to load the `manifest.json` file from this repository.
+
+## Release Notes
 
 ### v3.7.3
 
-New features:
-Added long conversation performance optimization for ChatGPT, Gemini, Doubao, and Qwen International, with automatic folding for older conversation content.
+- Added long-conversation performance optimization for ChatGPT, Gemini, Doubao, and Qwen International, with automatic folding for older conversation content.
+- Added configurable trigger thresholds and recent-message retention to reduce rendered content and improve long-chat responsiveness.
+- Improved dark mode support for the extension settings panel.
 
-Users can customize the trigger threshold and how many recent messages stay visible, reducing rendered content for smoother long chats.
-
-Improvements:
-Improved dark mode support for the extension settings panel.
-
-## 💬 Contact & Support
+## Contact & Support
 
 - **Author**: MiguCHN
-- **Bug reports / Feedback**: Feel free to email miguchn@gmail.com — the author will get back to you as soon as possible~
+- **Bug reports / Feedback**: miguchn@gmail.com
 
-## 🙏 Credits
+## Acknowledgements
 
-Built upon the open-source project chatgpt-conversation-timeline. Thanks to the original author for the open source contribution, and to every developer who contributes to the open-source ecosystem — your generosity and dedication keep great ideas alive and evolving.
+ChatLine has referenced and benefited from the open-source Timeline project during its evolution. Thanks to the original author and community contributors for their open work, and thanks to everyone who continues to help improve the ChatLine experience through feedback and suggestions.
