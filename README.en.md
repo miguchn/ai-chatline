@@ -9,7 +9,7 @@
   </p>
 
   <p>
-    <a href="https://chromewebstore.google.com/detail/oiifmbmllkahpcagifgoedoiinohnfen?utm_source=item-share-cb"><img src="https://img.shields.io/badge/Install-Chrome%20Web%20Store-blue?logo=googlechrome&logoColor=white" alt="Install from Chrome Web Store"></a>
+    <a href="https://chromewebstore.google.com/detail/oiifmbmllkahpcagifgoedoiinohnfen?utm_source=item-share-cb"><img src="https://img.shields.io/badge/Install-Chrome%20Web%20Store-blue?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Install from Chrome Web Store"></a>
   </p>
 
   <h4><a href="./README.md">简体中文</a> | <strong>English</strong></h4>
@@ -29,7 +29,7 @@
 
 ## Installation
 
-[![Install from Chrome Web Store](https://img.shields.io/badge/Install-Chrome%20Web%20Store-blue?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/oiifmbmllkahpcagifgoedoiinohnfen?utm_source=item-share-cb)
+[![Install from Chrome Web Store](https://img.shields.io/badge/Install-Chrome%20Web%20Store-blue?style=for-the-badge&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/oiifmbmllkahpcagifgoedoiinohnfen?utm_source=item-share-cb)
 
 The recommended way to install ChatLine is through the Chrome Web Store badge above. Open the store page and click "Add to Chrome" to complete the installation.
 
