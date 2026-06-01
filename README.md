@@ -9,7 +9,7 @@
   </p>
 
   <p>
-    <a href="https://chromewebstore.google.com/detail/oiifmbmllkahpcagifgoedoiinohnfen?utm_source=item-share-cb"><img src="https://img.shields.io/badge/安装-Chrome%20Web%20Store-blue?logo=googlechrome&logoColor=white" alt="从 Chrome Web Store 安装"></a>
+    <a href="https://chromewebstore.google.com/detail/oiifmbmllkahpcagifgoedoiinohnfen?utm_source=item-share-cb"><img src="https://img.shields.io/badge/安装-Chrome%20Web%20Store-blue?style=for-the-badge&logo=googlechrome&logoColor=white" alt="从 Chrome Web Store 安装"></a>
   </p>
 
   <h4><strong>简体中文</strong> | <a href="./README.en.md">English</a></h4>
@@ -29,7 +29,7 @@
 
 ## 安装方式
 
-[![从 Chrome Web Store 安装](https://img.shields.io/badge/安装-Chrome%20Web%20Store-blue?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/oiifmbmllkahpcagifgoedoiinohnfen?utm_source=item-share-cb)
+[![从 Chrome Web Store 安装](https://img.shields.io/badge/安装-Chrome%20Web%20Store-blue?style=for-the-badge&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/oiifmbmllkahpcagifgoedoiinohnfen?utm_source=item-share-cb)
 
 推荐通过上方的 Chrome Web Store 安装按钮安装 ChatLine。进入商店页面后，点击「添加至 Chrome」即可完成安装。
 
