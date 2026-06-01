@@ -8,12 +8,16 @@
     <img src="https://img.shields.io/badge/License-GPL--3.0-blue?style=flat-square" alt="License">
   </p>
 
+  <p>
+    <a href="https://chromewebstore.google.com/detail/oiifmbmllkahpcagifgoedoiinohnfen?utm_source=item-share-cb"><img src="https://img.shields.io/badge/Install-Chrome%20Web%20Store-blue?logo=googlechrome&logoColor=white" alt="Install from Chrome Web Store"></a>
+  </p>
+
   <h4><a href="./README.md">简体中文</a> | <strong>English</strong></h4>
 </div>
 
 ## Contents
 
-- [Install](#install)
+- [Installation](#installation)
 - [Screenshots](#screenshots)
 - [Key Features](#key-features)
 - [Supported Platforms](#supported-platforms)
@@ -23,9 +27,11 @@
 - [Contact & Support](#contact--support)
 - [Acknowledgements](#acknowledgements)
 
-## Install
+## Installation
 
-ChatLine can currently be loaded through your browser's extension developer mode. Store installation channels will be added after the release path is finalized.
+[![Install from Chrome Web Store](https://img.shields.io/badge/Install-Chrome%20Web%20Store-blue?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/oiifmbmllkahpcagifgoedoiinohnfen?utm_source=item-share-cb)
+
+The recommended way to install ChatLine is through the Chrome Web Store badge above. Open the store page and click "Add to Chrome" to complete the installation.
 
 After installation, open a supported AI chat page and start using it with no extra setup.
 
@@ -103,7 +109,7 @@ Practical enhancements continue to grow around reading, organization, export, an
 
 ## Local Development
 
-This repository is a browser extension project. It does not require a complex frontend build process for everyday development, and the source directory can be loaded directly for debugging.
+This repository is a browser extension project. It does not require a complex frontend build process; for local development or debugging, the source directory can be loaded directly.
 
 Chrome / Edge debugging:
 
