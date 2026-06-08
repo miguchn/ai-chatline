@@ -33,10 +33,10 @@ const ContainerFinder = {
         if (messageSelector) {
             try {
                 // 查询所有用户消息元素
-                const allMessages = document.querySelectorAll(messageSelector);
+                const allMessages = this.normalizeMessageElements(Array.from(document.querySelectorAll(messageSelector)));
                 if (allMessages.length > 1) {
                     // 找到所有消息的最近共同祖先 (LCA)
-                    const lca = this.findLowestCommonAncestor(Array.from(allMessages));
+                    const lca = this.findLowestCommonAncestor(allMessages);
                     if (lca && lca !== document.body && lca !== document.documentElement) {
                         return lca;
                     }
@@ -54,6 +54,23 @@ const ContainerFinder = {
         }
         
         return container || firstMessage.parentElement;
+    },
+
+    normalizeMessageElements(elements = []) {
+        const unique = Array.from(new Set(elements || []))
+            .filter(element => element?.nodeType === Node.ELEMENT_NODE && element.isConnected !== false)
+            .sort((a, b) => {
+                if (a === b) return 0;
+                try {
+                    return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+                } catch {
+                    return 0;
+                }
+            });
+
+        return unique.filter(element =>
+            !unique.some(other => other !== element && other.contains(element))
+        );
     },
     
     /**
@@ -117,4 +134,3 @@ const ContainerFinder = {
         }
     }
 };
-

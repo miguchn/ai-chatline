@@ -53,12 +53,19 @@ html[data-timeline-theme="dark"] .ait-conversation-export-btn:hover {
 
 .ait-export-panel {
     width: min(420px, calc(100vw - 32px));
+    max-height: calc(100vh - 40px);
     background: #ffffff;
     color: #1f2937;
     border-radius: 8px;
     box-shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.ait-export-panel.has-selection-list {
+    width: min(620px, calc(100vw - 32px));
 }
 
 .ait-export-panel-header {
@@ -92,13 +99,31 @@ html[data-timeline-theme="dark"] .ait-conversation-export-btn:hover {
 
 .ait-export-panel-body {
     padding: 14px 16px;
+    overflow-y: auto;
 }
 
+.ait-export-section-title {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.ait-export-section-title + .ait-export-format-list {
+    margin-top: 0;
+}
+
+.ait-export-mode-list,
 .ait-export-format-list {
     display: grid;
     gap: 8px;
 }
 
+.ait-export-mode-list {
+    margin-bottom: 14px;
+}
+
+.ait-export-mode-item,
 .ait-export-format-item {
     display: flex;
     align-items: center;
@@ -110,10 +135,12 @@ html[data-timeline-theme="dark"] .ait-conversation-export-btn:hover {
     background: #ffffff;
 }
 
+.ait-export-mode-item:hover,
 .ait-export-format-item:hover {
     background: #f9fafb;
 }
 
+.ait-export-mode-item input,
 .ait-export-format-item input {
     display: none;
 }
@@ -127,6 +154,7 @@ html[data-timeline-theme="dark"] .ait-conversation-export-btn:hover {
     box-sizing: border-box;
 }
 
+.ait-export-mode-item input:checked + .ait-export-format-check,
 .ait-export-format-item input:checked + .ait-export-format-check {
     border: 5px solid #111827;
 }
@@ -185,15 +213,21 @@ html[data-timeline-theme="dark"] .ait-export-panel-header {
     border-bottom-color: #404040;
 }
 
+html[data-timeline-theme="dark"] .ait-export-section-title {
+    color: #e5e7eb;
+}
+
 html[data-timeline-theme="dark"] .ait-export-panel-close {
     color: #d1d5db;
 }
 
 html[data-timeline-theme="dark"] .ait-export-panel-close:hover,
+html[data-timeline-theme="dark"] .ait-export-mode-item:hover,
 html[data-timeline-theme="dark"] .ait-export-format-item:hover {
     background: #333333;
 }
 
+html[data-timeline-theme="dark"] .ait-export-mode-item,
 html[data-timeline-theme="dark"] .ait-export-format-item,
 html[data-timeline-theme="dark"] .ait-export-action-btn {
     background: #262626;
@@ -205,6 +239,7 @@ html[data-timeline-theme="dark"] .ait-export-format-hint {
     color: #a3a3a3;
 }
 
+html[data-timeline-theme="dark"] .ait-export-mode-item input:checked + .ait-export-format-check,
 html[data-timeline-theme="dark"] .ait-export-format-item input:checked + .ait-export-format-check {
     border-color: #f5f5f5;
 }
@@ -213,4 +248,196 @@ html[data-timeline-theme="dark"] .ait-export-action-btn.primary {
     background: #f5f5f5;
     border-color: #f5f5f5;
     color: #1f2937;
+}
+
+.ait-export-selection-section {
+    margin-bottom: 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.ait-export-selection-section[hidden] {
+    display: none !important;
+}
+
+.ait-export-selection-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 9px 10px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.ait-export-selection-count {
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.ait-export-selection-tools {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ait-export-link-btn {
+    border: none;
+    background: transparent;
+    color: #374151;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 2px 0;
+}
+
+.ait-export-link-btn:hover {
+    color: #111827;
+    text-decoration: underline;
+}
+
+.ait-export-selection-list {
+    max-height: min(340px, 38vh);
+    overflow-y: auto;
+}
+
+.ait-export-message-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #f3f4f6;
+    background: #ffffff;
+}
+
+.ait-export-message-item:last-child {
+    border-bottom: none;
+}
+
+.ait-export-message-item:hover,
+.ait-export-message-item.selected {
+    background: #f9fafb;
+}
+
+.ait-export-message-item input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.ait-export-message-check {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 4px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.ait-export-message-item input:checked + .ait-export-message-check {
+    background: #111827;
+    border-color: #111827;
+    box-shadow: inset 0 0 0 3px #ffffff;
+}
+
+.ait-export-message-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.ait-export-message-meta {
+    font-size: 12px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.ait-export-message-summary {
+    font-size: 12px;
+    line-height: 1.45;
+    color: #6b7280;
+    overflow-wrap: anywhere;
+}
+
+.ait-export-selection-state {
+    padding: 16px 10px;
+    text-align: center;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.ait-export-selection-state.error {
+    color: #991b1b;
+}
+
+html[data-timeline-theme="dark"] .ait-export-selection-section,
+html[data-timeline-theme="dark"] .ait-export-message-item {
+    background: #262626;
+    border-color: #404040;
+}
+
+html[data-timeline-theme="dark"] .ait-export-selection-header,
+html[data-timeline-theme="dark"] .ait-export-message-item {
+    border-color: #404040;
+}
+
+html[data-timeline-theme="dark"] .ait-export-message-item:hover,
+html[data-timeline-theme="dark"] .ait-export-message-item.selected {
+    background: #333333;
+}
+
+html[data-timeline-theme="dark"] .ait-export-selection-count,
+html[data-timeline-theme="dark"] .ait-export-link-btn,
+html[data-timeline-theme="dark"] .ait-export-message-meta {
+    color: #f5f5f5;
+}
+
+html[data-timeline-theme="dark"] .ait-export-link-btn:hover {
+    color: #ffffff;
+}
+
+html[data-timeline-theme="dark"] .ait-export-message-summary,
+html[data-timeline-theme="dark"] .ait-export-selection-state {
+    color: #a3a3a3;
+}
+
+html[data-timeline-theme="dark"] .ait-export-selection-state.error {
+    color: #fca5a5;
+}
+
+html[data-timeline-theme="dark"] .ait-export-message-check {
+    border-color: #737373;
+}
+
+html[data-timeline-theme="dark"] .ait-export-message-item input:checked + .ait-export-message-check {
+    background: #f5f5f5;
+    border-color: #f5f5f5;
+    box-shadow: inset 0 0 0 3px #262626;
+}
+
+@media (max-width: 520px) {
+    .ait-export-panel-overlay {
+        padding: 12px;
+    }
+
+    .ait-export-panel {
+        width: calc(100vw - 24px);
+        max-height: calc(100vh - 24px);
+    }
+
+    .ait-export-selection-header,
+    .ait-export-panel-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .ait-export-selection-tools,
+    .ait-export-panel-actions .ait-export-action-btn {
+        flex: 1 1 auto;
+    }
 }

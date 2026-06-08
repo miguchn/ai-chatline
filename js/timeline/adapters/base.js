@@ -38,7 +38,31 @@ class SiteAdapter {
     getUserMessageElements(root = document) {
         const selector = this.getUserMessageSelector();
         if (!selector || !root?.querySelectorAll) return [];
-        return Array.from(root.querySelectorAll(selector));
+        return this.normalizeUserMessageElements(Array.from(root.querySelectorAll(selector)));
+    }
+
+    /**
+     * Normalize platform selector results into one element per user turn.
+     * Broad fallback selectors can match both the message root and nested text
+     * nodes; keeping the outermost match prevents duplicate timeline nodes.
+     * @param {Element[]} elements
+     * @returns {Element[]}
+     */
+    normalizeUserMessageElements(elements = []) {
+        const unique = Array.from(new Set(elements || []))
+            .filter(element => element?.nodeType === Node.ELEMENT_NODE && element.isConnected !== false)
+            .sort((a, b) => {
+                if (a === b) return 0;
+                try {
+                    return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+                } catch {
+                    return 0;
+                }
+            });
+
+        return unique.filter(element =>
+            !unique.some(other => other !== element && other.contains(element))
+        );
     }
 
     /**

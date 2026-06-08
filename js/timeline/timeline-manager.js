@@ -29,6 +29,9 @@ class TimelineManager {
         // ✅ 上次渲染时的节点状态（用于变化检测，决定是否需要重新计算）
         this._renderedNodeCount = 0;
         this._renderedNodeIds = new Set();
+        this._renderedNodeSignature = '';
+        this._renderedElementRefs = [];
+        this._renderedLayoutSignature = '';
 
         this.mutationObserver = null;
         this.resizeObserver = null;
@@ -357,9 +360,8 @@ class TimelineManager {
             }
             
             if (position.bottom) {
-                // ✅ 修复：确保高度至少为 200px，避免窗口太小导致时间轴高度为 0
-                // 使用 max() 函数确保即使 calc 结果为负数，也会有最小高度
-                timelineBar.style.height = `max(200px, calc(100vh - ${position.top} - ${position.bottom}))`;
+                // 保留最小可用高度，同时避免小窗口下强行撑到 200px 遮挡页面内容
+                timelineBar.style.height = `max(96px, min(calc(100vh - ${position.top} - ${position.bottom}), calc(100vh - ${position.top} - 24px)))`;
             }
         }
         // Track + content
@@ -1008,8 +1010,6 @@ class TimelineManager {
         this.perfStart('recalc');
         if (!this.conversationContainer || !this.ui.timelineBar || !this.scrollContainer) return;
 
-        if (window.questionListPopup) window.questionListPopup.onMarkersRebuilt();
-
         let userTurnElements = this.adapter.getUserMessageElements(this.conversationContainer);
         
         // Reset visible window to avoid cleaning with stale indices after rebuild
@@ -1035,6 +1035,39 @@ class TimelineManager {
         // ✅ 确定有节点要渲染，注入收起/展开切换按钮（首次调用时创建，后续调用直接跳过）
         this.injectToggleButton();
 
+        const elementsArray = Array.from(userTurnElements);
+        const currentNodeIdsList = elementsArray.map((el, index) => this.adapter.generateTurnId(el, index));
+        const currentNodeIds = new Set(currentNodeIdsList);
+        const currentNodeSignature = currentNodeIdsList.join('\u001f');
+        const nodeCountChanged = elementsArray.length !== this._renderedNodeCount;
+        const nodeIdsChanged = currentNodeSignature !== this._renderedNodeSignature ||
+                               currentNodeIds.size !== this._renderedNodeIds.size ||
+                               !currentNodeIdsList.every(id => this._renderedNodeIds.has(id));
+        const elementRefsChanged = elementsArray.length !== this._renderedElementRefs.length ||
+            elementsArray.some((element, index) => element !== this._renderedElementRefs[index]);
+        // ✅ 新增：检查是否有 DOM 引用失效（处理虚拟滚动导致的 DOM 回收）
+        const hasInvalidDom = this.markers.some(m => !m.element?.isConnected);
+        const needsFullRecalculation = nodeCountChanged || nodeIdsChanged || elementRefsChanged || hasInvalidDom;
+
+        if (!needsFullRecalculation && this.markers.length > 0) {
+            const layoutSignature = this._getTimelineLayoutSignature(elementsArray);
+            if (layoutSignature !== this._renderedLayoutSignature) {
+                this._recalcMarkerPositions();
+                this._renderedLayoutSignature = layoutSignature;
+            }
+            this.syncTimelineTrackToMain();
+            this.updateVirtualRangeAndRender();
+            this.updateActiveDotUI();
+            this.scheduleScrollSync();
+            if (window.chatTimeRecorder) {
+                window.chatTimeRecorder._renderTimeLabels();
+            }
+            this.perfEnd('recalc');
+            return;
+        }
+
+        if (window.questionListPopup) window.questionListPopup.onMarkersRebuilt();
+
         /**
          * ✅ 按照元素在页面上的实际位置（从上往下）排序
          * 确保节点顺序和视觉顺序完全一致，适用于所有网站
@@ -1043,7 +1076,6 @@ class TimelineManager {
          * 原因：getBoundingClientRect() 会触发浏览器重排
          * 批量读取可以让浏览器合并重排操作，减少布局抖动
          */
-        const elementsArray = Array.from(userTurnElements);
         // 一次性批量读取所有 rect（利用浏览器批量优化）
         const rectsMap = new Map();
         elementsArray.forEach(el => rectsMap.set(el, el.getBoundingClientRect()));
@@ -1076,33 +1108,6 @@ class TimelineManager {
          * 这样可以减少 80%+ 的不必要计算，提升性能和稳定性。
          */
         
-        // 生成当前节点的 ID 集合
-        const currentNodeIds = new Set();
-        conversationMessages.forEach(message => currentNodeIds.add(message.id));
-        
-        // 判断节点是否变化：数量变化 或 ID 集合变化 或 DOM 引用失效
-        const nodeCountChanged = userTurnElements.length !== this._renderedNodeCount;
-        const nodeIdsChanged = currentNodeIds.size !== this._renderedNodeIds.size || 
-                               ![...currentNodeIds].every(id => this._renderedNodeIds.has(id));
-        // ✅ 新增：检查是否有 DOM 引用失效（处理虚拟滚动导致的 DOM 回收）
-        const hasInvalidDom = this.markers.some(m => !m.element?.isConnected);
-        const needsRecalculation = nodeCountChanged || nodeIdsChanged || hasInvalidDom;
-        
-        // 如果节点没有变化，只更新渲染，不重新计算位置
-        if (!needsRecalculation && this.markers.length > 0) {
-            // 只更新视图和同步状态（不涉及位置计算）
-            this.syncTimelineTrackToMain();
-            this.updateVirtualRangeAndRender();
-            this.updateActiveDotUI();
-            this.scheduleScrollSync();
-            // 重新渲染时间标签（虚拟滚动可能导致新元素出现但节点数不变）
-            if (window.chatTimeRecorder) {
-                window.chatTimeRecorder._renderTimeLabels();
-            }
-            this.perfEnd('recalc');
-            return;
-        }
-        
         // ✅ 节点数量变化时，对外派发事件
         let pendingNodesChange = null;
         if (nodeCountChanged) {
@@ -1129,6 +1134,8 @@ class TimelineManager {
         // 更新跟踪状态
         this._renderedNodeCount = userTurnElements.length;
         this._renderedNodeIds = currentNodeIds;
+        this._renderedNodeSignature = currentNodeSignature;
+        this._renderedElementRefs = elementsArray.slice();
         
         // 节点发生变化，清除旧的 dots，准备重新计算和渲染
         (this.ui.trackContent || this.ui.timelineBar).querySelectorAll('.ait-timeline-dot').forEach(n => n.remove());
@@ -1339,6 +1346,7 @@ class TimelineManager {
         this.scheduleScrollSync();
         this.updateIntersectionObserverTargets();
         this.longConversationOptimizer?.apply(userTurnElements);
+        this._renderedLayoutSignature = this._getTimelineLayoutSignature(userTurnElements);
         
         // ✅ 对外派发节点数量变化事件
         if (pendingNodesChange) {
@@ -1429,10 +1437,11 @@ class TimelineManager {
              * 真正的性能优化在 recalculateAndRenderMarkers() 中：
              * 通过比较 turnId 集合来判断是否需要重建 markers。
              */
-            const hasRelevantChange = mutations.some(m => 
-                m.type === 'childList' && 
-                (m.addedNodes.length > 0 || m.removedNodes.length > 0)
-            );
+            const hasRelevantChange = mutations.some(m => {
+                if (m.type !== 'childList') return false;
+                const changedNodes = Array.from(m.addedNodes || []).concat(Array.from(m.removedNodes || []));
+                return changedNodes.some(node => !this._isOwnTimelineNode(node));
+            });
             if (!hasRelevantChange) return;
             
             // ✅ 注意：padding 恢复逻辑已移至 scheduleScrollSync()
@@ -1572,6 +1581,12 @@ class TimelineManager {
     }
 
     rebindConversationContainer(newConv) {
+        try {
+            if (typeof ConversationExportPanel !== 'undefined') {
+                ConversationExportPanel.hide?.();
+            }
+        } catch {}
+
         // Detach old listeners
         if (this.scrollContainer && this.onScroll) {
             try { this.scrollContainer.removeEventListener('scroll', this.onScroll); } catch {}
@@ -1584,6 +1599,9 @@ class TimelineManager {
         // ✅ 重置节点跟踪状态，因为切换了对话
         this._renderedNodeCount = 0;
         this._renderedNodeIds = new Set();
+        this._renderedNodeSignature = '';
+        this._renderedElementRefs = [];
+        this._renderedLayoutSignature = '';
         
         // ✅ 重置 ChatTimeRecorder 状态（解耦：通过全局函数调用）
         if (typeof resetChatTimeRecorder === 'function') {
@@ -2280,6 +2298,24 @@ class TimelineManager {
         });
     }
 
+    _isOwnTimelineNode(node) {
+        if (!node || node.nodeType !== Node.ELEMENT_NODE) return false;
+        const element = node;
+        try {
+            return !!(
+                element.classList?.contains('ait-scroll-padding') ||
+                element.classList?.contains('ait-chat-timeline-wrapper') ||
+                element.classList?.contains('ait-chat-timeline-bar') ||
+                element.classList?.contains('ait-timeline-dot') ||
+                element.classList?.contains('timeline-pin-marker') ||
+                element.classList?.contains('ait-timeline-collapse-hint') ||
+                element.closest?.('.ait-chat-timeline-wrapper, .ait-chat-timeline-bar, .timeline-tooltip')
+            );
+        } catch {
+            return false;
+        }
+    }
+
     isTimelineMarkerHidden(marker) {
         return !!marker?.id && !!this.longConversationOptimizer?.collapsedTurnIds?.has(marker.id);
     }
@@ -2725,8 +2761,8 @@ class TimelineManager {
         // 设置包装容器位置（包含时间轴和收藏按钮）
         this.ui.wrapper.style.top = topValue;
         
-        // 设置时间轴高度
-        this.ui.timelineBar.style.height = `max(200px, calc(100vh - ${topValue} - ${bottomValue}))`;
+        // 设置时间轴高度：矮窗口下优先不遮挡页面主体
+        this.ui.timelineBar.style.height = `max(96px, min(calc(100vh - ${topValue} - ${bottomValue}), calc(100vh - ${topValue} - 24px)))`;
         
         // ✅ 收藏按钮使用相对定位，不需要动态调整位置
     }
@@ -3290,6 +3326,27 @@ class TimelineManager {
         
         return { scrollHeight: cleanScrollHeight, clientHeight, maxScrollTop: cleanMaxScrollTop };
     }
+
+    _getTimelineLayoutSignature(userElements = []) {
+        try {
+            const elements = Array.from(userElements || []);
+            const { scrollHeight, clientHeight, maxScrollTop } = this._getCleanScrollMetrics();
+            const first = elements[0];
+            const last = elements[elements.length - 1];
+            const firstRect = first?.getBoundingClientRect?.();
+            const lastRect = last?.getBoundingClientRect?.();
+            return [
+                Math.round(scrollHeight),
+                Math.round(clientHeight),
+                Math.round(maxScrollTop),
+                Math.round(firstRect?.top || 0),
+                Math.round(lastRect?.top || 0),
+                Math.round(lastRect?.height || 0)
+            ].join('|');
+        } catch {
+            return '';
+        }
+    }
     
     /**
      * 重新计算节点位置（offsetTop, visualN），不重建节点
@@ -3313,7 +3370,12 @@ class TimelineManager {
         const getOffsetTop = (element, container) => {
             const elemRect = element.getBoundingClientRect();
             const contRect = container.getBoundingClientRect();
-            return elemRect.top - contRect.top + (container.scrollTop || 0);
+            let contScrollTop = container.scrollTop || 0;
+            const isReverseScroll = typeof this.adapter.isReverseScroll === 'function' && this.adapter.isReverseScroll();
+            if (isReverseScroll) {
+                contScrollTop = Math.abs(contScrollTop);
+            }
+            return elemRect.top - contRect.top + contScrollTop;
         };
         
         const { maxScrollTop: cleanMaxScrollTop } = this._getCleanScrollMetrics();
@@ -3372,16 +3434,22 @@ class TimelineManager {
                 }
             }
         } else {
-            // 正常滚动：使用缓存的 offsetTop
-            const scrollTop = this.scrollContainer.scrollTop;
-            for (let i = 0; i < this.markers.length; i++) {
-                const m = this.markers[i];
-                if ((m.offsetTop - this.ACTIVATE_AHEAD) <= scrollTop) {
-                    activeId = m.id;
+            // 正常滚动：使用缓存的 offsetTop，二分查找最后一个已越过阈值的节点
+            const threshold = (this.scrollContainer.scrollTop || 0) + this.ACTIVATE_AHEAD;
+            let lo = 0;
+            let hi = this.markers.length - 1;
+            let activeIndex = 0;
+            while (lo <= hi) {
+                const mid = (lo + hi) >> 1;
+                const offsetTop = this.markers[mid]?.offsetTop ?? 0;
+                if (offsetTop <= threshold) {
+                    activeIndex = mid;
+                    lo = mid + 1;
                 } else {
-                    break;
+                    hi = mid - 1;
                 }
             }
+            activeId = this.markers[activeIndex]?.id || activeId;
         }
         
         // 更新激活状态（防抖）
@@ -3619,6 +3687,11 @@ class TimelineManager {
         this.ui = { timelineBar: null, track: null, trackContent: null };
         this.markers = [];
         this.activeTurnId = null;
+        this._renderedNodeCount = 0;
+        this._renderedNodeIds = new Set();
+        this._renderedNodeSignature = '';
+        this._renderedElementRefs = [];
+        this._renderedLayoutSignature = '';
         this.scrollContainer = null;
         this.conversationContainer = null;
         this.onTimelineBarClick = null;

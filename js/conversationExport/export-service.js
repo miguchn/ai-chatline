@@ -13,11 +13,22 @@ class ConversationExportService {
         this.clipboardService = clipboardService || ClipboardService;
     }
 
-    async build(format) {
+    async build(format, options = {}) {
+        const isSelectedExport = Array.isArray(options.selectedMessageIndexes) ||
+            Array.isArray(options.selectedTurnIndexes);
+        const selectedCount = (options.selectedMessageIndexes?.length || 0) +
+            (options.selectedTurnIndexes?.length || 0);
+
+        if (isSelectedExport && selectedCount === 0) {
+            throw new Error('请至少选择一条对话内容');
+        }
+
         const buildPayload = async () => {
-            const payload = await this.extractor.extract();
+            const payload = await this.extractor.extract(options);
             if (!payload.messages || payload.messages.length === 0) {
-                throw new Error('未识别到可导出的会话内容');
+                throw new Error(isSelectedExport
+                    ? '未识别到已选择的会话内容'
+                    : '未识别到可导出的会话内容');
             }
 
             const content = this.formatters.format(payload, format);
@@ -27,20 +38,20 @@ class ConversationExportService {
         };
 
         const optimizer = window.timelineManager?.longConversationOptimizer;
-        if (optimizer?.withAllRestored) {
+        if (!isSelectedExport && optimizer?.withAllRestored) {
             return optimizer.withAllRestored(buildPayload, { reapply: true });
         }
         return buildPayload();
     }
 
-    async copy(format) {
-        const result = await this.build(format);
+    async copy(format, options = {}) {
+        const result = await this.build(format, options);
         await this.clipboardService.copy(result.content);
         return result;
     }
 
-    async download(format) {
-        const result = await this.build(format);
+    async download(format, options = {}) {
+        const result = await this.build(format, options);
         this.fileDownloadService.download(result.content, result.filename, this._mimeType(format));
         return result;
     }
