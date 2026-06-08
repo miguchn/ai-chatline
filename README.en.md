@@ -125,6 +125,12 @@ Firefox debugging:
 
 ## Release Notes
 
+### v3.7.4
+
+- Added full export and selective export modes for conversation export, with in-dialog preview and checkbox selection.
+- Selective export now warns when nothing is selected and automatically exits selection mode after export.
+- Improved timeline container detection and message adapter logic.
+
 ### v3.7.3
 
 - Added long-conversation performance optimization for ChatGPT, Gemini, Doubao, and Qwen International, with automatic folding for older conversation content.
