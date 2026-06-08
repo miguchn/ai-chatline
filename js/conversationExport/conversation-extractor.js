@@ -35,6 +35,7 @@ class ConversationExtractor {
             messages = this._extractByUserTurnPairing({ userElements, timestamps, context });
         }
 
+        const filteredMessages = this._filterMessagesBySelection(messages || [], options);
         const payload = {
             title: this._getTitle(),
             platform: platform?.id || this.adapter.constructor?.name?.replace(/Adapter$/, '').toLowerCase() || 'unknown',
@@ -42,10 +43,31 @@ class ConversationExtractor {
             conversationId: this.adapter.extractConversationId?.(location.pathname) || null,
             source: location.href,
             exportedAt: this._formatExportDateTime(Date.now()),
-            messages: this._finalizeMessages(messages || [])
+            messages: this._finalizeMessages(filteredMessages)
         };
         this._debugLog(payload, platformExtractor?.name || 'generic-user-turn-pairing');
         return payload;
+    }
+
+    _filterMessagesBySelection(messages, options = {}) {
+        const selectedMessageIndexes = Array.isArray(options.selectedMessageIndexes)
+            ? options.selectedMessageIndexes
+            : null;
+        const selectedTurnIndexes = Array.isArray(options.selectedTurnIndexes)
+            ? options.selectedTurnIndexes
+            : null;
+
+        if (selectedMessageIndexes) {
+            const selected = new Set(selectedMessageIndexes.map(index => Number(index)));
+            return messages.filter(message => selected.has(Number(message.index)));
+        }
+
+        if (!selectedTurnIndexes) {
+            return messages;
+        }
+
+        const selected = new Set(selectedTurnIndexes.map(index => Number(index)));
+        return messages.filter(message => selected.has(Number(message.turnIndex)));
     }
 
     _extractByUserTurnPairing({ userElements, timestamps, context }) {

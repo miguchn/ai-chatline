@@ -4,8 +4,12 @@
   <p><strong>浏览器端 AI 对话增强工具</strong><br>ChatLine 为主流 AI 对话平台提供时间轴导航、内容整理、提示词复用、代码运行与对话归档能力，帮助用户更高效地浏览、管理和复盘 AI 对话。</p>
 
   <p>
-    <img src="https://img.shields.io/badge/项目-ai--chat--timeline-181717?style=flat-square" alt="Project">
-    <img src="https://img.shields.io/badge/许可证-GPL--3.0-blue?style=flat-square" alt="License">
+    <a href="https://github.com/miguchn/ai-chatline/stargazers"><img src="https://img.shields.io/github/stars/miguchn/ai-chatline?style=social" alt="GitHub Stars"></a>
+    <a href="https://github.com/miguchn/ai-chatline/forks"><img src="https://img.shields.io/github/forks/miguchn/ai-chatline?style=social" alt="GitHub Forks"></a>
+    <img src="https://img.shields.io/github/v/release/miguchn/ai-chatline?style=flat-square&label=latest" alt="Latest Release">
+    <img src="https://img.shields.io/github/license/miguchn/ai-chatline?style=flat-square" alt="License">
+    <img src="https://img.shields.io/chrome-web-store/users/oiifmbmllkahpcagifgoedoiinohnfen?style=flat-square&label=users" alt="Chrome Web Store Users">
+    <img src="https://img.shields.io/chrome-web-store/rating/oiifmbmllkahpcagifgoedoiinohnfen?style=flat-square" alt="Chrome Web Store Rating">
   </p>
 
   <p>
@@ -115,13 +119,13 @@ Chrome / Edge 调试流程：
 
 1. 打开浏览器扩展管理页面，例如 `chrome://extensions/` 或 `edge://extensions/`。
 2. 启用开发者模式。
-3. 选择“加载已解压的扩展程序”。
+3. 选择"加载已解压的扩展程序"。
 4. 选择本仓库根目录。
 5. 修改代码后，在扩展管理页面点击重新加载，并刷新目标 AI 平台页面。
 
 Firefox 调试：
 
-- 打开 `about:debugging`，通过“临时载入附加组件”加载本仓库中的 `manifest.json` 进行调试。
+- 打开 `about:debugging`，通过"临时载入附加组件"加载本仓库中的 `manifest.json` 进行调试。
 
 ## 版本说明
 

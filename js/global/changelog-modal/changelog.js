@@ -12,22 +12,22 @@
  */
 
 const CHANGELOG_DATA = {
-    id: '2026052601',
+    id: '2026060801',
     // 'icon' = 提示词按钮左侧显示 Logo + 小红点（温和提示）
     // 'popup' = 自动弹窗展示更新内容（强提醒）
     displayMode: 'icon',
 
     features: [
         {
-            zh: '长对话优化新增支持 Gemini、豆包、千问国际版',
-            en: 'Long conversation optimization now supports Gemini, Doubao, and Qwen International'
+            zh: '对话导出支持「全量导出」和「选择导出」，可按需勾选指定对话内容导出',
+            en: 'Conversation export now supports full export and selected export, so you can pick only the messages you need'
         }
     ],
 
     improvements: [
         {
-            zh: '插件设置页适配暗黑模式，夜间使用更清晰',
-            en: 'Improved dark mode support for the extension settings panel'
+            zh: '选择导出未勾选内容时会给出提示，导出完成后自动退出选择状态',
+            en: 'Selected export now warns when nothing is selected and exits selection mode after export'
         }
     ]
 };
