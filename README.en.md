@@ -4,8 +4,12 @@
   <p><strong>Browser-based enhancement tool for AI chats</strong><br>ChatLine adds timeline navigation, content organization, prompt reuse, code execution, and conversation archiving to mainstream AI chat platforms, helping users browse, manage, and review AI conversations more efficiently.</p>
 
   <p>
-    <img src="https://img.shields.io/badge/project-ai--chat--timeline-181717?style=flat-square" alt="Project">
-    <img src="https://img.shields.io/badge/License-GPL--3.0-blue?style=flat-square" alt="License">
+    <a href="https://github.com/miguchn/ai-chatline/stargazers"><img src="https://img.shields.io/github/stars/miguchn/ai-chatline?style=social" alt="GitHub Stars"></a>
+    <a href="https://github.com/miguchn/ai-chatline/forks"><img src="https://img.shields.io/github/forks/miguchn/ai-chatline?style=social" alt="GitHub Forks"></a>
+    <img src="https://img.shields.io/github/v/release/miguchn/ai-chatline?style=flat-square&label=latest" alt="Latest Release">
+    <img src="https://img.shields.io/github/license/miguchn/ai-chatline?style=flat-square" alt="License">
+    <img src="https://img.shields.io/chrome-web-store/users/oiifmbmllkahpcagifgoedoiinohnfen?style=flat-square&label=users" alt="Chrome Web Store Users">
+    <img src="https://img.shields.io/chrome-web-store/rating/oiifmbmllkahpcagifgoedoiinohnfen?style=flat-square" alt="Chrome Web Store Rating">
   </p>
 
   <p>
