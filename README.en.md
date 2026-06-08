@@ -43,31 +43,31 @@ After installation, open a supported AI chat page and start using it with no ext
 
 ### Chat Timeline
 
-![Chat Timeline](./READMEIMAGE/screenshot-01-timeline.png)
+![Chat Timeline](./READMEIMAGE/en-screenshot-01-timeline.png)
 
 Automatically maps conversation nodes so long chats remain easy to locate, review, and navigate.
 
 ### Prompt Management
 
-![Prompt Management](./READMEIMAGE/screenshot-02-prompts.png)
+![Prompt Management](./READMEIMAGE/en-screenshot-02-prompts.png)
 
 Save frequently used prompts and insert them from the chat page with less repeated typing.
 
 ### Highlights & Notes
 
-![Highlights & Notes](./READMEIMAGE/screenshot-03-highlight.png)
+![Highlights & Notes](./READMEIMAGE/en-screenshot-03-highlight.png)
 
 Highlight, annotate, and note important parts of AI responses while keeping useful context visible.
 
 ### Conversation Export
 
-![Conversation Export](./READMEIMAGE/screenshot-04-export.png)
+![Conversation Export](./READMEIMAGE/en-screenshot-04-export.png)
 
 Export AI conversations for archiving, sharing, and later review.
 
 ### More Enhancements
 
-![More Enhancements](./READMEIMAGE/screenshot-05-more.png)
+![More Enhancements](./READMEIMAGE/en-screenshot-05-more.png)
 
 Practical enhancements continue to grow around reading, organization, export, and page display.
 
