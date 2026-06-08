@@ -131,12 +131,6 @@ Firefox debugging:
 - Selective export now warns when nothing is selected and automatically exits selection mode after export.
 - Improved timeline container detection and message adapter logic.
 
-### v3.7.3
-
-- Added long-conversation performance optimization for ChatGPT, Gemini, Doubao, and Qwen International, with automatic folding for older conversation content.
-- Added configurable trigger thresholds and recent-message retention to reduce rendered content and improve long-chat responsiveness.
-- Improved dark mode support for the extension settings panel.
-
 ## Contact & Support
 
 - **Author**: MiguCHN
