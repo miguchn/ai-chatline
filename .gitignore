@@ -15,6 +15,7 @@ $RECYCLE.BIN/
 
 # AI coding tools
 .claude/
+CLAUDE.md
 .codegraph/
 .cursor/
 .cursorrules
