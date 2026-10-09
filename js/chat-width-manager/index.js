@@ -89,6 +89,9 @@ class ChatWidthManager {
                 if (target.staticOnly) {
                     return false;
                 }
+                if (target.base === 'var') {
+                    return Object.keys(this._readVarBases(target)).length > 0;
+                }
                 return Array.from(document.querySelectorAll(target.selector)).some(el =>
                     !!this._getBaseWidthForElement(el, target)
                 );
@@ -96,6 +99,28 @@ class ChatWidthManager {
                 return false;
             }
         });
+    }
+
+    /**
+     * 读取 var 型 target 各自定义属性的原始值
+     * 平台用 CSS 变量控制对话宽度（ChatGPT: --thread-content-max-width，
+     * DeepSeek: --message-list-max-width），直接缩放变量即可整体生效，
+     * 不需要逐元素注入 max-width（对 width 受祖先约束的元素注入 max-width 无效）。
+     * @returns {Object} - { '--var-name': '48rem' } 仅含可用值
+     */
+    _readVarBases(target) {
+        const bases = {};
+        const el = document.querySelector(target.selector);
+        if (!el) return bases;
+        const style = getComputedStyle(el);
+        for (const prop of target.properties) {
+            if (!prop.startsWith('--')) continue;
+            const value = style.getPropertyValue(prop)?.trim();
+            if (this._isUsableCssWidth(value)) {
+                bases[prop] = value;
+            }
+        }
+        return bases;
     }
 
     // ==================== 内部方法 ====================
@@ -208,6 +233,20 @@ class ChatWidthManager {
                 continue;
             }
 
+            if (target.base === 'var') {
+                const varBases = this._readVarBases(target);
+                if (Object.keys(varBases).length > 0) {
+                    this._originalWidths[this._getTargetKey(target)] = {
+                        selector: target.selector,
+                        base: null,
+                        varBases,
+                        properties: target.properties || [],
+                        staticProperties: target.staticProperties || {}
+                    };
+                }
+                continue;
+            }
+
             const candidates = document.querySelectorAll(target.selector);
             let bestVal = null;
             let bestWidth = 0;
@@ -256,10 +295,16 @@ class ChatWidthManager {
         const entries = Object.values(this._originalWidths);
         if (entries.length === 0) return;
 
-        const rules = entries.map(({ selector, base, properties, staticProperties }) => {
-            const scaledDeclarations = base
-                ? (properties || ['max-width']).map(prop => `${prop}: calc(${base} * ${pct} / 100) !important;`)
-                : [];
+        const rules = entries.map(({ selector, base, varBases, properties, staticProperties }) => {
+            let scaledDeclarations;
+            if (varBases) {
+                scaledDeclarations = Object.entries(varBases)
+                    .map(([prop, value]) => `${prop}: calc(${value} * ${pct} / 100) !important;`);
+            } else {
+                scaledDeclarations = base
+                    ? (properties || ['max-width']).map(prop => `${prop}: calc(${base} * ${pct} / 100) !important;`)
+                    : [];
+            }
             const staticDeclarations = Object.entries(staticProperties || {})
                 .map(([prop, value]) => `${prop}: ${value} !important;`);
             const declarations = scaledDeclarations.concat(staticDeclarations).join(' ');

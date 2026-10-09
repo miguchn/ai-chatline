@@ -18,20 +18,29 @@ class ChatGPTAdapter extends SiteAdapter {
     }
 
     getUserMessageSelector() {
-        return '[data-turn="user"][data-turn-id]';
+        // 新版 UI（2025-10 起）：unit-key 以 :user 结尾的搜索单元容器
+        // 旧版 UI 回退：data-turn="user"（灰度期间两套并存）
+        return '[data-chatgpt-search-unit-key$=":user"], [data-turn="user"][data-turn-id]';
     }
 
     /**
      * 从 DOM 元素中提取 nodeId
-     * 直接从元素的 data-turn-id 属性读取 ID
-     * 
+     * 新版：data-chatgpt-search-message-ids（消息 UUID，多个时用空格分隔，取第一个）
+     * 旧版：data-turn-id
+     *
      * ✅ 降级方案：返回 null 时，generateTurnId 会降级使用 index（数字类型）
      * @param {Element} element - 用户消息元素
      * @returns {string|null} - nodeId（字符串），失败返回 null
      */
     _extractNodeIdFromDom(element) {
         if (!element) return null;
-        
+
+        const messageIds = element.getAttribute?.('data-chatgpt-search-message-ids');
+        if (messageIds) {
+            const first = messageIds.trim().split(/\s+/)[0];
+            if (first) return first;
+        }
+
         const nodeId = element.getAttribute('data-turn-id') || null;
         return nodeId ? String(nodeId) : null;
     }
@@ -103,7 +112,7 @@ class ChatGPTAdapter extends SiteAdapter {
     }
 
     extractMessageText(element, index, context = {}) {
-        const turnIdRaw = element.getAttribute?.('data-turn-id');
+        const turnIdRaw = this._extractNodeIdFromDom(element);
         const fiberText = turnIdRaw ? context.fiberTexts?.get(turnIdRaw) : null;
         return fiberText || this.extractText(element, index, context);
     }
@@ -146,10 +155,11 @@ class ChatGPTAdapter extends SiteAdapter {
     
     /**
      * 获取时间标签的渲染目标元素
-     * ChatGPT: 使用 [data-message-id] 子元素
+     * 新版 UI：用户消息气泡 [data-user-message-bubble]
+     * 旧版 UI：[data-message-id] 子元素
      */
     getTimeLabelTarget(element) {
-        return element.querySelector('[data-message-id]') || element;
+        return element.querySelector('[data-user-message-bubble], [data-message-id]') || element;
     }
 
     getAssistantTimeLabelTarget(element, index, context = {}) {
@@ -157,12 +167,13 @@ class ChatGPTAdapter extends SiteAdapter {
             element,
             context.userElements?.[index + 1],
             [
+                '[data-chatgpt-search-unit-key$=":assistant"]',
                 '[data-turn="assistant"][data-turn-id]',
                 '[data-message-author-role="assistant"]'
             ],
             context.root || document
         );
-        return assistant?.querySelector('[data-message-id]') || assistant;
+        return assistant?.querySelector('[data-chatgpt-selection-message-id], [data-message-id]') || assistant;
     }
 
     getLongConversationCollapseTargets(element, index, context = {}) {
@@ -173,13 +184,14 @@ class ChatGPTAdapter extends SiteAdapter {
             element,
             context.userElements?.[index + 1],
             [
+                '[data-chatgpt-search-unit-key$=":assistant"]',
                 '[data-turn="assistant"][data-turn-id]',
                 '[data-message-author-role="assistant"]'
             ],
             context.root || document
         );
         if (assistant) {
-            const assistantTurn = assistant.closest?.('[data-turn="assistant"][data-turn-id]') || assistant;
+            const assistantTurn = assistant.closest?.('[data-chatgpt-search-unit-key$=":assistant"], [data-turn="assistant"][data-turn-id]') || assistant;
             targets.push(assistantTurn);
         }
 
@@ -190,65 +202,64 @@ class ChatGPTAdapter extends SiteAdapter {
 
     isConversationRoute(pathname) {
         const segs = pathname.split('/').filter(Boolean);
-        
+        // 新对话在服务端确认前使用临时 ID（如 local-chatgpt%3Axxx），slug 校验需容忍 % : . 等字符
+        const isValidSlug = (slug) =>
+            typeof slug === 'string' && slug.length > 0 && /^[A-Za-z0-9_:%.+-]+$/.test(slug);
+
         // 检查普通对话路径: /c/{id}
         const cIndex = segs.indexOf('c');
         if (cIndex !== -1) {
-            const slug = segs[cIndex + 1];
-            if (typeof slug === 'string' && slug.length > 0 && /^[A-Za-z0-9_-]+$/.test(slug)) {
+            if (isValidSlug(segs[cIndex + 1])) {
                 return true;
             }
         }
-        
+
         // 检查 GPT 对话路径: /g/{gpt_id}/c/{conversation_id}
         const gIndex = segs.indexOf('g');
         if (gIndex !== -1 && segs[gIndex + 2] === 'c') {
-            const gptId = segs[gIndex + 1];
-            const conversationId = segs[gIndex + 3];
-            if (gptId && conversationId && 
-                /^[A-Za-z0-9_-]+$/.test(gptId) && 
-                /^[A-Za-z0-9_-]+$/.test(conversationId)) {
+            if (isValidSlug(segs[gIndex + 1]) && isValidSlug(segs[gIndex + 3])) {
                 return true;
             }
         }
-        
+
         // 检查分享页面路径: /share/e/{id}
         const shareIndex = segs.indexOf('share');
         if (shareIndex !== -1 && segs[shareIndex + 1] === 'e') {
-            const shareId = segs[shareIndex + 2];
-            if (typeof shareId === 'string' && shareId.length > 0 && /^[A-Za-z0-9_-]+$/.test(shareId)) {
+            if (isValidSlug(segs[shareIndex + 2])) {
                 return true;
             }
         }
-        
+
         return false;
     }
 
     extractConversationId(pathname) {
         try {
             const segs = pathname.split('/').filter(Boolean);
-            
+            const isValidSlug = (slug) =>
+                typeof slug === 'string' && slug.length > 0 && /^[A-Za-z0-9_:%.+-]+$/.test(slug);
+
             // 尝试提取 GPT 对话 ID: /g/{gpt_id}/c/{conversation_id}
             const gIndex = segs.indexOf('g');
             if (gIndex !== -1 && segs[gIndex + 2] === 'c') {
                 const conversationId = segs[gIndex + 3];
-                if (conversationId && /^[A-Za-z0-9_-]+$/.test(conversationId)) return conversationId;
+                if (isValidSlug(conversationId)) return conversationId;
             }
-            
+
             // 尝试提取普通对话 ID: /c/{id}
             const cIndex = segs.indexOf('c');
             if (cIndex !== -1) {
                 const slug = segs[cIndex + 1];
-                if (slug && /^[A-Za-z0-9_-]+$/.test(slug)) return slug;
+                if (isValidSlug(slug)) return slug;
             }
-            
+
             // 尝试提取分享页面 ID: /share/e/{id}
             const shareIndex = segs.indexOf('share');
             if (shareIndex !== -1 && segs[shareIndex + 1] === 'e') {
                 const shareId = segs[shareIndex + 2];
-                if (shareId && /^[A-Za-z0-9_-]+$/.test(shareId)) return shareId;
+                if (isValidSlug(shareId)) return shareId;
             }
-            
+
             return null;
         } catch {
             return null;
@@ -294,8 +305,15 @@ class ChatGPTAdapter extends SiteAdapter {
     }
     
     getStarChatButtonTarget() {
-        // 返回分享按钮，收藏按钮将插入到它前面
-        return document.querySelector('[data-testid="share-chat-button"]');
+        // 旧版 UI：分享按钮带 data-testid
+        const legacy = document.querySelector('[data-testid="share-chat-button"]');
+        if (legacy) return legacy;
+
+        // 新版 UI：标题栏工具区中带「分享」图标（arrow-up-open sprite）的按钮。
+        // aria-label 随界面语言变化，不能作为锚点；sprite 片段名是语义化的，比 hash 文件名稳定。
+        return document.querySelector(
+            '[data-app-shell-main-titlebar] button:has(svg use[href*="arrow-up-open"])'
+        );
     }
     
     getDefaultChatTheme() {
@@ -305,7 +323,8 @@ class ChatGPTAdapter extends SiteAdapter {
     
     /**
      * 检测是否应该隐藏时间轴
-     * ChatGPT: 当页面存在 .text-token-primary 元素时隐藏
+     * 旧版 UI：当页面存在 .text-token-primary 元素时隐藏（canvas 等全屏视图）
+     * 新版 UI 已无 text-token-* 类 → 恒为 false，与基类默认一致
      * @returns {boolean}
      */
     shouldHideTimeline() {
@@ -323,10 +342,19 @@ class ChatGPTAdapter extends SiteAdapter {
     
     /**
      * 检测 AI 是否正在生成回答
-     * ChatGPT: 当 #composer-submit-button 元素的 data-testid="stop-button" 时，表示正在生成
+     *
+     * 新版 UI（2025-10 起）：composer 主操作按钮无 id/testid，且 aria-label 随语言变化。
+     * 三种状态共享 button.bg-composer-primary，仅 svg 可区分（已实测）：
+     *   - 停止（生成中）：svg.icon-primary-action[fill="currentColor"]（实心方块）
+     *   - 发送（有草稿）：svg fill="none"（箭头）
+     *   - 语音（空输入）：svg 无 fill 属性（sprite 引用）
+     * 旧版 UI 回退：#composer-submit-button[data-testid="stop-button"]
      * @returns {boolean}
      */
     isAIGenerating() {
+        if (document.querySelector('button.bg-composer-primary svg.icon-primary-action[fill="currentColor"]')) {
+            return true;
+        }
         const submitButton = document.getElementById('composer-submit-button');
         // ✅ 必须返回 boolean，找不到按钮视为 false（未生成），而不是 null（未实现）
         return !!(submitButton && submitButton.getAttribute('data-testid') === 'stop-button');

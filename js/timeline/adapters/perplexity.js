@@ -17,9 +17,11 @@ class PerplexityAdapter extends SiteAdapter {
     }
 
     getUserMessageSelector() {
-        // 用户消息：包含 span.select-text 的容器
-        // Perplexity 的用户消息文本在 span.select-text 中
-        return 'span.select-text';
+        // 新版 UI（2025-10 验证）：用户提问渲染在 group/user-bubble 容器中，
+        // 旧版 span.select-text 已移除。class 包含 "group/user-bubble" 的斜杠，
+        // 用属性包含选择器规避 CSS 转义问题。
+        // 旧版回退：span.select-text
+        return '[class*="group/user-bubble"], span.select-text';
     }
 
     generateTurnId(element, index) {
@@ -27,8 +29,10 @@ class PerplexityAdapter extends SiteAdapter {
     }
 
     extractText(element) {
-        // 直接从 span.select-text 提取文本
-        const text = (element.textContent || '').trim();
+        // 新版气泡内混有原生时间戳（SPAN.select-none «16:22»）和操作按钮，
+        // 正文在 [data-renderer] / .whitespace-pre-wrap 内容容器中；旧版 span.select-text 本身就是纯文本
+        const content = element.querySelector('[data-renderer], .whitespace-pre-wrap');
+        const text = ((content || element).textContent || '').trim();
         return text || '[图片或文件]';
     }
 

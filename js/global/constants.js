@@ -43,7 +43,16 @@ const SITE_INFO = [
             sidebarStarred: true,  // 侧边栏收藏列表
             supportsLongConversationOptimize: true,  // 长对话性能优化：已验证稳定
             chatWidth: {
-                selectors: ['.text-token-text-primary > div > div']
+                // 新版 UI（2025-10 起）：对话宽度由 body 上的 CSS 变量驱动
+                // （--thread-content-max-width 控制正文列宽，--thread-body-max-width 控制整体宽度），
+                // 旧版 .text-token-text-primary 容器已不存在。缩放变量即可整体生效。
+                targets: [
+                    {
+                        selector: 'body',
+                        properties: ['--thread-content-max-width', '--thread-body-max-width'],
+                        base: 'var'
+                    }
+                ]
             }
         }
     },
@@ -123,9 +132,16 @@ const SITE_INFO = [
             chatTimes: true,  // 提问时间记录
             sidebarStarred: true,  // 侧边栏收藏列表
             chatWidth: {
+                // DeepSeek 消息列宽由全局 CSS 变量 --message-list-max-width（默认 840px）控制，
+                // .ds-virtual-list-items 用 inline padding calc((100% - var)/2) 居中消息列。
+                // 给 .ds-message/.ds-markdown 注入 max-width 无效（元素自身 max-width:none，
+                // 宽度受祖先 padding 约束，max-width 只能收窄不能放宽），必须缩放该变量。
                 targets: [
-                    { selector: '.ds-message', base: 'rect' },
-                    { selector: '.ds-markdown', base: 'rect' }
+                    {
+                        selector: 'html',
+                        properties: ['--message-list-max-width'],
+                        base: 'var'
+                    }
                 ]
             }
         }
@@ -333,7 +349,7 @@ const SITE_INFO = [
     },
     {
         id: 'notebooklm',
-        sites: ['notebooklm.google.com'],
+        sites: ['notebooklm.google.com', 'notebook.google.com'],
         name: 'NotebookLM',
         logoPath: 'images/logo/notebooklm.svg',
         features: {
