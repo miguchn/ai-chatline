@@ -131,7 +131,7 @@ cd ai-chatline
 node scripts/build-firefox.js
 ```
 
-构建后在 `about:debugging` 中选择“临时载入附加组件”，载入生成的 `ChatLine-v3.8.0-firefox.zip`。
+构建后在 `about:debugging` 中选择“临时载入附加组件”，载入生成的 `ChatLine-v4.0.0-firefox.zip`。
 </details>
 
 <a id="privacy"></a>
@@ -176,14 +176,16 @@ ChatLine 没有复杂的前端构建步骤，可直接加载源码目录：
 
 ## 当前版本
 
-### v3.8.0
+### v4.0.0
 
-源码与 Chrome Web Store 版本一致。
+- 适配新版 ChatGPT 界面与新一代 AI 浏览器（ChatGPT Atlas 等），时间轴、收藏、智能输入、对话导出全面恢复。
+- 对话宽度调节改为缩放平台原生宽度变量，修复 DeepSeek 宽度设置不生效的问题。
+- Perplexity 适配新版页面结构；NotebookLM 支持新域名 notebook.google.com。
+- 兼容 ChatGPT 灰度期间的新旧两套界面。
 
-- 优化多平台消息识别、能力展示和对话导出稳定性。
-- 让高级功能保持默认关闭并按需加载，降低默认运行负担。
-- 改进不同窗口尺寸下的时间轴布局。
-- 加强 Markdown、Mermaid、HTML 预览和代码运行的安全边界。
+### v3.9.0
+
+- 界面文案全面更新为口语化短句，同步 19 种语言。
 
 <a id="feedback"></a>
 

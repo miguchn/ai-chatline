@@ -131,7 +131,7 @@ cd ai-chatline
 node scripts/build-firefox.js
 ```
 
-Then open `about:debugging`, choose “Load Temporary Add-on,” and load the generated `ChatLine-v3.8.0-firefox.zip`.
+Then open `about:debugging`, choose “Load Temporary Add-on,” and load the generated `ChatLine-v4.0.0-firefox.zip`.
 </details>
 
 <a id="privacy"></a>
@@ -176,14 +176,16 @@ Keep contributions focused, and describe the affected platform, browser, and ver
 
 ## Current version
 
-### v3.8.0
+### v4.0.0
 
-The source and Chrome Web Store versions are aligned.
+- Adapted to the new ChatGPT interface and the new generation of AI browsers (ChatGPT Atlas, etc.) — timeline, starring, smart input, and conversation export fully restored.
+- Chat width control now scales the platforms' native width variables, fixing the width setting not taking effect on DeepSeek.
+- Perplexity adapted to its new page structure; NotebookLM now supports the new domain notebook.google.com.
+- Compatible with both old and new ChatGPT interfaces during the rollout period.
 
-- Improved multi-platform message detection, capability display, and conversation export stability.
-- Kept advanced features off by default and loaded them on demand to reduce the default runtime footprint.
-- Improved timeline layout across different window sizes.
-- Strengthened safety boundaries for Markdown, Mermaid, HTML previews, and code execution.
+### v3.9.0
+
+- Interface copy fully rewritten into conversational short lines across 19 languages.
 
 <a id="feedback"></a>
 

@@ -12,13 +12,13 @@ const coreScripts = manifest.content_scripts.flatMap(item => item.js || []);
 const coreStyles = manifest.content_scripts.flatMap(item => item.css || []);
 
 test('release version and user-facing notes stay synchronized', () => {
-    assert.equal(manifest.version, '3.8.0');
+    assert.equal(manifest.version, '4.0.0');
     assert.equal(packageJson.version, manifest.version);
-    assert.match(read('README.md'), /### v3\.8\.0/);
-    assert.match(read('README.en.md'), /### v3\.8\.0/);
-    assert.doesNotMatch(read('README.md'), /### v3\.7\.5/);
-    assert.doesNotMatch(read('README.en.md'), /### v3\.7\.5/);
-    assert.match(read('js/global/changelog-modal/changelog.js'), /id: '2026070201'/);
+    assert.match(read('README.md'), /### v4\.0\.0/);
+    assert.match(read('README.en.md'), /### v4\.0\.0/);
+    assert.doesNotMatch(read('README.md'), /### v3\.8\.0/);
+    assert.doesNotMatch(read('README.en.md'), /### v3\.8\.0/);
+    assert.match(read('js/global/changelog-modal/changelog.js'), /id: '2026100901'/);
 });
 
 test('timeline wrapper reserves a responsive viewport bottom safe area', () => {
