@@ -232,7 +232,7 @@ class MirrorSiteFloatButton {
         }
 
         if (window.globalToastManager) {
-            window.globalToastManager.show('success', chrome.i18n.getMessage('mirrorSiteCopied') || '已复制到剪贴板');
+            window.globalToastManager.show('success', chrome.i18n.getMessage('mirrorSiteCopied') || '已复制');
         }
     }
 

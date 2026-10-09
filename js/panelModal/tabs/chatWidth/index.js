@@ -9,7 +9,7 @@ class ChatWidthTab extends BaseTab {
     constructor() {
         super();
         this.id = 'chat-width';
-        this.name = chrome.i18n.getMessage('chatWidthTitle') || '对话宽度';
+        this.name = chrome.i18n.getMessage('chatWidthTitle') || '页面宽度';
         this.badge = 'NEW';
         this.icon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 3H3v18h18V3z"/><path d="M9 3v18"/><path d="M15 3v18"/>
@@ -34,10 +34,10 @@ class ChatWidthTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${chrome.i18n.getMessage('chatWidthTitle') || '对话宽度'}</div>
-                        <div class="setting-hint">${chrome.i18n.getMessage('chatWidthHint') || '调大对话区域宽度，充分利用屏幕空间'}</div>
+                        <div class="setting-label">${chrome.i18n.getMessage('chatWidthTitle') || '页面宽度'}</div>
+                        <div class="setting-hint">${chrome.i18n.getMessage('chatWidthHint') || '让对话区变宽，别浪费大屏'}</div>
                     </div>
-                    <button class="starred-manage-btn" id="chat-width-adjust-btn">${chrome.i18n.getMessage('chatWidthAdjust') || '调节'}</button>
+                    <button class="starred-manage-btn" id="chat-width-adjust-btn">${chrome.i18n.getMessage('chatWidthAdjust') || '拖动调整'}</button>
                 </div>
             </div>
             <div class="cw-preview-section">

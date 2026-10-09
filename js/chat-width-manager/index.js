@@ -319,7 +319,7 @@ class ChatWidthManager {
 
     _formatVal(v) {
         return v <= 100
-            ? (chrome.i18n.getMessage('chatWidthNormal') || '正常')
+            ? (chrome.i18n.getMessage('chatWidthNormal') || '默认')
             : v + '%';
     }
 
@@ -338,7 +338,7 @@ class ChatWidthManager {
                 </svg>
                 <input type="range" class="ait-cw-float-slider" min="100" max="150" step="5" value="${this._scale}">
                 <span class="ait-cw-float-val">${this._formatVal(this._scale)}</span>
-                <button class="ait-cw-float-ok">${chrome.i18n.getMessage('chatWidthConfirm') || '确定'}</button>
+                <button class="ait-cw-float-ok">${chrome.i18n.getMessage('chatWidthConfirm') || '保存'}</button>
                 <button class="ait-cw-float-close" title="Close">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
                 </button>

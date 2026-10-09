@@ -60,8 +60,8 @@ class TimelineSettingsTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item timeline-long-conversation-setting">
                     <div class="setting-info">
-                        <div class="setting-label">${timelineTabI18n('longConversationPerformanceTitle', '长对话性能优化')}</div>
-                        <div class="setting-hint">${timelineTabI18n('longConversationPerformanceHint', '当对话消息超过指定数量后生效，仅折叠历史消息节点，不删除真实对话内容。')}</div>
+                        <div class="setting-label">${timelineTabI18n('longConversationPerformanceTitle', '自动折叠')}</div>
+                        <div class="setting-hint">${timelineTabI18n('longConversationPerformanceHint', '只折叠不删除，点开就能看全文')}</div>
                     </div>
                     <label class="ait-toggle-switch">
                         <input type="checkbox" id="long-conversation-performance-toggle">
@@ -74,14 +74,14 @@ class TimelineSettingsTab extends BaseTab {
                         <div class="timeline-segmented-options" data-setting="threshold">
                             ${this._renderSegmentedOptions([20, 30, 50], 'threshold')}
                         </div>
-                        <span class="timeline-performance-control-label">${timelineTabI18n('longConversationMessageUnit', '条消息后启用')}</span>
+                        <span class="timeline-performance-control-label">${timelineTabI18n('longConversationMessageUnit', '条就折叠')}</span>
                     </div>
                     <div class="timeline-performance-control-row">
                         <span class="timeline-performance-control-label">${timelineTabI18n('longConversationKeepRecentLabel', '保留最近')}</span>
                         <div class="timeline-segmented-options" data-setting="keepRecent">
                             ${this._renderSegmentedOptions([10, 20, 30, 40], 'keepRecent')}
                         </div>
-                        <span class="timeline-performance-control-label">${timelineTabI18n('longConversationKeepRecentUnit', '条消息不折叠')}</span>
+                        <span class="timeline-performance-control-label">${timelineTabI18n('longConversationKeepRecentUnit', '条不折叠')}</span>
                     </div>
                     <div class="timeline-performance-warning" id="timeline-performance-warning"></div>
                 </div>
@@ -96,8 +96,8 @@ class TimelineSettingsTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${timelineTabI18n('chatTimeLabelTitle', '显示对话时间')}</div>
-                        <div class="setting-hint">${timelineTabI18n('chatTimeLabelHint', '在对话消息旁显示时间标签')}</div>
+                        <div class="setting-label">${timelineTabI18n('chatTimeLabelTitle', '显示时间')}</div>
+                        <div class="setting-hint">${timelineTabI18n('chatTimeLabelHint', '每条消息旁标出发送时间')}</div>
                     </div>
                     <label class="ait-toggle-switch">
                         <input type="checkbox" id="chat-time-label-toggle">
@@ -109,18 +109,18 @@ class TimelineSettingsTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${timelineTabI18n('timelineThemeColorLabel', '时间轴主题色')}</div>
-                        <div class="setting-hint">${timelineTabI18n('timelineThemeColorHint', '为不同平台设置时间轴激活节点的主题色')}</div>
+                        <div class="setting-label">${timelineTabI18n('timelineThemeColorLabel', '时间轴颜色')}</div>
+                        <div class="setting-hint">${timelineTabI18n('timelineThemeColorHint', '给每个平台选一个高亮颜色')}</div>
                     </div>
-                    <button class="starred-manage-btn timeline-theme-color-manage-btn">${timelineTabI18n('timelineThemeColorManageButton', '设置')}</button>
+                    <button class="starred-manage-btn timeline-theme-color-manage-btn">${timelineTabI18n('timelineThemeColorManageButton', '选颜色')}</button>
                 </div>
             </div>
             ${divider}
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${timelineTabI18n('timelineAICompleteToastTitle', '回复完成提醒')}</div>
-                        <div class="setting-hint">${timelineTabI18n('timelineAICompleteToastHint', 'AI 回复完成且当前不在最新位置时显示提醒')}</div>
+                        <div class="setting-label">${timelineTabI18n('timelineAICompleteToastTitle', '回复提醒')}</div>
+                        <div class="setting-hint">${timelineTabI18n('timelineAICompleteToastHint', 'AI 答完时，如果你没在看就提醒你')}</div>
                     </div>
                     <label class="ait-toggle-switch">
                         <input type="checkbox" id="ai-complete-toast-toggle">
@@ -133,8 +133,8 @@ class TimelineSettingsTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label"><svg class="setting-label-icon setting-label-icon-pin" viewBox="0 0 24 24" fill="rgb(255, 125, 3)" stroke="rgb(255, 125, 3)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1 1 1 0 0 1 1 1z"/></svg>${timelineTabI18n('pxmzkv', '长按标记重点')}</div>
-                        <div class="setting-hint">${timelineTabI18n('kzxvpm', '长按时间轴节点可标记重点对话')}</div>
+                        <div class="setting-label"><svg class="setting-label-icon setting-label-icon-pin" viewBox="0 0 24 24" fill="rgb(255, 125, 3)" stroke="rgb(255, 125, 3)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1 1 1 0 0 1 1 1z"/></svg>${timelineTabI18n('pxmzkv', '标记重点')}</div>
+                        <div class="setting-hint">${timelineTabI18n('kzxvpm', '长按时间轴上的点，标记这条对话')}</div>
                     </div>
                     <label class="ait-toggle-switch">
                         <input type="checkbox" id="long-press-mark-toggle">
@@ -147,7 +147,7 @@ class TimelineSettingsTab extends BaseTab {
                 <div class="setting-item">
                     <div class="setting-info">
                         <div class="setting-label">${timelineTabI18n('notepadTitle', '闪记')}</div>
-                        <div class="setting-hint">${timelineTabI18n('notepadToggleHint', '在时间轴底部显示闪记入口')}</div>
+                        <div class="setting-hint">${timelineTabI18n('notepadToggleHint', '在时间轴底部放一个记事入口')}</div>
                     </div>
                     <label class="ait-toggle-switch">
                         <input type="checkbox" id="notepad-toggle">
@@ -159,8 +159,8 @@ class TimelineSettingsTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${timelineTabI18n('vkpmzx', '上下键导航')}</div>
-                        <div class="setting-hint">${timelineTabI18n('xpvmkz', '按上下方向键快速浏览对话历史')}</div>
+                        <div class="setting-label">${timelineTabI18n('vkpmzx', '上下键跳转')}</div>
+                        <div class="setting-hint">${timelineTabI18n('xpvmkz', '按 ↑ ↓ 键，直接跳到上一条或下一条')}</div>
                     </div>
                     <label class="ait-toggle-switch">
                         <input type="checkbox" id="arrow-keys-nav-toggle">
@@ -182,9 +182,9 @@ class TimelineSettingsTab extends BaseTab {
             <div class="setting-item">
                 <div class="setting-info">
                     <div class="setting-label">${timelineTabI18n('timelineDisplayLabel', '显示时间轴')}</div>
-                    <div class="setting-hint">${timelineTabI18n('mzkvxp', '控制哪些平台显示时间轴')}</div>
+                    <div class="setting-hint">${timelineTabI18n('mzkvxp', '右侧显示时间轴，随时跳到某条对话')}</div>
                 </div>
-                <button class="starred-manage-btn">${timelineTabI18n('promptBtnSwitch', '开关')}</button>
+                <button class="starred-manage-btn">${timelineTabI18n('promptBtnSwitch', '选平台')}</button>
             </div>
         `;
         container.appendChild(bottomSection);
@@ -308,7 +308,7 @@ class TimelineSettingsTab extends BaseTab {
         const warningEl = document.getElementById('timeline-performance-warning');
         if (warningEl) {
             if (normalized.keepRecent >= normalized.threshold) {
-                warningEl.textContent = timelineTabI18n('longConversationValidationKeepRecent', '保留消息数必须小于触发阈值，已自动修正');
+                warningEl.textContent = timelineTabI18n('longConversationValidationKeepRecent', '保留数要小于触发数，已帮你改好');
                 warningEl.classList.add('visible');
             } else {
                 warningEl.classList.remove('visible');
@@ -404,7 +404,7 @@ class TimelineSettingsTab extends BaseTab {
                     if (shouldShowValidationWarning) {
                         const warningEl = document.getElementById('timeline-performance-warning');
                         if (warningEl) {
-                            warningEl.textContent = timelineTabI18n('longConversationValidationKeepRecent', '保留消息数必须小于触发阈值，已自动修正');
+                            warningEl.textContent = timelineTabI18n('longConversationValidationKeepRecent', '保留数要小于触发数，已帮你改好');
                             warningEl.classList.add('visible');
                             setTimeout(() => warningEl.classList.remove('visible'), 3000);
                         }
@@ -492,7 +492,7 @@ class TimelineSettingsTab extends BaseTab {
                 
                 // 显示 toast 提示
                 if (window.globalToastManager) {
-                    const message = timelineTabI18n('qoytxz', '该功能默认开启');
+                    const message = timelineTabI18n('qoytxz', '这项一直开着，不能关');
                     window.globalToastManager.info(message, e.target, {
                         duration: 2200,
                         icon: '',  // 不显示图标
@@ -575,7 +575,7 @@ class TimelineSettingsTab extends BaseTab {
         overlay.innerHTML = `
             <div class="starred-platform-modal">
                 <div class="starred-platform-modal-header">
-                    <span>${timelineTabI18n('mkvzpx', '支持的平台')}</span>
+                    <span>${timelineTabI18n('mkvzpx', '适用平台')}</span>
                     <button class="starred-platform-modal-close">✕</button>
                 </div>
                 <div class="starred-platform-modal-body">${items}</div>
@@ -611,7 +611,7 @@ class TimelineSettingsTab extends BaseTab {
         const result = await chrome.storage.local.get('timelineActiveColorByPlatform');
         const activeColorByPlatform = result.timelineActiveColorByPlatform || {};
         const activeColorOptions = getTimelineActiveColorOptions();
-        const themeColorLabel = timelineTabI18n('timelineThemeColorLabel', '时间轴主题色');
+        const themeColorLabel = timelineTabI18n('timelineThemeColorLabel', '时间轴颜色');
 
         const overlay = document.createElement('div');
         overlay.className = 'starred-platform-modal-overlay';

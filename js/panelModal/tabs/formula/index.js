@@ -37,8 +37,8 @@ class FormulaTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${chrome.i18n.getMessage('formulaMathMLTitle') || '复制 MathML 公式'}</div>
-                        <div class="setting-hint">${chrome.i18n.getMessage('formulaMathMLHint') || '点击公式复制为 MathML 格式，可直接粘贴到 Word'}</div>
+                        <div class="setting-label">${chrome.i18n.getMessage('formulaMathMLTitle') || 'MathML'}</div>
+                        <div class="setting-hint">${chrome.i18n.getMessage('formulaMathMLHint') || '点公式复制，直接粘进 Word'}</div>
                     </div>
                     <label class="ait-toggle-switch">
                         <input type="checkbox" id="formula-mathml-toggle">
@@ -50,10 +50,10 @@ class FormulaTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${chrome.i18n.getMessage('formulaLatexTitle') || '复制 LaTeX 公式'}</div>
-                        <div class="setting-hint">${chrome.i18n.getMessage('formulaLatexHint') || '点击公式复制为 LaTeX 格式'}</div>
+                        <div class="setting-label">${chrome.i18n.getMessage('formulaLatexTitle') || 'LaTeX'}</div>
+                        <div class="setting-hint">${chrome.i18n.getMessage('formulaLatexHint') || '点公式，复制成 LaTeX'}</div>
                         <div class="format-inline" id="format-section" style="display: none;">
-                            <div class="format-inline-title">${chrome.i18n.getMessage('formulaFormatTitle') || '选择复制格式'}</div>
+                            <div class="format-inline-title">${chrome.i18n.getMessage('formulaFormatTitle') || '复制成什么格式'}</div>
                             <div class="format-options">
                                 ${formatOptionsHtml}
                             </div>

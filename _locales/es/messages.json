@@ -18,16 +18,16 @@
     "message": "Quitar de favoritos"
   },
   "vnkxpm": {
-    "message": "Carpeta"
+    "message": "Guardados"
   },
   "kxpmzv": {
-    "message": "Agregado a favoritos"
+    "message": "Guardado"
   },
   "pzmvkx": {
     "message": "Quitado de favoritos"
   },
   "jwvnkp": {
-    "message": "Sin datos"
+    "message": "Sin coincidencias"
   },
   "zxvkpm": {
     "message": "Ver todo"
@@ -57,10 +57,10 @@
     "message": "Confirmar"
   },
   "mzpxvk": {
-    "message": "El título no puede estar vacío"
+    "message": "Primero agrega un título"
   },
   "folderRequired": {
-    "message": "Por favor, selecciona una carpeta"
+    "message": "Primero elige una carpeta"
   },
   "defaultFolder": {
     "message": "Predeterminado"
@@ -72,10 +72,10 @@
     "message": "Desfijar"
   },
   "searchPrompt": {
-    "message": "Buscar prompts..."
+    "message": "Buscar prompts"
   },
   "sidebarStarredHint": {
-    "message": "Cuando está habilitado, se muestran carpetas en la barra lateral"
+    "message": "Muestra tus conversaciones guardadas en la barra lateral del propio sitio"
   },
   "sidebarStarredManage": {
     "message": "Ajustes"
@@ -87,7 +87,7 @@
     "message": "Marcar como importante"
   },
   "unpinAction": {
-    "message": "Quitar marca importante"
+    "message": "Quitar marca"
   },
   "starAction": {
     "message": "Guardar en carpeta"
@@ -96,7 +96,7 @@
     "message": "Quitar de guardados"
   },
   "questionListTitle": {
-    "message": "Preguntas"
+    "message": "Tus preguntas"
   },
   "questionListEmpty": {
     "message": "Sin preguntas aún"
@@ -120,7 +120,7 @@
     "message": "Mago"
   },
   "animTabEmpty": {
-    "message": "No hay animaciones disponibles"
+    "message": "Sin mascotas aún"
   },
   "animGrowHint": {
     "message": "{n} mensajes más"
@@ -129,7 +129,7 @@
     "message": "Renombrar"
   },
   "pzmkvx": {
-    "message": "El contenido no puede estar vacío"
+    "message": "Primero agrega algo de contenido"
   },
   "vxpzmk": {
     "message": "Código abierto"
@@ -144,7 +144,7 @@
     "message": "Compartir con amigos"
   },
   "mvxkpz": {
-    "message": "Copiar fórmula LaTeX"
+    "message": "Copiar como LaTeX"
   },
   "kxvpmz": {
     "message": "Nueva carpeta"
@@ -162,28 +162,28 @@
     "message": "Crear subcarpeta en \"{folderName}\""
   },
   "vzkpmx": {
-    "message": "Ingrese el nombre de la carpeta"
+    "message": "Ponle nombre a esta carpeta"
   },
   "kmxpvz": {
-    "message": "El nombre de la carpeta no puede estar vacío"
+    "message": "Primero ponle un nombre"
   },
   "pxmzvk": {
-    "message": "Editar carpeta"
+    "message": "Renombrar carpeta"
   },
   "mvzxkp": {
-    "message": "Ingrese el nuevo nombre"
+    "message": "Escribe un nombre nuevo"
   },
   "kpvzmx": {
-    "message": "El nombre de la carpeta ya existe"
+    "message": "Ese nombre ya está en uso"
   },
   "xzvkpm": {
-    "message": "Creado con éxito"
+    "message": "Creado"
   },
   "vmkxpz": {
-    "message": "Actualizado con éxito"
+    "message": "Guardado"
   },
   "zpxmkv": {
-    "message": "Carpeta no encontrada"
+    "message": "Esa carpeta ya no existe"
   },
   "kvpzmx": {
     "message": "Carpeta eliminada"
@@ -198,10 +198,10 @@
     "message": "Mover a"
   },
   "wjxnkp": {
-    "message": "{count} elementos favoritos también serán eliminados."
+    "message": "Las {count} conversaciones de adentro también se eliminarán"
   },
   "qzmvkx": {
-    "message": "¿Está seguro de que desea eliminar la carpeta \"{folderName}\"?"
+    "message": "¿Eliminar \"{folderName}\"?"
   },
   "mvkzpx": {
     "message": "Buscar..."
@@ -219,28 +219,28 @@
     "message": "Línea de tiempo"
   },
   "mzkvxp": {
-    "message": "Cuando está habilitado, se muestra una línea de tiempo en el lado derecho de la página de conversación de IA"
+    "message": "Muestra una línea de tiempo a la derecha para saltar a cualquier mensaje"
   },
   "vkpmzx": {
-    "message": "Usar teclas ↑ / ↓ para navegar entre nodos de conversación"
+    "message": "Salto con flechas"
   },
   "xpvmkz": {
-    "message": "Cuando está habilitado, use las teclas ↑ / ↓ para saltar rápidamente entre nodos de conversación."
+    "message": "Presiona ↑ ↓ para saltar al mensaje anterior o siguiente"
   },
   "pxmzkv": {
-    "message": "Marcar conversaciones importantes"
+    "message": "Marcar chats importantes"
   },
   "kzxvpm": {
-    "message": "Mantenga presionado un nodo de conversación en la línea de tiempo para marcarlo como importante."
+    "message": "Mantén presionado un punto de la línea de tiempo para marcar ese mensaje"
   },
   "xmvkpz": {
     "message": "Cuadro de entrada"
   },
   "kvzmxp": {
-    "message": "Salto de línea y envío"
+    "message": "Saltos de línea y envío"
   },
   "kpxvmz": {
-    "message": "Copiar fórmula"
+    "message": "Copiar fórmulas"
   },
   "zmkvpx": {
     "message": "Copiar fórmula LaTeX"
@@ -249,43 +249,43 @@
     "message": "Cuando está habilitado, detecta automáticamente las fórmulas en la página y haz clic para copiar en formato LaTeX."
   },
   "mkvzpx": {
-    "message": "Plataformas compatibles"
+    "message": "Funciona en"
   },
   "vxmkpz": {
-    "message": "Tecla Enter: presione una vez para nueva línea, dos veces para enviar"
+    "message": "Enter: nueva línea · doble toque: enviar"
   },
   "mkpxvz": {
-    "message": "Cuando está habilitado, en el cuadro de entrada de chat de IA, presione Enter para nueva línea, {mode} para enviar el mensaje."
+    "message": "Enter solo agrega un salto de línea — {mode} envía"
   },
   "qoytxz": {
-    "message": "Esta función está habilitada de forma predeterminada y no se puede desactivar"
+    "message": "Siempre activado — no se puede desactivar"
   },
   "hosegod": {
     "message": "Prompts"
   },
   "hobsidbg": {
-    "message": "Guarda tus prompts para acceder rápidamente. Cuando está habilitado, se mostrará un botón de prompt en el lado izquierdo del cuadro de chat."
+    "message": "Ten tus prompts favoritos a mano y envíalos con un clic"
   },
   "biwhckdj": {
-    "message": "Lista de prompts"
+    "message": "Tus prompts"
   },
   "byaskjndg": {
-    "message": "Agregar prompt"
+    "message": "Nuevo prompt"
   },
   "hsksuywm": {
     "message": "Editar prompt"
   },
   "hsuywkw": {
-    "message": "Nombre del prompt"
+    "message": "Nombre"
   },
   "hsuywkwPlaceholder": {
-    "message": "Ingrese el nombre del prompt"
+    "message": "Ponle nombre a este prompt"
   },
   "promptContent": {
     "message": "Contenido"
   },
   "uwkjwjw": {
-    "message": "Ingrese el contenido del prompt"
+    "message": "Pega tu prompt aquí"
   },
   "hsiwhwl": {
     "message": "No hay prompts"
@@ -294,13 +294,13 @@
     "message": "Prompt agregado"
   },
   "hwkwbhwk": {
-    "message": "Prompt actualizado"
+    "message": "Prompt guardado"
   },
   "qrtypd": {
     "message": "Prompt eliminado"
   },
   "dcnfmq": {
-    "message": "¿Está seguro de que desea eliminar este prompt?"
+    "message": "¿Eliminar este prompt?"
   },
   "svkbtn": {
     "message": "Guardar"
@@ -312,13 +312,13 @@
     "message": "Desfijado"
   },
   "addkbt": {
-    "message": "Agregar"
+    "message": "Nuevo"
   },
   "ptfmsl": {
-    "message": "Aplicar a"
+    "message": "Funciona en"
   },
   "allptfm": {
-    "message": "Todas las plataformas de IA"
+    "message": "Todas las plataformas"
   },
   "febhyejd": {
     "message": "Enviar comentarios en línea"
@@ -327,7 +327,7 @@
     "message": "Ejecutor de código"
   },
   "runnerSettingsTitle": {
-    "message": "Lenguajes soportados"
+    "message": "Lenguajes"
   },
   "runnerSettingsHint": {
     "message": "Cuando está activado, aparecerá un botón Run en los bloques de código para ejecutar código directamente"
@@ -348,22 +348,22 @@
     "message": "Claro"
   },
   "dataSyncTabName": {
-    "message": "Sincronización de datos"
+    "message": "Respaldo y restauración"
   },
   "formulaFormatTitle": {
-    "message": "Seleccionar formato de copia"
+    "message": "Formato de copia"
   },
   "importSuccess": {
-    "message": "Importación exitosa"
+    "message": "Importado"
   },
   "importSuccessHint": {
-    "message": "Los datos se han importado correctamente. Por favor actualice la página"
+    "message": "Importado — actualiza la página para verlo"
   },
   "importFailed": {
     "message": "Error en la importación"
   },
   "refreshPage": {
-    "message": "Actualizar página"
+    "message": "Actualizar ahora"
   },
   "refreshLater": {
     "message": "Actualizar más tarde"
@@ -372,10 +372,10 @@
     "message": "Preguntar más"
   },
   "highlightToggleTitle": {
-    "message": "Activar resaltado de texto"
+    "message": "Activar resaltado"
   },
   "highlightToggleHint": {
-    "message": "Al activar, puedes resaltar el texto seleccionado en páginas web"
+    "message": "Selecciona cualquier texto para marcarlo con color"
   },
   "highlightColorTitle": {
     "message": "Color de resaltado"
@@ -393,19 +393,19 @@
     "message": "Cancelar"
   },
   "scrollToBottomTitle": {
-    "message": "Ir al final"
+    "message": "Volver al final"
   },
   "scrollToBottomHint": {
-    "message": "Mostrar botón rápido para volver al mensaje más reciente"
+    "message": "Agrega un botón que salta al mensaje más reciente"
   },
   "pleaseWait": {
-    "message": "Por favor espere, el ID del nodo se está cargando..."
+    "message": "Espera, cargando…"
   },
   "chatTimeLabelTitle": {
-    "message": "Mostrar hora del chat"
+    "message": "Mostrar la hora"
   },
   "chatTimeLabelHint": {
-    "message": "Mostrar hora de envío en cada mensaje, tan claro como un historial de chat"
+    "message": "Muestra cuándo se envió cada mensaje"
   },
   "exportTitle": {
     "message": "Sincronización manual"
@@ -441,7 +441,7 @@
     "message": "Desplazar para zoom · Arrastrar para mover · ESC para cerrar"
   },
   "notepadToggleHint": {
-    "message": "Show notepad entry at the bottom of the timeline for quick notes"
+    "message": "Agrega un acceso rápido a notas al final de la línea de tiempo"
   },
   "notepadTitle": {
     "message": "Flash Notes"
@@ -459,10 +459,10 @@
     "message": "New Note"
   },
   "notepadConfirmDeleteTitle": {
-    "message": "Confirm Delete"
+    "message": "Eliminar nota"
   },
   "notepadConfirmDeleteContent": {
-    "message": "This cannot be undone. Are you sure?"
+    "message": "Esto no se puede deshacer. ¿Eliminarla?"
   },
   "notepadUntitled": {
     "message": "Untitled"
@@ -477,49 +477,49 @@
     "message": "Tipo de copia de fórmula"
   },
   "formulaCopyMathML": {
-    "message": "Copiar fórmula MathML"
+    "message": "Copiar como MathML"
   },
   "formulaCopyGeneric": {
     "message": "Copiar fórmula"
   },
   "formulaLatexTitle": {
-    "message": "Copiar fórmula LaTeX"
+    "message": "LaTeX"
   },
   "formulaLatexHint": {
-    "message": "Haz clic en una fórmula para copiarla en formato LaTeX"
+    "message": "Haz clic en una fórmula para copiarla como LaTeX"
   },
   "formulaMathMLTitle": {
-    "message": "Copiar fórmula MathML"
+    "message": "MathML"
   },
   "formulaMathMLHint": {
-    "message": "Haz clic en una fórmula para copiarla en formato MathML, se puede pegar directamente en Word"
+    "message": "Haz clic para copiar y pégalo directo en Word"
   },
   "aboutTabName": {
     "message": "Acerca de"
   },
   "aboutPluginTitle": {
-    "message": "Sobre la extensión"
+    "message": "Qué es esto"
   },
   "aboutPluginContent": {
-    "message": "ChatLine es una extensión del navegador para páginas de chat con IA. Es un fork del proyecto open-source Timeline y se centra en la navegación por línea de tiempo, la localización del historial, una mejor exploración de conversaciones y el archivado de datos. Compatible con múltiples plataformas principales de chat con IA."
+    "message": "ChatLine agrega una línea de tiempo, chats guardados, exportación y ejecución de código a las páginas de chat con IA. Es un fork del proyecto open-source Timeline y funciona con ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, NotebookLM y más."
   },
   "aboutDataSecurityTitle": {
-    "message": "Seguridad de datos"
+    "message": "Tus datos"
   },
   "aboutDataSecurityContent": {
-    "message": "Todos tus datos se almacenan localmente en tu navegador o en tu Google Drive. La extensión no recopila, sube ni comparte ningún contenido de tus conversaciones ni información personal. Este proyecto es de código abierto en GitHub, y el código está disponible para revisión en cualquier momento."
+    "message": "Tus datos permanecen en tu navegador o en tu propio Google Drive. La extensión nunca recopila, sube ni comparte tus conversaciones ni tu información personal. El código es open source en GitHub y puedes revisarlo cuando quieras."
   },
   "aboutDeveloperTitle": {
     "message": "Feedback"
   },
   "aboutDeveloperContent": {
-    "message": "ChatLine se mantiene como el fork ai-chat-timeline. Para solicitar funciones o reportar errores, usa la página de Issues del repositorio de este proyecto."
+    "message": "ChatLine se mantiene como un fork de ai-chat-timeline. Para pedir una función o reportar un error, abre un issue en el repositorio del proyecto."
   },
   "aboutShareTitle": {
-    "message": "Recomendar a amigos"
+    "message": "Compártelo con un amigo"
   },
   "aboutShareContent": {
-    "message": "Si ChatLine te resulta útil, recomiéndalo a quienes leen, localizan y archivan conversaciones con IA con frecuencia. Autor: 咪咕看见小黑. Correo: miguchn@gmail.com. Si encuentras problemas durante el uso o tienes sugerencias de mejora, puedes enviar comentarios por correo en cualquier momento."
+    "message": "Si ChatLine te ayuda, compártelo con quien pase tiempo en chats con IA. Autor: 咪咕看见小黑 · miguchn@gmail.com — preguntas y sugerencias bienvenidas cuando quieras."
   },
   "nativeMenuStarToFolder": {
     "message": "Star to Folder"
@@ -528,7 +528,7 @@
     "message": "Already starred"
   },
   "nativeMenuStarSuccess": {
-    "message": "Starred successfully"
+    "message": "Guardado"
   },
   "animViewMore": {
     "message": "Cambiar mascota"
@@ -537,28 +537,28 @@
     "message": "Movido"
   },
   "starredHelpDesc": {
-    "message": "Folders help you organize conversations and stay clutter-free."
+    "message": "Agrupa tus conversaciones en carpetas y deja de rebuscar"
   },
   "starredHelpTipsTitle": {
-    "message": "Quick tips:"
+    "message": "Cómo funciona"
   },
   "starredHelpTip1": {
-    "message": "Drag conversations into a folder."
+    "message": "Arrastra una conversación a una carpeta"
   },
   "starredHelpTip2": {
-    "message": "Drag items within a folder to reorder."
+    "message": "Arrastra para reordenar dentro de una carpeta"
   },
   "starredHelpTip3": {
-    "message": "Drag subfolders to reorder."
+    "message": "También arrastra las subcarpetas para reordenarlas"
   },
   "starredHelpTip4": {
-    "message": "Double-click a folder or item to edit."
+    "message": "Doble clic para renombrar"
   },
   "folderMoveHasChildren": {
-    "message": "Has subfolders, cannot nest further"
+    "message": "Ya tiene subcarpetas — no se puede anidar"
   },
   "folderMoveMaxDepth": {
-    "message": "Maximum folder depth reached"
+    "message": "Llegaste al máximo de niveles de carpetas"
   },
   "guideSubtitle": {
     "message": "AI conversation enhancement extension"
@@ -579,34 +579,34 @@
     "message": "Supported Platforms"
   },
   "highlightStyleTitle": {
-    "message": "Estilo de resaltado"
+    "message": "Estilo"
   },
   "highlightStyleFullCover": {
-    "message": "Cobertura total"
+    "message": "Bloque completo"
   },
   "highlightStyleFullCoverDesc": {
-    "message": "El resaltado cubre todo el texto"
+    "message": "El color cubre toda la línea"
   },
   "highlightStyleHalfCover": {
-    "message": "Media cobertura"
+    "message": "Medio bloque"
   },
   "highlightStyleHalfCoverDesc": {
-    "message": "El resaltado cubre la mitad inferior del texto"
+    "message": "El color cubre la mitad inferior"
   },
   "highlightStyleUnderline": {
     "message": "Subrayado"
   },
   "highlightStyleUnderlineDesc": {
-    "message": "El resaltado aparece debajo del texto"
+    "message": "Una línea de color bajo el texto"
   },
   "highlightStyleTextOnly": {
-    "message": "Solo texto"
+    "message": "Color de texto"
   },
   "highlightStyleTextOnlyDesc": {
-    "message": "Sin fondo, solo color de texto"
+    "message": "Sin fondo — solo cambia el color del texto"
   },
   "highlightMyColors": {
-    "message": "Colores de resaltado"
+    "message": "Tus colores"
   },
   "highlightColorPlaceholder": {
     "message": "#FF5733"
@@ -615,22 +615,22 @@
     "message": "Máximo 15 colores"
   },
   "highlightDeleteColorConfirm": {
-    "message": "¿Eliminar el color {color}?"
+    "message": "¿Eliminar {color}?"
   },
   "highlightAddColorTitle": {
     "message": "Añadir color"
   },
   "highlightAddColorBtn": {
-    "message": "Color"
+    "message": "Añadir color"
   },
   "highlightInvalidHex": {
-    "message": "Formato de color no válido"
+    "message": "Ese código no es válido — prueba con #FF5733"
   },
   "highlightColorExists": {
-    "message": "El color ya existe"
+    "message": "Ya tienes ese color"
   },
   "highlightColorHint": {
-    "message": "Introduce un código de color hexadecimal de 6 dígitos, p. ej. #FF5733"
+    "message": "Ingresa un código de color como #FF5733"
   },
   "highlightAnnotationPlaceholder": {
     "message": "Ideas…"
@@ -675,22 +675,22 @@
     "message": "Mostrar línea de tiempo"
   },
   "starredDisplayLabel": {
-    "message": "Mostrar carpetas"
+    "message": "Mostrar en la barra lateral"
   },
   "promptBtnDisplayLabel": {
-    "message": "Mostrar botón de prompts"
+    "message": "Botón de prompts"
   },
   "promptBtnSwitch": {
-    "message": "Ajustes"
+    "message": "Elegir plataformas"
   },
   "formulaFormatNone": {
-    "message": "Sin formato"
+    "message": "Fórmula simple"
   },
   "gdriveUploadBtn": {
-    "message": "Subir a la nube"
+    "message": "Subir un respaldo"
   },
   "gdriveDownloadBtn": {
-    "message": "Descargar de la nube"
+    "message": "Restaurar un respaldo"
   },
   "exportLabel": {
     "message": "Exportar"
@@ -699,7 +699,7 @@
     "message": "Importar"
   },
   "gdriveUploading": {
-    "message": "Subiendo..."
+    "message": "Subiendo…"
   },
   "gdriveUploadSuccess": {
     "message": "Subido a Google Drive"
@@ -708,109 +708,109 @@
     "message": "Error al subir"
   },
   "gdriveDownloading": {
-    "message": "Descargando..."
+    "message": "Restaurando…"
   },
   "gdriveDownloadFailed": {
-    "message": "Error al descargar"
+    "message": "Error al restaurar"
   },
   "gdriveNoBackup": {
-    "message": "Sin datos de respaldo en la nube"
+    "message": "Aún no hay respaldo en la nube"
   },
   "gdriveDataInvalid": {
-    "message": "Formato de datos en la nube no válido"
+    "message": "No se puede leer ese respaldo de la nube"
   },
   "gdriveMergeSuccess": {
-    "message": "Datos de la nube combinados"
+    "message": "Restaurado y combinado"
   },
   "gdriveMergeHint": {
-    "message": "Datos descargados y combinados desde Google Drive. Actualiza la página para aplicar."
+    "message": "Restaurado — actualiza la página para verlo"
   },
   "chatWidthTitle": {
-    "message": "Ancho del chat"
+    "message": "Ancho de página"
   },
   "chatWidthHint": {
-    "message": "Ampliar el área de conversación para aprovechar la pantalla"
+    "message": "Ensancha el chat para no dejar media pantalla vacía"
   },
   "chatWidthAdjust": {
-    "message": "Ajustar"
+    "message": "Arrastra para ajustar"
   },
   "chatWidthCurrent": {
     "message": "Ancho actual"
   },
   "chatWidthNormal": {
-    "message": "Normal"
+    "message": "Predeterminado"
   },
   "chatWidthConfirm": {
-    "message": "OK"
+    "message": "Guardar"
   },
   "mirrorSiteTabName": {
-    "message": "Sitios espejo"
+    "message": "Otros sitios"
   },
   "mirrorSiteHint": {
-    "message": "Agrega dominios de sitios espejo de IA. Aparecerá un botón flotante en estos sitios, habilitando algunas funciones de esta extensión."
+    "message": "Agrega los sitios de IA que uses — la extensión también funciona ahí"
   },
   "mirrorSiteAddDomain": {
-    "message": "Agregar"
+    "message": "Agregar sitio"
   },
   "mirrorSiteInputPlaceholder": {
-    "message": "Ingresa dominio, ej. chat.example.com"
+    "message": "Ingresa un sitio, ej. chat.example.com"
   },
   "mirrorSiteDomainListTitle": {
-    "message": "Dominios agregados"
+    "message": "Sitios que agregaste"
   },
   "mirrorSiteNoDomains": {
-    "message": "No hay dominios agregados"
+    "message": "Nada agregado aún"
   },
   "mirrorSiteDomainAdded": {
-    "message": "Dominio agregado"
+    "message": "Sitio agregado"
   },
   "mirrorSiteDomainRemoved": {
-    "message": "Dominio eliminado"
+    "message": "Sitio eliminado"
   },
   "mirrorSiteDomainExists": {
-    "message": "El dominio ya existe"
+    "message": "Ese sitio ya está en la lista"
   },
   "mirrorSiteDomainInvalid": {
-    "message": "Formato de dominio inválido"
+    "message": "Eso no parece un sitio válido"
   },
   "mirrorSiteDomainIsOfficial": {
-    "message": "Este dominio ya es una plataforma oficial compatible"
+    "message": "Ya es compatible — no hace falta agregarlo"
   },
   "mirrorSiteCopied": {
-    "message": "Copiado al portapapeles"
+    "message": "Copiado"
   },
   "hideStarredFromListLabel": {
-    "message": "Modo deduplicación"
+    "message": "Ocultar duplicados"
   },
   "hideStarredFromListHint": {
-    "message": "Al activarlo, las conversaciones añadidas a carpetas se ocultarán de la barra lateral"
+    "message": "Las conversaciones guardadas desaparecen de la lista original"
   },
   "timelineAICompleteNotLatestToast": {
-    "message": "La respuesta de $1 ha finalizado."
+    "message": "$1 terminó de responder"
   },
   "timelineAICompleteToastTitle": {
-    "message": "Aviso al completar respuesta"
+    "message": "Aviso de respuesta"
   },
   "timelineAICompleteToastHint": {
-    "message": "Muestra un aviso cuando la respuesta de la IA termina y no estás en la posición más reciente"
+    "message": "Te avisa cuando una respuesta termina y no estás en el último mensaje"
   },
   "timelineThemeColorLabel": {
-    "message": "Color del tema de la línea de tiempo"
+    "message": "Color de la línea de tiempo"
   },
   "timelineThemeColorHint": {
-    "message": "Configura el color del tema del marcador activo de la línea de tiempo para cada plataforma"
+    "message": "Elige el color de resaltado para cada plataforma"
   },
   "timelineThemeColorManageButton": {
-    "message": "Configurar"
+    "message": "Elegir"
   },
   "changelogShareTip": {
     "message": "Si esta extensión te resulta útil, compártela con quien pueda necesitarla."
   },
   "longConversationPerformanceTitle": {
-    "message": "Long Conversation Optimization"
+    "message": "Plegado automático"
   },
   "longConversationPerformanceHint": {
-    "message": "Automatically fold older messages after the set limit."
+    "message": "Pliega los mensajes antiguos — no se borra nada, haz clic para leerlos"
   },
   "longConversationThresholdLabel": {
     "message": "After"
@@ -819,19 +819,19 @@
     "message": "messages"
   },
   "longConversationKeepRecentLabel": {
-    "message": "Keep recent"
+    "message": "Mantener los últimos"
   },
   "longConversationKeepRecentUnit": {
-    "message": "messages visible"
+    "message": "visibles"
   },
   "longConversationValidationKeepRecent": {
-    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+    "message": "La cantidad visible debe ser menor que el límite — la ajustamos por ti"
   },
   "longConversationExpandMore": {
-    "message": "Expand more history"
+    "message": "Mostrar mensajes anteriores"
   },
   "longConversationCollapsedTooltip": {
-    "message": "$1 older messages above are folded. Click to expand more."
+    "message": "$1 mensajes anteriores plegados — clic para mostrar"
   },
   "highlightSettings": {
     "message": "Configuración"

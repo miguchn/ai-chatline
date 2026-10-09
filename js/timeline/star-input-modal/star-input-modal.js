@@ -173,7 +173,7 @@ class StarInputModal {
                             ${chrome.i18n.getMessage('kxzpmv')}<span class="star-input-modal-required">*</span>
                         </label>
                         <div class="star-input-modal-folder-selector">
-                            <span class="star-input-modal-folder-text placeholder">${chrome.i18n.getMessage('folderRequired') || 'Please select a folder'}</span>
+                            <span class="star-input-modal-folder-text placeholder">${chrome.i18n.getMessage('folderRequired') || 'Pick a folder first'}</span>
                             <svg class="star-input-modal-folder-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                 <polyline points="6 9 12 15 18 9"></polyline>
                             </svg>
@@ -356,7 +356,7 @@ class StarInputModal {
                 if (!selectedFolderId) {
                     return {
                         valid: false,
-                        message: chrome.i18n.getMessage('folderRequired') || 'Please select a folder'
+                        message: chrome.i18n.getMessage('folderRequired') || 'Pick a folder first'
                     };
                 }
                 
@@ -512,15 +512,15 @@ class StarInputModal {
 
             const result = await window.folderEditModal.show({
                 mode: 'create', title,
-                placeholder: chrome.i18n.getMessage('vzkpmx') || 'Folder name',
-                requiredMessage: chrome.i18n.getMessage('kmxpvz') || 'Name is required',
+                placeholder: chrome.i18n.getMessage('vzkpmx') || 'Name this folder',
+                requiredMessage: chrome.i18n.getMessage('kmxpvz') || 'Give it a name first',
                 maxLength: 10
             });
             if (!result) return null;
 
             const exists = await folderManager.isFolderNameExists(result.name, parentId);
             if (exists) {
-                window.globalToastManager?.error(chrome.i18n.getMessage('kpvzmx') || 'Name already exists');
+                window.globalToastManager?.error(chrome.i18n.getMessage('kpvzmx') || 'That name is already taken');
                 return null;
             }
 

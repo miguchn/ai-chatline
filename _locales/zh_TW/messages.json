@@ -18,16 +18,16 @@
     "message": "取消收藏"
   },
   "vnkxpm": {
-    "message": "資料夾"
+    "message": "收藏夾"
   },
   "kxpmzv": {
-    "message": "收藏成功"
+    "message": "已收藏"
   },
   "pzmvkx": {
     "message": "已取消收藏"
   },
   "jwvnkp": {
-    "message": "暫無資料"
+    "message": "沒有找到"
   },
   "zxvkpm": {
     "message": "查看全部"
@@ -39,7 +39,7 @@
     "message": "複製"
   },
   "xpzmvk": {
-    "message": "複製成功"
+    "message": "已複製"
   },
   "vkpxzm": {
     "message": "編輯"
@@ -57,10 +57,10 @@
     "message": "確定"
   },
   "mzpxvk": {
-    "message": "標題不能為空"
+    "message": "標題不能空著"
   },
   "folderRequired": {
-    "message": "請選擇一個資料夾"
+    "message": "先選一個資料夾"
   },
   "defaultFolder": {
     "message": "預設資料夾"
@@ -72,10 +72,10 @@
     "message": "取消置頂"
   },
   "searchPrompt": {
-    "message": "搜尋提示詞..."
+    "message": "搜尋提示詞"
   },
   "sidebarStarredHint": {
-    "message": "啟用後，在側邊欄中顯示資料夾"
+    "message": "在網站側邊欄顯示你的收藏夾"
   },
   "sidebarStarredManage": {
     "message": "設定"
@@ -87,7 +87,7 @@
     "message": "標記重點"
   },
   "unpinAction": {
-    "message": "取消標記重點"
+    "message": "取消標記"
   },
   "starAction": {
     "message": "收藏到資料夾"
@@ -96,10 +96,10 @@
     "message": "取消收藏"
   },
   "questionListTitle": {
-    "message": "提問列表"
+    "message": "我的提問"
   },
   "questionListEmpty": {
-    "message": "暫無提問"
+    "message": "還沒有提問"
   },
   "animTabTitle": {
     "message": "電子寵物"
@@ -120,7 +120,7 @@
     "message": "巫師學徒"
   },
   "animTabEmpty": {
-    "message": "暫無可用動畫"
+    "message": "還沒有寵物"
   },
   "animGrowHint": {
     "message": "再發 {n} 條訊息解鎖"
@@ -129,7 +129,7 @@
     "message": "重新命名"
   },
   "pzmkvx": {
-    "message": "內容不能為空"
+    "message": "內容不能空著"
   },
   "vxpzmk": {
     "message": "已開源"
@@ -162,31 +162,31 @@
     "message": "在「{folderName}」下新建子資料夾"
   },
   "vzkpmx": {
-    "message": "請輸入資料夾名稱"
+    "message": "給資料夾起個名"
   },
   "kmxpvz": {
-    "message": "資料夾名稱不能為空"
+    "message": "名字不能空著"
   },
   "pxmzvk": {
-    "message": "編輯資料夾"
+    "message": "改名字"
   },
   "mvzxkp": {
-    "message": "請輸入新名稱"
+    "message": "輸入新名字"
   },
   "kpvzmx": {
-    "message": "資料夾名稱已存在"
+    "message": "已經有這個名字了"
   },
   "xzvkpm": {
-    "message": "建立成功"
+    "message": "已建立"
   },
   "vmkxpz": {
-    "message": "更新成功"
+    "message": "已儲存"
   },
   "zpxmkv": {
-    "message": "資料夾不存在"
+    "message": "找不到這個資料夾"
   },
   "kvpzmx": {
-    "message": "資料夾已刪除"
+    "message": "已刪除"
   },
   "mxkvzp": {
     "message": "刪除失敗"
@@ -198,10 +198,10 @@
     "message": "移動到"
   },
   "wjxnkp": {
-    "message": "其中的 {count} 個收藏項也將一併刪除。"
+    "message": "裡面的 {count} 條收藏也會一起刪掉"
   },
   "qzmvkx": {
-    "message": "確定要刪除資料夾「{folderName}」嗎？"
+    "message": "刪除「{folderName}」？"
   },
   "mvkzpx": {
     "message": "搜尋..."
@@ -219,25 +219,25 @@
     "message": "時間軸"
   },
   "mzkvxp": {
-    "message": "啟用後，在 AI 對話頁面的右側顯示時間軸"
+    "message": "右側顯示時間軸，隨時跳到某條對話"
   },
   "vkpmzx": {
-    "message": "鍵盤 ↑ / ↓ 鍵跳轉對話節點"
+    "message": "上下鍵跳轉"
   },
   "xpvmkz": {
-    "message": "啟用後，使用鍵盤 ↑ / ↓ 鍵，在對話節點間快速跳轉。"
+    "message": "按 ↑ ↓ 鍵，直接跳到上一條或下一條"
   },
   "pxmzkv": {
-    "message": "標記重點對話"
+    "message": "標記重點"
   },
   "kzxvpm": {
-    "message": "長按時間軸上的對話節點，即可標記重點。"
+    "message": "長按時間軸上的點，標記這條對話"
   },
   "xmvkpz": {
     "message": "輸入框"
   },
   "kvzmxp": {
-    "message": "換行與發送訊息"
+    "message": "換行與傳送"
   },
   "kpxvmz": {
     "message": "複製公式"
@@ -249,16 +249,16 @@
     "message": "啟用後，自動識別頁面上的公式，點擊即可複製為 LaTeX 格式。"
   },
   "mkvzpx": {
-    "message": "支援的平台"
+    "message": "適用平臺"
   },
   "vxmkpz": {
-    "message": "Enter鍵：單擊換行，雙擊發送訊息"
+    "message": "Enter 換行，雙擊傳送"
   },
   "mkpxvz": {
-    "message": "啟用後，在 AI 對話輸入框中，可通過 Enter 鍵換行，{mode} 發送訊息。"
+    "message": "Enter 只換行，{mode} 才傳送"
   },
   "smartEnterModeDoubleEnter": {
-    "message": "快速雙擊 Enter"
+    "message": "雙擊 Enter"
   },
   "smartEnterModeDoubleEnterDesc": {
     "message": "單擊 Enter 換行，快速雙擊 Enter 發送訊息"
@@ -276,55 +276,55 @@
     "message": "Enter 換行，Shift + Enter 發送訊息"
   },
   "smartEnterToastCtrlEnter": {
-    "message": "Enter鍵：直接換行，{ctrl}+Enter 發送"
+    "message": "Enter 換行，{ctrl}+Enter 傳送"
   },
   "smartEnterToastShiftEnter": {
-    "message": "Enter鍵：直接換行，Shift+Enter 發送"
+    "message": "Enter 換行，Shift+Enter 傳送"
   },
   "qoytxz": {
-    "message": "此功能預設開啟，無法關閉"
+    "message": "這項一直開著，不能關"
   },
   "hosegod": {
     "message": "提示詞"
   },
   "hobsidbg": {
-    "message": "把常用提示詞保存起來，需要時快速調用。啟用後，在對話框左側顯示提示詞按鈕。"
+    "message": "存好常用提示詞，點一下就發出去"
   },
   "biwhckdj": {
-    "message": "提示詞列表"
+    "message": "提示詞庫"
   },
   "byaskjndg": {
-    "message": "新增提示詞"
+    "message": "新建提示詞"
   },
   "hsksuywm": {
     "message": "編輯提示詞"
   },
   "hsuywkw": {
-    "message": "提示詞名稱"
+    "message": "名稱"
   },
   "hsuywkwPlaceholder": {
-    "message": "輸入提示詞名稱"
+    "message": "給它起個名"
   },
   "promptContent": {
     "message": "內容"
   },
   "uwkjwjw": {
-    "message": "輸入提示詞內容"
+    "message": "把提示詞粘進來"
   },
   "hsiwhwl": {
-    "message": "暫無提示詞"
+    "message": "還沒有提示詞"
   },
   "shwsuwk": {
-    "message": "提示詞已新增"
+    "message": "已新增"
   },
   "hwkwbhwk": {
-    "message": "提示詞已更新"
+    "message": "已儲存"
   },
   "qrtypd": {
-    "message": "提示詞已刪除"
+    "message": "已刪除"
   },
   "dcnfmq": {
-    "message": "確定刪除這個提示詞嗎？"
+    "message": "刪除這條提示詞？"
   },
   "svkbtn": {
     "message": "儲存"
@@ -336,13 +336,13 @@
     "message": "已取消置頂"
   },
   "addkbt": {
-    "message": "新增"
+    "message": "新建"
   },
   "ptfmsl": {
-    "message": "適用於"
+    "message": "適用平臺"
   },
   "allptfm": {
-    "message": "全部 AI 平台"
+    "message": "全部平臺"
   },
   "febhyejd": {
     "message": "線上提交反饋"
@@ -351,7 +351,7 @@
     "message": "程式碼執行"
   },
   "runnerSettingsTitle": {
-    "message": "支援的程式語言"
+    "message": "支援的語言"
   },
   "runnerSettingsHint": {
     "message": "開啟後，程式碼區塊右上角將顯示 Run 按鈕，點擊可直接執行程式碼"
@@ -372,7 +372,7 @@
     "message": "淺色"
   },
   "formulaFormatTitle": {
-    "message": "選擇複製格式"
+    "message": "複製成什麼格式"
   },
   "formulaCopyTypeTitle": {
     "message": "複製公式類型"
@@ -381,7 +381,7 @@
     "message": "複製 MathML 公式"
   },
   "dataSyncTabName": {
-    "message": "資料同步"
+    "message": "備份恢復"
   },
   "exportTitle": {
     "message": "手動同步"
@@ -390,7 +390,7 @@
     "message": "透過 JSON 檔案手動備份或恢復數據，用於遷移到其他瀏覽器。"
   },
   "exportBtn": {
-    "message": "匯出數據"
+    "message": "匯出備份檔案"
   },
   "importTitle": {
     "message": "匯入數據"
@@ -399,82 +399,82 @@
     "message": "從 JSON 文件匯入數據，支援覆蓋或合併兩種模式。"
   },
   "importBtn": {
-    "message": "選擇文件匯入"
+    "message": "選擇檔案"
   },
   "importModeMerge": {
     "message": "合併"
   },
   "importModeMergeDesc": {
-    "message": "保留現有數據，與匯入數據合併"
+    "message": "現有資料留著，新資料加進來"
   },
   "importModeOverwrite": {
-    "message": "覆蓋"
+    "message": "替換"
   },
   "importModeOverwriteDesc": {
-    "message": "清空現有數據，使用匯入數據替換"
+    "message": "先清空，再用備份檔案替換"
   },
   "exportSuccess": {
-    "message": "匯出成功"
+    "message": "已匯出"
   },
   "importSuccess": {
-    "message": "匯入成功"
+    "message": "已匯入"
   },
   "importSuccessHint": {
-    "message": "資料已成功匯入，需要重新整理頁面後生效"
+    "message": "匯入好了，重新整理頁面就能用"
   },
   "importFailed": {
     "message": "匯入失敗"
   },
   "refreshPage": {
-    "message": "重新整理頁面"
+    "message": "現在重新整理"
   },
   "refreshLater": {
-    "message": "稍後重新整理"
+    "message": "稍後再說"
   },
   "quickAsk": {
     "message": "追問"
   },
   "highlightToggleTitle": {
-    "message": "啟用文本高亮"
+    "message": "開啟高亮"
   },
   "highlightToggleHint": {
-    "message": "開啟後，選中網頁文字時可進行高亮標註"
+    "message": "選中文字，就能劃上顏色"
   },
   "highlightColorTitle": {
     "message": "標註顏色"
   },
   "highlightMark": {
-    "message": "文本高亮"
+    "message": "標註"
   },
   "highlightRemoveConfirm": {
     "message": "移除該標註？"
   },
   "highlightRemoveYes": {
-    "message": "移除"
+    "message": "刪除"
   },
   "highlightRemoveNo": {
     "message": "取消"
   },
   "quickAskTitle": {
-    "message": "追問功能"
+    "message": "追問"
   },
   "quickAskHint": {
-    "message": "選中頁面上的文字後，顯示追問按鈕，點擊可快速引用到對話框中"
+    "message": "選中文字點「追問」，直接帶進輸入框"
   },
   "scrollToBottomTitle": {
-    "message": "返回底部"
+    "message": "回到底部"
   },
   "scrollToBottomHint": {
-    "message": "顯示返回底部的快捷按鈕，方便回到最新訊息"
+    "message": "顯示一個按鈕，一鍵跳到最新訊息"
   },
   "pleaseWait": {
-    "message": "請稍等，節點ID正在載入..."
+    "message": "稍等，正在載入…"
   },
   "chatTimeLabelTitle": {
-    "message": "顯示對話時間"
+    "message": "顯示時間"
   },
   "chatTimeLabelHint": {
-    "message": "在每條訊息上顯示發送時間，像聊天記錄一樣清晰"
+    "message": "每條訊息旁標出傳送時間"
   },
   "gdriveTitle": {
     "message": "Google Drive 雲端同步"
@@ -504,7 +504,7 @@
     "message": "滾輪縮放 · 拖曳平移 · ESC 退出"
   },
   "notepadToggleHint": {
-    "message": "在時間軸底部顯示閃記入口，隨手記錄靈感"
+    "message": "在時間軸底部放一個記事入口"
   },
   "notepadTitle": {
     "message": "閃記"
@@ -516,16 +516,16 @@
     "message": "關閉"
   },
   "notepadAllNotes": {
-    "message": "全部筆記"
+    "message": "所有筆記"
   },
   "notepadNewNote": {
     "message": "新建筆記"
   },
   "notepadConfirmDeleteTitle": {
-    "message": "確認刪除"
+    "message": "刪除筆記"
   },
   "notepadConfirmDeleteContent": {
-    "message": "刪除後將無法恢復，確定要繼續嗎？"
+    "message": "刪了就找不回來了，確定？"
   },
   "notepadUntitled": {
     "message": "無標題"
@@ -534,49 +534,49 @@
     "message": "昨天"
   },
   "notepadSaveToFolder": {
-    "message": "儲存到資料夾"
+    "message": "存到收藏夾"
   },
   "aboutTabName": {
-    "message": "關於插件"
+    "message": "關於"
   },
   "aboutPluginTitle": {
-    "message": "插件簡介"
+    "message": "這是什麼"
   },
   "aboutPluginContent": {
-    "message": "ChatLine 是一款面向 AI 對話頁面的瀏覽器增強外掛，基於開源專案 Timeline 二次開發，主要提供時間軸導覽、歷史定位、對話瀏覽增強和對話資料歸檔能力。支援多個主流 AI 對話平台。"
+    "message": "ChatLine 給 AI 對話頁面加上時間軸、收藏、匯出和程式碼執行，基於開源專案 Timeline 二次開發，支援 ChatGPT、Gemini、DeepSeek、Kimi、千問、Claude、元寶、NotebookLM 等平臺。"
   },
   "aboutDataSecurityTitle": {
-    "message": "數據安全"
+    "message": "你的資料"
   },
   "aboutDataSecurityContent": {
-    "message": "你的所有數據都存儲在瀏覽器本地或你的 Google Drive 中，插件不會收集、上傳或分享你的任何對話內容和個人信息，本項目已在 GitHub 開源，可隨時審查代碼。"
+    "message": "你的資料只存在瀏覽器本地或你自己的 Google Drive 裡。外掛不收集、不上傳、不分享任何對話內容和個人資訊。專案已在 GitHub 開源，程式碼隨時可查。"
   },
   "aboutDeveloperTitle": {
-    "message": "提需求"
+    "message": "提意見"
   },
   "aboutDeveloperContent": {
-    "message": "ChatLine 作為 ai-chat-timeline 的二次開發版本維護。如果想提需求或回報 bug，請透過目前專案儲存庫的 Issues 提交。"
+    "message": "ChatLine 是 ai-chat-timeline 的二次開發版本。想提需求或報 bug，請到專案倉庫提 Issue。"
   },
   "aboutShareTitle": {
     "message": "推薦給朋友"
   },
   "aboutShareContent": {
-    "message": "如果 ChatLine 對你有幫助，歡迎推薦給經常閱讀、定位和歸檔 AI 對話的朋友。作者：咪咕看见小黑。信箱：miguchn@gmail.com。如在使用過程中遇到問題或有優化建議，可隨時透過信箱回饋。"
+    "message": "如果 ChatLine 幫到了你，歡迎推薦給常看 AI 對話的朋友。作者：咪咕看見小黑，郵箱 miguchn@gmail.com，有問題或建議隨時來信。"
   },
   "formulaCopyGeneric": {
     "message": "複製公式"
   },
   "formulaLatexTitle": {
-    "message": "複製 LaTeX 公式"
+    "message": "LaTeX"
   },
   "formulaLatexHint": {
-    "message": "點擊公式複製為 LaTeX 格式"
+    "message": "點公式，複製成 LaTeX"
   },
   "formulaMathMLTitle": {
-    "message": "複製 MathML 公式"
+    "message": "MathML"
   },
   "formulaMathMLHint": {
-    "message": "點擊公式複製為 MathML 格式，可直接貼到 Word"
+    "message": "點公式複製，直接粘進 Word"
   },
   "nativeMenuStarToFolder": {
     "message": "收藏到資料夾"
@@ -585,7 +585,7 @@
     "message": "該對話已收藏"
   },
   "nativeMenuStarSuccess": {
-    "message": "收藏成功"
+    "message": "已收藏"
   },
   "animViewMore": {
     "message": "更換寵物"
@@ -594,28 +594,28 @@
     "message": "已移動"
   },
   "starredHelpDesc": {
-    "message": "資料夾，分類整理對話，告別雜亂無章。"
+    "message": "把對話分類收好，不用翻半天"
   },
   "starredHelpTipsTitle": {
-    "message": "使用小技巧："
+    "message": "怎麼用"
   },
   "starredHelpTip1": {
-    "message": "拖動對話到資料夾。"
+    "message": "把對話拖進資料夾"
   },
   "starredHelpTip2": {
-    "message": "拖動資料夾中的對話調整位置。"
+    "message": "拖動就能排序"
   },
   "starredHelpTip3": {
-    "message": "拖動二級資料夾調整位置。"
+    "message": "子資料夾也能拖動排序"
   },
   "starredHelpTip4": {
-    "message": "雙擊資料夾或對話，快速編輯。"
+    "message": "雙擊就能改名"
   },
   "folderMoveHasChildren": {
-    "message": "含子資料夾，無法巢狀"
+    "message": "裡面還有資料夾，不能再套"
   },
   "folderMoveMaxDepth": {
-    "message": "已達最大層級"
+    "message": "層級已經到頂了"
   },
   "guideSubtitle": {
     "message": "AI 對話增強外掛"
@@ -636,34 +636,34 @@
     "message": "支援的平台"
   },
   "highlightStyleTitle": {
-    "message": "高亮樣式"
+    "message": "樣式"
   },
   "highlightStyleFullCover": {
-    "message": "全覆蓋"
+    "message": "整塊底色"
   },
   "highlightStyleFullCoverDesc": {
-    "message": "高亮區域完整罩住文字"
+    "message": "色塊把整行文字包住"
   },
   "highlightStyleHalfCover": {
-    "message": "半覆蓋"
+    "message": "半截底色"
   },
   "highlightStyleHalfCoverDesc": {
-    "message": "高亮區域在文字腰部以下"
+    "message": "色塊蓋住文字下半截"
   },
   "highlightStyleUnderline": {
     "message": "下劃線"
   },
   "highlightStyleUnderlineDesc": {
-    "message": "高亮區域在文字下方"
+    "message": "文字下面一條色帶"
   },
   "highlightStyleTextOnly": {
-    "message": "僅文字"
+    "message": "只變色"
   },
   "highlightStyleTextOnlyDesc": {
-    "message": "無背景高亮，僅文字變色"
+    "message": "沒有底色，文字本身變色"
   },
   "highlightMyColors": {
-    "message": "高亮顏色"
+    "message": "我的顏色"
   },
   "highlightColorPlaceholder": {
     "message": "#FF5733"
@@ -672,22 +672,22 @@
     "message": "最多 15 個顏色"
   },
   "highlightDeleteColorConfirm": {
-    "message": "確定要刪除顏色 {color} 嗎？"
+    "message": "刪除 {color}？"
   },
   "highlightAddColorTitle": {
     "message": "新增顏色"
   },
   "highlightAddColorBtn": {
-    "message": "顏色"
+    "message": "加顏色"
   },
   "highlightInvalidHex": {
-    "message": "無效的顏色格式"
+    "message": "色號不對，要像 #FF5733 這樣"
   },
   "highlightColorExists": {
-    "message": "顏色已存在"
+    "message": "這個顏色已經有了"
   },
   "highlightColorHint": {
-    "message": "請輸入 6 位十六進制顏色值，例如 #FF5733"
+    "message": "填色號，比如 #FF5733"
   },
   "highlightAnnotationPlaceholder": {
     "message": "想法…"
@@ -732,22 +732,22 @@
     "message": "顯示時間軸"
   },
   "starredDisplayLabel": {
-    "message": "顯示資料夾"
+    "message": "顯示在側邊欄"
   },
   "promptBtnDisplayLabel": {
-    "message": "顯示提示詞按鈕"
+    "message": "提示詞按鈕"
   },
   "promptBtnSwitch": {
-    "message": "設定"
+    "message": "選平臺"
   },
   "formulaFormatNone": {
-    "message": "無特殊附加"
+    "message": "純公式"
   },
   "gdriveUploadBtn": {
-    "message": "上傳到雲端"
+    "message": "上傳備份"
   },
   "gdriveDownloadBtn": {
-    "message": "從雲端下載"
+    "message": "恢復備份"
   },
   "exportLabel": {
     "message": "匯出"
@@ -756,7 +756,7 @@
     "message": "匯入"
   },
   "gdriveUploading": {
-    "message": "上傳中..."
+    "message": "上傳中…"
   },
   "gdriveUploadSuccess": {
     "message": "已上傳到 Google Drive"
@@ -765,135 +765,204 @@
     "message": "上傳失敗"
   },
   "gdriveDownloading": {
-    "message": "下載中..."
+    "message": "恢復中…"
   },
   "gdriveDownloadFailed": {
-    "message": "下載失敗"
+    "message": "恢復失敗"
   },
   "gdriveNoBackup": {
-    "message": "雲端暫無備份資料"
+    "message": "雲端還沒有備份"
   },
   "gdriveDataInvalid": {
-    "message": "雲端資料格式無效"
+    "message": "雲端備份讀不出來"
   },
   "gdriveMergeSuccess": {
-    "message": "雲端資料已合併"
+    "message": "已恢復併合並"
   },
   "gdriveMergeHint": {
-    "message": "資料已成功從 Google Drive 下載並合併，需要重新整理頁面後生效"
+    "message": "恢復好了，重新整理頁面就能用"
   },
   "chatWidthTitle": {
-    "message": "對話寬度"
+    "message": "頁面寬度"
   },
   "chatWidthHint": {
-    "message": "調大對話區域寬度，充分利用螢幕空間"
+    "message": "讓對話區變寬，別浪費大屏"
   },
   "chatWidthAdjust": {
-    "message": "調節"
+    "message": "拖動調整"
   },
   "chatWidthCurrent": {
-    "message": "目前寬度"
+    "message": "當前寬度"
   },
   "chatWidthNormal": {
-    "message": "正常"
+    "message": "預設"
   },
   "chatWidthConfirm": {
-    "message": "確定"
+    "message": "儲存"
   },
   "mirrorSiteTabName": {
-    "message": "鏡像站點"
+    "message": "其他網站"
   },
   "mirrorSiteHint": {
-    "message": "添加 AI 鏡像站域名後，在這些網站上會出現浮窗按鈕，可使用本插件的部分功能。"
+    "message": "加上你常用的 AI 網站，外掛在那兒也能用"
   },
   "mirrorSiteAddDomain": {
-    "message": "添加"
+    "message": "新增網站"
   },
   "mirrorSiteInputPlaceholder": {
-    "message": "輸入域名，如 chat.example.com"
+    "message": "填網址，比如 chat.example.com"
   },
   "mirrorSiteDomainListTitle": {
-    "message": "已添加的域名"
+    "message": "已新增的網站"
   },
   "mirrorSiteNoDomains": {
-    "message": "尚未添加任何域名"
+    "message": "還沒新增"
   },
   "mirrorSiteDomainAdded": {
-    "message": "域名已添加"
+    "message": "已新增"
   },
   "mirrorSiteDomainRemoved": {
-    "message": "域名已移除"
+    "message": "已刪除"
   },
   "mirrorSiteDomainExists": {
-    "message": "域名已存在"
+    "message": "這個網站已經加過了"
   },
   "mirrorSiteDomainInvalid": {
-    "message": "域名格式無效"
+    "message": "網址不對，檢查一下"
   },
   "mirrorSiteDomainIsOfficial": {
-    "message": "該域名已是官方適配平台，無需添加"
+    "message": "這個網站本來就支援，不用加"
   },
   "mirrorSiteCopied": {
-    "message": "已複製到剪貼簿"
+    "message": "已複製"
   },
   "hideStarredFromListLabel": {
-    "message": "去重模式"
+    "message": "不重複顯示"
   },
   "hideStarredFromListHint": {
-    "message": "開啟後，已加入資料夾的對話將從原版側邊欄列表中隱藏"
+    "message": "收藏過的對話，不再出現在原列表"
   },
   "timelineAICompleteNotLatestToast": {
-    "message": "$1 回覆已完成"
+    "message": "$1 回答完了"
   },
   "timelineAICompleteToastTitle": {
-    "message": "回覆完成提醒"
+    "message": "回覆提醒"
   },
   "timelineAICompleteToastHint": {
-    "message": "AI 回覆完成且目前不在最新位置時顯示提醒"
+    "message": "AI 答完時，如果你沒在看就提醒你"
   },
   "timelineThemeColorLabel": {
-    "message": "時間軸主題色"
+    "message": "時間軸顏色"
   },
   "timelineThemeColorHint": {
-    "message": "為不同平台設定時間軸啟用節點的主題色"
+    "message": "給每個平臺選一個高亮顏色"
   },
   "timelineThemeColorManageButton": {
-    "message": "設定"
+    "message": "選顏色"
   },
   "changelogShareTip": {
     "message": "如果你覺得這個外掛還不錯，也歡迎分享給身邊有需要的人。"
   },
   "longConversationPerformanceTitle": {
-    "message": "長對話效能最佳化"
+    "message": "自動摺疊"
   },
   "longConversationPerformanceHint": {
-    "message": "超過設定數量後，自動摺疊較早的歷史訊息。"
+    "message": "只摺疊不刪除，點開就能看全文"
   },
   "longConversationThresholdLabel": {
     "message": "超過"
   },
   "longConversationMessageUnit": {
-    "message": "則訊息後啟用"
+    "message": "條就摺疊"
   },
   "longConversationKeepRecentLabel": {
     "message": "保留最近"
   },
   "longConversationKeepRecentUnit": {
-    "message": "則訊息不摺疊"
+    "message": "條不折疊"
   },
   "longConversationValidationKeepRecent": {
-    "message": "保留數量需小於觸發數量，已自動修正"
+    "message": "保留數要小於觸發數，已幫你改好"
   },
   "longConversationExpandMore": {
-    "message": "展開更多歷史訊息"
+    "message": "展開更早的對話"
   },
   "longConversationCollapsedTooltip": {
-    "message": "上方 $1 則歷史對話已摺疊，點擊展開更多"
+    "message": "上面還有 $1 條，點開看"
   },
   "highlightSettings": {
     "message": "設定"
   },
   "highlightConfirm": {
     "message": "確定"
+  },
+  "settingsGroupCore": {
+    "message": "常用"
+  },
+  "settingsGroupAdvanced": {
+    "message": "進階"
+  },
+  "settingsGroupExperimental": {
+    "message": "嚐鮮"
+  },
+  "settingsGroupBackup": {
+    "message": "備份"
+  },
+  "settingsGroupAbout": {
+    "message": "關於"
+  },
+  "conversationExportTabName": {
+    "message": "匯出對話"
+  },
+  "highlightTabName": {
+    "message": "劃詞高亮"
+  },
+  "conversationExportToggleTitle": {
+    "message": "開啟匯出"
+  },
+  "conversationExportToggleHint": {
+    "message": "在時間軸上方出現匯出按鈕"
+  },
+  "runnerAdvancedHint": {
+    "message": "程式碼塊會出現「執行」按鈕，可能讓頁面稍慢"
+  },
+  "runnerHint": {
+    "message": "在這裡寫程式碼，支援 async/await"
+  },
+  "runnerCodeEditor": {
+    "message": "程式碼"
+  },
+  "runnerOutput": {
+    "message": "結果"
+  },
+  "runnerTabTitle": {
+    "message": "程式碼執行"
+  },
+  "animLightweightHint": {
+    "message": "預設關閉，選一隻就會出來"
+  },
+  "localBackupTitle": {
+    "message": "存到電腦（推薦）"
+  },
+  "localBackupHint": {
+    "message": "不用登入，匯出一個檔案存著"
+  },
+  "gdriveAdvancedTitle": {
+    "message": "存到 Google Drive（可選）"
+  },
+  "gdriveOptionalHint": {
+    "message": "只有用到雲備份時才申請 Google 授權"
+  },
+  "gdrivePermissionDeclined": {
+    "message": "沒拿到 Google 授權"
+  },
+  "exportingData": {
+    "message": "正在匯出…"
+  },
+  "importingData": {
+    "message": "正在匯入…"
+  },
+  "formulaSettingsLabel": {
+    "message": "公式設定"
   }
 }

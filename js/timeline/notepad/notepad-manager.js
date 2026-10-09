@@ -93,7 +93,7 @@ class NotepadManager {
                     ${chrome.i18n.getMessage('notepadTitle') || '闪记'}
                 </span>
                 <div class="ait-notepad-header-right">
-                    <button class="ait-notepad-list-btn" title="${chrome.i18n.getMessage('notepadAllNotes') || '全部笔记'}">
+                    <button class="ait-notepad-list-btn" title="${chrome.i18n.getMessage('notepadAllNotes') || '所有笔记'}">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             width="16" height="16">
@@ -134,7 +134,7 @@ class NotepadManager {
                         width="13" height="13">
                         <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
                     </svg>
-                    <span class="ait-notepad-location-text ait-notepad-location-empty">${chrome.i18n.getMessage('notepadSaveToFolder') || '保存到文件夹'}</span>
+                    <span class="ait-notepad-location-text ait-notepad-location-empty">${chrome.i18n.getMessage('notepadSaveToFolder') || '存到收藏夹'}</span>
                 </div>
             </div>
             <div class="ait-notepad-resize-handle" data-direction="se"></div>
@@ -417,8 +417,8 @@ class NotepadManager {
 
     async deleteNote(id) {
         const confirmed = await window.globalPopconfirmManager?.show({
-            title: chrome.i18n.getMessage('notepadConfirmDeleteTitle') || '确认删除',
-            content: chrome.i18n.getMessage('notepadConfirmDeleteContent') || '删除后将无法恢复，确定要继续吗？',
+            title: chrome.i18n.getMessage('notepadConfirmDeleteTitle') || '删除笔记',
+            content: chrome.i18n.getMessage('notepadConfirmDeleteContent') || '删了就找不回来了，确定？',
             confirmText: chrome.i18n.getMessage('mzxvkp') || '删除',
             cancelText: chrome.i18n.getMessage('pxvkmz') || '取消'
         });
@@ -510,7 +510,7 @@ class NotepadManager {
     async _updateLocationDisplay() {
         if (!this.locationTextEl || !this.activeNoteId) return;
 
-        const emptyText = chrome.i18n.getMessage('notepadSaveToFolder') || '保存到文件夹';
+        const emptyText = chrome.i18n.getMessage('notepadSaveToFolder') || '存到收藏夹';
         const starRecord = await StarStorageManager.findByKey(this._getNoteStarKey(this.activeNoteId));
 
         if (!starRecord?.folderId || !this.folderManager) {

@@ -51,7 +51,7 @@ function createPromptDropdownUI({ prompts, onItemClick, onManageClick, tooltipPl
         const searchInput = document.createElement('input');
         searchInput.type = 'text';
         searchInput.className = 'prompt-dropdown-search-input';
-        searchInput.placeholder = chrome.i18n.getMessage('searchPrompt') || '搜索提示词...';
+        searchInput.placeholder = chrome.i18n.getMessage('searchPrompt') || '搜索提示词';
         searchInput.autocomplete = 'off';
         searchInput.addEventListener('input', () => {
             _promptDropdownFilter(container, searchInput.value.trim().toLowerCase());
@@ -159,7 +159,7 @@ function _promptDropdownFilter(container, query) {
         if (!tip) {
             tip = document.createElement('div');
             tip.className = 'prompt-dropdown-search-empty';
-            tip.textContent = chrome.i18n.getMessage('jwvnkp') || 'No results';
+            tip.textContent = chrome.i18n.getMessage('jwvnkp') || 'No matches';
             body.appendChild(tip);
         }
         tip.style.display = '';

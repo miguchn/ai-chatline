@@ -18,16 +18,16 @@
     "message": "Xóa khỏi yêu thích"
   },
   "vnkxpm": {
-    "message": "Thư mục"
+    "message": "Đã lưu"
   },
   "kxpmzv": {
-    "message": "Đã thêm vào yêu thích"
+    "message": "Đã lưu"
   },
   "pzmvkx": {
     "message": "Đã xóa khỏi yêu thích"
   },
   "jwvnkp": {
-    "message": "Không có dữ liệu"
+    "message": "Không có kết quả"
   },
   "zxvkpm": {
     "message": "Xem tất cả"
@@ -57,10 +57,10 @@
     "message": "Xác nhận"
   },
   "mzpxvk": {
-    "message": "Tiêu đề không được để trống"
+    "message": "Thêm tiêu đề trước đã"
   },
   "folderRequired": {
-    "message": "Vui lòng chọn một thư mục"
+    "message": "Chọn thư mục trước đã"
   },
   "defaultFolder": {
     "message": "Mặc định"
@@ -72,10 +72,10 @@
     "message": "Bỏ ghim"
   },
   "searchPrompt": {
-    "message": "Tìm prompt..."
+    "message": "Tìm prompt"
   },
   "sidebarStarredHint": {
-    "message": "Khi bật, thư mục sẽ hiển thị trong thanh bên"
+    "message": "Hiện các hội thoại đã lưu ngay trong thanh bên của trang"
   },
   "sidebarStarredManage": {
     "message": "Cài đặt"
@@ -87,7 +87,7 @@
     "message": "Đánh dấu điểm quan trọng"
   },
   "unpinAction": {
-    "message": "Bỏ đánh dấu quan trọng"
+    "message": "Bỏ đánh dấu"
   },
   "starAction": {
     "message": "Lưu vào thư mục"
@@ -96,7 +96,7 @@
     "message": "Bỏ lưu"
   },
   "questionListTitle": {
-    "message": "Danh sách câu hỏi"
+    "message": "Câu hỏi của bạn"
   },
   "questionListEmpty": {
     "message": "Chưa có câu hỏi"
@@ -120,7 +120,7 @@
     "message": "Phù thủy"
   },
   "animTabEmpty": {
-    "message": "Không có hoạt hình"
+    "message": "Chưa có thú cưng nào"
   },
   "animGrowHint": {
     "message": "Thêm {n} tin nhắn"
@@ -129,7 +129,7 @@
     "message": "Đổi tên"
   },
   "pzmkvx": {
-    "message": "Nội dung không được để trống"
+    "message": "Thêm nội dung trước đã"
   },
   "vxpzmk": {
     "message": "Mã nguồn mở"
@@ -144,7 +144,7 @@
     "message": "Chia sẻ với bạn bè"
   },
   "mvxkpz": {
-    "message": "Sao chép công thức LaTeX"
+    "message": "Sao chép dạng LaTeX"
   },
   "kxvpmz": {
     "message": "Thư mục mới"
@@ -162,28 +162,28 @@
     "message": "Tạo thư mục con trong \"{folderName}\""
   },
   "vzkpmx": {
-    "message": "Nhập tên thư mục"
+    "message": "Đặt tên thư mục này"
   },
   "kmxpvz": {
-    "message": "Tên thư mục không được để trống"
+    "message": "Đặt tên trước đã"
   },
   "pxmzvk": {
-    "message": "Chỉnh sửa thư mục"
+    "message": "Đổi tên thư mục"
   },
   "mvzxkp": {
     "message": "Nhập tên mới"
   },
   "kpvzmx": {
-    "message": "Tên thư mục đã tồn tại"
+    "message": "Tên này đã được dùng"
   },
   "xzvkpm": {
-    "message": "Tạo thành công"
+    "message": "Đã tạo"
   },
   "vmkxpz": {
-    "message": "Cập nhật thành công"
+    "message": "Đã lưu"
   },
   "zpxmkv": {
-    "message": "Không tìm thấy thư mục"
+    "message": "Thư mục đó không còn nữa"
   },
   "kvpzmx": {
     "message": "Đã xóa thư mục"
@@ -198,10 +198,10 @@
     "message": "Di chuyển đến"
   },
   "wjxnkp": {
-    "message": "{count} mục yêu thích cũng sẽ bị xóa."
+    "message": "{count} cuộc trò chuyện bên trong cũng sẽ bị xóa"
   },
   "qzmvkx": {
-    "message": "Bạn có chắc muốn xóa thư mục \"{folderName}\"?"
+    "message": "Xóa \"{folderName}\"?"
   },
   "mvkzpx": {
     "message": "Tìm kiếm..."
@@ -219,19 +219,19 @@
     "message": "Dòng thời gian"
   },
   "mzkvxp": {
-    "message": "Khi bật, dòng thời gian sẽ hiển thị ở bên phải trang hội thoại AI"
+    "message": "Hiện dòng thời gian bên phải để bạn nhảy đến bất kỳ tin nhắn nào"
   },
   "vkpmzx": {
-    "message": "Sử dụng phím ↑ / ↓ để di chuyển giữa các nút hội thoại"
+    "message": "Nhảy bằng phím mũi tên"
   },
   "xpvmkz": {
-    "message": "Khi bật, sử dụng phím ↑ / ↓ để nhảy nhanh giữa các nút hội thoại."
+    "message": "Nhấn ↑ ↓ để nhảy đến tin nhắn trước hoặc sau"
   },
   "pxmzkv": {
     "message": "Đánh dấu hội thoại quan trọng"
   },
   "kzxvpm": {
-    "message": "Nhấn giữ nút hội thoại trên dòng thời gian để đánh dấu là quan trọng."
+    "message": "Nhấn giữ một chấm trên dòng thời gian để đánh dấu tin nhắn đó"
   },
   "xmvkpz": {
     "message": "Hộp nhập liệu"
@@ -249,43 +249,43 @@
     "message": "Khi bật, tự động phát hiện công thức trên trang và nhấp để sao chép dưới dạng LaTeX."
   },
   "mkvzpx": {
-    "message": "Nền tảng được hỗ trợ"
+    "message": "Hoạt động trên"
   },
   "vxmkpz": {
-    "message": "Phím Enter: nhấn một lần để xuống dòng, hai lần để gửi"
+    "message": "Enter: xuống dòng · nhấn hai lần: gửi"
   },
   "mkpxvz": {
-    "message": "Khi bật, trong hộp nhập chat AI, nhấn Enter để xuống dòng, {mode} để gửi tin nhắn."
+    "message": "Enter chỉ xuống dòng — {mode} để gửi"
   },
   "qoytxz": {
-    "message": "Tính năng này được bật theo mặc định và không thể tắt"
+    "message": "Luôn bật — không thể tắt"
   },
   "hosegod": {
     "message": "Prompts"
   },
   "hobsidbg": {
-    "message": "Lưu prompt để truy cập nhanh. Khi bật, một nút prompt sẽ được hiển thị ở bên trái hộp chat."
+    "message": "Giữ các prompt quen thuộc trong tầm tay và gửi chỉ với một cú nhấp"
   },
   "biwhckdj": {
-    "message": "Danh sách Prompt"
+    "message": "Prompt của bạn"
   },
   "byaskjndg": {
-    "message": "Thêm Prompt"
+    "message": "Prompt mới"
   },
   "hsksuywm": {
     "message": "Chỉnh sửa Prompt"
   },
   "hsuywkw": {
-    "message": "Tên Prompt"
+    "message": "Tên"
   },
   "hsuywkwPlaceholder": {
-    "message": "Nhập tên prompt"
+    "message": "Đặt tên prompt này"
   },
   "promptContent": {
     "message": "Nội dung"
   },
   "uwkjwjw": {
-    "message": "Nhập nội dung prompt"
+    "message": "Dán prompt của bạn vào đây"
   },
   "hsiwhwl": {
     "message": "Chưa có prompt"
@@ -294,13 +294,13 @@
     "message": "Đã thêm prompt"
   },
   "hwkwbhwk": {
-    "message": "Đã cập nhật prompt"
+    "message": "Đã lưu prompt"
   },
   "qrtypd": {
     "message": "Đã xóa prompt"
   },
   "dcnfmq": {
-    "message": "Bạn có chắc muốn xóa prompt này?"
+    "message": "Xóa prompt này?"
   },
   "svkbtn": {
     "message": "Lưu"
@@ -312,13 +312,13 @@
     "message": "Đã bỏ ghim"
   },
   "addkbt": {
-    "message": "Thêm"
+    "message": "Mới"
   },
   "ptfmsl": {
-    "message": "Áp dụng cho"
+    "message": "Hoạt động trên"
   },
   "allptfm": {
-    "message": "Tất cả nền tảng AI"
+    "message": "Tất cả nền tảng"
   },
   "febhyejd": {
     "message": "Gửi phản hồi trực tuyến"
@@ -327,7 +327,7 @@
     "message": "Chạy mã"
   },
   "runnerSettingsTitle": {
-    "message": "Ngôn ngữ được hỗ trợ"
+    "message": "Ngôn ngữ"
   },
   "runnerSettingsHint": {
     "message": "Khi bật, nút Run sẽ xuất hiện trên các khối mã để chạy mã trực tiếp"
@@ -348,22 +348,22 @@
     "message": "Sáng"
   },
   "dataSyncTabName": {
-    "message": "Đồng bộ dữ liệu"
+    "message": "Sao lưu & khôi phục"
   },
   "formulaFormatTitle": {
-    "message": "Chọn định dạng sao chép"
+    "message": "Định dạng sao chép"
   },
   "importSuccess": {
-    "message": "Nhập thành công"
+    "message": "Đã nhập"
   },
   "importSuccessHint": {
-    "message": "Dữ liệu đã được nhập thành công. Vui lòng làm mới trang"
+    "message": "Đã nhập — làm mới trang để xem"
   },
   "importFailed": {
     "message": "Nhập thất bại"
   },
   "refreshPage": {
-    "message": "Làm mới trang"
+    "message": "Làm mới ngay"
   },
   "refreshLater": {
     "message": "Làm mới sau"
@@ -372,10 +372,10 @@
     "message": "Hỏi thêm"
   },
   "highlightToggleTitle": {
-    "message": "Bật đánh dấu văn bản"
+    "message": "Bật tô sáng"
   },
   "highlightToggleHint": {
-    "message": "Khi bật, bạn có thể đánh dấu văn bản đã chọn trên trang web"
+    "message": "Chọn văn bản bất kỳ để tô màu"
   },
   "highlightColorTitle": {
     "message": "Màu đánh dấu"
@@ -396,16 +396,16 @@
     "message": "Xuống cuối"
   },
   "scrollToBottomHint": {
-    "message": "Hiển thị nút nhanh để quay lại tin nhắn mới nhất"
+    "message": "Thêm nút nhảy đến tin nhắn mới nhất"
   },
   "pleaseWait": {
-    "message": "Vui lòng chờ, đang tải ID nút..."
+    "message": "Chờ chút, đang tải…"
   },
   "chatTimeLabelTitle": {
-    "message": "Hiển thị thời gian chat"
+    "message": "Hiện thời gian"
   },
   "chatTimeLabelHint": {
-    "message": "Hiển thị thời gian gửi trên mỗi tin nhắn, rõ ràng như lịch sử trò chuyện"
+    "message": "Hiện thời gian gửi của từng tin nhắn"
   },
   "exportTitle": {
     "message": "Đồng bộ thủ công"
@@ -441,7 +441,7 @@
     "message": "Cuộn để thu phóng · Kéo để di chuyển · ESC để đóng"
   },
   "notepadToggleHint": {
-    "message": "Show notepad entry at the bottom of the timeline for quick notes"
+    "message": "Thêm lối tắt ghi chú ở cuối dòng thời gian"
   },
   "notepadTitle": {
     "message": "Flash Notes"
@@ -459,10 +459,10 @@
     "message": "New Note"
   },
   "notepadConfirmDeleteTitle": {
-    "message": "Confirm Delete"
+    "message": "Xóa ghi chú"
   },
   "notepadConfirmDeleteContent": {
-    "message": "This cannot be undone. Are you sure?"
+    "message": "Không thể hoàn tác. Xóa chứ?"
   },
   "notepadUntitled": {
     "message": "Untitled"
@@ -477,49 +477,49 @@
     "message": "Loại sao chép công thức"
   },
   "formulaCopyMathML": {
-    "message": "Sao chép công thức MathML"
+    "message": "Sao chép dạng MathML"
   },
   "formulaCopyGeneric": {
     "message": "Sao chép công thức"
   },
   "formulaLatexTitle": {
-    "message": "Sao chép công thức LaTeX"
+    "message": "LaTeX"
   },
   "formulaLatexHint": {
     "message": "Nhấp vào công thức để sao chép dạng LaTeX"
   },
   "formulaMathMLTitle": {
-    "message": "Sao chép công thức MathML"
+    "message": "MathML"
   },
   "formulaMathMLHint": {
-    "message": "Nhấp vào công thức để sao chép dạng MathML, dán trực tiếp vào Word"
+    "message": "Nhấp để sao chép, rồi dán thẳng vào Word"
   },
   "aboutTabName": {
     "message": "Giới thiệu"
   },
   "aboutPluginTitle": {
-    "message": "Về tiện ích"
+    "message": "ChatLine là gì"
   },
   "aboutPluginContent": {
-    "message": "ChatLine là tiện ích trình duyệt cho các trang chat AI. Được phát triển tiếp từ dự án mã nguồn mở Timeline, ChatLine tập trung vào điều hướng dòng thời gian, định vị lịch sử, tăng cường duyệt hội thoại và lưu trữ dữ liệu hội thoại. Hỗ trợ nhiều nền tảng chat AI phổ biến."
+    "message": "ChatLine thêm dòng thời gian, hội thoại đã lưu, xuất hội thoại và chạy mã vào các trang chat AI. Được fork từ dự án mã nguồn mở Timeline, ChatLine hoạt động với ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, NotebookLM và nhiều nền tảng khác."
   },
   "aboutDataSecurityTitle": {
-    "message": "Bảo mật dữ liệu"
+    "message": "Dữ liệu của bạn"
   },
   "aboutDataSecurityContent": {
-    "message": "Tất cả dữ liệu của bạn được lưu trữ cục bộ trên trình duyệt hoặc trong Google Drive của bạn. Tiện ích không thu thập, tải lên hoặc chia sẻ bất kỳ nội dung cuộc trò chuyện hay thông tin cá nhân nào của bạn. Dự án này là mã nguồn mở trên GitHub, bạn có thể kiểm tra mã bất cứ lúc nào."
+    "message": "Dữ liệu của bạn ở lại trong trình duyệt của bạn hoặc trong Google Drive của riêng bạn. Tiện ích không bao giờ thu thập, tải lên hay chia sẻ hội thoại hoặc thông tin cá nhân của bạn. Mã nguồn mở trên GitHub và có thể kiểm tra bất cứ lúc nào."
   },
   "aboutDeveloperTitle": {
     "message": "Phản hồi"
   },
   "aboutDeveloperContent": {
-    "message": "ChatLine được duy trì dưới dạng fork ai-chat-timeline. Để đề xuất tính năng hoặc báo lỗi, vui lòng dùng trang Issues của repository dự án này."
+    "message": "ChatLine được duy trì dưới dạng fork của ai-chat-timeline. Muốn đề xuất tính năng hoặc báo lỗi, hãy mở issue trong repository của dự án."
   },
   "aboutShareTitle": {
     "message": "Giới thiệu cho bạn bè"
   },
   "aboutShareContent": {
-    "message": "Nếu ChatLine hữu ích, hãy giới thiệu cho những người thường đọc lại, tìm kiếm và lưu trữ hội thoại AI. Tác giả: 咪咕看见小黑. Email: miguchn@gmail.com. Nếu gặp vấn đề trong quá trình sử dụng hoặc có đề xuất cải thiện, bạn có thể gửi phản hồi qua email bất cứ lúc nào."
+    "message": "Nếu ChatLine hữu ích với bạn, hãy giới thiệu cho bất kỳ ai hay chat với AI. Tác giả: 咪咕看见小黑 · miguchn@gmail.com — có câu hỏi hay góp ý, cứ gửi bất cứ lúc nào."
   },
   "nativeMenuStarToFolder": {
     "message": "Star to Folder"
@@ -528,7 +528,7 @@
     "message": "Already starred"
   },
   "nativeMenuStarSuccess": {
-    "message": "Starred successfully"
+    "message": "Đã lưu"
   },
   "animViewMore": {
     "message": "Đổi thú cưng"
@@ -537,28 +537,28 @@
     "message": "Đã di chuyển"
   },
   "starredHelpDesc": {
-    "message": "Folders help you organize conversations and stay clutter-free."
+    "message": "Gom hội thoại vào thư mục để khỏi phải lục tìm"
   },
   "starredHelpTipsTitle": {
-    "message": "Quick tips:"
+    "message": "Cách dùng"
   },
   "starredHelpTip1": {
-    "message": "Drag conversations into a folder."
+    "message": "Kéo hội thoại vào thư mục"
   },
   "starredHelpTip2": {
-    "message": "Drag items within a folder to reorder."
+    "message": "Kéo để đổi thứ tự trong thư mục"
   },
   "starredHelpTip3": {
-    "message": "Drag subfolders to reorder."
+    "message": "Kéo thư mục con để đổi thứ tự"
   },
   "starredHelpTip4": {
-    "message": "Double-click a folder or item to edit."
+    "message": "Nhấp đúp để đổi tên"
   },
   "folderMoveHasChildren": {
-    "message": "Has subfolders, cannot nest further"
+    "message": "Đã có thư mục con — không lồng thêm được"
   },
   "folderMoveMaxDepth": {
-    "message": "Maximum folder depth reached"
+    "message": "Đã đến cấp thư mục sâu nhất"
   },
   "guideSubtitle": {
     "message": "AI conversation enhancement extension"
@@ -579,34 +579,34 @@
     "message": "Supported Platforms"
   },
   "highlightStyleTitle": {
-    "message": "Kiểu tô sáng"
+    "message": "Kiểu"
   },
   "highlightStyleFullCover": {
     "message": "Phủ toàn bộ"
   },
   "highlightStyleFullCoverDesc": {
-    "message": "Tô sáng phủ toàn bộ văn bản"
+    "message": "Màu phủ toàn bộ dòng"
   },
   "highlightStyleHalfCover": {
     "message": "Phủ nửa"
   },
   "highlightStyleHalfCoverDesc": {
-    "message": "Tô sáng phủ nửa dưới văn bản"
+    "message": "Màu phủ nửa dưới"
   },
   "highlightStyleUnderline": {
     "message": "Gạch chân"
   },
   "highlightStyleUnderlineDesc": {
-    "message": "Tô sáng hiển thị bên dưới văn bản"
+    "message": "Đường màu bên dưới văn bản"
   },
   "highlightStyleTextOnly": {
-    "message": "Chỉ văn bản"
+    "message": "Màu chữ"
   },
   "highlightStyleTextOnlyDesc": {
     "message": "Không nền, chỉ đổi màu chữ"
   },
   "highlightMyColors": {
-    "message": "Màu tô sáng"
+    "message": "Màu của bạn"
   },
   "highlightColorPlaceholder": {
     "message": "#FF5733"
@@ -621,16 +621,16 @@
     "message": "Thêm màu"
   },
   "highlightAddColorBtn": {
-    "message": "Màu"
+    "message": "Thêm màu"
   },
   "highlightInvalidHex": {
-    "message": "Định dạng màu không hợp lệ"
+    "message": "Mã màu không hợp lệ — thử #FF5733 nhé"
   },
   "highlightColorExists": {
-    "message": "Màu đã tồn tại"
+    "message": "Bạn đã có màu này rồi"
   },
   "highlightColorHint": {
-    "message": "Nhập mã màu hex 6 chữ số, ví dụ #FF5733"
+    "message": "Nhập mã màu, ví dụ #FF5733"
   },
   "highlightAnnotationPlaceholder": {
     "message": "Ý tưởng…"
@@ -675,22 +675,22 @@
     "message": "Hiển thị dòng thời gian"
   },
   "starredDisplayLabel": {
-    "message": "Hiển thị thư mục"
+    "message": "Hiện trong thanh bên"
   },
   "promptBtnDisplayLabel": {
-    "message": "Hiển thị nút gợi ý"
+    "message": "Nút prompt"
   },
   "promptBtnSwitch": {
-    "message": "Cài đặt"
+    "message": "Chọn nền tảng"
   },
   "formulaFormatNone": {
-    "message": "Không bọc"
+    "message": "Công thức thường"
   },
   "gdriveUploadBtn": {
-    "message": "Tải lên đám mây"
+    "message": "Tải lên bản sao lưu"
   },
   "gdriveDownloadBtn": {
-    "message": "Tải từ đám mây"
+    "message": "Khôi phục bản sao lưu"
   },
   "exportLabel": {
     "message": "Xuất"
@@ -699,7 +699,7 @@
     "message": "Nhập"
   },
   "gdriveUploading": {
-    "message": "Đang tải lên..."
+    "message": "Đang tải lên…"
   },
   "gdriveUploadSuccess": {
     "message": "Đã tải lên Google Drive"
@@ -708,109 +708,109 @@
     "message": "Tải lên thất bại"
   },
   "gdriveDownloading": {
-    "message": "Đang tải xuống..."
+    "message": "Đang khôi phục…"
   },
   "gdriveDownloadFailed": {
-    "message": "Tải xuống thất bại"
+    "message": "Khôi phục thất bại"
   },
   "gdriveNoBackup": {
-    "message": "Không có dữ liệu sao lưu trên đám mây"
+    "message": "Chưa có bản sao lưu trên đám mây"
   },
   "gdriveDataInvalid": {
-    "message": "Định dạng dữ liệu đám mây không hợp lệ"
+    "message": "Không đọc được bản sao lưu trên đám mây"
   },
   "gdriveMergeSuccess": {
-    "message": "Đã hợp nhất dữ liệu đám mây"
+    "message": "Đã khôi phục và hợp nhất"
   },
   "gdriveMergeHint": {
-    "message": "Dữ liệu đã tải và hợp nhất từ Google Drive. Làm mới trang để áp dụng."
+    "message": "Đã khôi phục — làm mới trang để xem"
   },
   "chatWidthTitle": {
-    "message": "Độ rộng trò chuyện"
+    "message": "Độ rộng trang"
   },
   "chatWidthHint": {
-    "message": "Mở rộng vùng hội thoại để tận dụng màn hình"
+    "message": "Mở rộng vùng chat để màn hình không trống một nửa"
   },
   "chatWidthAdjust": {
-    "message": "Điều chỉnh"
+    "message": "Kéo để điều chỉnh"
   },
   "chatWidthCurrent": {
     "message": "Độ rộng hiện tại"
   },
   "chatWidthNormal": {
-    "message": "Bình thường"
+    "message": "Mặc định"
   },
   "chatWidthConfirm": {
-    "message": "OK"
+    "message": "Lưu"
   },
   "mirrorSiteTabName": {
-    "message": "Trang mirror"
+    "message": "Trang khác"
   },
   "mirrorSiteHint": {
-    "message": "Thêm tên miền trang mirror AI. Nút nổi sẽ xuất hiện trên các trang này, cho phép sử dụng một số tính năng của tiện ích mở rộng."
+    "message": "Thêm các trang AI bạn dùng — tiện ích cũng hoạt động ở đó"
   },
   "mirrorSiteAddDomain": {
-    "message": "Thêm"
+    "message": "Thêm trang"
   },
   "mirrorSiteInputPlaceholder": {
-    "message": "Nhập tên miền, vd: chat.example.com"
+    "message": "Nhập địa chỉ trang, vd: chat.example.com"
   },
   "mirrorSiteDomainListTitle": {
-    "message": "Tên miền đã thêm"
+    "message": "Các trang bạn đã thêm"
   },
   "mirrorSiteNoDomains": {
-    "message": "Chưa có tên miền nào"
+    "message": "Chưa thêm trang nào"
   },
   "mirrorSiteDomainAdded": {
-    "message": "Đã thêm tên miền"
+    "message": "Đã thêm trang"
   },
   "mirrorSiteDomainRemoved": {
-    "message": "Đã xóa tên miền"
+    "message": "Đã xóa trang"
   },
   "mirrorSiteDomainExists": {
-    "message": "Tên miền đã tồn tại"
+    "message": "Trang này đã có trong danh sách"
   },
   "mirrorSiteDomainInvalid": {
-    "message": "Định dạng tên miền không hợp lệ"
+    "message": "Địa chỉ này trông không hợp lệ"
   },
   "mirrorSiteDomainIsOfficial": {
-    "message": "Tên miền này đã là nền tảng chính thức"
+    "message": "Đã hỗ trợ sẵn — không cần thêm"
   },
   "mirrorSiteCopied": {
-    "message": "Đã sao chép vào clipboard"
+    "message": "Đã sao chép"
   },
   "hideStarredFromListLabel": {
-    "message": "Chế độ loại trùng"
+    "message": "Ẩn mục trùng"
   },
   "hideStarredFromListHint": {
-    "message": "Khi bật, các cuộc trò chuyện đã thêm vào thư mục sẽ bị ẩn khỏi danh sách thanh bên"
+    "message": "Hội thoại đã lưu sẽ biến mất khỏi danh sách gốc"
   },
   "timelineAICompleteNotLatestToast": {
     "message": "$1 đã trả lời xong."
   },
   "timelineAICompleteToastTitle": {
-    "message": "Nhắc khi trả lời xong"
+    "message": "Thông báo trả lời"
   },
   "timelineAICompleteToastHint": {
-    "message": "Hiển thị nhắc nhở khi AI trả lời xong và bạn không ở vị trí mới nhất"
+    "message": "Thông báo khi AI trả lời xong mà bạn đang cuộn đi chỗ khác"
   },
   "timelineThemeColorLabel": {
-    "message": "Màu chủ đề dòng thời gian"
+    "message": "Màu dòng thời gian"
   },
   "timelineThemeColorHint": {
-    "message": "Đặt màu chủ đề cho mốc dòng thời gian đang hoạt động theo từng nền tảng"
+    "message": "Chọn màu nổi bật cho từng nền tảng"
   },
   "timelineThemeColorManageButton": {
-    "message": "Thiết lập"
+    "message": "Chọn"
   },
   "changelogShareTip": {
     "message": "Nếu bạn thấy tiện ích này hữu ích, hãy chia sẻ với người có thể cần nó."
   },
   "longConversationPerformanceTitle": {
-    "message": "Long Conversation Optimization"
+    "message": "Tự động thu gọn"
   },
   "longConversationPerformanceHint": {
-    "message": "Automatically fold older messages after the set limit."
+    "message": "Thu gọn tin nhắn cũ — không xóa gì cả, nhấp để đọc"
   },
   "longConversationThresholdLabel": {
     "message": "After"
@@ -819,19 +819,19 @@
     "message": "messages"
   },
   "longConversationKeepRecentLabel": {
-    "message": "Keep recent"
+    "message": "Giữ hiển thị"
   },
   "longConversationKeepRecentUnit": {
-    "message": "messages visible"
+    "message": "tin nhắn cuối"
   },
   "longConversationValidationKeepRecent": {
-    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+    "message": "Số tin giữ lại phải nhỏ hơn ngưỡng kích hoạt — đã tự điều chỉnh"
   },
   "longConversationExpandMore": {
-    "message": "Expand more history"
+    "message": "Xem tin nhắn cũ hơn"
   },
   "longConversationCollapsedTooltip": {
-    "message": "$1 older messages above are folded. Click to expand more."
+    "message": "$1 tin nhắn cũ hơn đã thu gọn — nhấp để xem"
   },
   "highlightSettings": {
     "message": "Cài đặt"

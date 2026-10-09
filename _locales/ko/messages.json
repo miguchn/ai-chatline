@@ -18,16 +18,16 @@
     "message": "즐겨찾기 해제"
   },
   "vnkxpm": {
-    "message": "폴더"
+    "message": "저장됨"
   },
   "kxpmzv": {
-    "message": "즐겨찾기에 추가됨"
+    "message": "저장됨"
   },
   "pzmvkx": {
     "message": "즐겨찾기 해제됨"
   },
   "jwvnkp": {
-    "message": "데이터 없음"
+    "message": "일치하는 항목 없음"
   },
   "zxvkpm": {
     "message": "모두 보기"
@@ -57,10 +57,10 @@
     "message": "확인"
   },
   "mzpxvk": {
-    "message": "제목은 비워둘 수 없습니다"
+    "message": "제목을 먼저 입력해 주세요"
   },
   "folderRequired": {
-    "message": "폴더를 선택해 주세요"
+    "message": "폴더를 먼저 선택해 주세요"
   },
   "defaultFolder": {
     "message": "기본 폴더"
@@ -72,10 +72,10 @@
     "message": "고정 해제"
   },
   "searchPrompt": {
-    "message": "프롬프트 검색..."
+    "message": "프롬프트 검색"
   },
   "sidebarStarredHint": {
-    "message": "활성화하면 사이드바에 폴더가 표시됩니다"
+    "message": "저장한 대화를 사이트 사이드바에 표시합니다"
   },
   "sidebarStarredManage": {
     "message": "설정"
@@ -96,7 +96,7 @@
     "message": "저장 해제"
   },
   "questionListTitle": {
-    "message": "질문 목록"
+    "message": "내 질문"
   },
   "questionListEmpty": {
     "message": "아직 질문이 없습니다"
@@ -120,7 +120,7 @@
     "message": "마법사"
   },
   "animTabEmpty": {
-    "message": "사용 가능한 애니메이션이 없습니다"
+    "message": "아직 펫이 없습니다"
   },
   "animGrowHint": {
     "message": "{n}개 메시지 더"
@@ -129,7 +129,7 @@
     "message": "이름 변경"
   },
   "pzmkvx": {
-    "message": "내용은 비워둘 수 없습니다"
+    "message": "내용을 먼저 입력해 주세요"
   },
   "vxpzmk": {
     "message": "오픈 소스"
@@ -144,7 +144,7 @@
     "message": "친구에게 공유"
   },
   "mvxkpz": {
-    "message": "LaTeX 수식 복사"
+    "message": "LaTeX로 복사"
   },
   "kxvpmz": {
     "message": "새 폴더"
@@ -165,22 +165,22 @@
     "message": "폴더 이름을 입력하세요"
   },
   "kmxpvz": {
-    "message": "폴더 이름은 비워둘 수 없습니다"
+    "message": "이름을 먼저 입력해 주세요"
   },
   "pxmzvk": {
-    "message": "폴더 편집"
+    "message": "폴더 이름 변경"
   },
   "mvzxkp": {
     "message": "새 이름을 입력하세요"
   },
   "kpvzmx": {
-    "message": "폴더 이름이 이미 존재합니다"
+    "message": "이미 사용 중인 이름입니다"
   },
   "xzvkpm": {
     "message": "생성 완료"
   },
   "vmkxpz": {
-    "message": "업데이트 완료"
+    "message": "저장됨"
   },
   "zpxmkv": {
     "message": "폴더를 찾을 수 없습니다"
@@ -198,10 +198,10 @@
     "message": "이동 위치"
   },
   "wjxnkp": {
-    "message": "{count}개의 즐겨찾기 항목도 함께 삭제됩니다."
+    "message": "안에 있는 대화 {count}개도 함께 삭제됩니다"
   },
   "qzmvkx": {
-    "message": "「{folderName}」 폴더를 삭제하시겠습니까?"
+    "message": "「{folderName}」을(를) 삭제하시겠습니까?"
   },
   "mvkzpx": {
     "message": "검색..."
@@ -219,25 +219,25 @@
     "message": "타임라인"
   },
   "mzkvxp": {
-    "message": "활성화하면 AI 대화 페이지 오른쪽에 타임라인이 표시됩니다"
+    "message": "오른쪽에 타임라인을 표시해 원하는 메시지로 바로 이동할 수 있습니다"
   },
   "vkpmzx": {
-    "message": "↑ / ↓ 키로 대화 노드 이동"
+    "message": "화살표 키로 이동"
   },
   "xpvmkz": {
-    "message": "활성화하면 ↑ / ↓ 키로 대화 노드 사이를 빠르게 이동할 수 있습니다."
+    "message": "↑ ↓ 키로 이전/다음 메시지로 이동"
   },
   "pxmzkv": {
     "message": "중요 대화 표시"
   },
   "kzxvpm": {
-    "message": "타임라인의 대화 노드를 길게 누르면 중요 표시를 할 수 있습니다."
+    "message": "타임라인의 점을 길게 눌러 해당 메시지 표시"
   },
   "xmvkpz": {
     "message": "입력 상자"
   },
   "kvzmxp": {
-    "message": "줄바꿈과 메시지 전송"
+    "message": "줄바꿈과 전송"
   },
   "kpxvmz": {
     "message": "수식 복사"
@@ -252,13 +252,13 @@
     "message": "지원 플랫폼"
   },
   "vxmkpz": {
-    "message": "Enter 키: 한 번 누르면 줄바꿈, 두 번 빠르게 누르면 전송"
+    "message": "Enter: 줄바꿈 · 두 번 누르기: 전송"
   },
   "mkpxvz": {
-    "message": "활성화하면 AI 채팅 입력창에서 Enter로 줄바꿈, {mode}(으)로 메시지를 전송합니다."
+    "message": "Enter는 줄바꿈만 — {mode}(으)로 전송"
   },
   "smartEnterModeDoubleEnter": {
-    "message": "빠른 더블 Enter"
+    "message": "Enter 빠르게 두 번"
   },
   "smartEnterModeDoubleEnterDesc": {
     "message": "Enter 한 번으로 줄바꿈, 빠르게 두 번 눌러 전송"
@@ -276,31 +276,31 @@
     "message": "Enter로 줄바꿈, Shift + Enter로 전송"
   },
   "smartEnterToastCtrlEnter": {
-    "message": "Enter: 줄바꿈, {ctrl}+Enter: 전송"
+    "message": "Enter: 줄바꿈 · {ctrl}+Enter: 전송"
   },
   "smartEnterToastShiftEnter": {
-    "message": "Enter: 줄바꿈, Shift+Enter: 전송"
+    "message": "Enter: 줄바꿈 · Shift+Enter: 전송"
   },
   "qoytxz": {
-    "message": "이 기능은 기본 활성화되어 있으며 끌 수 없습니다"
+    "message": "항상 켜짐 — 끌 수 없습니다"
   },
   "hosegod": {
-    "message": "Prompts"
+    "message": "프롬프트"
   },
   "hobsidbg": {
-    "message": "자주 쓰는 프롬프트를 저장하고 빠르게 불러올 수 있습니다. 활성화하면 채팅창 왼쪽에 프롬프트 버튼이 표시됩니다."
+    "message": "자주 쓰는 프롬프트를 저장해 두고 클릭 한 번으로 보내세요"
   },
   "biwhckdj": {
-    "message": "프롬프트 목록"
+    "message": "내 프롬프트"
   },
   "byaskjndg": {
-    "message": "프롬프트 추가"
+    "message": "새 프롬프트"
   },
   "hsksuywm": {
     "message": "프롬프트 편집"
   },
   "hsuywkw": {
-    "message": "프롬프트 이름"
+    "message": "이름"
   },
   "hsuywkwPlaceholder": {
     "message": "프롬프트 이름을 입력하세요"
@@ -309,16 +309,16 @@
     "message": "내용"
   },
   "uwkjwjw": {
-    "message": "프롬프트 내용을 입력하세요"
+    "message": "프롬프트를 여기에 붙여넣으세요"
   },
   "hsiwhwl": {
-    "message": "프롬프트가 없습니다"
+    "message": "아직 프롬프트가 없습니다"
   },
   "shwsuwk": {
     "message": "프롬프트가 추가되었습니다"
   },
   "hwkwbhwk": {
-    "message": "프롬프트가 업데이트되었습니다"
+    "message": "프롬프트가 저장되었습니다"
   },
   "qrtypd": {
     "message": "프롬프트가 삭제되었습니다"
@@ -336,13 +336,13 @@
     "message": "고정 해제됨"
   },
   "addkbt": {
-    "message": "추가"
+    "message": "새로 만들기"
   },
   "ptfmsl": {
     "message": "적용 대상"
   },
   "allptfm": {
-    "message": "모든 AI 플랫폼"
+    "message": "모든 플랫폼"
   },
   "febhyejd": {
     "message": "온라인으로 피드백 제출"
@@ -372,10 +372,10 @@
     "message": "라이트"
   },
   "formulaFormatTitle": {
-    "message": "복사 형식 선택"
+    "message": "복사 형식"
   },
   "dataSyncTabName": {
-    "message": "데이터 동기화"
+    "message": "백업 및 복원"
   },
   "exportTitle": {
     "message": "수동 동기화"
@@ -384,7 +384,7 @@
     "message": "JSON 파일을 통해 수동으로 데이터를 백업하거나 복원하여 다른 브라우저로 마이그레이션할 수 있습니다."
   },
   "exportBtn": {
-    "message": "내보내기"
+    "message": "백업 파일 내보내기"
   },
   "importTitle": {
     "message": "데이터 가져오기"
@@ -399,46 +399,46 @@
     "message": "병합"
   },
   "importModeMergeDesc": {
-    "message": "기존 데이터를 유지하고 가져온 데이터와 병합"
+    "message": "기존 데이터는 유지하고 나머지를 추가합니다"
   },
   "importModeOverwrite": {
-    "message": "덮어쓰기"
+    "message": "교체"
   },
   "importModeOverwriteDesc": {
-    "message": "기존 데이터를 지우고 가져온 데이터로 교체"
+    "message": "현재 데이터를 지우고 파일 내용으로 대체합니다"
   },
   "exportSuccess": {
-    "message": "내보내기 성공"
+    "message": "내보내기 완료"
   },
   "importSuccess": {
-    "message": "가져오기 성공"
+    "message": "가져오기 완료"
   },
   "importSuccessHint": {
-    "message": "데이터를 성공적으로 가져왔습니다. 페이지를 새로고침하여 적용하세요"
+    "message": "가져왔습니다 — 페이지를 새로고침하면 적용됩니다"
   },
   "importFailed": {
     "message": "가져오기 실패"
   },
   "refreshPage": {
-    "message": "페이지 새로고침"
+    "message": "지금 새로고침"
   },
   "refreshLater": {
-    "message": "나중에 새로고침"
+    "message": "나중에"
   },
   "quickAsk": {
     "message": "추가 질문"
   },
   "highlightToggleTitle": {
-    "message": "텍스트 하이라이트 활성화"
+    "message": "하이라이트 활성화"
   },
   "highlightToggleHint": {
-    "message": "활성화하면 웹페이지에서 텍스트를 선택하여 하이라이트할 수 있습니다"
+    "message": "텍스트를 선택해 색상으로 표시할 수 있습니다"
   },
   "highlightColorTitle": {
     "message": "하이라이트 색상"
   },
   "highlightMark": {
-    "message": "표시"
+    "message": "하이라이트"
   },
   "highlightRemoveConfirm": {
     "message": "이 하이라이트를 삭제하시겠습니까?"
@@ -453,16 +453,16 @@
     "message": "맨 아래로"
   },
   "scrollToBottomHint": {
-    "message": "최신 메시지로 빠르게 이동하는 버튼 표시"
+    "message": "최신 메시지로 이동하는 버튼을 추가합니다"
   },
   "pleaseWait": {
-    "message": "잠시만 기다려주세요, 노드 ID를 로드 중..."
+    "message": "잠시만 기다려주세요, 불러오는 중…"
   },
   "chatTimeLabelTitle": {
-    "message": "대화 시간 표시"
+    "message": "시간 표시"
   },
   "chatTimeLabelHint": {
-    "message": "각 메시지에 전송 시간 표시, 채팅 기록처럼 한눈에"
+    "message": "각 메시지의 전송 시간을 표시합니다"
   },
   "gdriveTitle": {
     "message": "Google Drive 동기화"
@@ -492,28 +492,28 @@
     "message": "스크롤로 확대/축소 · 드래그로 이동 · ESC로 닫기"
   },
   "notepadToggleHint": {
-    "message": "Show notepad entry at the bottom of the timeline for quick notes"
+    "message": "타임라인 아래에 메모 입구를 추가합니다"
   },
   "notepadTitle": {
-    "message": "Flash Notes"
+    "message": "빠른 메모"
   },
   "notepadPlaceholder": {
-    "message": "Just write what comes to mind…"
+    "message": "떠오르는 생각을 적어 보세요…"
   },
   "notepadClose": {
     "message": "Close"
   },
   "notepadAllNotes": {
-    "message": "All Notes"
+    "message": "모든 메모"
   },
   "notepadNewNote": {
-    "message": "New Note"
+    "message": "새 메모"
   },
   "notepadConfirmDeleteTitle": {
-    "message": "Confirm Delete"
+    "message": "메모 삭제"
   },
   "notepadConfirmDeleteContent": {
-    "message": "This cannot be undone. Are you sure?"
+    "message": "되돌릴 수 없습니다. 삭제하시겠습니까?"
   },
   "notepadUntitled": {
     "message": "Untitled"
@@ -528,49 +528,49 @@
     "message": "수식 복사 유형"
   },
   "formulaCopyMathML": {
-    "message": "MathML 수식 복사"
+    "message": "MathML로 복사"
   },
   "formulaCopyGeneric": {
     "message": "수식 복사"
   },
   "formulaLatexTitle": {
-    "message": "LaTeX 수식 복사"
+    "message": "LaTeX"
   },
   "formulaLatexHint": {
-    "message": "수식을 클릭하면 LaTeX 형식으로 복사됩니다"
+    "message": "수식을 클릭하면 LaTeX로 복사됩니다"
   },
   "formulaMathMLTitle": {
-    "message": "MathML 수식 복사"
+    "message": "MathML"
   },
   "formulaMathMLHint": {
-    "message": "수식을 클릭하면 MathML 형식으로 복사되어 Word에 바로 붙여넣기 가능"
+    "message": "클릭하면 복사되고 Word에 바로 붙여넣을 수 있습니다"
   },
   "aboutTabName": {
-    "message": "플러그인 소개"
+    "message": "소개"
   },
   "aboutPluginTitle": {
-    "message": "플러그인 소개"
+    "message": "ChatLine 소개"
   },
   "aboutPluginContent": {
-    "message": "ChatLine은 AI 채팅 페이지용 브라우저 확장입니다. 오픈소스 Timeline 프로젝트를 기반으로 2차 개발되었으며, 타임라인 탐색, 기록 위치 찾기, 대화 탐색 개선, 대화 데이터 보관에 초점을 둡니다. 여러 주요 AI 채팅 플랫폼을 지원합니다."
+    "message": "ChatLine은 AI 채팅 페이지에 타임라인, 대화 저장, 내보내기, 코드 실행 기능을 더해 주는 확장 프로그램입니다. 오픈소스 Timeline 프로젝트를 기반으로 하며, ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, NotebookLM 등 다양한 플랫폼을 지원합니다."
   },
   "aboutDataSecurityTitle": {
-    "message": "데이터 보안"
+    "message": "내 데이터"
   },
   "aboutDataSecurityContent": {
-    "message": "모든 데이터는 브라우저 로컬 또는 Google Drive에 저장됩니다. 확장 프로그램은 대화 내용이나 개인 정보를 수집, 업로드 또는 공유하지 않습니다. 이 프로젝트는 GitHub에서 오픈소스로 공개되어 있으며, 언제든지 코드를 검토할 수 있습니다."
+    "message": "데이터는 브라우저 또는 본인의 Google Drive에만 저장됩니다. 이 확장 프로그램은 대화 내용이나 개인 정보를 수집, 업로드, 공유하지 않습니다. 코드는 GitHub에 공개되어 있어 언제든 검토할 수 있습니다."
   },
   "aboutDeveloperTitle": {
     "message": "피드백"
   },
   "aboutDeveloperContent": {
-    "message": "ChatLine은 ai-chat-timeline fork로 유지 관리됩니다. 기능 요청이나 bug 보고는 이 프로젝트 저장소의 Issues 페이지를 사용해 주세요."
+    "message": "ChatLine은 ai-chat-timeline의 포크로 유지 관리됩니다. 기능 요청이나 버그 보고는 프로젝트 저장소에서 이슈를 등록해 주세요."
   },
   "aboutShareTitle": {
     "message": "친구에게 추천"
   },
   "aboutShareContent": {
-    "message": "ChatLine이 도움이 된다면 AI 대화를 자주 읽고, 찾고, 보관하는 사람들에게 추천해 주세요. 작성자: 咪咕看见小黑. 이메일: miguchn@gmail.com. 사용 중 문제가 있거나 개선 제안이 있으면 언제든지 이메일로 피드백을 보내 주세요."
+    "message": "ChatLine이 도움이 된다면 AI 채팅을 자주 사용하는 주변 사람들에게도 추천해 주세요. 작성자: 咪咕看见小黑 · miguchn@gmail.com — 질문과 제안은 언제든 환영합니다."
   },
   "nativeMenuStarToFolder": {
     "message": "폴더에 즐겨찾기"
@@ -579,7 +579,7 @@
     "message": "이미 즐겨찾기됨"
   },
   "nativeMenuStarSuccess": {
-    "message": "즐겨찾기 완료"
+    "message": "저장됨"
   },
   "animViewMore": {
     "message": "펫 변경"
@@ -588,28 +588,28 @@
     "message": "이동됨"
   },
   "starredHelpDesc": {
-    "message": "폴더로 대화를 분류하고 깔끔하게 정리하세요."
+    "message": "대화를 폴더로 묶어 일일이 찾는 수고를 덜어보세요"
   },
   "starredHelpTipsTitle": {
-    "message": "사용 팁:"
+    "message": "사용 방법"
   },
   "starredHelpTip1": {
-    "message": "대화를 폴더로 드래그하세요."
+    "message": "대화를 폴더로 드래그"
   },
   "starredHelpTip2": {
-    "message": "폴더 내 대화를 드래그하여 순서를 변경하세요."
+    "message": "폴더 안에서는 드래그로 순서 변경"
   },
   "starredHelpTip3": {
-    "message": "하위 폴더를 드래그하여 순서를 변경하세요."
+    "message": "하위 폴더도 드래그로 순서 변경"
   },
   "starredHelpTip4": {
-    "message": "폴더나 대화를 더블클릭하여 편집하세요."
+    "message": "더블클릭으로 이름 변경"
   },
   "folderMoveHasChildren": {
     "message": "하위 폴더가 있어 중첩할 수 없습니다"
   },
   "folderMoveMaxDepth": {
-    "message": "최대 폴더 깊이에 도달했습니다"
+    "message": "폴더는 이게 최대 깊이입니다"
   },
   "guideSubtitle": {
     "message": "AI 대화 향상 확장 프로그램"
@@ -630,34 +630,34 @@
     "message": "지원 플랫폼"
   },
   "highlightStyleTitle": {
-    "message": "하이라이트 스타일"
+    "message": "스타일"
   },
   "highlightStyleFullCover": {
     "message": "전체 커버"
   },
   "highlightStyleFullCoverDesc": {
-    "message": "텍스트 전체를 하이라이트로 덮기"
+    "message": "줄 전체를 색상으로 덮습니다"
   },
   "highlightStyleHalfCover": {
     "message": "반 커버"
   },
   "highlightStyleHalfCoverDesc": {
-    "message": "텍스트 하단 절반을 하이라이트"
+    "message": "줄 아래 절반을 색상으로 덮습니다"
   },
   "highlightStyleUnderline": {
     "message": "밑줄"
   },
   "highlightStyleUnderlineDesc": {
-    "message": "텍스트 아래에 하이라이트 표시"
+    "message": "텍스트 아래에 색이 있는 줄을 표시합니다"
   },
   "highlightStyleTextOnly": {
-    "message": "텍스트만"
+    "message": "글자 색"
   },
   "highlightStyleTextOnlyDesc": {
-    "message": "배경 없이 글자 색상만 변경"
+    "message": "배경 없이 — 글자 색상만 변경합니다"
   },
   "highlightMyColors": {
-    "message": "하이라이트 색상"
+    "message": "내 색상"
   },
   "highlightColorPlaceholder": {
     "message": "#FF5733"
@@ -672,16 +672,16 @@
     "message": "색상 추가"
   },
   "highlightAddColorBtn": {
-    "message": "색상"
+    "message": "색상 추가"
   },
   "highlightInvalidHex": {
-    "message": "잘못된 색상 형식입니다"
+    "message": "올바른 색상 코드가 아닙니다 — 예: #FF5733"
   },
   "highlightColorExists": {
-    "message": "이미 존재하는 색상입니다"
+    "message": "이미 추가한 색상입니다"
   },
   "highlightColorHint": {
-    "message": "6자리 16진수 색상 코드를 입력하세요. 예: #FF5733"
+    "message": "#FF5733 같은 색상 코드를 입력하세요"
   },
   "highlightAnnotationPlaceholder": {
     "message": "생각…"
@@ -726,22 +726,22 @@
     "message": "타임라인 표시"
   },
   "starredDisplayLabel": {
-    "message": "폴더 표시"
+    "message": "사이드바에 표시"
   },
   "promptBtnDisplayLabel": {
-    "message": "프롬프트 버튼 표시"
+    "message": "프롬프트 버튼"
   },
   "promptBtnSwitch": {
-    "message": "설정"
+    "message": "플랫폼 선택"
   },
   "formulaFormatNone": {
-    "message": "래핑 없음"
+    "message": "수식만"
   },
   "gdriveUploadBtn": {
-    "message": "클라우드에 업로드"
+    "message": "백업 업로드"
   },
   "gdriveDownloadBtn": {
-    "message": "클라우드에서 다운로드"
+    "message": "백업 복원"
   },
   "exportLabel": {
     "message": "내보내기"
@@ -750,7 +750,7 @@
     "message": "가져오기"
   },
   "gdriveUploading": {
-    "message": "업로드 중..."
+    "message": "업로드 중…"
   },
   "gdriveUploadSuccess": {
     "message": "Google Drive에 업로드되었습니다"
@@ -759,31 +759,31 @@
     "message": "업로드 실패"
   },
   "gdriveDownloading": {
-    "message": "다운로드 중..."
+    "message": "복원 중…"
   },
   "gdriveDownloadFailed": {
-    "message": "다운로드 실패"
+    "message": "복원 실패"
   },
   "gdriveNoBackup": {
-    "message": "클라우드에 백업 데이터가 없습니다"
+    "message": "아직 클라우드에 백업이 없습니다"
   },
   "gdriveDataInvalid": {
-    "message": "클라우드 데이터 형식이 유효하지 않습니다"
+    "message": "클라우드 백업을 읽을 수 없습니다"
   },
   "gdriveMergeSuccess": {
-    "message": "클라우드 데이터 병합 완료"
+    "message": "복원하고 병합했습니다"
   },
   "gdriveMergeHint": {
-    "message": "Google Drive에서 데이터를 다운로드하고 병합했습니다. 페이지를 새로고침하여 적용하세요."
+    "message": "복원했습니다 — 페이지를 새로고침하면 적용됩니다"
   },
   "chatWidthTitle": {
-    "message": "대화 너비"
+    "message": "페이지 너비"
   },
   "chatWidthHint": {
-    "message": "대화 영역을 넓혀 화면 공간을 활용하세요"
+    "message": "대화창을 넓혀 남는 화면을 알차게 활용하세요"
   },
   "chatWidthAdjust": {
-    "message": "조절"
+    "message": "드래그로 조절"
   },
   "chatWidthCurrent": {
     "message": "현재 너비"
@@ -792,102 +792,177 @@
     "message": "기본"
   },
   "chatWidthConfirm": {
-    "message": "확인"
+    "message": "저장"
   },
   "mirrorSiteTabName": {
-    "message": "미러 사이트"
+    "message": "다른 사이트"
   },
   "mirrorSiteHint": {
-    "message": "AI 미러 사이트 도메인을 추가하면 해당 사이트에 플로팅 버튼이 표시되어 이 확장 프로그램의 일부 기능을 사용할 수 있습니다."
+    "message": "자주 쓰는 AI 사이트를 추가하면 그 사이트에서도 확장 프로그램을 사용할 수 있습니다"
   },
   "mirrorSiteAddDomain": {
-    "message": "추가"
+    "message": "사이트 추가"
   },
   "mirrorSiteInputPlaceholder": {
-    "message": "도메인 입력 (예: chat.example.com)"
+    "message": "사이트 입력 (예: chat.example.com)"
   },
   "mirrorSiteDomainListTitle": {
-    "message": "추가된 도메인"
+    "message": "추가한 사이트"
   },
   "mirrorSiteNoDomains": {
-    "message": "추가된 도메인이 없습니다"
+    "message": "아직 추가된 사이트가 없습니다"
   },
   "mirrorSiteDomainAdded": {
-    "message": "도메인이 추가되었습니다"
+    "message": "사이트가 추가되었습니다"
   },
   "mirrorSiteDomainRemoved": {
-    "message": "도메인이 삭제되었습니다"
+    "message": "사이트가 삭제되었습니다"
   },
   "mirrorSiteDomainExists": {
-    "message": "도메인이 이미 존재합니다"
+    "message": "이미 목록에 있는 사이트입니다"
   },
   "mirrorSiteDomainInvalid": {
-    "message": "잘못된 도메인 형식입니다"
+    "message": "올바른 사이트 형식이 아닙니다"
   },
   "mirrorSiteDomainIsOfficial": {
-    "message": "이 도메인은 이미 공식 지원 플랫폼입니다"
+    "message": "이미 지원하는 사이트입니다 — 추가할 필요가 없습니다"
   },
   "mirrorSiteCopied": {
-    "message": "클립보드에 복사되었습니다"
+    "message": "복사됨"
   },
   "hideStarredFromListLabel": {
-    "message": "중복 제거 모드"
+    "message": "중복 숨기기"
   },
   "hideStarredFromListHint": {
-    "message": "활성화하면 폴더에 추가된 대화가 사이드바 목록에서 숨겨집니다"
+    "message": "저장한 대화는 원래 목록에서 숨겨집니다"
   },
   "timelineAICompleteNotLatestToast": {
-    "message": "$1 답변이 완료되었습니다."
+    "message": "$1 답변이 완료되었습니다"
   },
   "timelineAICompleteToastTitle": {
-    "message": "답변 완료 알림"
+    "message": "답변 알림"
   },
   "timelineAICompleteToastHint": {
-    "message": "AI 답변이 완료되었고 최신 위치에 있지 않을 때 알림을 표시합니다"
+    "message": "화면을 벗어나 있는 동안 답변이 완료되면 알려줍니다"
   },
   "timelineThemeColorLabel": {
-    "message": "타임라인 테마 색상"
+    "message": "타임라인 색상"
   },
   "timelineThemeColorHint": {
-    "message": "플랫폼별 활성 타임라인 마커 테마 색상을 설정합니다"
+    "message": "플랫폼별로 하이라이트 색상을 선택하세요"
   },
   "timelineThemeColorManageButton": {
-    "message": "설정"
+    "message": "선택"
   },
   "changelogShareTip": {
     "message": "이 확장 프로그램이 마음에 든다면 필요한 분들에게도 공유해 주세요."
   },
   "longConversationPerformanceTitle": {
-    "message": "Long Conversation Optimization"
+    "message": "자동 접기"
   },
   "longConversationPerformanceHint": {
-    "message": "Automatically fold older messages after the set limit."
+    "message": "이전 메시지를 접습니다 — 삭제되지 않으며 클릭하면 볼 수 있습니다"
   },
   "longConversationThresholdLabel": {
-    "message": "After"
+    "message": "메시지"
   },
   "longConversationMessageUnit": {
-    "message": "messages"
+    "message": "개를 넘으면"
   },
   "longConversationKeepRecentLabel": {
-    "message": "Keep recent"
+    "message": "최근"
   },
   "longConversationKeepRecentUnit": {
-    "message": "messages visible"
+    "message": "개는 항상 표시"
   },
   "longConversationValidationKeepRecent": {
-    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+    "message": "표시할 개수는 접기 기준보다 적어야 합니다 — 자동으로 조정했습니다"
   },
   "longConversationExpandMore": {
-    "message": "Expand more history"
+    "message": "이전 메시지 보기"
   },
   "longConversationCollapsedTooltip": {
-    "message": "$1 older messages above are folded. Click to expand more."
+    "message": "이전 메시지 $1개를 접었습니다 — 클릭하면 볼 수 있습니다"
   },
   "highlightSettings": {
     "message": "설정"
   },
   "highlightConfirm": {
     "message": "확인"
+  },
+  "settingsGroupCore": {
+    "message": "기본"
+  },
+  "settingsGroupAdvanced": {
+    "message": "기타"
+  },
+  "settingsGroupExperimental": {
+    "message": "재미 기능"
+  },
+  "settingsGroupBackup": {
+    "message": "백업"
+  },
+  "settingsGroupAbout": {
+    "message": "소개"
+  },
+  "conversationExportTabName": {
+    "message": "대화 내보내기"
+  },
+  "highlightTabName": {
+    "message": "하이라이트"
+  },
+  "conversationExportToggleTitle": {
+    "message": "내보내기 활성화"
+  },
+  "conversationExportToggleHint": {
+    "message": "타임라인 위에 내보내기 버튼을 추가합니다"
+  },
+  "formulaSettingsLabel": {
+    "message": "수식 설정"
+  },
+  "quickAskTitle": {
+    "message": "추가 질문"
+  },
+  "quickAskHint": {
+    "message": "텍스트를 선택하고 '추가 질문'을 누르면 입력창으로 가져올 수 있습니다"
+  },
+  "runnerAdvancedHint": {
+    "message": "코드 블록에 Run 버튼을 추가합니다. 페이지가 약간 느려질 수 있습니다"
+  },
+  "runnerHint": {
+    "message": "여기에 코드를 작성하세요 — async/await 지원"
+  },
+  "runnerCodeEditor": {
+    "message": "코드"
+  },
+  "runnerOutput": {
+    "message": "결과"
+  },
+  "runnerTabTitle": {
+    "message": "코드 실행기"
+  },
+  "animLightweightHint": {
+    "message": "기본적으로 꺼져 있습니다 — 펫을 고르면 AI가 답변하는 동안 나타납니다"
+  },
+  "localBackupTitle": {
+    "message": "내 컴퓨터에 저장 (권장)"
+  },
+  "localBackupHint": {
+    "message": "계정 없이 — 파일을 내보내 안전하게 보관하세요"
+  },
+  "gdriveAdvancedTitle": {
+    "message": "Google Drive 백업 (선택 사항)"
+  },
+  "gdriveOptionalHint": {
+    "message": "클라우드 백업을 사용할 때만 Google 접근 권한을 요청합니다"
+  },
+  "gdrivePermissionDeclined": {
+    "message": "Google 접근 권한이 허용되지 않았습니다"
+  },
+  "exportingData": {
+    "message": "내보내는 중…"
+  },
+  "importingData": {
+    "message": "가져오는 중…"
   }
 }

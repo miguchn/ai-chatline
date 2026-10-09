@@ -18,16 +18,16 @@
     "message": "ลบออกจากรายการโปรด"
   },
   "vnkxpm": {
-    "message": "โฟลเดอร์"
+    "message": "ที่บันทึกไว้"
   },
   "kxpmzv": {
-    "message": "เพิ่มในรายการโปรดแล้ว"
+    "message": "บันทึกแล้ว"
   },
   "pzmvkx": {
     "message": "ลบออกจากรายการโปรดแล้ว"
   },
   "jwvnkp": {
-    "message": "ไม่มีข้อมูล"
+    "message": "ไม่พบผลลัพธ์"
   },
   "zxvkpm": {
     "message": "ดูทั้งหมด"
@@ -57,10 +57,10 @@
     "message": "ยืนยัน"
   },
   "mzpxvk": {
-    "message": "หัวข้อไม่สามารถเว้นว่างได้"
+    "message": "ใส่หัวข้อก่อน"
   },
   "folderRequired": {
-    "message": "กรุณาเลือกโฟลเดอร์"
+    "message": "เลือกโฟลเดอร์ก่อน"
   },
   "defaultFolder": {
     "message": "ค่าเริ่มต้น"
@@ -72,10 +72,10 @@
     "message": "เลิกปักหมุด"
   },
   "searchPrompt": {
-    "message": "ค้นหาพร้อมท์..."
+    "message": "ค้นหาพร้อมท์"
   },
   "sidebarStarredHint": {
-    "message": "เมื่อเปิดใช้งาน โฟลเดอร์จะแสดงในแถบด้านข้าง"
+    "message": "แสดงบทสนทนาที่บันทึกไว้ในแถบด้านข้างของเว็บนั้น"
   },
   "sidebarStarredManage": {
     "message": "ตั้งค่า"
@@ -87,7 +87,7 @@
     "message": "ทำเครื่องหมายจุดสำคัญ"
   },
   "unpinAction": {
-    "message": "ยกเลิกเครื่องหมายจุดสำคัญ"
+    "message": "ยกเลิกเครื่องหมาย"
   },
   "starAction": {
     "message": "บันทึกลงโฟลเดอร์"
@@ -96,7 +96,7 @@
     "message": "ยกเลิกบันทึก"
   },
   "questionListTitle": {
-    "message": "รายการคำถาม"
+    "message": "คำถามของคุณ"
   },
   "questionListEmpty": {
     "message": "ยังไม่มีคำถาม"
@@ -120,7 +120,7 @@
     "message": "พ่อมด"
   },
   "animTabEmpty": {
-    "message": "ไม่มีแอนิเมชั่น"
+    "message": "ยังไม่มีสัตว์เลี้ยง"
   },
   "animGrowHint": {
     "message": "อีก {n} ข้อความ"
@@ -129,7 +129,7 @@
     "message": "เปลี่ยนชื่อ"
   },
   "pzmkvx": {
-    "message": "เนื้อหาไม่สามารถเว้นว่างได้"
+    "message": "ใส่เนื้อหาก่อน"
   },
   "vxpzmk": {
     "message": "โอเพนซอร์ส"
@@ -144,7 +144,7 @@
     "message": "แชร์กับเพื่อน"
   },
   "mvxkpz": {
-    "message": "คัดลอกสูตร LaTeX"
+    "message": "คัดลอกเป็น LaTeX"
   },
   "kxvpmz": {
     "message": "โฟลเดอร์ใหม่"
@@ -162,28 +162,28 @@
     "message": "สร้างโฟลเดอร์ย่อยใน \"{folderName}\""
   },
   "vzkpmx": {
-    "message": "กรอกชื่อโฟลเดอร์"
+    "message": "ตั้งชื่อโฟลเดอร์นี้"
   },
   "kmxpvz": {
-    "message": "ชื่อโฟลเดอร์ไม่สามารถเว้นว่างได้"
+    "message": "ใส่ชื่อก่อน"
   },
   "pxmzvk": {
-    "message": "แก้ไขโฟลเดอร์"
+    "message": "เปลี่ยนชื่อโฟลเดอร์"
   },
   "mvzxkp": {
-    "message": "กรอกชื่อใหม่"
+    "message": "พิมพ์ชื่อใหม่"
   },
   "kpvzmx": {
-    "message": "ชื่อโฟลเดอร์นี้มีอยู่แล้ว"
+    "message": "ชื่อนี้ถูกใช้แล้ว"
   },
   "xzvkpm": {
-    "message": "สร้างสำเร็จ"
+    "message": "สร้างแล้ว"
   },
   "vmkxpz": {
-    "message": "อัปเดตสำเร็จ"
+    "message": "บันทึกแล้ว"
   },
   "zpxmkv": {
-    "message": "ไม่พบโฟลเดอร์"
+    "message": "ไม่พบโฟลเดอร์นี้แล้ว"
   },
   "kvpzmx": {
     "message": "ลบโฟลเดอร์แล้ว"
@@ -198,10 +198,10 @@
     "message": "ย้ายไปที่"
   },
   "wjxnkp": {
-    "message": "{count} รายการโปรดจะถูกลบด้วย"
+    "message": "บทสนทนา {count} รายการข้างในจะถูกลบไปด้วย"
   },
   "qzmvkx": {
-    "message": "คุณแน่ใจหรือไม่ว่าต้องการลบโฟลเดอร์ \"{folderName}\"?"
+    "message": "ลบ \"{folderName}\"?"
   },
   "mvkzpx": {
     "message": "ค้นหา..."
@@ -219,25 +219,25 @@
     "message": "ไทม์ไลน์"
   },
   "mzkvxp": {
-    "message": "เมื่อเปิดใช้งาน ไทม์ไลน์จะแสดงทางด้านขวาของหน้าสนทนา AI"
+    "message": "แสดงไทม์ไลน์ด้านขวา ให้คุณกระโดดไปข้อความไหนก็ได้"
   },
   "vkpmzx": {
-    "message": "ใช้ปุ่ม ↑ / ↓ เพื่อนำทางระหว่างโหนดการสนทนา"
+    "message": "กระโดดด้วยปุ่มลูกศร"
   },
   "xpvmkz": {
-    "message": "เมื่อเปิดใช้งาน ใช้ปุ่ม ↑ / ↓ เพื่อกระโดดอย่างรวดเร็วระหว่างโหนดการสนทนา"
+    "message": "กด ↑ ↓ เพื่อกระโดดไปข้อความก่อนหน้าหรือถัดไป"
   },
   "pxmzkv": {
-    "message": "ทำเครื่องหมายการสนทนาสำคัญ"
+    "message": "ทำเครื่องหมายแชทสำคัญ"
   },
   "kzxvpm": {
-    "message": "กดค้างที่โหนดการสนทนาบนไทม์ไลน์เพื่อทำเครื่องหมายว่าสำคัญ"
+    "message": "กดค้างที่จุดบนไทม์ไลน์เพื่อทำเครื่องหมายข้อความนั้น"
   },
   "xmvkpz": {
     "message": "กล่องป้อนข้อมูล"
   },
   "kvzmxp": {
-    "message": "ขึ้นบรรทัดใหม่และส่งข้อความ"
+    "message": "การขึ้นบรรทัดใหม่และการส่ง"
   },
   "kpxvmz": {
     "message": "คัดลอกสูตร"
@@ -249,43 +249,43 @@
     "message": "เมื่อเปิดใช้งาน จะตรวจจับสูตรบนหน้าโดยอัตโนมัติและคลิกเพื่อคัดลอกในรูปแบบ LaTeX"
   },
   "mkvzpx": {
-    "message": "แพลตฟอร์มที่รองรับ"
+    "message": "รองรับ"
   },
   "vxmkpz": {
-    "message": "ปุ่ม Enter: กดครั้งเดียวเพื่อขึ้นบรรทัดใหม่ กดสองครั้งเพื่อส่ง"
+    "message": "Enter: ขึ้นบรรทัดใหม่ · กดสองครั้ง: ส่ง"
   },
   "mkpxvz": {
-    "message": "เมื่อเปิดใช้งาน ในกล่องป้อนข้อความแชท AI กด Enter เพื่อขึ้นบรรทัดใหม่ {mode} เพื่อส่งข้อความ"
+    "message": "Enter มีไว้ขึ้นบรรทัดใหม่เท่านั้น — {mode} เพื่อส่ง"
   },
   "qoytxz": {
-    "message": "คุณสมบัตินี้เปิดใช้งานตามค่าเริ่มต้นและไม่สามารถปิดได้"
+    "message": "เปิดตลอด — ปิดไม่ได้"
   },
   "hosegod": {
     "message": "Prompts"
   },
   "hobsidbg": {
-    "message": "บันทึก Prompt เพื่อเรียกใช้อย่างรวดเร็ว เมื่อเปิดใช้งาน จะแสดงปุ่ม Prompt ทางด้านซ้ายของกล่องแชท"
+    "message": "เก็บ Prompt ที่ใช้บ่อยไว้ใกล้ตัว คลิกเดียวส่งได้เลย"
   },
   "biwhckdj": {
-    "message": "รายการ Prompt"
+    "message": "Prompt ของคุณ"
   },
   "byaskjndg": {
-    "message": "เพิ่ม Prompt"
+    "message": "Prompt ใหม่"
   },
   "hsksuywm": {
     "message": "แก้ไข Prompt"
   },
   "hsuywkw": {
-    "message": "ชื่อ Prompt"
+    "message": "ชื่อ"
   },
   "hsuywkwPlaceholder": {
-    "message": "กรอกชื่อ Prompt"
+    "message": "ตั้งชื่อ Prompt นี้"
   },
   "promptContent": {
     "message": "เนื้อหา"
   },
   "uwkjwjw": {
-    "message": "กรอกเนื้อหา Prompt"
+    "message": "วาง Prompt ของคุณที่นี่"
   },
   "hsiwhwl": {
     "message": "ยังไม่มี Prompt"
@@ -294,13 +294,13 @@
     "message": "เพิ่ม Prompt แล้ว"
   },
   "hwkwbhwk": {
-    "message": "อัปเดต Prompt แล้ว"
+    "message": "บันทึก Prompt แล้ว"
   },
   "qrtypd": {
     "message": "ลบ Prompt แล้ว"
   },
   "dcnfmq": {
-    "message": "คุณแน่ใจหรือไม่ว่าต้องการลบ Prompt นี้?"
+    "message": "ลบ Prompt นี้?"
   },
   "svkbtn": {
     "message": "บันทึก"
@@ -312,13 +312,13 @@
     "message": "เลิกปักหมุดแล้ว"
   },
   "addkbt": {
-    "message": "เพิ่ม"
+    "message": "ใหม่"
   },
   "ptfmsl": {
-    "message": "ใช้กับ"
+    "message": "ใช้ได้กับ"
   },
   "allptfm": {
-    "message": "ทุกแพลตฟอร์ม AI"
+    "message": "ทุกแพลตฟอร์ม"
   },
   "febhyejd": {
     "message": "ส่งความคิดเห็นออนไลน์"
@@ -327,7 +327,7 @@
     "message": "ตัวรันโค้ด"
   },
   "runnerSettingsTitle": {
-    "message": "ภาษาที่รองรับ"
+    "message": "ภาษา"
   },
   "runnerSettingsHint": {
     "message": "เมื่อเปิดใช้งาน ปุ่ม Run จะปรากฏบนบล็อกโค้ดเพื่อรันโค้ดโดยตรง"
@@ -348,22 +348,22 @@
     "message": "สว่าง"
   },
   "dataSyncTabName": {
-    "message": "การซิงค์ข้อมูล"
+    "message": "สำรองและกู้คืน"
   },
   "formulaFormatTitle": {
-    "message": "เลือกรูปแบบการคัดลอก"
+    "message": "รูปแบบการคัดลอก"
   },
   "importSuccess": {
-    "message": "นำเข้าสำเร็จ"
+    "message": "นำเข้าแล้ว"
   },
   "importSuccessHint": {
-    "message": "นำเข้าข้อมูลสำเร็จ กรุณารีเฟรชหน้า"
+    "message": "นำเข้าแล้ว — รีเฟรชหน้าเพื่อดูข้อมูล"
   },
   "importFailed": {
     "message": "นำเข้าล้มเหลว"
   },
   "refreshPage": {
-    "message": "รีเฟรชหน้า"
+    "message": "รีเฟรชเลย"
   },
   "refreshLater": {
     "message": "รีเฟรชภายหลัง"
@@ -375,7 +375,7 @@
     "message": "เปิดใช้ไฮไลท์ข้อความ"
   },
   "highlightToggleHint": {
-    "message": "เมื่อเปิดใช้ สามารถไฮไลท์ข้อความที่เลือกบนหน้าเว็บได้"
+    "message": "เลือกข้อความไหนก็ได้เพื่อไฮไลท์เป็นสี"
   },
   "highlightColorTitle": {
     "message": "สีไฮไลท์"
@@ -393,19 +393,19 @@
     "message": "ยกเลิก"
   },
   "scrollToBottomTitle": {
-    "message": "ไปด้านล่าง"
+    "message": "กลับลงด้านล่าง"
   },
   "scrollToBottomHint": {
-    "message": "แสดงปุ่มลัดเพื่อกลับไปยังข้อความล่าสุด"
+    "message": "เพิ่มปุ่มสำหรับกระโดดไปข้อความล่าสุด"
   },
   "pleaseWait": {
-    "message": "กรุณารอสักครู่ กำลังโหลด ID โหนด..."
+    "message": "รอสักครู่ กำลังโหลด…"
   },
   "chatTimeLabelTitle": {
-    "message": "แสดงเวลาแชท"
+    "message": "แสดงเวลา"
   },
   "chatTimeLabelHint": {
-    "message": "แสดงเวลาส่งในแต่ละข้อความ ชัดเจนเหมือนประวัติแชท"
+    "message": "แสดงเวลาส่งของแต่ละข้อความ"
   },
   "exportTitle": {
     "message": "ซิงค์ด้วยตนเอง"
@@ -441,7 +441,7 @@
     "message": "เลื่อนเพื่อซูม · ลากเพื่อเลื่อน · ESC เพื่อปิด"
   },
   "notepadToggleHint": {
-    "message": "Show notepad entry at the bottom of the timeline for quick notes"
+    "message": "เพิ่มทางลัดจดบันทึกไว้ด้านล่างไทม์ไลน์"
   },
   "notepadTitle": {
     "message": "Flash Notes"
@@ -459,10 +459,10 @@
     "message": "New Note"
   },
   "notepadConfirmDeleteTitle": {
-    "message": "Confirm Delete"
+    "message": "ลบบันทึก"
   },
   "notepadConfirmDeleteContent": {
-    "message": "This cannot be undone. Are you sure?"
+    "message": "ย้อนกลับไม่ได้ ลบเลยใช่ไหม?"
   },
   "notepadUntitled": {
     "message": "Untitled"
@@ -477,49 +477,49 @@
     "message": "ประเภทการคัดลอกสูตร"
   },
   "formulaCopyMathML": {
-    "message": "คัดลอกสูตร MathML"
+    "message": "คัดลอกเป็น MathML"
   },
   "formulaCopyGeneric": {
     "message": "คัดลอกสูตร"
   },
   "formulaLatexTitle": {
-    "message": "คัดลอกสูตร LaTeX"
+    "message": "LaTeX"
   },
   "formulaLatexHint": {
-    "message": "คลิกที่สูตรเพื่อคัดลอกในรูปแบบ LaTeX"
+    "message": "คลิกสูตรเพื่อคัดลอกเป็น LaTeX"
   },
   "formulaMathMLTitle": {
-    "message": "คัดลอกสูตร MathML"
+    "message": "MathML"
   },
   "formulaMathMLHint": {
-    "message": "คลิกที่สูตรเพื่อคัดลอกในรูปแบบ MathML วางใน Word ได้โดยตรง"
+    "message": "คลิกเพื่อคัดลอก แล้ววางใน Word ได้เลย"
   },
   "aboutTabName": {
     "message": "เกี่ยวกับปลั๊กอิน"
   },
   "aboutPluginTitle": {
-    "message": "เกี่ยวกับส่วนขยาย"
+    "message": "ส่วนขยายนี้คืออะไร"
   },
   "aboutPluginContent": {
-    "message": "ChatLine เป็นส่วนขยายเบราว์เซอร์สำหรับหน้าแชท AI พัฒนาต่อจากโปรเจกต์โอเพนซอร์ส Timeline โดยเน้นการนำทางด้วยไทม์ไลน์ การค้นตำแหน่งในประวัติ การอ่านบทสนทนาที่สะดวกขึ้น และการเก็บถาวรข้อมูลบทสนทนา รองรับแพลตฟอร์มแชท AI หลักหลายแห่ง"
+    "message": "ChatLine เพิ่มไทม์ไลน์ แชทที่บันทึกไว้ ส่งออก และรันโค้ดให้หน้าแชท AI พัฒนาต่อจากโปรเจกต์โอเพนซอร์ส Timeline ใช้ได้กับ ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, NotebookLM และอื่น ๆ"
   },
   "aboutDataSecurityTitle": {
-    "message": "ความปลอดภัยของข้อมูล"
+    "message": "ข้อมูลของคุณ"
   },
   "aboutDataSecurityContent": {
-    "message": "ข้อมูลทั้งหมดของคุณจะถูกจัดเก็บไว้ในเบราว์เซอร์ของคุณหรือใน Google Drive ของคุณ ส่วนขยายจะไม่เก็บรวบรวม อัปโหลด หรือแชร์เนื้อหาการสนทนาหรือข้อมูลส่วนบุคคลของคุณ โปรเจกต์นี้เป็นโอเพ่นซอร์สบน GitHub คุณสามารถตรวจสอบโค้ดได้ตลอดเวลา"
+    "message": "ข้อมูลของคุณอยู่ในเบราว์เซอร์ของคุณหรือ Google Drive ของคุณเอง ส่วนขยายจะไม่เก็บรวบรวม อัปโหลด หรือแชร์บทสนทนาหรือข้อมูลส่วนบุคคลของคุณ โค้ดเป็นโอเพนซอร์สบน GitHub ตรวจสอบได้ตลอดเวลา"
   },
   "aboutDeveloperTitle": {
     "message": "แจ้งความต้องการ"
   },
   "aboutDeveloperContent": {
-    "message": "ChatLine ดูแลในฐานะ fork ของ ai-chat-timeline หากต้องการขอฟีเจอร์หรือรายงาน bug โปรดใช้หน้า Issues ของ repository โปรเจกต์นี้"
+    "message": "ChatLine ดูแลในฐานะ fork ของ ai-chat-timeline หากต้องการขอฟีเจอร์หรือรายงาน bug ให้เปิด issue ใน repository ของโปรเจกต์"
   },
   "aboutShareTitle": {
-    "message": "แนะนำให้เพื่อน"
+    "message": "บอกต่อเพื่อน"
   },
   "aboutShareContent": {
-    "message": "หาก ChatLine มีประโยชน์ โปรดแนะนำให้คนที่ต้องอ่าน ค้นหา และเก็บบทสนทนา AI อยู่บ่อย ๆ ผู้เขียน: 咪咕看见小黑. อีเมล: miguchn@gmail.com. หากพบปัญหาระหว่างใช้งานหรือมีข้อเสนอแนะเพื่อปรับปรุง สามารถส่งความคิดเห็นทางอีเมลได้ทุกเมื่อ"
+    "message": "ถ้า ChatLine มีประโยชน์ บอกต่อคนที่ใช้เวลาอยู่กับแชท AI ได้เลย ผู้เขียน: 咪咕看见小黑 · miguchn@gmail.com — มีคำถามหรือข้อเสนอแนะ ส่งมาได้ทุกเมื่อ"
   },
   "nativeMenuStarToFolder": {
     "message": "Star to Folder"
@@ -528,7 +528,7 @@
     "message": "Already starred"
   },
   "nativeMenuStarSuccess": {
-    "message": "Starred successfully"
+    "message": "บันทึกแล้ว"
   },
   "animViewMore": {
     "message": "เปลี่ยนสัตว์เลี้ยง"
@@ -537,28 +537,28 @@
     "message": "ย้ายแล้ว"
   },
   "starredHelpDesc": {
-    "message": "Folders help you organize conversations and stay clutter-free."
+    "message": "จัดบทสนทนาเป็นโฟลเดอร์ ไม่ต้องเสียเวลาค้น"
   },
   "starredHelpTipsTitle": {
-    "message": "Quick tips:"
+    "message": "วิธีใช้งาน"
   },
   "starredHelpTip1": {
-    "message": "Drag conversations into a folder."
+    "message": "ลากบทสนทนาลงโฟลเดอร์"
   },
   "starredHelpTip2": {
-    "message": "Drag items within a folder to reorder."
+    "message": "ลากเพื่อจัดลำดับในโฟลเดอร์"
   },
   "starredHelpTip3": {
-    "message": "Drag subfolders to reorder."
+    "message": "ลากโฟลเดอร์ย่อยเพื่อจัดลำดับได้ด้วย"
   },
   "starredHelpTip4": {
-    "message": "Double-click a folder or item to edit."
+    "message": "ดับเบิลคลิกเพื่อเปลี่ยนชื่อ"
   },
   "folderMoveHasChildren": {
-    "message": "Has subfolders, cannot nest further"
+    "message": "มีโฟลเดอร์ย่อยอยู่แล้ว — ซ้อนไม่ได้"
   },
   "folderMoveMaxDepth": {
-    "message": "Maximum folder depth reached"
+    "message": "ซ้อนโฟลเดอร์ได้ลึกสุดแค่นี้"
   },
   "guideSubtitle": {
     "message": "AI conversation enhancement extension"
@@ -579,34 +579,34 @@
     "message": "Supported Platforms"
   },
   "highlightStyleTitle": {
-    "message": "รูปแบบไฮไลท์"
+    "message": "รูปแบบ"
   },
   "highlightStyleFullCover": {
-    "message": "คลุมทั้งหมด"
+    "message": "คลุมทั้งบล็อก"
   },
   "highlightStyleFullCoverDesc": {
-    "message": "ไฮไลท์คลุมข้อความทั้งหมด"
+    "message": "สีคลุมทั้งบรรทัด"
   },
   "highlightStyleHalfCover": {
-    "message": "คลุมครึ่ง"
+    "message": "คลุมครึ่งบล็อก"
   },
   "highlightStyleHalfCoverDesc": {
-    "message": "ไฮไลท์คลุมครึ่งล่างของข้อความ"
+    "message": "สีคลุมครึ่งล่าง"
   },
   "highlightStyleUnderline": {
     "message": "ขีดเส้นใต้"
   },
   "highlightStyleUnderlineDesc": {
-    "message": "ไฮไลท์แสดงใต้ข้อความ"
+    "message": "เส้นสีใต้ข้อความ"
   },
   "highlightStyleTextOnly": {
-    "message": "ข้อความเท่านั้น"
+    "message": "สีข้อความ"
   },
   "highlightStyleTextOnlyDesc": {
-    "message": "ไม่มีพื้นหลัง เปลี่ยนเฉพาะสีข้อความ"
+    "message": "ไม่มีพื้นหลัง — เปลี่ยนแค่สีข้อความ"
   },
   "highlightMyColors": {
-    "message": "สีไฮไลท์"
+    "message": "สีของคุณ"
   },
   "highlightColorPlaceholder": {
     "message": "#FF5733"
@@ -615,22 +615,22 @@
     "message": "สูงสุด 15 สี"
   },
   "highlightDeleteColorConfirm": {
-    "message": "ลบสี {color} หรือไม่?"
+    "message": "ลบ {color}?"
   },
   "highlightAddColorTitle": {
     "message": "เพิ่มสี"
   },
   "highlightAddColorBtn": {
-    "message": "สี"
+    "message": "เพิ่มสี"
   },
   "highlightInvalidHex": {
-    "message": "รูปแบบสีไม่ถูกต้อง"
+    "message": "รหัสไม่ถูกต้อง — ลอง #FF5733"
   },
   "highlightColorExists": {
-    "message": "สีนี้มีอยู่แล้ว"
+    "message": "คุณมีสีนี้แล้ว"
   },
   "highlightColorHint": {
-    "message": "ป้อนรหัสสี hex 6 หลัก เช่น #FF5733"
+    "message": "ใส่รหัสสี เช่น #FF5733"
   },
   "highlightAnnotationPlaceholder": {
     "message": "ความคิด…"
@@ -675,22 +675,22 @@
     "message": "แสดงไทม์ไลน์"
   },
   "starredDisplayLabel": {
-    "message": "แสดงโฟลเดอร์"
+    "message": "แสดงในแถบด้านข้าง"
   },
   "promptBtnDisplayLabel": {
-    "message": "แสดงปุ่มพรอมต์"
+    "message": "ปุ่ม Prompt"
   },
   "promptBtnSwitch": {
-    "message": "ตั้งค่า"
+    "message": "เลือกแพลตฟอร์ม"
   },
   "formulaFormatNone": {
-    "message": "ไม่มีการห่อ"
+    "message": "สูตรธรรมดา"
   },
   "gdriveUploadBtn": {
-    "message": "อัปโหลดไปยังคลาวด์"
+    "message": "อัปโหลดข้อมูลสำรอง"
   },
   "gdriveDownloadBtn": {
-    "message": "ดาวน์โหลดจากคลาวด์"
+    "message": "กู้คืนข้อมูลสำรอง"
   },
   "exportLabel": {
     "message": "ส่งออก"
@@ -699,7 +699,7 @@
     "message": "นำเข้า"
   },
   "gdriveUploading": {
-    "message": "กำลังอัปโหลด..."
+    "message": "กำลังอัปโหลด…"
   },
   "gdriveUploadSuccess": {
     "message": "อัปโหลดไปยัง Google Drive แล้ว"
@@ -708,109 +708,109 @@
     "message": "อัปโหลดล้มเหลว"
   },
   "gdriveDownloading": {
-    "message": "กำลังดาวน์โหลด..."
+    "message": "กำลังกู้คืน…"
   },
   "gdriveDownloadFailed": {
-    "message": "ดาวน์โหลดล้มเหลว"
+    "message": "กู้คืนล้มเหลว"
   },
   "gdriveNoBackup": {
-    "message": "ไม่มีข้อมูลสำรองบนคลาวด์"
+    "message": "ยังไม่มีข้อมูลสำรองบนคลาวด์"
   },
   "gdriveDataInvalid": {
-    "message": "รูปแบบข้อมูลคลาวด์ไม่ถูกต้อง"
+    "message": "อ่านข้อมูลสำรองบนคลาวด์ไม่ได้"
   },
   "gdriveMergeSuccess": {
-    "message": "รวมข้อมูลคลาวด์แล้ว"
+    "message": "กู้คืนและรวมข้อมูลแล้ว"
   },
   "gdriveMergeHint": {
-    "message": "ดาวน์โหลดและรวมข้อมูลจาก Google Drive แล้ว รีเฟรชหน้าเพื่อใช้งาน"
+    "message": "กู้คืนแล้ว — รีเฟรชหน้าเพื่อดูข้อมูล"
   },
   "chatWidthTitle": {
-    "message": "ความกว้างแชท"
+    "message": "ความกว้างหน้า"
   },
   "chatWidthHint": {
-    "message": "ขยายพื้นที่สนทนาเพื่อใช้หน้าจอได้เต็มที่"
+    "message": "ขยายแชทให้กว้างขึ้น จะได้ไม่เหลือที่ว่างครึ่งจอ"
   },
   "chatWidthAdjust": {
-    "message": "ปรับ"
+    "message": "ลากเพื่อปรับ"
   },
   "chatWidthCurrent": {
     "message": "ความกว้างปัจจุบัน"
   },
   "chatWidthNormal": {
-    "message": "ปกติ"
+    "message": "ค่าเริ่มต้น"
   },
   "chatWidthConfirm": {
-    "message": "ตกลง"
+    "message": "บันทึก"
   },
   "mirrorSiteTabName": {
-    "message": "เว็บมิเรอร์"
+    "message": "เว็บอื่น ๆ"
   },
   "mirrorSiteHint": {
-    "message": "เพิ่มโดเมนเว็บมิเรอร์ AI จะมีปุ่มลอยปรากฏบนเว็บเหล่านี้ ช่วยให้ใช้งานฟีเจอร์บางส่วนของส่วนขยายนี้ได้"
+    "message": "เพิ่มเว็บ AI ที่คุณใช้ — ส่วนขยายจะทำงานบนเว็บเหล่านั้นด้วย"
   },
   "mirrorSiteAddDomain": {
-    "message": "เพิ่ม"
+    "message": "เพิ่มเว็บ"
   },
   "mirrorSiteInputPlaceholder": {
-    "message": "ป้อนโดเมน เช่น chat.example.com"
+    "message": "ป้อนชื่อเว็บ เช่น chat.example.com"
   },
   "mirrorSiteDomainListTitle": {
-    "message": "โดเมนที่เพิ่มแล้ว"
+    "message": "เว็บที่เพิ่มแล้ว"
   },
   "mirrorSiteNoDomains": {
-    "message": "ยังไม่มีโดเมน"
+    "message": "ยังไม่ได้เพิ่มอะไร"
   },
   "mirrorSiteDomainAdded": {
-    "message": "เพิ่มโดเมนแล้ว"
+    "message": "เพิ่มเว็บแล้ว"
   },
   "mirrorSiteDomainRemoved": {
-    "message": "ลบโดเมนแล้ว"
+    "message": "ลบเว็บแล้ว"
   },
   "mirrorSiteDomainExists": {
-    "message": "โดเมนนี้มีอยู่แล้ว"
+    "message": "เว็บนี้อยู่ในรายการแล้ว"
   },
   "mirrorSiteDomainInvalid": {
-    "message": "รูปแบบโดเมนไม่ถูกต้อง"
+    "message": "ดูเหมือนไม่ใช่ชื่อเว็บที่ถูกต้อง"
   },
   "mirrorSiteDomainIsOfficial": {
-    "message": "โดเมนนี้เป็นแพลตฟอร์มที่รองรับอย่างเป็นทางการแล้ว"
+    "message": "รองรับอยู่แล้ว — ไม่ต้องเพิ่ม"
   },
   "mirrorSiteCopied": {
-    "message": "คัดลอกไปยังคลิปบอร์ดแล้ว"
+    "message": "คัดลอกแล้ว"
   },
   "hideStarredFromListLabel": {
-    "message": "โหมดกรองซ้ำ"
+    "message": "ซ่อนรายการซ้ำ"
   },
   "hideStarredFromListHint": {
-    "message": "เมื่อเปิดใช้งาน การสนทนาที่เพิ่มในโฟลเดอร์จะถูกซ่อนจากรายการแถบด้านข้าง"
+    "message": "บทสนทนาที่บันทึกไว้จะหายไปจากรายการเดิม"
   },
   "timelineAICompleteNotLatestToast": {
-    "message": "การตอบกลับของ $1 เสร็จสมบูรณ์แล้ว"
+    "message": "$1 ตอบเสร็จแล้ว"
   },
   "timelineAICompleteToastTitle": {
-    "message": "แจ้งเตือนเมื่อตอบเสร็จ"
+    "message": "แจ้งเตือนการตอบกลับ"
   },
   "timelineAICompleteToastHint": {
-    "message": "แสดงการแจ้งเตือนเมื่อ AI ตอบเสร็จและคุณไม่ได้อยู่ที่ตำแหน่งล่าสุด"
+    "message": "แจ้งเตือนเมื่อการตอบกลับเสร็จขณะที่คุณเลื่อนไปอยู่ที่อื่น"
   },
   "timelineThemeColorLabel": {
-    "message": "สีธีมไทม์ไลน์"
+    "message": "สีไทม์ไลน์"
   },
   "timelineThemeColorHint": {
-    "message": "ตั้งค่าสีธีมของเครื่องหมายไทม์ไลน์ที่ใช้งานสำหรับแต่ละแพลตฟอร์ม"
+    "message": "เลือกสีไฮไลท์ของแต่ละแพลตฟอร์ม"
   },
   "timelineThemeColorManageButton": {
-    "message": "ตั้งค่า"
+    "message": "เลือก"
   },
   "changelogShareTip": {
     "message": "หากคุณชอบส่วนขยายนี้ แบ่งปันให้คนที่อาจต้องใช้ได้เลย"
   },
   "longConversationPerformanceTitle": {
-    "message": "Long Conversation Optimization"
+    "message": "พับอัตโนมัติ"
   },
   "longConversationPerformanceHint": {
-    "message": "Automatically fold older messages after the set limit."
+    "message": "พับข้อความที่เก่ากว่า — ไม่ได้ลบอะไร คลิกเพื่ออ่านได้"
   },
   "longConversationThresholdLabel": {
     "message": "After"
@@ -819,19 +819,19 @@
     "message": "messages"
   },
   "longConversationKeepRecentLabel": {
-    "message": "Keep recent"
+    "message": "คงไว้"
   },
   "longConversationKeepRecentUnit": {
-    "message": "messages visible"
+    "message": "ข้อความล่าสุด"
   },
   "longConversationValidationKeepRecent": {
-    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+    "message": "จำนวนที่คงไว้ต้องน้อยกว่าจำนวนที่กำหนดให้พับ — ระบบปรับให้แล้ว"
   },
   "longConversationExpandMore": {
-    "message": "Expand more history"
+    "message": "แสดงข้อความก่อนหน้า"
   },
   "longConversationCollapsedTooltip": {
-    "message": "$1 older messages above are folded. Click to expand more."
+    "message": "พับข้อความก่อนหน้าไว้ $1 รายการ — คลิกเพื่อดู"
   },
   "highlightSettings": {
     "message": "การตั้งค่า"

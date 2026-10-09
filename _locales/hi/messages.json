@@ -18,16 +18,16 @@
     "message": "पसंदीदा से हटाएं"
   },
   "vnkxpm": {
-    "message": "फ़ोल्डर"
+    "message": "सहेजे गए"
   },
   "kxpmzv": {
-    "message": "पसंदीदा में जोड़ा गया"
+    "message": "सहेजा गया"
   },
   "pzmvkx": {
     "message": "पसंदीदा से हटाया गया"
   },
   "jwvnkp": {
-    "message": "कोई डेटा नहीं"
+    "message": "कोई मेल नहीं"
   },
   "zxvkpm": {
     "message": "सभी देखें"
@@ -57,10 +57,10 @@
     "message": "पुष्टि करें"
   },
   "mzpxvk": {
-    "message": "शीर्षक खाली नहीं हो सकता"
+    "message": "पहले शीर्षक जोड़ें"
   },
   "folderRequired": {
-    "message": "कृपया एक फ़ोल्डर चुनें"
+    "message": "पहले फ़ोल्डर चुनें"
   },
   "defaultFolder": {
     "message": "डिफ़ॉल्ट"
@@ -72,10 +72,10 @@
     "message": "अनपिन करें"
   },
   "searchPrompt": {
-    "message": "प्रॉम्प्ट खोजें..."
+    "message": "प्रॉम्प्ट खोजें"
   },
   "sidebarStarredHint": {
-    "message": "सक्षम होने पर, साइडबार में फ़ोल्डर प्रदर्शित होते हैं"
+    "message": "आपकी सहेजी गई बातचीत साइट के अपने साइडबार में दिखाता है"
   },
   "sidebarStarredManage": {
     "message": "सेटिंग्स"
@@ -96,7 +96,7 @@
     "message": "सहेजे गए से हटाएं"
   },
   "questionListTitle": {
-    "message": "प्रश्न सूची"
+    "message": "आपके प्रश्न"
   },
   "questionListEmpty": {
     "message": "अभी तक कोई प्रश्न नहीं"
@@ -120,7 +120,7 @@
     "message": "जादूगर"
   },
   "animTabEmpty": {
-    "message": "कोई एनिमेशन उपलब्ध नहीं"
+    "message": "अभी कोई पालतू नहीं"
   },
   "animGrowHint": {
     "message": "{n} और संदेश"
@@ -129,7 +129,7 @@
     "message": "नाम बदलें"
   },
   "pzmkvx": {
-    "message": "सामग्री खाली नहीं हो सकती"
+    "message": "पहले कुछ सामग्री जोड़ें"
   },
   "vxpzmk": {
     "message": "ओपन सोर्स"
@@ -144,7 +144,7 @@
     "message": "दोस्तों के साथ साझा करें"
   },
   "mvxkpz": {
-    "message": "LaTeX फ़ॉर्मूला कॉपी करें"
+    "message": "LaTeX में कॉपी करें"
   },
   "kxvpmz": {
     "message": "नया फ़ोल्डर"
@@ -162,28 +162,28 @@
     "message": "\"{folderName}\" में सबफ़ोल्डर बनाएं"
   },
   "vzkpmx": {
-    "message": "फ़ोल्डर का नाम दर्ज करें"
+    "message": "इस फ़ोल्डर का नाम रखें"
   },
   "kmxpvz": {
-    "message": "फ़ोल्डर का नाम खाली नहीं हो सकता"
+    "message": "पहले नाम दें"
   },
   "pxmzvk": {
-    "message": "फ़ोल्डर संपादित करें"
+    "message": "फ़ोल्डर का नाम बदलें"
   },
   "mvzxkp": {
-    "message": "नया नाम दर्ज करें"
+    "message": "नया नाम लिखें"
   },
   "kpvzmx": {
-    "message": "फ़ोल्डर का नाम पहले से मौजूद है"
+    "message": "यह नाम पहले से लिया जा चुका है"
   },
   "xzvkpm": {
-    "message": "सफलतापूर्वक बनाया गया"
+    "message": "बन गया"
   },
   "vmkxpz": {
-    "message": "सफलतापूर्वक अपडेट किया गया"
+    "message": "सहेजा गया"
   },
   "zpxmkv": {
-    "message": "फ़ोल्डर नहीं मिला"
+    "message": "वह फ़ोल्डर अब नहीं है"
   },
   "kvpzmx": {
     "message": "फ़ोल्डर हटाया गया"
@@ -198,10 +198,10 @@
     "message": "यहां स्थानांतरित करें"
   },
   "wjxnkp": {
-    "message": "{count} पसंदीदा आइटम भी हटा दिए जाएंगे।"
+    "message": "अंदर की {count} बातचीत भी हटा दी जाएँगी"
   },
   "qzmvkx": {
-    "message": "क्या आप वाकई \"{folderName}\" फ़ोल्डर को हटाना चाहते हैं?"
+    "message": "\"{folderName}\" हटाएं?"
   },
   "mvkzpx": {
     "message": "खोजें..."
@@ -219,19 +219,19 @@
     "message": "टाइमलाइन"
   },
   "mzkvxp": {
-    "message": "सक्षम होने पर, AI वार्तालाप पृष्ठ के दाईं ओर एक टाइमलाइन प्रदर्शित होती है"
+    "message": "दाईं ओर एक टाइमलाइन दिखाता है, जिससे आप किसी भी संदेश पर जा सकें"
   },
   "vkpmzx": {
-    "message": "वार्तालाप नोड्स के बीच नेविगेट करने के लिए ↑ / ↓ कुंजियों का उपयोग करें"
+    "message": "एरो कुंजियों से कूदना"
   },
   "xpvmkz": {
-    "message": "सक्षम होने पर, वार्तालाप नोड्स के बीच तेज़ी से जाने के लिए ↑ / ↓ कुंजियों का उपयोग करें।"
+    "message": "पिछले या अगले संदेश पर जाने के लिए ↑ ↓ दबाएं"
   },
   "pxmzkv": {
-    "message": "महत्वपूर्ण वार्तालाप चिह्नित करें"
+    "message": "महत्वपूर्ण चैट चिह्नित करें"
   },
   "kzxvpm": {
-    "message": "टाइमलाइन पर किसी वार्तालाप नोड को महत्वपूर्ण के रूप में चिह्नित करने के लिए देर तक दबाएं।"
+    "message": "किसी संदेश को चिह्नित करने के लिए टाइमलाइन के डॉट को देर तक दबाएं"
   },
   "xmvkpz": {
     "message": "इनपुट बॉक्स"
@@ -249,43 +249,43 @@
     "message": "सक्षम होने पर, पृष्ठ पर फ़ॉर्मूला स्वचालित रूप से पहचाना जाता है और LaTeX प्रारूप में कॉपी करने के लिए क्लिक करें।"
   },
   "mkvzpx": {
-    "message": "समर्थित प्लेटफ़ॉर्म"
+    "message": "इन पर चलता है"
   },
   "vxmkpz": {
-    "message": "Enter कुंजी: नई लाइन के लिए एक बार दबाएं, भेजने के लिए दो बार दबाएं"
+    "message": "Enter: नई लाइन · दो बार दबाने पर: भेजें"
   },
   "mkpxvz": {
-    "message": "सक्षम होने पर, AI चैट इनपुट बॉक्स में, Enter से नई लाइन, {mode} से संदेश भेजें।"
+    "message": "Enter सिर्फ नई लाइन जोड़ता है — {mode} से भेजें"
   },
   "qoytxz": {
-    "message": "यह सुविधा डिफ़ॉल्ट रूप से सक्षम है और बंद नहीं की जा सकती"
+    "message": "हमेशा चालू — बंद नहीं किया जा सकता"
   },
   "hosegod": {
     "message": "Prompts"
   },
   "hobsidbg": {
-    "message": "प्रॉम्प्ट सहेजें, जरूरत पड़ने पर तुरंत उपयोग करें। सक्षम होने पर, चैट बॉक्स के बाईं ओर एक प्रॉम्प्ट बटन प्रदर्शित किया जाएगा।"
+    "message": "अपने काम के प्रॉम्प्ट पास रखें और एक क्लिक में भेजें"
   },
   "biwhckdj": {
-    "message": "प्रॉम्प्ट सूची"
+    "message": "आपके प्रॉम्प्ट"
   },
   "byaskjndg": {
-    "message": "प्रॉम्प्ट जोड़ें"
+    "message": "नया प्रॉम्प्ट"
   },
   "hsksuywm": {
     "message": "प्रॉम्प्ट संपादित करें"
   },
   "hsuywkw": {
-    "message": "प्रॉम्प्ट नाम"
+    "message": "नाम"
   },
   "hsuywkwPlaceholder": {
-    "message": "प्रॉम्प्ट नाम दर्ज करें"
+    "message": "इस प्रॉम्प्ट का नाम रखें"
   },
   "promptContent": {
     "message": "सामग्री"
   },
   "uwkjwjw": {
-    "message": "प्रॉम्प्ट सामग्री दर्ज करें"
+    "message": "अपना प्रॉम्प्ट यहां पेस्ट करें"
   },
   "hsiwhwl": {
     "message": "कोई प्रॉम्प्ट नहीं"
@@ -294,13 +294,13 @@
     "message": "प्रॉम्प्ट जोड़ा गया"
   },
   "hwkwbhwk": {
-    "message": "प्रॉम्प्ट अपडेट किया गया"
+    "message": "प्रॉम्प्ट सहेजा गया"
   },
   "qrtypd": {
     "message": "प्रॉम्प्ट हटाया गया"
   },
   "dcnfmq": {
-    "message": "क्या आप वाकई इस प्रॉम्प्ट को हटाना चाहते हैं?"
+    "message": "यह प्रॉम्प्ट हटाएं?"
   },
   "svkbtn": {
     "message": "सहेजें"
@@ -312,13 +312,13 @@
     "message": "पिन हटाया गया"
   },
   "addkbt": {
-    "message": "जोड़ें"
+    "message": "नया"
   },
   "ptfmsl": {
-    "message": "लागू होता है"
+    "message": "इन पर चलता है"
   },
   "allptfm": {
-    "message": "सभी AI प्लेटफ़ॉर्म"
+    "message": "सभी प्लेटफ़ॉर्म"
   },
   "febhyejd": {
     "message": "ऑनलाइन फीडबैक सबमिट करें"
@@ -327,7 +327,7 @@
     "message": "कोड रनर"
   },
   "runnerSettingsTitle": {
-    "message": "समर्थित भाषाएँ"
+    "message": "भाषाएँ"
   },
   "runnerSettingsHint": {
     "message": "सक्षम होने पर, कोड ब्लॉक पर एक Run बटन दिखाई देगा जिससे कोड को सीधे चलाया जा सकता है"
@@ -348,22 +348,22 @@
     "message": "हल्का"
   },
   "dataSyncTabName": {
-    "message": "डेटा सिंक"
+    "message": "बैकअप और रीस्टोर"
   },
   "formulaFormatTitle": {
-    "message": "कॉपी प्रारूप चुनें"
+    "message": "कॉपी प्रारूप"
   },
   "importSuccess": {
-    "message": "आयात सफल"
+    "message": "आयात किया गया"
   },
   "importSuccessHint": {
-    "message": "डेटा सफलतापूर्वक आयात किया गया। कृपया पेज रीफ्रेश करें"
+    "message": "आयात हो गया — देखने के लिए पेज रीफ्रेश करें"
   },
   "importFailed": {
     "message": "आयात विफल"
   },
   "refreshPage": {
-    "message": "पेज रीफ्रेश करें"
+    "message": "अभी रीफ्रेश करें"
   },
   "refreshLater": {
     "message": "बाद में रीफ्रेश करें"
@@ -372,10 +372,10 @@
     "message": "अनुवर्ती प्रश्न"
   },
   "highlightToggleTitle": {
-    "message": "टेक्स्ट हाइलाइट सक्षम करें"
+    "message": "हाइलाइटिंग चालू करें"
   },
   "highlightToggleHint": {
-    "message": "सक्षम करने पर, वेबपेज पर चयनित टेक्स्ट को हाइलाइट कर सकते हैं"
+    "message": "कोई भी टेक्स्ट चुनें और उसे रंग से चिह्नित करें"
   },
   "highlightColorTitle": {
     "message": "हाइलाइट रंग"
@@ -396,16 +396,16 @@
     "message": "नीचे जाएं"
   },
   "scrollToBottomHint": {
-    "message": "नवीनतम संदेश पर जाने के लिए त्वरित बटन दिखाएं"
+    "message": "नवीनतम संदेश पर ले जाने वाला बटन जोड़ता है"
   },
   "pleaseWait": {
-    "message": "कृपया प्रतीक्षा करें, नोड ID लोड हो रहा है..."
+    "message": "रुकिए, लोड हो रहा है…"
   },
   "chatTimeLabelTitle": {
-    "message": "चैट समय दिखाएं"
+    "message": "टाइमस्टैम्प दिखाएं"
   },
   "chatTimeLabelHint": {
-    "message": "प्रत्येक संदेश पर भेजने का समय दिखाएं, चैट रिकॉर्ड जैसी स्पष्टता"
+    "message": "दिखाता है कि हर संदेश कब भेजा गया"
   },
   "exportTitle": {
     "message": "मैन्युअल सिंक"
@@ -441,7 +441,7 @@
     "message": "ज़ूम के लिए स्क्रॉल करें · खींचकर ले जाएं · बंद करने के लिए ESC"
   },
   "notepadToggleHint": {
-    "message": "Show notepad entry at the bottom of the timeline for quick notes"
+    "message": "टाइमलाइन के नीचे नोट शॉर्टकट जोड़ता है"
   },
   "notepadTitle": {
     "message": "Flash Notes"
@@ -459,10 +459,10 @@
     "message": "New Note"
   },
   "notepadConfirmDeleteTitle": {
-    "message": "Confirm Delete"
+    "message": "नोट हटाएं"
   },
   "notepadConfirmDeleteContent": {
-    "message": "This cannot be undone. Are you sure?"
+    "message": "इसे वापस नहीं लाया जा सकता। हटाएं?"
   },
   "notepadUntitled": {
     "message": "Untitled"
@@ -471,55 +471,55 @@
     "message": "Yesterday"
   },
   "notepadSaveToFolder": {
-    "message": "फ़ोल्डर में सेव करें"
+    "message": "फ़ोल्डर में सहेजें"
   },
   "formulaCopyTypeTitle": {
     "message": "सूत्र कॉपी प्रकार"
   },
   "formulaCopyMathML": {
-    "message": "MathML सूत्र कॉपी करें"
+    "message": "MathML में कॉपी करें"
   },
   "formulaCopyGeneric": {
     "message": "सूत्र कॉपी करें"
   },
   "formulaLatexTitle": {
-    "message": "LaTeX सूत्र कॉपी करें"
+    "message": "LaTeX"
   },
   "formulaLatexHint": {
     "message": "सूत्र पर क्लिक करके LaTeX में कॉपी करें"
   },
   "formulaMathMLTitle": {
-    "message": "MathML सूत्र कॉपी करें"
+    "message": "MathML"
   },
   "formulaMathMLHint": {
-    "message": "सूत्र पर क्लिक करके MathML में कॉपी करें, Word में सीधे पेस्ट करें"
+    "message": "कॉपी करने के लिए क्लिक करें, फिर सीधे Word में पेस्ट करें"
   },
   "aboutTabName": {
     "message": "प्लगइन के बारे में"
   },
   "aboutPluginTitle": {
-    "message": "एक्सटेंशन के बारे में"
+    "message": "यह क्या है"
   },
   "aboutPluginContent": {
-    "message": "ChatLine AI चैट पेजों के लिए एक ब्राउज़र एक्सटेंशन है। यह ओपन-सोर्स Timeline प्रोजेक्ट पर आधारित fork है और टाइमलाइन नेविगेशन, इतिहास में स्थिति खोजने, बातचीत पढ़ने के अनुभव को बेहतर बनाने और बातचीत डेटा को आर्काइव करने पर केंद्रित है। यह कई प्रमुख AI चैट प्लेटफ़ॉर्म का समर्थन करता है।"
+    "message": "ChatLine AI चैट पेजों में टाइमलाइन, सहेजी गई चैट, एक्सपोर्ट और कोड रन करने की सुविधा जोड़ता है। ओपन-सोर्स Timeline प्रोजेक्ट पर आधारित fork, यह ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, NotebookLM और कई अन्य के साथ काम करता है।"
   },
   "aboutDataSecurityTitle": {
-    "message": "डेटा सुरक्षा"
+    "message": "आपका डेटा"
   },
   "aboutDataSecurityContent": {
-    "message": "आपका सारा डेटा आपके ब्राउज़र में स्थानीय रूप से या आपके Google Drive में संग्रहीत होता है। एक्सटेंशन आपकी किसी भी बातचीत की सामग्री या व्यक्तिगत जानकारी को एकत्र, अपलोड या साझा नहीं करता। यह प्रोजेक्ट GitHub पर ओपन-सोर्स है, और कोड किसी भी समय समीक्षा के लिए उपलब्ध है।"
+    "message": "आपका डेटा आपके ब्राउज़र या आपके अपने Google Drive में रहता है। एक्सटेंशन आपकी बातचीत या व्यक्तिगत जानकारी को कभी एकत्र, अपलोड या साझा नहीं करता। कोड GitHub पर ओपन-सोर्स है और किसी भी समय समीक्षा के लिए खुला है।"
   },
   "aboutDeveloperTitle": {
     "message": "फ़ीडबैक"
   },
   "aboutDeveloperContent": {
-    "message": "ChatLine को ai-chat-timeline fork के रूप में बनाए रखा जाता है। फीचर अनुरोध या bug रिपोर्ट के लिए कृपया इस प्रोजेक्ट repository के Issues पेज का उपयोग करें।"
+    "message": "ChatLine को ai-chat-timeline के fork के रूप में बनाए रखा जाता है। फीचर अनुरोध या bug रिपोर्ट के लिए प्रोजेक्ट repository में issue खोलें।"
   },
   "aboutShareTitle": {
-    "message": "दोस्तों को सुझाएं"
+    "message": "किसी दोस्त को बताएं"
   },
   "aboutShareContent": {
-    "message": "यदि ChatLine आपके लिए उपयोगी है, तो इसे उन लोगों को सुझाएँ जो AI बातचीत को पढ़ते, ढूँढते और संग्रहित करते हैं। लेखक: 咪咕看见小黑. ईमेल: miguchn@gmail.com. उपयोग के दौरान कोई समस्या आए या सुधार सुझाव हों, तो आप कभी भी ईमेल से प्रतिक्रिया भेज सकते हैं।"
+    "message": "यदि ChatLine आपके काम आता है, तो इसे उन लोगों तक पहुंचाएं जो AI चैट में समय बिताते हैं। लेखक: 咪咕看见小黑 · miguchn@gmail.com — सवाल और सुझाव कभी भी स्वागत हैं।"
   },
   "nativeMenuStarToFolder": {
     "message": "Star to Folder"
@@ -528,7 +528,7 @@
     "message": "Already starred"
   },
   "nativeMenuStarSuccess": {
-    "message": "Starred successfully"
+    "message": "सहेजा गया"
   },
   "animViewMore": {
     "message": "पालतू बदलें"
@@ -537,28 +537,28 @@
     "message": "स्थानांतरित"
   },
   "starredHelpDesc": {
-    "message": "Folders help you organize conversations and stay clutter-free."
+    "message": "बातचीत को फ़ोल्डरों में बांटें ताकि बार-बार ढूंढना न पड़े"
   },
   "starredHelpTipsTitle": {
-    "message": "Quick tips:"
+    "message": "यह कैसे काम करता है"
   },
   "starredHelpTip1": {
-    "message": "Drag conversations into a folder."
+    "message": "बातचीत को फ़ोल्डर में खींचें"
   },
   "starredHelpTip2": {
-    "message": "Drag items within a folder to reorder."
+    "message": "फ़ोल्डर के अंदर क्रम बदलने के लिए खींचें"
   },
   "starredHelpTip3": {
-    "message": "Drag subfolders to reorder."
+    "message": "सबफ़ोल्डर का क्रम बदलने के लिए उन्हें भी खींचें"
   },
   "starredHelpTip4": {
-    "message": "Double-click a folder or item to edit."
+    "message": "नाम बदलने के लिए डबल-क्लिक करें"
   },
   "folderMoveHasChildren": {
-    "message": "Has subfolders, cannot nest further"
+    "message": "इसमें पहले से सबफ़ोल्डर हैं — और नेस्ट नहीं कर सकते"
   },
   "folderMoveMaxDepth": {
-    "message": "Maximum folder depth reached"
+    "message": "फ़ोल्डर इतने ही गहरे जा सकते हैं"
   },
   "guideSubtitle": {
     "message": "AI conversation enhancement extension"
@@ -579,34 +579,34 @@
     "message": "Supported Platforms"
   },
   "highlightStyleTitle": {
-    "message": "हाइलाइट शैली"
+    "message": "शैली"
   },
   "highlightStyleFullCover": {
-    "message": "पूर्ण कवर"
+    "message": "पूरा ब्लॉक"
   },
   "highlightStyleFullCoverDesc": {
-    "message": "हाइलाइट पूरे टेक्स्ट को कवर करता है"
+    "message": "रंग पूरी लाइन को कवर करता है"
   },
   "highlightStyleHalfCover": {
-    "message": "आधा कवर"
+    "message": "आधा ब्लॉक"
   },
   "highlightStyleHalfCoverDesc": {
-    "message": "हाइलाइट टेक्स्ट के निचले आधे भाग को कवर करता है"
+    "message": "रंग निचले आधे हिस्से को कवर करता है"
   },
   "highlightStyleUnderline": {
     "message": "अंडरलाइन"
   },
   "highlightStyleUnderlineDesc": {
-    "message": "हाइलाइट टेक्स्ट के नीचे दिखाई देता है"
+    "message": "टेक्स्ट के नीचे रंगीन लाइन"
   },
   "highlightStyleTextOnly": {
-    "message": "केवल टेक्स्ट"
+    "message": "टेक्स्ट रंग"
   },
   "highlightStyleTextOnlyDesc": {
-    "message": "कोई पृष्ठभूमि नहीं, केवल टेक्स्ट रंग"
+    "message": "कोई पृष्ठभूमि नहीं — बस टेक्स्ट का रंग बदलता है"
   },
   "highlightMyColors": {
-    "message": "हाइलाइट रंग"
+    "message": "आपके रंग"
   },
   "highlightColorPlaceholder": {
     "message": "#FF5733"
@@ -615,22 +615,22 @@
     "message": "अधिकतम 15 रंग"
   },
   "highlightDeleteColorConfirm": {
-    "message": "रंग {color} हटाएं?"
+    "message": "{color} हटाएं?"
   },
   "highlightAddColorTitle": {
     "message": "रंग जोड़ें"
   },
   "highlightAddColorBtn": {
-    "message": "रंग"
+    "message": "रंग जोड़ें"
   },
   "highlightInvalidHex": {
-    "message": "अमान्य रंग प्रारूप"
+    "message": "यह मान्य कोड नहीं है — #FF5733 आज़माएं"
   },
   "highlightColorExists": {
-    "message": "रंग पहले से मौजूद है"
+    "message": "यह रंग आपके पास पहले से है"
   },
   "highlightColorHint": {
-    "message": "6 अंकों का हेक्स रंग कोड दर्ज करें, जैसे #FF5733"
+    "message": "#FF5733 जैसा रंग कोड दर्ज करें"
   },
   "highlightAnnotationPlaceholder": {
     "message": "विचार…"
@@ -675,22 +675,22 @@
     "message": "टाइमलाइन दिखाएँ"
   },
   "starredDisplayLabel": {
-    "message": "फ़ोल्डर दिखाएँ"
+    "message": "साइडबार में दिखाएं"
   },
   "promptBtnDisplayLabel": {
-    "message": "प्रॉम्प्ट बटन दिखाएँ"
+    "message": "प्रॉम्प्ट बटन"
   },
   "promptBtnSwitch": {
-    "message": "सेटिंग्स"
+    "message": "प्लेटफ़ॉर्म चुनें"
   },
   "formulaFormatNone": {
-    "message": "कोई रैपिंग नहीं"
+    "message": "सादा सूत्र"
   },
   "gdriveUploadBtn": {
-    "message": "क्लाउड पर अपलोड करें"
+    "message": "बैकअप अपलोड करें"
   },
   "gdriveDownloadBtn": {
-    "message": "क्लाउड से डाउनलोड करें"
+    "message": "बैकअप रीस्टोर करें"
   },
   "exportLabel": {
     "message": "निर्यात"
@@ -699,7 +699,7 @@
     "message": "आयात"
   },
   "gdriveUploading": {
-    "message": "अपलोड हो रहा है..."
+    "message": "अपलोड हो रहा है…"
   },
   "gdriveUploadSuccess": {
     "message": "Google Drive पर अपलोड हो गया"
@@ -708,109 +708,109 @@
     "message": "अपलोड विफल"
   },
   "gdriveDownloading": {
-    "message": "डाउनलोड हो रहा है..."
+    "message": "रीस्टोर हो रहा है…"
   },
   "gdriveDownloadFailed": {
-    "message": "डाउनलोड विफल"
+    "message": "रीस्टोर विफल"
   },
   "gdriveNoBackup": {
-    "message": "क्लाउड पर कोई बैकअप डेटा नहीं"
+    "message": "क्लाउड में अभी कोई बैकअप नहीं"
   },
   "gdriveDataInvalid": {
-    "message": "क्लाउड डेटा प्रारूप अमान्य है"
+    "message": "वह क्लाउड बैकअप पढ़ा नहीं जा सका"
   },
   "gdriveMergeSuccess": {
-    "message": "क्लाउड डेटा मर्ज किया गया"
+    "message": "रीस्टोर और मर्ज हो गया"
   },
   "gdriveMergeHint": {
-    "message": "Google Drive से डेटा डाउनलोड और मर्ज किया गया। लागू करने के लिए पेज रीफ्रेश करें।"
+    "message": "रीस्टोर हो गया — देखने के लिए पेज रीफ्रेश करें"
   },
   "chatWidthTitle": {
-    "message": "चैट चौड़ाई"
+    "message": "पेज चौड़ाई"
   },
   "chatWidthHint": {
-    "message": "स्क्रीन का बेहतर उपयोग करने के लिए बातचीत क्षेत्र चौड़ा करें"
+    "message": "चैट चौड़ी करें ताकि स्क्रीन आधी खाली न दिखे"
   },
   "chatWidthAdjust": {
-    "message": "समायोजित करें"
+    "message": "खींचकर समायोजित करें"
   },
   "chatWidthCurrent": {
     "message": "वर्तमान चौड़ाई"
   },
   "chatWidthNormal": {
-    "message": "सामान्य"
+    "message": "डिफ़ॉल्ट"
   },
   "chatWidthConfirm": {
-    "message": "ठीक है"
+    "message": "सहेजें"
   },
   "mirrorSiteTabName": {
-    "message": "मिरर साइट्स"
+    "message": "अन्य साइट्स"
   },
   "mirrorSiteHint": {
-    "message": "AI मिरर साइट डोमेन जोड़ें। इन साइटों पर एक फ्लोटिंग बटन दिखाई देगा, जिससे इस एक्सटेंशन की कुछ सुविधाएँ उपयोग की जा सकेंगी।"
+    "message": "अपनी AI साइटें जोड़ें — वहां भी एक्सटेंशन काम करेगा"
   },
   "mirrorSiteAddDomain": {
-    "message": "जोड़ें"
+    "message": "साइट जोड़ें"
   },
   "mirrorSiteInputPlaceholder": {
-    "message": "डोमेन दर्ज करें, जैसे chat.example.com"
+    "message": "साइट दर्ज करें, जैसे chat.example.com"
   },
   "mirrorSiteDomainListTitle": {
-    "message": "जोड़े गए डोमेन"
+    "message": "आपकी जोड़ी गई साइटें"
   },
   "mirrorSiteNoDomains": {
-    "message": "कोई डोमेन नहीं जोड़ा गया"
+    "message": "अभी कुछ नहीं जोड़ा गया"
   },
   "mirrorSiteDomainAdded": {
-    "message": "डोमेन जोड़ा गया"
+    "message": "साइट जोड़ी गई"
   },
   "mirrorSiteDomainRemoved": {
-    "message": "डोमेन हटाया गया"
+    "message": "साइट हटाई गई"
   },
   "mirrorSiteDomainExists": {
-    "message": "डोमेन पहले से मौजूद है"
+    "message": "यह साइट सूची में पहले से है"
   },
   "mirrorSiteDomainInvalid": {
-    "message": "अमान्य डोमेन प्रारूप"
+    "message": "यह मान्य साइट नहीं लगती"
   },
   "mirrorSiteDomainIsOfficial": {
-    "message": "यह डोमेन पहले से एक आधिकारिक प्लेटफ़ॉर्म है"
+    "message": "पहले से समर्थित — जोड़ने की जरूरत नहीं"
   },
   "mirrorSiteCopied": {
-    "message": "क्लिपबोर्ड पर कॉपी किया गया"
+    "message": "कॉपी हो गया"
   },
   "hideStarredFromListLabel": {
-    "message": "डीडुप मोड"
+    "message": "डुप्लिकेट छिपाएं"
   },
   "hideStarredFromListHint": {
-    "message": "सक्षम होने पर, फ़ोल्डर में जोड़ी गई बातचीत साइडबार सूची से छिपा दी जाएगी"
+    "message": "सहेजी गई बातचीत मूल सूची से गायब हो जाती हैं"
   },
   "timelineAICompleteNotLatestToast": {
-    "message": "$1 का जवाब पूरा हो गया है।"
+    "message": "$1 का जवाब पूरा हुआ"
   },
   "timelineAICompleteToastTitle": {
-    "message": "जवाब पूरा होने की याद दिलाएँ"
+    "message": "जवाब अलर्ट"
   },
   "timelineAICompleteToastHint": {
-    "message": "जब AI का जवाब पूरा हो जाए और आप नवीनतम स्थिति पर न हों, तो रिमाइंडर दिखाएँ"
+    "message": "जब जवाब पूरा हो और आप कहीं और स्क्रॉल किए हों, तो सूचना देता है"
   },
   "timelineThemeColorLabel": {
-    "message": "टाइमलाइन थीम रंग"
+    "message": "टाइमलाइन रंग"
   },
   "timelineThemeColorHint": {
-    "message": "हर प्लेटफ़ॉर्म के लिए सक्रिय टाइमलाइन मार्कर का थीम रंग सेट करें"
+    "message": "हर प्लेटफ़ॉर्म के लिए हाइलाइट रंग चुनें"
   },
   "timelineThemeColorManageButton": {
-    "message": "सेट करें"
+    "message": "चुनें"
   },
   "changelogShareTip": {
     "message": "अगर यह एक्सटेंशन आपको उपयोगी लगे, तो इसे ज़रूरतमंद लोगों के साथ साझा करें।"
   },
   "longConversationPerformanceTitle": {
-    "message": "Long Conversation Optimization"
+    "message": "ऑटो-फ़ोल्ड"
   },
   "longConversationPerformanceHint": {
-    "message": "Automatically fold older messages after the set limit."
+    "message": "पुराने संदेश फ़ोल्ड कर देता है — कुछ हटता नहीं, पढ़ने के लिए क्लिक करें"
   },
   "longConversationThresholdLabel": {
     "message": "After"
@@ -819,19 +819,19 @@
     "message": "messages"
   },
   "longConversationKeepRecentLabel": {
-    "message": "Keep recent"
+    "message": "अंतिम"
   },
   "longConversationKeepRecentUnit": {
-    "message": "messages visible"
+    "message": "दृश्यमान रखें"
   },
   "longConversationValidationKeepRecent": {
-    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+    "message": "दिखने वाले संदेशों की संख्या ट्रिगर सीमा से कम होनी चाहिए — आपके लिए समायोजित कर दी गई"
   },
   "longConversationExpandMore": {
-    "message": "Expand more history"
+    "message": "पहले के संदेश दिखाएं"
   },
   "longConversationCollapsedTooltip": {
-    "message": "$1 older messages above are folded. Click to expand more."
+    "message": "$1 पहले के संदेश फ़ोल्ड हैं — दिखाने के लिए क्लिक करें"
   },
   "highlightSettings": {
     "message": "सेटिंग्स"

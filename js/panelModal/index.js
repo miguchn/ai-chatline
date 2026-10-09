@@ -224,10 +224,10 @@ class PanelModal {
         
         if (tab.group && tab.group !== this._lastTabGroup) {
             const groupLabels = {
-                core: chrome.i18n.getMessage('settingsGroupCore') || 'Core Features',
-                advanced: chrome.i18n.getMessage('settingsGroupAdvanced') || 'Advanced Features',
-                experimental: chrome.i18n.getMessage('settingsGroupExperimental') || 'Experimental',
-                backup: chrome.i18n.getMessage('settingsGroupBackup') || 'Backup & Sync',
+                core: chrome.i18n.getMessage('settingsGroupCore') || 'Essentials',
+                advanced: chrome.i18n.getMessage('settingsGroupAdvanced') || 'More',
+                experimental: chrome.i18n.getMessage('settingsGroupExperimental') || 'Fun stuff',
+                backup: chrome.i18n.getMessage('settingsGroupBackup') || 'Backup',
                 about: chrome.i18n.getMessage('settingsGroupAbout') || 'About'
             };
             const groupTitle = document.createElement('div');

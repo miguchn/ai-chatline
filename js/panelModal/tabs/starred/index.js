@@ -117,8 +117,8 @@ class StarredTab extends BaseTab {
             hideToggleSection.innerHTML = `
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${chrome.i18n.getMessage('hideStarredFromListLabel') || '去重模式'}</div>
-                        <div class="setting-hint">${chrome.i18n.getMessage('hideStarredFromListHint') || '开启后，已加入文件夹的对话将从原版侧边栏列表中隐藏'}</div>
+                        <div class="setting-label">${chrome.i18n.getMessage('hideStarredFromListLabel') || '不重复显示'}</div>
+                        <div class="setting-hint">${chrome.i18n.getMessage('hideStarredFromListHint') || '收藏过的对话，不再出现在原列表'}</div>
                     </div>
                     <label class="ait-toggle-switch">
                         <input type="checkbox" id="hide-starred-from-list-toggle">
@@ -141,10 +141,10 @@ class StarredTab extends BaseTab {
             manageSection.innerHTML = `
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${chrome.i18n.getMessage('starredDisplayLabel') || '显示文件夹'}</div>
-                        <div class="setting-hint">${chrome.i18n.getMessage('sidebarStarredHint') || 'Control which platforms show the starred folder in their sidebar'}</div>
+                        <div class="setting-label">${chrome.i18n.getMessage('starredDisplayLabel') || '显示在侧边栏'}</div>
+                        <div class="setting-hint">${chrome.i18n.getMessage('sidebarStarredHint') || 'Shows your saved conversations in the site\'s own sidebar'}</div>
                     </div>
-                    <button class="starred-manage-btn">${chrome.i18n.getMessage('promptBtnSwitch') || '开关'}</button>
+                    <button class="starred-manage-btn">${chrome.i18n.getMessage('promptBtnSwitch') || '选平台'}</button>
                 </div>
             `;
             container.appendChild(manageSection);
@@ -210,7 +210,7 @@ class StarredTab extends BaseTab {
         overlay.innerHTML = `
             <div class="starred-platform-modal">
                 <div class="starred-platform-modal-header">
-                    <span>${chrome.i18n.getMessage('mkvzpx') || 'Supported Platforms'}</span>
+                    <span>${chrome.i18n.getMessage('mkvzpx') || 'Works on'}</span>
                     <button class="starred-platform-modal-close">✕</button>
                 </div>
                 <div class="starred-platform-modal-body">${platformItems}</div>

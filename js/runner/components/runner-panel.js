@@ -389,7 +389,7 @@
                     const code = this.getCode();
                     navigator.clipboard.writeText(code).then(() => {
                         if (window.globalToastManager) {
-                            window.globalToastManager.success(safeI18n('xpzmvk', '复制成功'), btn);
+                            window.globalToastManager.success(safeI18n('xpzmvk', '已复制'), btn);
                         }
                     });
                     break;
@@ -417,7 +417,7 @@
                     const output = this.resultContent?.innerText || '';
                     navigator.clipboard.writeText(output).then(() => {
                         if (window.globalToastManager) {
-                            window.globalToastManager.success(safeI18n('xpzmvk', '复制成功'), btn);
+                            window.globalToastManager.success(safeI18n('xpzmvk', '已复制'), btn);
                         }
                     });
                     break;

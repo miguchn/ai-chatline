@@ -41,8 +41,8 @@ class RunnerTab extends BaseTab {
         
         container.innerHTML = `
             <div class="platform-list">
-                <div class="platform-list-title">${chrome.i18n.getMessage('runnerSettingsTitle') || '代码运行功能'}</div>
-                <div class="platform-list-hint">${chrome.i18n.getMessage('runnerAdvancedHint') || '高级功能：仅在开启后加载，可能增加页面资源占用。'}</div>
+                <div class="platform-list-title">${chrome.i18n.getMessage('runnerSettingsTitle') || '支持的语言'}</div>
+                <div class="platform-list-hint">${chrome.i18n.getMessage('runnerAdvancedHint') || '代码块会出现「运行」按钮，可能让页面稍慢'}</div>
                 <div class="platform-list-container">
                     ${languageItems}
                 </div>

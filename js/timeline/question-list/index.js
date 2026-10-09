@@ -50,7 +50,7 @@ class QuestionListPopup {
 
         const title = document.createElement('span');
         title.className = 'ait-ql-title';
-        title.textContent = TimelineUtils.i18n('questionListTitle', 'Questions');
+        title.textContent = TimelineUtils.i18n('questionListTitle', 'Your questions');
 
         const headerRight = document.createElement('div');
         headerRight.className = 'ait-ql-header-right';
@@ -173,7 +173,7 @@ class QuestionListPopup {
             pin.className = 'ait-ql-item-pin';
             if (!isPinned) pin.classList.add('not-pinned');
             const pinTip = () => tm.pinned.has(marker.id)
-                ? TimelineUtils.i18n('unpinAction', '取消标记重点')
+                ? TimelineUtils.i18n('unpinAction', '取消标记')
                 : TimelineUtils.i18n('pinAction', '标记重点');
             pin.addEventListener('click', async (e) => {
                 e.stopPropagation();

@@ -140,10 +140,10 @@ class FolderEditModal {
                 title: options.title,
                 name: options.name || '',
                 icon: options.icon || '',
-                placeholder: options.placeholder || chrome.i18n.getMessage('vzkpmx') || 'Folder name',
+                placeholder: options.placeholder || chrome.i18n.getMessage('vzkpmx') || 'Name this folder',
                 maxLength: options.maxLength || 20,
                 required: options.required !== undefined ? options.required : true,
-                requiredMessage: options.requiredMessage || chrome.i18n.getMessage('kmxpvz') || 'Name is required',
+                requiredMessage: options.requiredMessage || chrome.i18n.getMessage('kmxpvz') || 'Give it a name first',
                 validator: options.validator || null,
                 confirmText: options.confirmText || chrome.i18n.getMessage('vkmzpx') || 'OK',
                 cancelText: options.cancelText || chrome.i18n.getMessage('pxvkmz') || 'Cancel'

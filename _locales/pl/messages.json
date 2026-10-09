@@ -18,16 +18,16 @@
     "message": "Usuń z ulubionych"
   },
   "vnkxpm": {
-    "message": "Folder"
+    "message": "Ulubione"
   },
   "kxpmzv": {
-    "message": "Dodano do ulubionych"
+    "message": "Zapisano"
   },
   "pzmvkx": {
     "message": "Usunięto z ulubionych"
   },
   "jwvnkp": {
-    "message": "Brak danych"
+    "message": "Brak wyników"
   },
   "zxvkpm": {
     "message": "Pokaż wszystko"
@@ -57,10 +57,10 @@
     "message": "Potwierdź"
   },
   "mzpxvk": {
-    "message": "Tytuł nie może być pusty"
+    "message": "Najpierw dodaj tytuł"
   },
   "folderRequired": {
-    "message": "Proszę wybrać folder"
+    "message": "Najpierw wybierz folder"
   },
   "defaultFolder": {
     "message": "Domyślny"
@@ -72,10 +72,10 @@
     "message": "Odepnij"
   },
   "searchPrompt": {
-    "message": "Szukaj promptów..."
+    "message": "Szukaj promptów"
   },
   "sidebarStarredHint": {
-    "message": "Po włączeniu foldery są wyświetlane na pasku bocznym"
+    "message": "Pokazuje zapisane rozmowy na pasku bocznym strony"
   },
   "sidebarStarredManage": {
     "message": "Ustawienia"
@@ -87,7 +87,7 @@
     "message": "Oznacz jako ważne"
   },
   "unpinAction": {
-    "message": "Usuń oznaczenie ważnego"
+    "message": "Usuń oznaczenie"
   },
   "starAction": {
     "message": "Zapisz w folderze"
@@ -96,7 +96,7 @@
     "message": "Usuń z zapisanych"
   },
   "questionListTitle": {
-    "message": "Pytania"
+    "message": "Twoje pytania"
   },
   "questionListEmpty": {
     "message": "Brak pytań"
@@ -120,7 +120,7 @@
     "message": "Czarodziej"
   },
   "animTabEmpty": {
-    "message": "Brak dostępnych animacji"
+    "message": "Brak zwierzaków"
   },
   "animGrowHint": {
     "message": "Jeszcze {n} wiadomości"
@@ -129,7 +129,7 @@
     "message": "Zmień nazwę"
   },
   "pzmkvx": {
-    "message": "Treść nie może być pusta"
+    "message": "Najpierw dodaj treść"
   },
   "vxpzmk": {
     "message": "Open Source"
@@ -144,7 +144,7 @@
     "message": "Udostępnij znajomym"
   },
   "mvxkpz": {
-    "message": "Kopiuj formułę LaTeX"
+    "message": "Kopiuj jako LaTeX"
   },
   "kxvpmz": {
     "message": "Nowy folder"
@@ -162,28 +162,28 @@
     "message": "Utwórz podfolder w \"{folderName}\""
   },
   "vzkpmx": {
-    "message": "Wprowadź nazwę folderu"
+    "message": "Nazwij ten folder"
   },
   "kmxpvz": {
-    "message": "Nazwa folderu nie może być pusta"
+    "message": "Najpierw podaj nazwę"
   },
   "pxmzvk": {
-    "message": "Edytuj folder"
+    "message": "Zmień nazwę folderu"
   },
   "mvzxkp": {
-    "message": "Wprowadź nową nazwę"
+    "message": "Wpisz nową nazwę"
   },
   "kpvzmx": {
-    "message": "Nazwa folderu już istnieje"
+    "message": "Ta nazwa jest już zajęta"
   },
   "xzvkpm": {
-    "message": "Utworzono pomyślnie"
+    "message": "Utworzono"
   },
   "vmkxpz": {
-    "message": "Zaktualizowano pomyślnie"
+    "message": "Zapisano"
   },
   "zpxmkv": {
-    "message": "Folder nie znaleziony"
+    "message": "Tego folderu już nie ma"
   },
   "kvpzmx": {
     "message": "Folder usunięty"
@@ -198,10 +198,10 @@
     "message": "Przenieś do"
   },
   "wjxnkp": {
-    "message": "{count} ulubionych elementów zostanie również usuniętych."
+    "message": "Rozmowy w środku ({count}) też zostaną usunięte"
   },
   "qzmvkx": {
-    "message": "Czy na pewno chcesz usunąć folder \"{folderName}\"?"
+    "message": "Usunąć \"{folderName}\"?"
   },
   "mvkzpx": {
     "message": "Szukaj..."
@@ -216,31 +216,31 @@
     "message": "Tytuł"
   },
   "pxkmvz": {
-    "message": "Oś czasu"
+    "message": "Timeline"
   },
   "mzkvxp": {
-    "message": "Po włączeniu oś czasu jest wyświetlana po prawej stronie strony rozmowy AI"
+    "message": "Pokazuje oś czasu po prawej — możesz przeskoczyć do każdej wiadomości"
   },
   "vkpmzx": {
-    "message": "Użyj klawiszy ↑ / ↓ do nawigacji między węzłami rozmowy"
+    "message": "Przeskakiwanie strzałkami"
   },
   "xpvmkz": {
-    "message": "Po włączeniu, użyj klawiszy ↑ / ↓ do szybkiego przeskakiwania między węzłami rozmowy."
+    "message": "Naciśnij ↑ ↓, aby przeskoczyć do poprzedniej lub następnej wiadomości"
   },
   "pxmzkv": {
-    "message": "Oznacz ważne rozmowy"
+    "message": "Oznaczanie długim naciśnięciem"
   },
   "kzxvpm": {
-    "message": "Przytrzymaj węzeł rozmowy na osi czasu, aby oznaczyć go jako ważny."
+    "message": "Przytrzymaj kropkę na osi czasu, aby oznaczyć wiadomość"
   },
   "xmvkpz": {
     "message": "Pole wejściowe"
   },
   "kvzmxp": {
-    "message": "Nowa linia i wysyłanie"
+    "message": "Jak wysyłać"
   },
   "kpxvmz": {
-    "message": "Kopiuj formułę"
+    "message": "Kopiowanie formuł"
   },
   "zmkvpx": {
     "message": "Kopiuj formułę LaTeX"
@@ -249,43 +249,43 @@
     "message": "Po włączeniu automatycznie wykrywa formuły na stronie i kliknij, aby skopiować w formacie LaTeX."
   },
   "mkvzpx": {
-    "message": "Obsługiwane platformy"
+    "message": "Działa na"
   },
   "vxmkpz": {
-    "message": "Klawisz Enter: naciśnij raz dla nowej linii, dwa razy dla wysłania"
+    "message": "Enter: nowa linia · dwa razy: wysłanie"
   },
   "mkpxvz": {
-    "message": "Po włączeniu, w polu wprowadzania czatu AI, naciśnij Enter dla nowej linii, {mode} aby wysłać wiadomość."
+    "message": "Enter tylko dodaje nową linię — wysyła {mode}"
   },
   "qoytxz": {
-    "message": "Ta funkcja jest domyślnie włączona i nie może być wyłączona"
+    "message": "Zawsze włączone — nie da się wyłączyć"
   },
   "hosegod": {
-    "message": "Prompts"
+    "message": "Prompty"
   },
   "hobsidbg": {
-    "message": "Zapisz prompty, aby szybko z nich korzystać. Po włączeniu, przycisk promptu zostanie wyświetlony po lewej stronie okna czatu."
+    "message": "Miej swoje prompty pod ręką i wysyłaj je jednym kliknięciem"
   },
   "biwhckdj": {
-    "message": "Lista promptów"
+    "message": "Twoje prompty"
   },
   "byaskjndg": {
-    "message": "Dodaj prompt"
+    "message": "Nowy"
   },
   "hsksuywm": {
     "message": "Edytuj prompt"
   },
   "hsuywkw": {
-    "message": "Nazwa promptu"
+    "message": "Nazwa"
   },
   "hsuywkwPlaceholder": {
-    "message": "Wprowadź nazwę promptu"
+    "message": "Nazwij ten prompt"
   },
   "promptContent": {
     "message": "Treść"
   },
   "uwkjwjw": {
-    "message": "Wprowadź treść promptu"
+    "message": "Wklej tutaj swój prompt"
   },
   "hsiwhwl": {
     "message": "Brak promptów"
@@ -294,13 +294,13 @@
     "message": "Prompt dodany"
   },
   "hwkwbhwk": {
-    "message": "Prompt zaktualizowany"
+    "message": "Prompt zapisany"
   },
   "qrtypd": {
     "message": "Prompt usunięty"
   },
   "dcnfmq": {
-    "message": "Czy na pewno chcesz usunąć ten prompt?"
+    "message": "Usunąć ten prompt?"
   },
   "svkbtn": {
     "message": "Zapisz"
@@ -312,13 +312,13 @@
     "message": "Odpięty"
   },
   "addkbt": {
-    "message": "Dodaj"
+    "message": "Nowy"
   },
   "ptfmsl": {
-    "message": "Dotyczy"
+    "message": "Działa na"
   },
   "allptfm": {
-    "message": "Wszystkie platformy AI"
+    "message": "Wszystkie platformy"
   },
   "febhyejd": {
     "message": "Prześlij opinię online"
@@ -327,7 +327,7 @@
     "message": "Uruchamianie kodu"
   },
   "runnerSettingsTitle": {
-    "message": "Obsługiwane języki"
+    "message": "Języki"
   },
   "runnerSettingsHint": {
     "message": "Po włączeniu na blokach kodu pojawi się przycisk Run do bezpośredniego uruchamiania kodu"
@@ -348,34 +348,34 @@
     "message": "Jasny"
   },
   "dataSyncTabName": {
-    "message": "Synchronizacja danych"
+    "message": "Kopie i przywracanie"
   },
   "formulaFormatTitle": {
-    "message": "Wybierz format kopiowania"
+    "message": "Format kopiowania"
   },
   "importSuccess": {
-    "message": "Import zakończony pomyślnie"
+    "message": "Zaimportowano"
   },
   "importSuccessHint": {
-    "message": "Dane zostały pomyślnie zaimportowane. Odśwież stronę, aby zastosować"
+    "message": "Zaimportowano — odśwież stronę, aby zobaczyć"
   },
   "importFailed": {
     "message": "Import nie powiódł się"
   },
   "refreshPage": {
-    "message": "Odśwież stronę"
+    "message": "Odśwież teraz"
   },
   "refreshLater": {
-    "message": "Odśwież później"
+    "message": "Później"
   },
   "quickAsk": {
     "message": "Dopytaj"
   },
   "highlightToggleTitle": {
-    "message": "Włącz wyróżnianie tekstu"
+    "message": "Włącz wyróżnianie"
   },
   "highlightToggleHint": {
-    "message": "Po włączeniu możesz wyróżniać zaznaczony tekst na stronach"
+    "message": "Zaznacz dowolny tekst, aby wyróżnić go kolorem"
   },
   "highlightColorTitle": {
     "message": "Kolor wyróżnienia"
@@ -393,19 +393,19 @@
     "message": "Anuluj"
   },
   "scrollToBottomTitle": {
-    "message": "Na dół"
+    "message": "Na sam dół"
   },
   "scrollToBottomHint": {
-    "message": "Pokaż przycisk szybkiego przejścia do najnowszej wiadomości"
+    "message": "Dodaje przycisk przechodzenia do najnowszej wiadomości"
   },
   "pleaseWait": {
-    "message": "Proszę czekać, ładowanie ID węzła..."
+    "message": "Chwila, ładowanie…"
   },
   "chatTimeLabelTitle": {
-    "message": "Pokaż czas czatu"
+    "message": "Pokaż godziny"
   },
   "chatTimeLabelHint": {
-    "message": "Wyświetl czas wysłania przy każdej wiadomości, przejrzyście jak historia czatu"
+    "message": "Pokazuje, kiedy wysłano każdą wiadomość"
   },
   "exportTitle": {
     "message": "Ręczna synchronizacja"
@@ -441,28 +441,28 @@
     "message": "Przewiń, aby powiększyć · Przeciągnij, aby przesunąć · ESC, aby zamknąć"
   },
   "notepadToggleHint": {
-    "message": "Show notepad entry at the bottom of the timeline for quick notes"
+    "message": "Dodaje skrót do notatek na dole osi czasu"
   },
   "notepadTitle": {
-    "message": "Flash Notes"
+    "message": "Szybkie notatki"
   },
   "notepadPlaceholder": {
-    "message": "Just write what comes to mind…"
+    "message": "Pisz wszystko, co przyjdzie Ci do głowy…"
   },
   "notepadClose": {
     "message": "Close"
   },
   "notepadAllNotes": {
-    "message": "All Notes"
+    "message": "Wszystkie notatki"
   },
   "notepadNewNote": {
-    "message": "New Note"
+    "message": "Nowa notatka"
   },
   "notepadConfirmDeleteTitle": {
-    "message": "Confirm Delete"
+    "message": "Usuń notatkę"
   },
   "notepadConfirmDeleteContent": {
-    "message": "This cannot be undone. Are you sure?"
+    "message": "Nie można tego cofnąć. Usunąć?"
   },
   "notepadUntitled": {
     "message": "Untitled"
@@ -477,49 +477,49 @@
     "message": "Typ kopiowania formuły"
   },
   "formulaCopyMathML": {
-    "message": "Kopiuj formułę MathML"
+    "message": "Kopiuj jako MathML"
   },
   "formulaCopyGeneric": {
     "message": "Kopiuj formułę"
   },
   "formulaLatexTitle": {
-    "message": "Kopiuj formułę LaTeX"
+    "message": "LaTeX"
   },
   "formulaLatexHint": {
-    "message": "Kliknij formułę, aby skopiować ją w formacie LaTeX"
+    "message": "Kliknij formułę, aby skopiować ją jako LaTeX"
   },
   "formulaMathMLTitle": {
-    "message": "Kopiuj formułę MathML"
+    "message": "MathML"
   },
   "formulaMathMLHint": {
-    "message": "Kliknij formułę, aby skopiować ją w formacie MathML, można wkleić bezpośrednio do Worda"
+    "message": "Skopiuj kliknięciem i wklej prosto do Worda"
   },
   "aboutTabName": {
-    "message": "O wtyczce"
-  },
-  "aboutPluginTitle": {
     "message": "O rozszerzeniu"
   },
+  "aboutPluginTitle": {
+    "message": "Co to jest"
+  },
   "aboutPluginContent": {
-    "message": "ChatLine to rozszerzenie przeglądarki do stron czatu AI. Powstało jako fork open-source projektu Timeline i skupia się na nawigacji po osi czasu, odnajdywaniu miejsc w historii, wygodniejszym przeglądaniu rozmów oraz archiwizacji danych rozmów. Obsługuje wiele wiodących platform czatu AI."
+    "message": "ChatLine dodaje do stron czatu AI oś czasu, zapisane rozmowy, eksport i uruchamianie kodu. To fork open-source projektu Timeline; działa z ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, NotebookLM i innymi."
   },
   "aboutDataSecurityTitle": {
-    "message": "Bezpieczeństwo danych"
+    "message": "Twoje dane"
   },
   "aboutDataSecurityContent": {
-    "message": "Wszystkie Twoje dane są przechowywane lokalnie w przeglądarce lub na Twoim Google Drive. Rozszerzenie nie zbiera, nie przesyła ani nie udostępnia żadnych treści rozmów ani danych osobowych. Projekt jest open-source na GitHubie, a kod jest dostępny do przeglądu w każdej chwili."
+    "message": "Twoje dane zostają w przeglądarce lub na Twoim Google Drive. Rozszerzenie nigdy nie zbiera, nie przesyła ani nie udostępnia Twoich rozmów ani danych osobowych. Kod jest open-source na GitHubie i można go przejrzeć w każdej chwili."
   },
   "aboutDeveloperTitle": {
-    "message": "Feedback"
+    "message": "Opinie"
   },
   "aboutDeveloperContent": {
-    "message": "ChatLine jest utrzymywany jako fork ai-chat-timeline. Aby zgłosić funkcję lub błąd, użyj strony Issues w repozytorium tego projektu."
+    "message": "ChatLine jest rozwijany jako fork ai-chat-timeline. Aby zaproponować funkcję lub zgłosić błąd, otwórz issue w repozytorium projektu."
   },
   "aboutShareTitle": {
     "message": "Poleć znajomym"
   },
   "aboutShareContent": {
-    "message": "Jeśli ChatLine jest pomocny, poleć go osobom, które często czytają, odnajdują i archiwizują rozmowy AI. Autor: 咪咕看见小黑. E-mail: miguchn@gmail.com. Jeśli podczas używania pojawią się problemy lub masz sugestie ulepszeń, możesz w każdej chwili przesłać opinię e-mailem."
+    "message": "Jeśli ChatLine Ci pomaga, poleć go każdemu, kto spędza czas w czatach AI. Autor: 咪咕看见小黑 · miguchn@gmail.com — pytania i sugestie mile widziane w każdej chwili."
   },
   "nativeMenuStarToFolder": {
     "message": "Star to Folder"
@@ -528,7 +528,7 @@
     "message": "Already starred"
   },
   "nativeMenuStarSuccess": {
-    "message": "Starred successfully"
+    "message": "Zapisano"
   },
   "animViewMore": {
     "message": "Zmień zwierzaka"
@@ -537,28 +537,28 @@
     "message": "Przeniesiono"
   },
   "starredHelpDesc": {
-    "message": "Folders help you organize conversations and stay clutter-free."
+    "message": "Pogrupuj rozmowy w foldery i przestań szukać ręcznie"
   },
   "starredHelpTipsTitle": {
-    "message": "Quick tips:"
+    "message": "Jak to działa"
   },
   "starredHelpTip1": {
-    "message": "Drag conversations into a folder."
+    "message": "Przeciągnij rozmowę do folderu"
   },
   "starredHelpTip2": {
-    "message": "Drag items within a folder to reorder."
+    "message": "Przeciągaj, aby zmienić kolejność w folderze"
   },
   "starredHelpTip3": {
-    "message": "Drag subfolders to reorder."
+    "message": "Podfoldery też można przeciągać"
   },
   "starredHelpTip4": {
-    "message": "Double-click a folder or item to edit."
+    "message": "Kliknij dwa razy, aby zmienić nazwę"
   },
   "folderMoveHasChildren": {
-    "message": "Has subfolders, cannot nest further"
+    "message": "Ma już podfoldery — nie można zagnieździć"
   },
   "folderMoveMaxDepth": {
-    "message": "Maximum folder depth reached"
+    "message": "To maksymalna głębokość folderów"
   },
   "guideSubtitle": {
     "message": "AI conversation enhancement extension"
@@ -579,34 +579,34 @@
     "message": "Supported Platforms"
   },
   "highlightStyleTitle": {
-    "message": "Styl podświetlenia"
+    "message": "Styl"
   },
   "highlightStyleFullCover": {
-    "message": "Pełne pokrycie"
+    "message": "Cały blok"
   },
   "highlightStyleFullCoverDesc": {
-    "message": "Podświetlenie pokrywa cały tekst"
+    "message": "Kolor pokrywa całą linię"
   },
   "highlightStyleHalfCover": {
-    "message": "Połowa"
+    "message": "Pół bloku"
   },
   "highlightStyleHalfCoverDesc": {
-    "message": "Podświetlenie pokrywa dolną połowę tekstu"
+    "message": "Kolor pokrywa dolną połowę"
   },
   "highlightStyleUnderline": {
     "message": "Podkreślenie"
   },
   "highlightStyleUnderlineDesc": {
-    "message": "Podświetlenie pod tekstem"
+    "message": "Kolorowa linia pod tekstem"
   },
   "highlightStyleTextOnly": {
-    "message": "Tylko tekst"
+    "message": "Kolor tekstu"
   },
   "highlightStyleTextOnlyDesc": {
-    "message": "Bez tła, tylko kolor tekstu"
+    "message": "Bez tła — zmienia tylko kolor tekstu"
   },
   "highlightMyColors": {
-    "message": "Kolory podświetlenia"
+    "message": "Twoje kolory"
   },
   "highlightColorPlaceholder": {
     "message": "#FF5733"
@@ -615,22 +615,22 @@
     "message": "Maksymalnie 15 kolorów"
   },
   "highlightDeleteColorConfirm": {
-    "message": "Usunąć kolor {color}?"
+    "message": "Usunąć {color}?"
   },
   "highlightAddColorTitle": {
     "message": "Dodaj kolor"
   },
   "highlightAddColorBtn": {
-    "message": "Kolor"
+    "message": "Dodaj kolor"
   },
   "highlightInvalidHex": {
-    "message": "Nieprawidłowy format koloru"
+    "message": "To nie jest poprawny kod — spróbuj #FF5733"
   },
   "highlightColorExists": {
-    "message": "Kolor już istnieje"
+    "message": "Masz już ten kolor"
   },
   "highlightColorHint": {
-    "message": "Wprowadź 6-cyfrowy kod koloru hex, np. #FF5733"
+    "message": "Wpisz kod koloru, np. #FF5733"
   },
   "highlightAnnotationPlaceholder": {
     "message": "Myśli…"
@@ -675,22 +675,22 @@
     "message": "Pokaż oś czasu"
   },
   "starredDisplayLabel": {
-    "message": "Pokaż foldery"
+    "message": "Ulubione"
   },
   "promptBtnDisplayLabel": {
-    "message": "Pokaż przycisk promptów"
+    "message": "Przycisk promptów"
   },
   "promptBtnSwitch": {
-    "message": "Ustawienia"
+    "message": "Wybierz platformy"
   },
   "formulaFormatNone": {
-    "message": "Bez opakowania"
+    "message": "Zwykła formuła"
   },
   "gdriveUploadBtn": {
-    "message": "Prześlij do chmury"
+    "message": "Prześlij kopię zapasową"
   },
   "gdriveDownloadBtn": {
-    "message": "Pobierz z chmury"
+    "message": "Przywróć kopię zapasową"
   },
   "exportLabel": {
     "message": "Eksportuj"
@@ -699,7 +699,7 @@
     "message": "Importuj"
   },
   "gdriveUploading": {
-    "message": "Przesyłanie..."
+    "message": "Przesyłanie…"
   },
   "gdriveUploadSuccess": {
     "message": "Przesłano na Google Drive"
@@ -708,135 +708,234 @@
     "message": "Błąd przesyłania"
   },
   "gdriveDownloading": {
-    "message": "Pobieranie..."
+    "message": "Przywracanie…"
   },
   "gdriveDownloadFailed": {
-    "message": "Błąd pobierania"
+    "message": "Przywracanie nie powiodło się"
   },
   "gdriveNoBackup": {
-    "message": "Brak danych kopii zapasowej w chmurze"
+    "message": "Brak kopii w chmurze"
   },
   "gdriveDataInvalid": {
-    "message": "Nieprawidłowy format danych w chmurze"
+    "message": "Nie da się odczytać tej kopii z chmury"
   },
   "gdriveMergeSuccess": {
-    "message": "Dane z chmury połączone"
+    "message": "Przywrócono i scalono"
   },
   "gdriveMergeHint": {
-    "message": "Dane pobrane i połączone z Google Drive. Odśwież stronę, aby zastosować."
+    "message": "Przywrócono — odśwież stronę, aby zobaczyć"
   },
   "chatWidthTitle": {
-    "message": "Szerokość czatu"
+    "message": "Szerokość strony"
   },
   "chatWidthHint": {
-    "message": "Poszerz obszar konwersacji, aby lepiej wykorzystać ekran"
+    "message": "Poszerz czat, aby ekran nie był w połowie pusty"
   },
   "chatWidthAdjust": {
-    "message": "Dostosuj"
+    "message": "Przeciągnij, aby dostosować"
   },
   "chatWidthCurrent": {
-    "message": "Bieżąca szerokość"
+    "message": "Teraz"
   },
   "chatWidthNormal": {
-    "message": "Normalna"
+    "message": "Domyślna"
   },
   "chatWidthConfirm": {
-    "message": "OK"
+    "message": "Zapisz"
   },
   "mirrorSiteTabName": {
-    "message": "Strony lustrzane"
+    "message": "Inne strony"
   },
   "mirrorSiteHint": {
-    "message": "Dodaj domeny lustrzanych stron AI. Na tych stronach pojawi się pływający przycisk umożliwiający korzystanie z niektórych funkcji tego rozszerzenia."
+    "message": "Dodaj strony AI, których używasz — rozszerzenie będzie działać też tam"
   },
   "mirrorSiteAddDomain": {
-    "message": "Dodaj"
+    "message": "Dodaj stronę"
   },
   "mirrorSiteInputPlaceholder": {
-    "message": "Wpisz domenę, np. chat.example.com"
+    "message": "Wpisz stronę, np. chat.example.com"
   },
   "mirrorSiteDomainListTitle": {
-    "message": "Dodane domeny"
+    "message": "Dodane"
   },
   "mirrorSiteNoDomains": {
-    "message": "Brak dodanych domen"
+    "message": "Nic jeszcze nie dodano"
   },
   "mirrorSiteDomainAdded": {
-    "message": "Domena dodana"
+    "message": "Strona dodana"
   },
   "mirrorSiteDomainRemoved": {
-    "message": "Domena usunięta"
+    "message": "Strona usunięta"
   },
   "mirrorSiteDomainExists": {
-    "message": "Domena już istnieje"
+    "message": "Ta strona jest już na liście"
   },
   "mirrorSiteDomainInvalid": {
-    "message": "Nieprawidłowy format domeny"
+    "message": "To nie wygląda na poprawny adres strony"
   },
   "mirrorSiteDomainIsOfficial": {
-    "message": "Ta domena jest już oficjalnie wspieraną platformą"
+    "message": "Już obsługiwana — nie trzeba dodawać"
   },
   "mirrorSiteCopied": {
-    "message": "Skopiowano do schowka"
+    "message": "Skopiowano"
   },
   "hideStarredFromListLabel": {
-    "message": "Tryb deduplikacji"
+    "message": "Ukryj duplikaty"
   },
   "hideStarredFromListHint": {
-    "message": "Po włączeniu rozmowy dodane do folderów zostaną ukryte z paska bocznego"
+    "message": "Zapisane rozmowy znikają z oryginalnej listy"
   },
   "timelineAICompleteNotLatestToast": {
-    "message": "Odpowiedź $1 została zakończona."
+    "message": "$1 zakończył odpowiadanie"
   },
   "timelineAICompleteToastTitle": {
-    "message": "Przypomnienie o zakończeniu odpowiedzi"
+    "message": "Alert o końcu odpowiedzi"
   },
   "timelineAICompleteToastHint": {
-    "message": "Pokaż przypomnienie, gdy odpowiedź AI się zakończy, a Ty nie jesteś w najnowszym miejscu"
+    "message": "Daje znać, gdy odpowiedź jest gotowa, a Ty jesteś w innym miejscu"
   },
   "timelineThemeColorLabel": {
-    "message": "Kolor motywu osi czasu"
+    "message": "Kolor osi czasu"
   },
   "timelineThemeColorHint": {
-    "message": "Ustaw kolor motywu aktywnego znacznika osi czasu dla każdej platformy"
+    "message": "Wybierz kolor wyróżnienia dla każdej platformy"
   },
   "timelineThemeColorManageButton": {
-    "message": "Ustaw"
+    "message": "Wybierz"
   },
   "changelogShareTip": {
     "message": "Jeśli to rozszerzenie jest dla Ciebie przydatne, udostępnij je osobom, którym może się przydać."
   },
   "longConversationPerformanceTitle": {
-    "message": "Long Conversation Optimization"
+    "message": "Autoskładanie"
   },
   "longConversationPerformanceHint": {
-    "message": "Automatically fold older messages after the set limit."
+    "message": "Składa starsze wiadomości — nic nie ginie, kliknij, aby je przeczytać"
   },
   "longConversationThresholdLabel": {
-    "message": "After"
+    "message": "Po"
   },
   "longConversationMessageUnit": {
-    "message": "messages"
+    "message": "wiadomościach"
   },
   "longConversationKeepRecentLabel": {
-    "message": "Keep recent"
+    "message": "Pokaż ostatnie"
   },
   "longConversationKeepRecentUnit": {
-    "message": "messages visible"
+    "message": "na widoku"
   },
   "longConversationValidationKeepRecent": {
-    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+    "message": "Liczba widocznych wiadomości musi być mniejsza — ustawienie dostosowane automatycznie"
   },
   "longConversationExpandMore": {
-    "message": "Expand more history"
+    "message": "Pokaż wcześniejsze wiadomości"
   },
   "longConversationCollapsedTooltip": {
-    "message": "$1 older messages above are folded. Click to expand more."
+    "message": "$1 wcześniejszych wiadomości złożonych — kliknij, aby pokazać"
   },
   "highlightSettings": {
     "message": "Ustawienia"
   },
   "highlightConfirm": {
     "message": "Potwierdź"
+  },
+  "settingsGroupCore": {
+    "message": "Podstawy"
+  },
+  "settingsGroupAdvanced": {
+    "message": "Więcej"
+  },
+  "settingsGroupExperimental": {
+    "message": "Rozrywka"
+  },
+  "settingsGroupBackup": {
+    "message": "Twoje dane"
+  },
+  "settingsGroupAbout": {
+    "message": "O rozszerzeniu"
+  },
+  "conversationExportTabName": {
+    "message": "Eksport czatów"
+  },
+  "highlightTabName": {
+    "message": "Wyróżnianie"
+  },
+  "conversationExportToggleTitle": {
+    "message": "Włącz eksport"
+  },
+  "conversationExportToggleHint": {
+    "message": "Dodaje przycisk eksportu nad osią czasu"
+  },
+  "formulaSettingsLabel": {
+    "message": "Ustawienia formuł"
+  },
+  "quickAskTitle": {
+    "message": "Dopytaj"
+  },
+  "quickAskHint": {
+    "message": "Zaznacz tekst, kliknij Dopytaj, a tekst trafi do pola wpisu"
+  },
+  "smartEnterModeDoubleEnter": {
+    "message": "Dwukrotne Enter"
+  },
+  "smartEnterToastCtrlEnter": {
+    "message": "Enter: nowa linia · {ctrl}+Enter: wysłanie"
+  },
+  "smartEnterToastShiftEnter": {
+    "message": "Enter: nowa linia · Shift+Enter: wysłanie"
+  },
+  "runnerAdvancedHint": {
+    "message": "Włączenie może nieco spowolnić stronę"
+  },
+  "runnerHint": {
+    "message": "Pisz tu kod i uruchamiaj go — async/await działa"
+  },
+  "runnerCodeEditor": {
+    "message": "Kod"
+  },
+  "runnerOutput": {
+    "message": "Wynik"
+  },
+  "runnerTabTitle": {
+    "message": "Uruchamianie kodu"
+  },
+  "animLightweightHint": {
+    "message": "Domyślnie wyłączone — wybierz zwierzaka, a pojawi się, gdy AI odpowiada"
+  },
+  "localBackupTitle": {
+    "message": "Zapisz na komputerze (zalecane)"
+  },
+  "localBackupHint": {
+    "message": "Bez konta — wyeksportuj plik i przechowuj go bezpiecznie"
+  },
+  "exportBtn": {
+    "message": "Eksportuj kopię zapasową"
+  },
+  "importBtn": {
+    "message": "Wybierz plik"
+  },
+  "importModeMergeDesc": {
+    "message": "Zachowuje obecne dane i dodaje resztę"
+  },
+  "importModeOverwrite": {
+    "message": "Zastąp"
+  },
+  "importModeOverwriteDesc": {
+    "message": "Czyści obecne dane i używa pliku zamiast nich"
+  },
+  "gdriveAdvancedTitle": {
+    "message": "Kopia w Google Drive (opcjonalnie)"
+  },
+  "gdriveOptionalHint": {
+    "message": "Pyta o dostęp do Google tylko przy pierwszym użyciu"
+  },
+  "gdrivePermissionDeclined": {
+    "message": "Nie przyznano dostępu do Google"
+  },
+  "exportingData": {
+    "message": "Eksportowanie…"
+  },
+  "importingData": {
+    "message": "Importowanie…"
   }
 }

@@ -18,22 +18,22 @@
     "message": "取消收藏"
   },
   "vnkxpm": {
-    "message": "文件夹"
+    "message": "收藏夹"
   },
   "kxpmzv": {
-    "message": "收藏成功"
+    "message": "已收藏"
   },
   "pzmvkx": {
     "message": "已取消收藏"
   },
   "jwvnkp": {
-    "message": "暂无数据"
+    "message": "没有找到"
   },
   "mvkxpz": {
     "message": "复制"
   },
   "xpzmvk": {
-    "message": "复制成功"
+    "message": "已复制"
   },
   "vkpxzm": {
     "message": "编辑"
@@ -51,10 +51,10 @@
     "message": "确定"
   },
   "mzpxvk": {
-    "message": "主题不能为空"
+    "message": "标题不能空着"
   },
   "folderRequired": {
-    "message": "请选择一个文件夹"
+    "message": "先选一个文件夹"
   },
   "defaultFolder": {
     "message": "默认文件夹"
@@ -66,10 +66,10 @@
     "message": "取消置顶"
   },
   "searchPrompt": {
-    "message": "搜索提示词..."
+    "message": "搜索提示词"
   },
   "sidebarStarredHint": {
-    "message": "启用后，在侧边栏中显示文件夹"
+    "message": "在网站侧边栏显示你的收藏夹"
   },
   "sidebarStarredManage": {
     "message": "设置"
@@ -81,7 +81,7 @@
     "message": "标记重点"
   },
   "unpinAction": {
-    "message": "取消标记重点"
+    "message": "取消标记"
   },
   "starAction": {
     "message": "收藏到文件夹"
@@ -90,10 +90,10 @@
     "message": "取消收藏"
   },
   "questionListTitle": {
-    "message": "提问列表"
+    "message": "我的提问"
   },
   "questionListEmpty": {
-    "message": "暂无提问"
+    "message": "还没有提问"
   },
   "animTabTitle": {
     "message": "电子宠物"
@@ -102,7 +102,7 @@
     "message": "显示在对话框上方，AI 回复时小动物会欢快走动。"
   },
   "animLightweightHint": {
-    "message": "默认关闭。选择一种宠物后会在 AI 回复时显示，再次关闭即可停用。"
+    "message": "默认关闭，选一只就会出来"
   },
   "animSnail": {
     "message": "蜗牛爬行"
@@ -126,7 +126,7 @@
     "message": "小熊猫漫步"
   },
   "animTabEmpty": {
-    "message": "暂无可用动画"
+    "message": "还没有宠物"
   },
   "animGrowHint": {
     "message": "再发 {n} 条消息解锁"
@@ -135,7 +135,7 @@
     "message": "重命名"
   },
   "pzmkvx": {
-    "message": "内容不能为空"
+    "message": "内容不能空着"
   },
   "vxpzmk": {
     "message": "已开源"
@@ -168,31 +168,31 @@
     "message": "在「{folderName}」下新建子文件夹"
   },
   "vzkpmx": {
-    "message": "请输入文件夹名称"
+    "message": "给文件夹起个名"
   },
   "kmxpvz": {
-    "message": "文件夹名称不能为空"
+    "message": "名字不能空着"
   },
   "pxmzvk": {
-    "message": "编辑文件夹"
+    "message": "改名字"
   },
   "mvzxkp": {
-    "message": "请输入新名称"
+    "message": "输入新名字"
   },
   "kpvzmx": {
-    "message": "文件夹名称已存在"
+    "message": "已经有这个名字了"
   },
   "xzvkpm": {
-    "message": "创建成功"
+    "message": "已创建"
   },
   "vmkxpz": {
-    "message": "更新成功"
+    "message": "已保存"
   },
   "zpxmkv": {
-    "message": "文件夹不存在"
+    "message": "找不到这个文件夹"
   },
   "kvpzmx": {
-    "message": "文件夹已删除"
+    "message": "已删除"
   },
   "mxkvzp": {
     "message": "删除失败"
@@ -204,10 +204,10 @@
     "message": "移动到"
   },
   "wjxnkp": {
-    "message": "其中的 {count} 个收藏项也将一并删除。"
+    "message": "里面的 {count} 条收藏也会一起删掉"
   },
   "qzmvkx": {
-    "message": "确定要删除文件夹「{folderName}」吗？"
+    "message": "删除「{folderName}」？"
   },
   "mvkzpx": {
     "message": "搜索..."
@@ -225,25 +225,25 @@
     "message": "时间轴"
   },
   "mzkvxp": {
-    "message": "启用后，在 AI 对话页面的右侧显示时间轴"
+    "message": "右侧显示时间轴，随时跳到某条对话"
   },
   "vkpmzx": {
-    "message": "键盘 ↑ / ↓ 键跳转对话节点"
+    "message": "上下键跳转"
   },
   "xpvmkz": {
-    "message": "启用后，使用键盘 ↑ / ↓ 键，在对话节点间快速跳转。"
+    "message": "按 ↑ ↓ 键，直接跳到上一条或下一条"
   },
   "pxmzkv": {
-    "message": "标记重点对话"
+    "message": "标记重点"
   },
   "kzxvpm": {
-    "message": "长按时间轴上的对话节点，即可标记重点。"
+    "message": "长按时间轴上的点，标记这条对话"
   },
   "xmvkpz": {
     "message": "输入框"
   },
   "kvzmxp": {
-    "message": "换行与发送消息"
+    "message": "换行与发送"
   },
   "kpxvmz": {
     "message": "复制公式"
@@ -255,28 +255,28 @@
     "message": "启用后，自动识别页面上的公式，点击即可复制为 LaTeX 格式。"
   },
   "mkvzpx": {
-    "message": "支持的平台"
+    "message": "适用平台"
   },
   "promptBtnDisplayLabel": {
-    "message": "显示提示词按钮"
+    "message": "提示词按钮"
   },
   "timelineDisplayLabel": {
     "message": "显示时间轴"
   },
   "starredDisplayLabel": {
-    "message": "显示文件夹"
+    "message": "显示在侧边栏"
   },
   "promptBtnSwitch": {
-    "message": "开关"
+    "message": "选平台"
   },
   "vxmkpz": {
-    "message": "Enter键：单击换行，双击发送消息"
+    "message": "Enter 换行，双击发送"
   },
   "mkpxvz": {
-    "message": "启用后，在 AI 对话输入框中，可通过 Enter 键换行，{mode} 发送消息。"
+    "message": "Enter 只换行，{mode} 才发送"
   },
   "smartEnterModeDoubleEnter": {
-    "message": "快速双击 Enter"
+    "message": "双击 Enter"
   },
   "smartEnterModeDoubleEnterDesc": {
     "message": "单击 Enter 换行，快速双击 Enter 发送消息"
@@ -294,55 +294,55 @@
     "message": "Enter 换行，Shift + Enter 发送消息"
   },
   "smartEnterToastCtrlEnter": {
-    "message": "Enter键：直接换行，{ctrl}+Enter 发送"
+    "message": "Enter 换行，{ctrl}+Enter 发送"
   },
   "smartEnterToastShiftEnter": {
-    "message": "Enter键：直接换行，Shift+Enter 发送"
+    "message": "Enter 换行，Shift+Enter 发送"
   },
   "qoytxz": {
-    "message": "此功能默认开启，无法关闭"
+    "message": "这项一直开着，不能关"
   },
   "hosegod": {
     "message": "提示词"
   },
   "hobsidbg": {
-    "message": "把常用提示词保存起来，需要时快速调用。启用后，在对话框左侧显示提示词按钮。"
+    "message": "存好常用提示词，点一下就发出去"
   },
   "biwhckdj": {
-    "message": "提示词列表"
+    "message": "提示词库"
   },
   "byaskjndg": {
-    "message": "添加提示词"
+    "message": "新建提示词"
   },
   "hsksuywm": {
     "message": "编辑提示词"
   },
   "hsuywkw": {
-    "message": "提示词名称"
+    "message": "名称"
   },
   "hsuywkwPlaceholder": {
-    "message": "输入提示词名称"
+    "message": "给它起个名"
   },
   "promptContent": {
     "message": "内容"
   },
   "uwkjwjw": {
-    "message": "输入提示词内容"
+    "message": "把提示词粘进来"
   },
   "hsiwhwl": {
-    "message": "暂无提示词"
+    "message": "还没有提示词"
   },
   "shwsuwk": {
-    "message": "提示词已添加"
+    "message": "已添加"
   },
   "hwkwbhwk": {
-    "message": "提示词已更新"
+    "message": "已保存"
   },
   "qrtypd": {
-    "message": "提示词已删除"
+    "message": "已删除"
   },
   "dcnfmq": {
-    "message": "确定删除这个提示词吗？"
+    "message": "删除这条提示词？"
   },
   "svkbtn": {
     "message": "保存"
@@ -363,19 +363,19 @@
     "message": "置顶"
   },
   "addkbt": {
-    "message": "添加"
+    "message": "新建"
   },
   "ptfmsl": {
-    "message": "适用于"
+    "message": "适用平台"
   },
   "allptfm": {
-    "message": "全部AI平台"
+    "message": "全部平台"
   },
   "febhyejd": {
     "message": "在线提交反馈"
   },
   "runnerTabTitle": {
-    "message": "代码运行器"
+    "message": "代码运行"
   },
   "runnerExecute": {
     "message": "运行"
@@ -384,25 +384,25 @@
     "message": "清空"
   },
   "runnerCodeEditor": {
-    "message": "代码编辑器"
+    "message": "代码"
   },
   "runnerOutput": {
-    "message": "输出"
+    "message": "结果"
   },
   "runnerHint": {
-    "message": "在这里输入代码，支持 async/await"
+    "message": "在这里写代码，支持 async/await"
   },
   "runnerTabName": {
     "message": "代码运行"
   },
   "runnerSettingsTitle": {
-    "message": "支持的编程语言"
+    "message": "支持的语言"
   },
   "runnerSettingsHint": {
     "message": "开启后，代码块右上角将显示 Run 按钮，点击可直接运行代码"
   },
   "runnerAdvancedHint": {
-    "message": "高级功能，仅在主动开启后加载，可能增加页面资源占用。"
+    "message": "代码块会出现「运行」按钮，可能让页面稍慢"
   },
   "fiveStarReview": {
     "message": "觉得好用"
@@ -426,7 +426,7 @@
     "message": "确定要取消收藏吗？"
   },
   "formulaFormatTitle": {
-    "message": "选择复制格式"
+    "message": "复制成什么格式"
   },
   "formulaCopyTypeTitle": {
     "message": "复制公式类型"
@@ -438,39 +438,49 @@
     "message": "复制公式"
   },
   "formulaLatexTitle": {
-    "message": "复制 LaTeX 公式"
+    "message": "LaTeX"
   },
   "formulaLatexHint": {
-    "message": "点击公式复制为 LaTeX 格式"
+    "message": "点公式，复制成 LaTeX"
   },
   "formulaMathMLTitle": {
-    "message": "复制 MathML 公式"
+    "message": "MathML"
   },
   "formulaMathMLHint": {
-    "message": "点击公式复制为 MathML 格式，可直接粘贴到 Word"
+    "message": "点公式复制，直接粘进 Word"
   },
   "dataSyncTabName": {
-    "message": "数据同步"
+    "message": "备份恢复"
   },
-  "settingsGroupCore": { "message": "核心功能" },
-  "settingsGroupAdvanced": { "message": "高级功能" },
-  "settingsGroupExperimental": { "message": "实验功能" },
-  "settingsGroupBackup": { "message": "备份同步" },
-  "settingsGroupAbout": { "message": "关于" },
+  "settingsGroupCore": {
+    "message": "常用"
+  },
+  "settingsGroupAdvanced": {
+    "message": "进阶"
+  },
+  "settingsGroupExperimental": {
+    "message": "尝鲜"
+  },
+  "settingsGroupBackup": {
+    "message": "备份"
+  },
+  "settingsGroupAbout": {
+    "message": "关于"
+  },
   "localBackupTitle": {
-    "message": "本地 JSON 备份（推荐）"
+    "message": "存到电脑（推荐）"
   },
   "localBackupHint": {
-    "message": "无需账号与云端权限，通过 JSON 文件备份或恢复数据。"
+    "message": "不用登录，导出一个文件存着"
   },
   "gdriveAdvancedTitle": {
-    "message": "高级云端备份（可选）"
+    "message": "存到 Google Drive（可选）"
   },
   "gdriveOptionalHint": {
-    "message": "首次使用时才申请 Google 身份与 Drive API 权限；不用云备份则不会授权或初始化。"
+    "message": "只有用到云备份时才申请 Google 授权"
   },
   "gdrivePermissionDeclined": {
-    "message": "未授予云端备份权限"
+    "message": "没拿到 Google 授权"
   },
   "exportTitle": {
     "message": "手动同步"
@@ -479,7 +489,7 @@
     "message": "通过 JSON 文件手动备份或恢复数据，用于迁移到其他浏览器。"
   },
   "exportBtn": {
-    "message": "导出数据"
+    "message": "导出备份文件"
   },
   "importTitle": {
     "message": "导入数据"
@@ -488,91 +498,91 @@
     "message": "从 JSON 文件导入数据，支持覆盖或合并两种模式。"
   },
   "importBtn": {
-    "message": "选择文件导入"
+    "message": "选择文件"
   },
   "importModeMerge": {
     "message": "合并"
   },
   "importModeMergeDesc": {
-    "message": "保留现有数据，与导入数据合并"
+    "message": "现有数据留着，新数据加进来"
   },
   "importModeOverwrite": {
-    "message": "覆盖"
+    "message": "替换"
   },
   "importModeOverwriteDesc": {
-    "message": "清空现有数据，使用导入数据替换"
+    "message": "先清空，再用备份文件替换"
   },
   "exportingData": {
-    "message": "正在导出..."
+    "message": "正在导出…"
   },
   "exportSuccess": {
-    "message": "导出成功"
+    "message": "已导出"
   },
   "exportFailed": {
     "message": "导出失败"
   },
   "importingData": {
-    "message": "正在导入..."
+    "message": "正在导入…"
   },
   "importSuccess": {
-    "message": "导入成功"
+    "message": "已导入"
   },
   "importSuccessHint": {
-    "message": "数据已成功导入，需要刷新页面后生效"
+    "message": "导入好了，刷新页面就能用"
   },
   "importFailed": {
     "message": "导入失败"
   },
   "refreshPage": {
-    "message": "刷新页面"
+    "message": "现在刷新"
   },
   "refreshLater": {
-    "message": "稍后刷新"
+    "message": "稍后再说"
   },
   "quickAsk": {
     "message": "追问"
   },
   "highlightToggleTitle": {
-    "message": "启用文本高亮"
+    "message": "开启高亮"
   },
   "highlightToggleHint": {
-    "message": "开启后，选中网页文字时可进行高亮标注"
+    "message": "选中文字，就能划上颜色"
   },
   "highlightColorTitle": {
     "message": "标注颜色"
   },
   "highlightMark": {
-    "message": "文本高亮"
+    "message": "标注"
   },
   "highlightRemoveConfirm": {
     "message": "移除该标注？"
   },
   "highlightRemoveYes": {
-    "message": "移除"
+    "message": "删除"
   },
   "highlightRemoveNo": {
     "message": "取消"
   },
   "quickAskTitle": {
-    "message": "追问功能"
+    "message": "追问"
   },
   "quickAskHint": {
-    "message": "选中页面上的文字后，显示追问按钮，点击可快速引用到对话框中"
+    "message": "选中文字点「追问」，直接带进输入框"
   },
   "scrollToBottomTitle": {
-    "message": "返回底部"
+    "message": "回到底部"
   },
   "scrollToBottomHint": {
-    "message": "显示返回底部的快捷按钮，方便回到最新消息"
+    "message": "显示一个按钮，一键跳到最新消息"
   },
   "pleaseWait": {
-    "message": "请稍等，节点ID正在加载..."
+    "message": "稍等，正在加载…"
   },
   "chatTimeLabelTitle": {
-    "message": "显示对话时间"
+    "message": "显示时间"
   },
   "chatTimeLabelHint": {
-    "message": "在每条消息上显示发送时间，像聊天记录一样清晰"
+    "message": "每条消息旁标出发送时间"
   },
   "gdriveTitle": {
     "message": "Google Drive 云同步"
@@ -602,7 +612,7 @@
     "message": "滚轮缩放 · 拖拽平移 · ESC 退出"
   },
   "notepadToggleHint": {
-    "message": "在时间轴底部显示闪记入口，随手记录灵感"
+    "message": "在时间轴底部放一个记事入口"
   },
   "notepadTitle": {
     "message": "闪记"
@@ -614,16 +624,16 @@
     "message": "关闭"
   },
   "notepadAllNotes": {
-    "message": "全部笔记"
+    "message": "所有笔记"
   },
   "notepadNewNote": {
     "message": "新建笔记"
   },
   "notepadConfirmDeleteTitle": {
-    "message": "确认删除"
+    "message": "删除笔记"
   },
   "notepadConfirmDeleteContent": {
-    "message": "删除后将无法恢复，确定要继续吗？"
+    "message": "删了就找不回来了，确定？"
   },
   "notepadUntitled": {
     "message": "无标题"
@@ -632,34 +642,34 @@
     "message": "昨天"
   },
   "notepadSaveToFolder": {
-    "message": "保存到文件夹"
+    "message": "存到收藏夹"
   },
   "aboutTabName": {
-    "message": "关于插件"
+    "message": "关于"
   },
   "aboutPluginTitle": {
-    "message": "插件简介"
+    "message": "这是什么"
   },
   "aboutPluginContent": {
-    "message": "ChatLine 是一款面向 AI 对话页面的浏览器增强插件，基于开源项目 Timeline 二次开发，主要提供时间线导航、历史定位、对话浏览增强和对话数据归档能力。支持多个主流 AI 对话平台。"
+    "message": "ChatLine 给 AI 对话页面加上时间轴、收藏、导出和代码运行，基于开源项目 Timeline 二次开发，支持 ChatGPT、Gemini、DeepSeek、Kimi、千问、Claude、元宝、NotebookLM 等平台。"
   },
   "aboutDataSecurityTitle": {
-    "message": "数据安全"
+    "message": "你的数据"
   },
   "aboutDataSecurityContent": {
-    "message": "你的所有数据都存储在浏览器本地或你的 Google Drive 中，插件不会收集、上传或分享你的任何对话内容和个人信息，本项目已在 GitHub 开源，可随时审查代码。"
+    "message": "你的数据只存在浏览器本地或你自己的 Google Drive 里。插件不收集、不上传、不分享任何对话内容和个人信息。项目已在 GitHub 开源，代码随时可查。"
   },
   "aboutDeveloperTitle": {
-    "message": "提需求"
+    "message": "提意见"
   },
   "aboutDeveloperContent": {
-    "message": "ChatLine 作为 ai-chat-timeline 的二次开发版本维护。如果想提需求或反馈 bug，请通过当前项目仓库的 Issues 提交。"
+    "message": "ChatLine 是 ai-chat-timeline 的二次开发版本。想提需求或报 bug，请到项目仓库提 Issue。"
   },
   "aboutShareTitle": {
     "message": "推荐给朋友"
   },
   "aboutShareContent": {
-    "message": "如果 ChatLine 对你有帮助，欢迎推荐给经常阅读、定位和归档 AI 对话的朋友。作者：咪咕看见小黑。邮箱：miguchn@gmail.com。如在使用过程中遇到问题或有优化建议，可通过邮箱随时反馈。"
+    "message": "如果 ChatLine 帮到了你，欢迎推荐给常看 AI 对话的朋友。作者：咪咕看见小黑，邮箱 miguchn@gmail.com，有问题或建议随时来信。"
   },
   "nativeMenuStarToFolder": {
     "message": "收藏到文件夹"
@@ -668,7 +678,7 @@
     "message": "该对话已收藏"
   },
   "nativeMenuStarSuccess": {
-    "message": "收藏成功"
+    "message": "已收藏"
   },
   "animViewMore": {
     "message": "更换宠物"
@@ -677,28 +687,28 @@
     "message": "已移动"
   },
   "starredHelpDesc": {
-    "message": "文件夹，分类整理对话，告别杂乱无章。"
+    "message": "把对话分类收好，不用翻半天"
   },
   "starredHelpTipsTitle": {
-    "message": "使用小技巧："
+    "message": "怎么用"
   },
   "starredHelpTip1": {
-    "message": "拖动对话到文件夹。"
+    "message": "把对话拖进文件夹"
   },
   "starredHelpTip2": {
-    "message": "拖动文件夹中的对话调整位置。"
+    "message": "拖动就能排序"
   },
   "starredHelpTip3": {
-    "message": "拖动二级文件夹调整位置。"
+    "message": "子文件夹也能拖动排序"
   },
   "starredHelpTip4": {
-    "message": "双击文件夹或对话，快速编辑。"
+    "message": "双击就能改名"
   },
   "folderMoveHasChildren": {
-    "message": "含子文件夹，无法嵌套"
+    "message": "里面还有文件夹，不能再套"
   },
   "folderMoveMaxDepth": {
-    "message": "已达最大层级"
+    "message": "层级已经到顶了"
   },
   "guideSubtitle": {
     "message": "AI 对话增强插件"
@@ -719,34 +729,34 @@
     "message": "支持的平台"
   },
   "highlightStyleTitle": {
-    "message": "高亮样式"
+    "message": "样式"
   },
   "highlightStyleFullCover": {
-    "message": "全覆盖"
+    "message": "整块底色"
   },
   "highlightStyleFullCoverDesc": {
-    "message": "高亮区域完整罩住文字"
+    "message": "色块把整行文字包住"
   },
   "highlightStyleHalfCover": {
-    "message": "半覆盖"
+    "message": "半截底色"
   },
   "highlightStyleHalfCoverDesc": {
-    "message": "高亮区域在文字腰部以下"
+    "message": "色块盖住文字下半截"
   },
   "highlightStyleUnderline": {
     "message": "下划线"
   },
   "highlightStyleUnderlineDesc": {
-    "message": "高亮区域在文字下方"
+    "message": "文字下面一条色带"
   },
   "highlightStyleTextOnly": {
-    "message": "仅文字"
+    "message": "只变色"
   },
   "highlightStyleTextOnlyDesc": {
-    "message": "无背景高亮，仅文字变色"
+    "message": "没有底色，文字本身变色"
   },
   "highlightMyColors": {
-    "message": "高亮颜色"
+    "message": "我的颜色"
   },
   "highlightColorPlaceholder": {
     "message": "#FF5733"
@@ -755,22 +765,22 @@
     "message": "最多 15 个颜色"
   },
   "highlightDeleteColorConfirm": {
-    "message": "确定要删除颜色 {color} 吗？"
+    "message": "删除 {color}？"
   },
   "highlightAddColorTitle": {
     "message": "添加颜色"
   },
   "highlightAddColorBtn": {
-    "message": "颜色"
+    "message": "加颜色"
   },
   "highlightInvalidHex": {
-    "message": "无效的颜色格式"
+    "message": "色号不对，要像 #FF5733 这样"
   },
   "highlightColorExists": {
-    "message": "颜色已存在"
+    "message": "这个颜色已经有了"
   },
   "highlightColorHint": {
-    "message": "请输入 6 位十六进制颜色值，例如 #FF5733"
+    "message": "填色号，比如 #FF5733"
   },
   "highlightAnnotationPlaceholder": {
     "message": "想法…"
@@ -812,13 +822,13 @@
     "message": "邮件联系"
   },
   "formulaFormatNone": {
-    "message": "无特殊附加"
+    "message": "纯公式"
   },
   "gdriveUploadBtn": {
-    "message": "上传到云端"
+    "message": "上传备份"
   },
   "gdriveDownloadBtn": {
-    "message": "从云端下载"
+    "message": "恢复备份"
   },
   "exportLabel": {
     "message": "导出"
@@ -827,7 +837,7 @@
     "message": "导入"
   },
   "gdriveUploading": {
-    "message": "上传中..."
+    "message": "上传中…"
   },
   "gdriveUploadSuccess": {
     "message": "已上传到 Google Drive"
@@ -836,109 +846,109 @@
     "message": "上传失败"
   },
   "gdriveDownloading": {
-    "message": "下载中..."
+    "message": "恢复中…"
   },
   "gdriveDownloadFailed": {
-    "message": "下载失败"
+    "message": "恢复失败"
   },
   "gdriveNoBackup": {
-    "message": "云端暂无备份数据"
+    "message": "云端还没有备份"
   },
   "gdriveDataInvalid": {
-    "message": "云端数据格式无效"
+    "message": "云端备份读不出来"
   },
   "gdriveMergeSuccess": {
-    "message": "云端数据已合并"
+    "message": "已恢复并合并"
   },
   "gdriveMergeHint": {
-    "message": "数据已成功从 Google Drive 下载并合并，需要刷新页面后生效"
+    "message": "恢复好了，刷新页面就能用"
   },
   "chatWidthTitle": {
-    "message": "对话宽度"
+    "message": "页面宽度"
   },
   "chatWidthHint": {
-    "message": "调大对话区域宽度，充分利用屏幕空间"
+    "message": "让对话区变宽，别浪费大屏"
   },
   "chatWidthAdjust": {
-    "message": "调节"
+    "message": "拖动调整"
   },
   "chatWidthCurrent": {
     "message": "当前宽度"
   },
   "chatWidthNormal": {
-    "message": "正常"
+    "message": "默认"
   },
   "chatWidthConfirm": {
-    "message": "确定"
+    "message": "保存"
   },
   "mirrorSiteTabName": {
-    "message": "镜像站点"
+    "message": "其他网站"
   },
   "mirrorSiteHint": {
-    "message": "添加 AI 镜像站域名后，在这些网站上会出现浮窗按钮，可使用本插件的部分功能。"
+    "message": "加上你常用的 AI 网站，插件在那儿也能用"
   },
   "mirrorSiteAddDomain": {
-    "message": "添加"
+    "message": "添加网站"
   },
   "mirrorSiteInputPlaceholder": {
-    "message": "输入域名，如 chat.example.com"
+    "message": "填网址，比如 chat.example.com"
   },
   "mirrorSiteDomainListTitle": {
-    "message": "已添加的域名"
+    "message": "已添加的网站"
   },
   "mirrorSiteNoDomains": {
-    "message": "暂未添加任何域名"
+    "message": "还没添加"
   },
   "mirrorSiteDomainAdded": {
-    "message": "域名已添加"
+    "message": "已添加"
   },
   "mirrorSiteDomainRemoved": {
-    "message": "域名已移除"
+    "message": "已删除"
   },
   "mirrorSiteDomainExists": {
-    "message": "域名已存在"
+    "message": "这个网站已经加过了"
   },
   "mirrorSiteDomainInvalid": {
-    "message": "域名格式无效"
+    "message": "网址不对，检查一下"
   },
   "mirrorSiteDomainIsOfficial": {
-    "message": "该域名已是官方适配平台，无需添加"
+    "message": "这个网站本来就支持，不用加"
   },
   "mirrorSiteCopied": {
-    "message": "已复制到剪贴板"
+    "message": "已复制"
   },
   "hideStarredFromListLabel": {
-    "message": "去重模式"
+    "message": "不重复显示"
   },
   "hideStarredFromListHint": {
-    "message": "开启后，已加入文件夹的对话将从原版侧边栏列表中隐藏"
+    "message": "收藏过的对话，不再出现在原列表"
   },
   "timelineAICompleteNotLatestToast": {
-    "message": "$1 回复已完成"
+    "message": "$1 回答完了"
   },
   "timelineAICompleteToastTitle": {
-    "message": "回复完成提醒"
+    "message": "回复提醒"
   },
   "timelineAICompleteToastHint": {
-    "message": "AI 回复完成且当前不在最新位置时显示提醒"
+    "message": "AI 答完时，如果你没在看就提醒你"
   },
   "timelineThemeColorLabel": {
-    "message": "时间轴主题色"
+    "message": "时间轴颜色"
   },
   "timelineThemeColorHint": {
-    "message": "为不同平台设置时间轴激活节点的主题色"
+    "message": "给每个平台选一个高亮颜色"
   },
   "timelineThemeColorManageButton": {
-    "message": "设置"
+    "message": "选颜色"
   },
   "conversationExportTabName": {
-    "message": "对话导出"
+    "message": "导出对话"
   },
   "conversationExportToggleTitle": {
-    "message": "开启对话导出"
+    "message": "开启导出"
   },
   "conversationExportToggleHint": {
-    "message": "开启后，在支持的平台对话页时间轴上方显示导出入口。"
+    "message": "在时间轴上方出现导出按钮"
   },
   "conversationExportButton": {
     "message": "导出对话"
@@ -947,36 +957,42 @@
     "message": "如果您觉得这个插件还不错，也欢迎分享给身边有需要的人。"
   },
   "longConversationPerformanceTitle": {
-    "message": "长对话性能优化"
+    "message": "自动折叠"
   },
   "longConversationPerformanceHint": {
-    "message": "超过设定数量后，自动折叠较早的历史消息。"
+    "message": "只折叠不删除，点开就能看全文"
   },
   "longConversationThresholdLabel": {
     "message": "超过"
   },
   "longConversationMessageUnit": {
-    "message": "条消息后启用"
+    "message": "条就折叠"
   },
   "longConversationKeepRecentLabel": {
     "message": "保留最近"
   },
   "longConversationKeepRecentUnit": {
-    "message": "条消息不折叠"
+    "message": "条不折叠"
   },
   "longConversationValidationKeepRecent": {
-    "message": "保留数量需小于触发数量，已自动修正"
+    "message": "保留数要小于触发数，已帮你改好"
   },
   "longConversationExpandMore": {
-    "message": "展开更多历史消息"
+    "message": "展开更早的对话"
   },
   "longConversationCollapsedTooltip": {
-    "message": "上方 $1 条历史对话已折叠，点击展开更多"
+    "message": "上面还有 $1 条，点开看"
   },
   "highlightSettings": {
     "message": "设置"
   },
   "highlightConfirm": {
     "message": "确定"
+  },
+  "highlightTabName": {
+    "message": "划词高亮"
+  },
+  "formulaSettingsLabel": {
+    "message": "公式设置"
   }
 }

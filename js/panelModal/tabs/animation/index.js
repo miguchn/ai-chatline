@@ -6,7 +6,7 @@ class AnimationTab extends BaseTab {
     constructor() {
         super();
         this.id = 'animation';
-        this.name = chrome.i18n.getMessage('animTabTitle') || 'Digital Pet';
+        this.name = chrome.i18n.getMessage('animTabTitle') || 'Digital pet';
         this.icon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/>
             <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
@@ -29,7 +29,7 @@ class AnimationTab extends BaseTab {
 
         const desc = document.createElement('div');
         desc.className = 'anim-tab-desc';
-        desc.textContent = chrome.i18n.getMessage('animLightweightHint') || '默认关闭。选择一种宠物后，它会在 AI 回复时显示；再次关闭即可停用。';
+        desc.textContent = chrome.i18n.getMessage('animLightweightHint') || '默认关闭，选一只就会出来';
         container.appendChild(desc);
 
         const list = document.createElement('div');
@@ -71,7 +71,7 @@ class AnimationTab extends BaseTab {
         list.innerHTML = '';
 
         if (animations.length === 0) {
-            list.innerHTML = `<div class="anim-tab-empty">${chrome.i18n.getMessage('animTabEmpty') || 'No animations available'}</div>`;
+            list.innerHTML = `<div class="anim-tab-empty">${chrome.i18n.getMessage('animTabEmpty') || 'No pets yet'}</div>`;
             return;
         }
 

@@ -6,7 +6,7 @@ class AboutTab extends BaseTab {
     constructor() {
         super();
         this.id = 'about';
-        this.name = chrome.i18n.getMessage('aboutTabName') || '关于插件';
+        this.name = chrome.i18n.getMessage('aboutTabName') || '关于';
         this.icon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10"/>
             <line x1="12" y1="8" x2="12" y2="8" stroke-width="3" stroke-linecap="round"/>
@@ -27,8 +27,8 @@ class AboutTab extends BaseTab {
                     </svg>
                 </div>
                 <div class="about-section-body">
-                    <div class="about-section-title">${chrome.i18n.getMessage('aboutPluginTitle') || '插件简介'}</div>
-                    <div class="about-section-content">${chrome.i18n.getMessage('aboutPluginContent') || 'ChatLine 是一款面向 AI 对话页面的浏览器增强插件，基于开源项目 Timeline 二次开发，主要提供时间线导航、历史定位、对话浏览增强和对话数据归档能力。支持 ChatGPT、Gemini、DeepSeek、Kimi、千问、Claude、元宝、NotebookLM 等主流 AI 对话平台。'}</div>
+                    <div class="about-section-title">${chrome.i18n.getMessage('aboutPluginTitle') || '这是什么'}</div>
+                    <div class="about-section-content">${chrome.i18n.getMessage('aboutPluginContent') || 'ChatLine 给 AI 对话页面加上时间轴、收藏、导出和代码运行，基于开源项目 Timeline 二次开发，支持 ChatGPT、Gemini、DeepSeek、Kimi、千问、Claude、元宝、NotebookLM 等平台。'}</div>
                 </div>
             </div>
 
@@ -39,8 +39,8 @@ class AboutTab extends BaseTab {
                     </svg>
                 </div>
                 <div class="about-section-body">
-                    <div class="about-section-title">${chrome.i18n.getMessage('aboutDataSecurityTitle') || '数据安全'}</div>
-                    <div class="about-section-content">${chrome.i18n.getMessage('aboutDataSecurityContent') || '你的所有数据都存储在浏览器本地或你的 Google Drive 中，插件不会收集、上传或分享你的任何对话内容和个人信息，本项目已在 GitHub 开源，可随时审查代码。'}</div>
+                    <div class="about-section-title">${chrome.i18n.getMessage('aboutDataSecurityTitle') || '你的数据'}</div>
+                    <div class="about-section-content">${chrome.i18n.getMessage('aboutDataSecurityContent') || '你的数据只存在浏览器本地或你自己的 Google Drive 里。插件不收集、不上传、不分享任何对话内容和个人信息。项目已在 GitHub 开源，代码随时可查。'}</div>
                 </div>
             </div>
 
@@ -52,9 +52,9 @@ class AboutTab extends BaseTab {
                     </svg>
                 </div>
                 <div class="about-section-body">
-                    <div class="about-section-title">${chrome.i18n.getMessage('aboutDeveloperTitle') || '开发者'}</div>
+                    <div class="about-section-title">${chrome.i18n.getMessage('aboutDeveloperTitle') || '提意见'}</div>
                     <div class="about-section-content">
-                        ${chrome.i18n.getMessage('aboutDeveloperContent') || 'ChatLine 作为 ai-chat-timeline 的二次开发版本维护。如果想提需求或反馈 bug，请通过当前项目仓库的 Issues 提交。'}
+                        ${chrome.i18n.getMessage('aboutDeveloperContent') || 'ChatLine 是 ai-chat-timeline 的二次开发版本。想提需求或报 bug，请到项目仓库提 Issue。'}
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@ class AboutTab extends BaseTab {
                 <div class="about-section-body">
                     <div class="about-section-title">${chrome.i18n.getMessage('aboutShareTitle') || '推荐给朋友'}</div>
                     <div class="about-section-content">
-                        ${chrome.i18n.getMessage('aboutShareContent') || '如果 ChatLine 对你有帮助，欢迎推荐给经常阅读、定位和归档 AI 对话的朋友。作者：咪咕看见小黑。邮箱：miguchn@gmail.com。如在使用过程中遇到问题或有优化建议，可通过邮箱随时反馈。'}
+                        ${chrome.i18n.getMessage('aboutShareContent') || '如果 ChatLine 帮到了你，欢迎推荐给常看 AI 对话的朋友。作者：咪咕看见小黑，邮箱 miguchn@gmail.com，有问题或建议随时来信。'}
                     </div>
                 </div>
             </div>

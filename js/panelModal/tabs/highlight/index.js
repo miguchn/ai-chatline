@@ -11,7 +11,7 @@ class HighlightTab extends BaseTab {
     constructor() {
         super();
         this.id = 'highlight';
-        this.name = chrome.i18n.getMessage('highlightMark') || '文本高亮';
+        this.name = chrome.i18n.getMessage('highlightTabName') || '划词高亮';
         this.badge = 'NEW';
         this.icon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 20h9"/>
@@ -30,8 +30,8 @@ class HighlightTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${chrome.i18n.getMessage('highlightToggleTitle') || '启用文本高亮'}</div>
-                        <div class="setting-hint">${chrome.i18n.getMessage('highlightToggleHint') || '开启后，选中网页文字时可进行高亮标注'}</div>
+                        <div class="setting-label">${chrome.i18n.getMessage('highlightToggleTitle') || '开启高亮'}</div>
+                        <div class="setting-hint">${chrome.i18n.getMessage('highlightToggleHint') || '选中文字，就能划上颜色'}</div>
                     </div>
                     <label class="ait-toggle-switch">
                         <input type="checkbox" id="highlight-toggle">
@@ -43,7 +43,7 @@ class HighlightTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item hl-list-item">
                     <div class="setting-info">
-                        <div class="setting-label">${chrome.i18n.getMessage('highlightStyleTitle') || '高亮样式'}</div>
+                        <div class="setting-label">${chrome.i18n.getMessage('highlightStyleTitle') || '样式'}</div>
                         <div class="hl-style-list" id="hl-style-list"></div>
                     </div>
                 </div>
@@ -53,8 +53,8 @@ class HighlightTab extends BaseTab {
                 <div class="setting-item hl-list-item">
                     <div class="setting-info">
                         <div class="setting-label">
-                            ${chrome.i18n.getMessage('highlightMyColors') || '高亮颜色'}
-                            <button class="hl-add-color-btn" id="hl-add-color-btn">+ ${chrome.i18n.getMessage('highlightAddColorBtn') || '颜色'}</button>
+                            ${chrome.i18n.getMessage('highlightMyColors') || '我的颜色'}
+                            <button class="hl-add-color-btn" id="hl-add-color-btn">+ ${chrome.i18n.getMessage('highlightAddColorBtn') || '加颜色'}</button>
                         </div>
                         <div class="hl-color-list" id="hl-color-list"></div>
                     </div>
@@ -99,10 +99,10 @@ class HighlightTab extends BaseTab {
         if (!styleList) return;
 
         const styles = [
-            { id: 'solid', name: chrome.i18n.getMessage('highlightStyleFullCover') || '全覆盖', desc: chrome.i18n.getMessage('highlightStyleFullCoverDesc') || '高亮区域完整罩住文字' },
-            { id: 'half', name: chrome.i18n.getMessage('highlightStyleHalfCover') || '半覆盖', desc: chrome.i18n.getMessage('highlightStyleHalfCoverDesc') || '高亮区域在文字腰部以下' },
-            { id: 'underline', name: chrome.i18n.getMessage('highlightStyleUnderline') || '下划线', desc: chrome.i18n.getMessage('highlightStyleUnderlineDesc') || '高亮区域在文字下方' },
-            { id: 'textOnly', name: chrome.i18n.getMessage('highlightStyleTextOnly') || '仅文字', desc: chrome.i18n.getMessage('highlightStyleTextOnlyDesc') || '无背景高亮，仅文字变色' },
+            { id: 'solid', name: chrome.i18n.getMessage('highlightStyleFullCover') || '整块底色', desc: chrome.i18n.getMessage('highlightStyleFullCoverDesc') || '色块把整行文字包住' },
+            { id: 'half', name: chrome.i18n.getMessage('highlightStyleHalfCover') || '半截底色', desc: chrome.i18n.getMessage('highlightStyleHalfCoverDesc') || '色块盖住文字下半截' },
+            { id: 'underline', name: chrome.i18n.getMessage('highlightStyleUnderline') || '下划线', desc: chrome.i18n.getMessage('highlightStyleUnderlineDesc') || '文字下面一条色带' },
+            { id: 'textOnly', name: chrome.i18n.getMessage('highlightStyleTextOnly') || '只变色', desc: chrome.i18n.getMessage('highlightStyleTextOnlyDesc') || '没有底色，文字本身变色' },
         ];
 
         styleList.innerHTML = styles.map(s => `
@@ -222,7 +222,7 @@ class HighlightTab extends BaseTab {
                 if (!window.globalPopconfirmManager) return;
                 const confirmed = await window.globalPopconfirmManager.show({
                     title: chrome.i18n.getMessage('mzxvkp') || '删除',
-                    content: (chrome.i18n.getMessage('highlightDeleteColorConfirm') || '确定要删除颜色 {color} 吗？').replace('{color}', color),
+                    content: (chrome.i18n.getMessage('highlightDeleteColorConfirm') || '删除 {color}？').replace('{color}', color),
                 });
                 if (!confirmed) return;
                 const customColors = await this._getCustomColors();
@@ -313,7 +313,7 @@ class HighlightTab extends BaseTab {
 
             const hint = document.createElement('div');
             hint.className = 'hl-modal-color-hint';
-            hint.textContent = chrome.i18n.getMessage('highlightColorHint') || '请输入 6 位十六进制颜色值，例如 #FF5733';
+            hint.textContent = chrome.i18n.getMessage('highlightColorHint') || '填色号，比如 #FF5733';
             body.appendChild(hint);
 
             const footer = document.createElement('div');
@@ -353,7 +353,7 @@ class HighlightTab extends BaseTab {
                 value = value.toUpperCase();
 
                 if (!/^#[0-9A-F]{6}$/.test(value)) {
-                    if (window.globalToastManager) window.globalToastManager.error(chrome.i18n.getMessage('highlightInvalidHex') || '无效的颜色格式', input);
+                    if (window.globalToastManager) window.globalToastManager.error(chrome.i18n.getMessage('highlightInvalidHex') || '色号不对，要像 #FF5733 这样', input);
                     return;
                 }
 
@@ -362,7 +362,7 @@ class HighlightTab extends BaseTab {
 
                 const allColors = [...customColors, ...this._defaultColors];
                 if (allColors.includes(value)) {
-                    if (window.globalToastManager) window.globalToastManager.error(chrome.i18n.getMessage('highlightColorExists') || '颜色已存在', input);
+                    if (window.globalToastManager) window.globalToastManager.error(chrome.i18n.getMessage('highlightColorExists') || '这个颜色已经有了', input);
                     return;
                 }
 

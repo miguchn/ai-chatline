@@ -18,16 +18,16 @@
     "message": "Удалить из избранного"
   },
   "vnkxpm": {
-    "message": "Папка"
+    "message": "Избранное"
   },
   "kxpmzv": {
-    "message": "Добавлено в избранное"
+    "message": "Сохранено"
   },
   "pzmvkx": {
     "message": "Удалено из избранного"
   },
   "jwvnkp": {
-    "message": "Нет данных"
+    "message": "Ничего не найдено"
   },
   "zxvkpm": {
     "message": "Показать все"
@@ -57,10 +57,10 @@
     "message": "Подтвердить"
   },
   "mzpxvk": {
-    "message": "Заголовок не может быть пустым"
+    "message": "Сначала добавьте заголовок"
   },
   "folderRequired": {
-    "message": "Выберите папку"
+    "message": "Сначала выберите папку"
   },
   "defaultFolder": {
     "message": "По умолчанию"
@@ -72,10 +72,10 @@
     "message": "Открепить"
   },
   "searchPrompt": {
-    "message": "Поиск промптов..."
+    "message": "Поиск промптов"
   },
   "sidebarStarredHint": {
-    "message": "При включении папки отображаются на боковой панели"
+    "message": "Показывает сохранённые разговоры на боковой панели сайта"
   },
   "sidebarStarredManage": {
     "message": "Настройки"
@@ -87,7 +87,7 @@
     "message": "Отметить как важное"
   },
   "unpinAction": {
-    "message": "Снять отметку важного"
+    "message": "Снять отметку"
   },
   "starAction": {
     "message": "Сохранить в папку"
@@ -96,7 +96,7 @@
     "message": "Убрать из сохранённых"
   },
   "questionListTitle": {
-    "message": "Вопросы"
+    "message": "Ваши вопросы"
   },
   "questionListEmpty": {
     "message": "Пока нет вопросов"
@@ -120,7 +120,7 @@
     "message": "Волшебник"
   },
   "animTabEmpty": {
-    "message": "Анимации недоступны"
+    "message": "Питомцев пока нет"
   },
   "animGrowHint": {
     "message": "Ещё {n} сообщений"
@@ -129,7 +129,7 @@
     "message": "Переименовать"
   },
   "pzmkvx": {
-    "message": "Содержимое не может быть пустым"
+    "message": "Сначала добавьте содержание"
   },
   "vxpzmk": {
     "message": "Открытый исходный код"
@@ -144,7 +144,7 @@
     "message": "Поделиться с друзьями"
   },
   "mvxkpz": {
-    "message": "Копировать формулу LaTeX"
+    "message": "Копировать как LaTeX"
   },
   "kxvpmz": {
     "message": "Новая папка"
@@ -162,28 +162,28 @@
     "message": "Создать подпапку в «{folderName}»"
   },
   "vzkpmx": {
-    "message": "Введите название папки"
+    "message": "Назовите папку"
   },
   "kmxpvz": {
-    "message": "Название папки не может быть пустым"
+    "message": "Сначала придумайте название"
   },
   "pxmzvk": {
-    "message": "Редактировать папку"
+    "message": "Переименовать папку"
   },
   "mvzxkp": {
     "message": "Введите новое название"
   },
   "kpvzmx": {
-    "message": "Папка с таким названием уже существует"
+    "message": "Такое название уже занято"
   },
   "xzvkpm": {
-    "message": "Успешно создано"
+    "message": "Создано"
   },
   "vmkxpz": {
-    "message": "Успешно обновлено"
+    "message": "Сохранено"
   },
   "zpxmkv": {
-    "message": "Папка не найдена"
+    "message": "Такой папки больше нет"
   },
   "kvpzmx": {
     "message": "Папка удалена"
@@ -198,10 +198,10 @@
     "message": "Переместить в"
   },
   "wjxnkp": {
-    "message": "{count} избранных элементов также будут удалены."
+    "message": "Разговоры внутри ({count}) тоже будут удалены"
   },
   "qzmvkx": {
-    "message": "Вы уверены, что хотите удалить папку «{folderName}»?"
+    "message": "Удалить «{folderName}»?"
   },
   "mvkzpx": {
     "message": "Поиск..."
@@ -216,31 +216,31 @@
     "message": "Заголовок"
   },
   "pxkmvz": {
-    "message": "Шкала времени"
+    "message": "Timeline"
   },
   "mzkvxp": {
-    "message": "При включении на правой стороне страницы диалога с ИИ отображается шкала времени"
+    "message": "Показывает таймлайн справа — можно перейти к любому сообщению"
   },
   "vkpmzx": {
-    "message": "Используйте клавиши ↑ / ↓ для навигации по узлам диалога"
+    "message": "Переход стрелками"
   },
   "xpvmkz": {
-    "message": "При включении используйте клавиши ↑ / ↓ для быстрого перехода между узлами диалога."
+    "message": "Нажимайте ↑ ↓, чтобы перейти к предыдущему или следующему сообщению"
   },
   "pxmzkv": {
-    "message": "Отметить важные диалоги"
+    "message": "Отметка долгим нажатием"
   },
   "kzxvpm": {
-    "message": "Нажмите и удерживайте узел диалога на шкале времени, чтобы отметить его как важный."
+    "message": "Нажмите и удерживайте точку на таймлайне, чтобы отметить сообщение"
   },
   "xmvkpz": {
     "message": "Поле ввода"
   },
   "kvzmxp": {
-    "message": "Перенос строки и отправка"
+    "message": "Как отправлять"
   },
   "kpxvmz": {
-    "message": "Копировать формулу"
+    "message": "Копирование формул"
   },
   "zmkvpx": {
     "message": "Копировать формулу LaTeX"
@@ -249,58 +249,58 @@
     "message": "При включении автоматически обнаруживает формулы на странице, и вы можете скопировать их в формате LaTeX одним кликом."
   },
   "mkvzpx": {
-    "message": "Поддерживаемые платформы"
+    "message": "Где работает"
   },
   "vxmkpz": {
-    "message": "Клавиша Enter: одно нажатие — перенос строки, двойное нажатие — отправка"
+    "message": "Enter: новая строка · дважды: отправка"
   },
   "mkpxvz": {
-    "message": "При включении в поле ввода чата ИИ нажатие Enter создаёт перенос строки, {mode} отправляет сообщение."
+    "message": "Enter делает перенос строки, а отправляет — {mode}"
   },
   "qoytxz": {
-    "message": "Эта функция включена по умолчанию и не может быть отключена"
+    "message": "Всегда включено — отключить нельзя"
   },
   "hosegod": {
-    "message": "Prompts"
+    "message": "Промпты"
   },
   "hobsidbg": {
-    "message": "Сохраняйте промпты для быстрого доступа. При включении слева от чата отображается кнопка промптов."
+    "message": "Держите любимые промпты под рукой и отправляйте одним кликом"
   },
   "biwhckdj": {
-    "message": "Список промптов"
+    "message": "Ваши промпты"
   },
   "byaskjndg": {
-    "message": "Добавить промпт"
+    "message": "Новый"
   },
   "hsksuywm": {
     "message": "Редактировать промпт"
   },
   "hsuywkw": {
-    "message": "Название промпта"
+    "message": "Название"
   },
   "hsuywkwPlaceholder": {
-    "message": "Введите название промпта"
+    "message": "Назовите промпт"
   },
   "promptContent": {
     "message": "Содержимое"
   },
   "uwkjwjw": {
-    "message": "Введите содержимое промпта"
+    "message": "Вставьте сюда текст промпта"
   },
   "hsiwhwl": {
-    "message": "Нет промптов"
+    "message": "Промптов пока нет"
   },
   "shwsuwk": {
     "message": "Промпт добавлен"
   },
   "hwkwbhwk": {
-    "message": "Промпт обновлён"
+    "message": "Промпт сохранён"
   },
   "qrtypd": {
     "message": "Промпт удалён"
   },
   "dcnfmq": {
-    "message": "Вы уверены, что хотите удалить этот промпт?"
+    "message": "Удалить этот промпт?"
   },
   "svkbtn": {
     "message": "Сохранить"
@@ -312,13 +312,13 @@
     "message": "Откреплено"
   },
   "addkbt": {
-    "message": "Добавить"
+    "message": "Новый"
   },
   "ptfmsl": {
-    "message": "Применяется к"
+    "message": "Где работает"
   },
   "allptfm": {
-    "message": "Все ИИ-платформы"
+    "message": "Все платформы"
   },
   "febhyejd": {
     "message": "Отправить отзыв онлайн"
@@ -327,7 +327,7 @@
     "message": "Запуск кода"
   },
   "runnerSettingsTitle": {
-    "message": "Поддерживаемые языки"
+    "message": "Языки"
   },
   "runnerSettingsHint": {
     "message": "При включении на блоках кода появится кнопка Run для прямого выполнения кода"
@@ -348,34 +348,34 @@
     "message": "Светлая"
   },
   "dataSyncTabName": {
-    "message": "Синхронизация данных"
+    "message": "Резервные копии"
   },
   "formulaFormatTitle": {
-    "message": "Выберите формат копирования"
+    "message": "Формат копирования"
   },
   "importSuccess": {
-    "message": "Импорт успешен"
+    "message": "Импортировано"
   },
   "importSuccessHint": {
-    "message": "Данные успешно импортированы. Обновите страницу для применения"
+    "message": "Импортировано — обновите страницу"
   },
   "importFailed": {
     "message": "Ошибка импорта"
   },
   "refreshPage": {
-    "message": "Обновить страницу"
+    "message": "Обновить сейчас"
   },
   "refreshLater": {
-    "message": "Обновить позже"
+    "message": "Позже"
   },
   "quickAsk": {
     "message": "Уточнить"
   },
   "highlightToggleTitle": {
-    "message": "Включить выделение текста"
+    "message": "Включить выделение"
   },
   "highlightToggleHint": {
-    "message": "После включения можно выделять выбранный текст на веб-страницах"
+    "message": "Выделяйте любой текст цветом"
   },
   "highlightColorTitle": {
     "message": "Цвет выделения"
@@ -393,19 +393,19 @@
     "message": "Отмена"
   },
   "scrollToBottomTitle": {
-    "message": "Вниз"
+    "message": "В самый низ"
   },
   "scrollToBottomHint": {
-    "message": "Показать кнопку быстрого перехода к последнему сообщению"
+    "message": "Добавляет кнопку перехода к последнему сообщению"
   },
   "pleaseWait": {
-    "message": "Пожалуйста, подождите, загрузка ID узла..."
+    "message": "Секунду, загружаем…"
   },
   "chatTimeLabelTitle": {
-    "message": "Показать время чата"
+    "message": "Показывать время"
   },
   "chatTimeLabelHint": {
-    "message": "Показывать время отправки для каждого сообщения, наглядно как в истории чата"
+    "message": "Показывает, когда отправлено каждое сообщение"
   },
   "exportTitle": {
     "message": "Ручная синхронизация"
@@ -441,28 +441,28 @@
     "message": "Прокрутка для масштабирования · Перетаскивание для перемещения · ESC для закрытия"
   },
   "notepadToggleHint": {
-    "message": "Show notepad entry at the bottom of the timeline for quick notes"
+    "message": "Добавляет кнопку заметок внизу таймлайна"
   },
   "notepadTitle": {
-    "message": "Flash Notes"
+    "message": "Быстрые заметки"
   },
   "notepadPlaceholder": {
-    "message": "Just write what comes to mind…"
+    "message": "Пишите всё, что приходит в голову…"
   },
   "notepadClose": {
     "message": "Close"
   },
   "notepadAllNotes": {
-    "message": "All Notes"
+    "message": "Все заметки"
   },
   "notepadNewNote": {
-    "message": "New Note"
+    "message": "Новая заметка"
   },
   "notepadConfirmDeleteTitle": {
-    "message": "Confirm Delete"
+    "message": "Удалить заметку"
   },
   "notepadConfirmDeleteContent": {
-    "message": "This cannot be undone. Are you sure?"
+    "message": "Это нельзя отменить. Удалить?"
   },
   "notepadUntitled": {
     "message": "Untitled"
@@ -477,49 +477,49 @@
     "message": "Тип копирования формулы"
   },
   "formulaCopyMathML": {
-    "message": "Копировать формулу MathML"
+    "message": "Копировать как MathML"
   },
   "formulaCopyGeneric": {
     "message": "Копировать формулу"
   },
   "formulaLatexTitle": {
-    "message": "Копировать формулу LaTeX"
+    "message": "LaTeX"
   },
   "formulaLatexHint": {
-    "message": "Нажмите на формулу, чтобы скопировать в формате LaTeX"
+    "message": "Нажмите на формулу, чтобы скопировать её как LaTeX"
   },
   "formulaMathMLTitle": {
-    "message": "Копировать формулу MathML"
+    "message": "MathML"
   },
   "formulaMathMLHint": {
-    "message": "Нажмите на формулу, чтобы скопировать в формате MathML — можно вставить прямо в Word"
+    "message": "Скопируйте нажатием и вставьте прямо в Word"
   },
   "aboutTabName": {
-    "message": "О плагине"
-  },
-  "aboutPluginTitle": {
     "message": "О расширении"
   },
+  "aboutPluginTitle": {
+    "message": "Что это"
+  },
   "aboutPluginContent": {
-    "message": "ChatLine — расширение браузера для страниц AI-чата. Оно основано на open-source проекте Timeline и сосредоточено на навигации по таймлайну, поиске нужного места в истории, улучшенном просмотре диалогов и архивировании данных разговоров. Поддерживает несколько ведущих AI-платформ."
+    "message": "ChatLine добавляет на страницы AI-чатов таймлайн, избранные чаты, экспорт и запуск кода. Это форк open-source проекта Timeline; работает с ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, NotebookLM и другими."
   },
   "aboutDataSecurityTitle": {
-    "message": "Безопасность данных"
+    "message": "Ваши данные"
   },
   "aboutDataSecurityContent": {
-    "message": "Все ваши данные хранятся локально в вашем браузере или в вашем Google Drive. Расширение не собирает, не загружает и не передаёт содержимое ваших разговоров или личную информацию. Проект имеет открытый исходный код на GitHub, и код доступен для проверки в любое время."
+    "message": "Ваши данные остаются в браузере или в вашем Google Drive. Расширение не собирает, не загружает и никому не передаёт ваши разговоры и личную информацию. Код открыт на GitHub — его можно проверить в любое время."
   },
   "aboutDeveloperTitle": {
     "message": "Обратная связь"
   },
   "aboutDeveloperContent": {
-    "message": "ChatLine поддерживается как форк ai-chat-timeline. Для запросов функций или сообщений об ошибках используйте страницу Issues репозитория этого проекта."
+    "message": "ChatLine развивается как форк ai-chat-timeline. Чтобы предложить функцию или сообщить об ошибке, создайте issue в репозитории проекта."
   },
   "aboutShareTitle": {
-    "message": "Рекомендовать друзьям"
+    "message": "Расскажите друзьям"
   },
   "aboutShareContent": {
-    "message": "Если ChatLine оказался полезен, порекомендуйте его тем, кто часто читает, ищет и архивирует AI-диалоги. Автор: 咪咕看见小黑. Email: miguchn@gmail.com. Если при использовании возникнут проблемы или появятся предложения по улучшению, вы можете в любое время отправить отзыв по электронной почте."
+    "message": "Если ChatLine вам помогает, посоветуйте его всем, кто подолгу сидит в AI-чатах. Автор: 咪咕看见小黑 · miguchn@gmail.com — вопросы и предложения приветствуются в любое время."
   },
   "nativeMenuStarToFolder": {
     "message": "Star to Folder"
@@ -528,7 +528,7 @@
     "message": "Already starred"
   },
   "nativeMenuStarSuccess": {
-    "message": "Starred successfully"
+    "message": "Сохранено"
   },
   "animViewMore": {
     "message": "Сменить питомца"
@@ -537,28 +537,28 @@
     "message": "Перемещено"
   },
   "starredHelpDesc": {
-    "message": "Folders help you organize conversations and stay clutter-free."
+    "message": "Разложите разговоры по папкам — больше никакого ручного поиска"
   },
   "starredHelpTipsTitle": {
-    "message": "Quick tips:"
+    "message": "Как это работает"
   },
   "starredHelpTip1": {
-    "message": "Drag conversations into a folder."
+    "message": "Перетащите разговор в папку"
   },
   "starredHelpTip2": {
-    "message": "Drag items within a folder to reorder."
+    "message": "Перетаскивайте, чтобы менять порядок в папке"
   },
   "starredHelpTip3": {
-    "message": "Drag subfolders to reorder."
+    "message": "Подпапки тоже можно перетаскивать"
   },
   "starredHelpTip4": {
-    "message": "Double-click a folder or item to edit."
+    "message": "Двойной клик — переименовать"
   },
   "folderMoveHasChildren": {
-    "message": "Has subfolders, cannot nest further"
+    "message": "В ней уже есть подпапки — вложить не получится"
   },
   "folderMoveMaxDepth": {
-    "message": "Maximum folder depth reached"
+    "message": "Глубже вкладывать нельзя"
   },
   "guideSubtitle": {
     "message": "AI conversation enhancement extension"
@@ -579,34 +579,34 @@
     "message": "Supported Platforms"
   },
   "highlightStyleTitle": {
-    "message": "Стиль выделения"
+    "message": "Стиль"
   },
   "highlightStyleFullCover": {
-    "message": "Полное покрытие"
+    "message": "Полный блок"
   },
   "highlightStyleFullCoverDesc": {
-    "message": "Выделение полностью покрывает текст"
+    "message": "Цвет покрывает всю строку"
   },
   "highlightStyleHalfCover": {
-    "message": "Половина"
+    "message": "Полблока"
   },
   "highlightStyleHalfCoverDesc": {
-    "message": "Выделение покрывает нижнюю половину текста"
+    "message": "Цвет покрывает нижнюю половину"
   },
   "highlightStyleUnderline": {
     "message": "Подчёркивание"
   },
   "highlightStyleUnderlineDesc": {
-    "message": "Выделение под текстом"
+    "message": "Цветная линия под текстом"
   },
   "highlightStyleTextOnly": {
-    "message": "Только текст"
+    "message": "Цвет текста"
   },
   "highlightStyleTextOnlyDesc": {
-    "message": "Без фона, только цвет текста"
+    "message": "Без фона — меняется только цвет текста"
   },
   "highlightMyColors": {
-    "message": "Цвета выделения"
+    "message": "Ваши цвета"
   },
   "highlightColorPlaceholder": {
     "message": "#FF5733"
@@ -615,22 +615,22 @@
     "message": "Максимум 15 цветов"
   },
   "highlightDeleteColorConfirm": {
-    "message": "Удалить цвет {color}?"
+    "message": "Удалить {color}?"
   },
   "highlightAddColorTitle": {
     "message": "Добавить цвет"
   },
   "highlightAddColorBtn": {
-    "message": "Цвет"
+    "message": "Добавить цвет"
   },
   "highlightInvalidHex": {
-    "message": "Неверный формат цвета"
+    "message": "Неверный код — попробуйте #FF5733"
   },
   "highlightColorExists": {
-    "message": "Цвет уже существует"
+    "message": "Такой цвет уже есть"
   },
   "highlightColorHint": {
-    "message": "Введите 6-значный HEX-код цвета, например #FF5733"
+    "message": "Введите код цвета, например #FF5733"
   },
   "highlightAnnotationPlaceholder": {
     "message": "Мысли…"
@@ -672,25 +672,25 @@
     "message": "Эл. почта"
   },
   "timelineDisplayLabel": {
-    "message": "Показать хронологию"
+    "message": "Показывать таймлайн"
   },
   "starredDisplayLabel": {
-    "message": "Показать папки"
+    "message": "Избранное"
   },
   "promptBtnDisplayLabel": {
-    "message": "Показать кнопку подсказок"
+    "message": "Кнопка промптов"
   },
   "promptBtnSwitch": {
-    "message": "Настройки"
+    "message": "Выбрать платформы"
   },
   "formulaFormatNone": {
-    "message": "Без обёртки"
+    "message": "Обычная формула"
   },
   "gdriveUploadBtn": {
-    "message": "Загрузить в облако"
+    "message": "Загрузить резервную копию"
   },
   "gdriveDownloadBtn": {
-    "message": "Скачать из облака"
+    "message": "Восстановить из копии"
   },
   "exportLabel": {
     "message": "Экспорт"
@@ -699,7 +699,7 @@
     "message": "Импорт"
   },
   "gdriveUploading": {
-    "message": "Загрузка..."
+    "message": "Загрузка…"
   },
   "gdriveUploadSuccess": {
     "message": "Загружено на Google Drive"
@@ -708,135 +708,234 @@
     "message": "Ошибка загрузки"
   },
   "gdriveDownloading": {
-    "message": "Скачивание..."
+    "message": "Восстановление…"
   },
   "gdriveDownloadFailed": {
-    "message": "Ошибка скачивания"
+    "message": "Не удалось восстановить"
   },
   "gdriveNoBackup": {
-    "message": "Нет данных резервной копии в облаке"
+    "message": "В облаке пока нет резервных копий"
   },
   "gdriveDataInvalid": {
-    "message": "Неверный формат облачных данных"
+    "message": "Облачная копия не читается"
   },
   "gdriveMergeSuccess": {
-    "message": "Облачные данные объединены"
+    "message": "Восстановлено и объединено"
   },
   "gdriveMergeHint": {
-    "message": "Данные загружены и объединены из Google Drive. Обновите страницу для применения."
+    "message": "Восстановлено — обновите страницу"
   },
   "chatWidthTitle": {
-    "message": "Ширина чата"
+    "message": "Ширина страницы"
   },
   "chatWidthHint": {
-    "message": "Расширить область диалога для лучшего использования экрана"
+    "message": "Расширьте чат, чтобы экран не пустовал"
   },
   "chatWidthAdjust": {
-    "message": "Настроить"
+    "message": "Тяните, чтобы настроить"
   },
   "chatWidthCurrent": {
-    "message": "Текущая ширина"
+    "message": "Сейчас"
   },
   "chatWidthNormal": {
-    "message": "Обычная"
+    "message": "По умолчанию"
   },
   "chatWidthConfirm": {
-    "message": "OK"
+    "message": "Сохранить"
   },
   "mirrorSiteTabName": {
-    "message": "Зеркала сайтов"
+    "message": "Другие сайты"
   },
   "mirrorSiteHint": {
-    "message": "Добавьте домены зеркал AI-сайтов. На этих сайтах появится плавающая кнопка, позволяющая использовать некоторые функции этого расширения."
+    "message": "Добавьте свои AI-сайты — расширение будет работать и там"
   },
   "mirrorSiteAddDomain": {
-    "message": "Добавить"
+    "message": "Добавить сайт"
   },
   "mirrorSiteInputPlaceholder": {
-    "message": "Введите домен, напр. chat.example.com"
+    "message": "Введите сайт, например chat.example.com"
   },
   "mirrorSiteDomainListTitle": {
-    "message": "Добавленные домены"
+    "message": "Добавлено"
   },
   "mirrorSiteNoDomains": {
-    "message": "Домены не добавлены"
+    "message": "Пока ничего не добавлено"
   },
   "mirrorSiteDomainAdded": {
-    "message": "Домен добавлен"
+    "message": "Сайт добавлен"
   },
   "mirrorSiteDomainRemoved": {
-    "message": "Домен удалён"
+    "message": "Сайт удалён"
   },
   "mirrorSiteDomainExists": {
-    "message": "Домен уже существует"
+    "message": "Этот сайт уже в списке"
   },
   "mirrorSiteDomainInvalid": {
-    "message": "Неверный формат домена"
+    "message": "Это не похоже на адрес сайта"
   },
   "mirrorSiteDomainIsOfficial": {
-    "message": "Этот домен уже является официальной платформой"
+    "message": "Уже поддерживается — добавлять не нужно"
   },
   "mirrorSiteCopied": {
-    "message": "Скопировано в буфер обмена"
+    "message": "Скопировано"
   },
   "hideStarredFromListLabel": {
-    "message": "Режим дедупликации"
+    "message": "Скрывать дубликаты"
   },
   "hideStarredFromListHint": {
-    "message": "При включении разговоры, добавленные в папки, будут скрыты из боковой панели"
+    "message": "Сохранённые разговоры исчезают из исходного списка"
   },
   "timelineAICompleteNotLatestToast": {
-    "message": "Ответ $1 завершён."
+    "message": "$1 завершил ответ"
   },
   "timelineAICompleteToastTitle": {
-    "message": "Напоминание о завершении ответа"
+    "message": "Сигнал о готовности ответа"
   },
   "timelineAICompleteToastHint": {
-    "message": "Показывать напоминание, когда ответ ИИ завершён, а вы не на последней позиции"
+    "message": "Сообщит, когда ответ будет готов, а вы не в конце переписки"
   },
   "timelineThemeColorLabel": {
-    "message": "Цвет темы таймлайна"
+    "message": "Цвет таймлайна"
   },
   "timelineThemeColorHint": {
-    "message": "Настройте цвет темы активного маркера таймлайна для каждой платформы"
+    "message": "Выберите цвет выделения для каждой платформы"
   },
   "timelineThemeColorManageButton": {
-    "message": "Настроить"
+    "message": "Выбрать"
   },
   "changelogShareTip": {
     "message": "Если расширение вам полезно, поделитесь им с теми, кому оно может пригодиться."
   },
   "longConversationPerformanceTitle": {
-    "message": "Long Conversation Optimization"
+    "message": "Автосворачивание"
   },
   "longConversationPerformanceHint": {
-    "message": "Automatically fold older messages after the set limit."
+    "message": "Сворачивает старые сообщения — ничего не удаляется, кликните, чтобы прочитать"
   },
   "longConversationThresholdLabel": {
-    "message": "After"
+    "message": "После"
   },
   "longConversationMessageUnit": {
-    "message": "messages"
+    "message": "сообщений"
   },
   "longConversationKeepRecentLabel": {
-    "message": "Keep recent"
+    "message": "Оставлять последние"
   },
   "longConversationKeepRecentUnit": {
-    "message": "messages visible"
+    "message": "на виду"
   },
   "longConversationValidationKeepRecent": {
-    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+    "message": "Видимых сообщений должно быть меньше — значение подстроено автоматически"
   },
   "longConversationExpandMore": {
-    "message": "Expand more history"
+    "message": "Показать предыдущие сообщения"
   },
   "longConversationCollapsedTooltip": {
-    "message": "$1 older messages above are folded. Click to expand more."
+    "message": "$1 сообщений выше свёрнуто — нажмите, чтобы показать"
   },
   "highlightSettings": {
     "message": "Настройки"
   },
   "highlightConfirm": {
     "message": "Подтвердить"
+  },
+  "settingsGroupCore": {
+    "message": "Основное"
+  },
+  "settingsGroupAdvanced": {
+    "message": "Ещё"
+  },
+  "settingsGroupExperimental": {
+    "message": "Развлечения"
+  },
+  "settingsGroupBackup": {
+    "message": "Ваши данные"
+  },
+  "settingsGroupAbout": {
+    "message": "О расширении"
+  },
+  "conversationExportTabName": {
+    "message": "Экспорт чатов"
+  },
+  "highlightTabName": {
+    "message": "Выделение"
+  },
+  "conversationExportToggleTitle": {
+    "message": "Включить экспорт"
+  },
+  "conversationExportToggleHint": {
+    "message": "Добавляет кнопку экспорта над таймлайном"
+  },
+  "formulaSettingsLabel": {
+    "message": "Настройки формул"
+  },
+  "quickAskTitle": {
+    "message": "Уточняющий вопрос"
+  },
+  "quickAskHint": {
+    "message": "Выделите текст, нажмите «Уточняющий вопрос» — он попадёт в поле ввода"
+  },
+  "smartEnterModeDoubleEnter": {
+    "message": "Двойное нажатие Enter"
+  },
+  "smartEnterToastCtrlEnter": {
+    "message": "Enter: новая строка · {ctrl}+Enter: отправка"
+  },
+  "smartEnterToastShiftEnter": {
+    "message": "Enter: новая строка · Shift+Enter: отправка"
+  },
+  "runnerAdvancedHint": {
+    "message": "Включение может немного замедлить страницу"
+  },
+  "runnerHint": {
+    "message": "Пишите здесь код и запускайте — async/await работает"
+  },
+  "runnerCodeEditor": {
+    "message": "Код"
+  },
+  "runnerOutput": {
+    "message": "Результат"
+  },
+  "runnerTabTitle": {
+    "message": "Запуск кода"
+  },
+  "animLightweightHint": {
+    "message": "По умолчанию выключено — выберите питомца, и он появится, пока AI отвечает"
+  },
+  "localBackupTitle": {
+    "message": "Сохранение на компьютер (рекомендуется)"
+  },
+  "localBackupHint": {
+    "message": "Без аккаунта — просто экспортируйте файл и сохраните его"
+  },
+  "exportBtn": {
+    "message": "Экспортировать резервную копию"
+  },
+  "importBtn": {
+    "message": "Выбрать файл"
+  },
+  "importModeMergeDesc": {
+    "message": "Оставляет текущие данные и добавляет остальное"
+  },
+  "importModeOverwrite": {
+    "message": "Заменить"
+  },
+  "importModeOverwriteDesc": {
+    "message": "Удаляет текущие данные и заменяет их файлом"
+  },
+  "gdriveAdvancedTitle": {
+    "message": "Резервные копии в Google Drive (необязательно)"
+  },
+  "gdriveOptionalHint": {
+    "message": "Запросит доступ к Google только при первом использовании"
+  },
+  "gdrivePermissionDeclined": {
+    "message": "Доступ к Google не предоставлен"
+  },
+  "exportingData": {
+    "message": "Экспорт…"
+  },
+  "importingData": {
+    "message": "Импорт…"
   }
 }

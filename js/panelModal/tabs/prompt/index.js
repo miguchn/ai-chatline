@@ -66,10 +66,10 @@ class PromptTab extends BaseTab {
         bottomSection.innerHTML = `
             <div class="setting-item">
                 <div class="setting-info">
-                    <div class="setting-label">${chrome.i18n.getMessage('promptBtnDisplayLabel') || '显示提示词按钮'}</div>
+                    <div class="setting-label">${chrome.i18n.getMessage('promptBtnDisplayLabel') || '提示词按钮'}</div>
                     <div class="setting-hint">${chrome.i18n.getMessage('hobsidbg')}</div>
                 </div>
-                <button class="starred-manage-btn">${chrome.i18n.getMessage('promptBtnSwitch') || '开关'}</button>
+                <button class="starred-manage-btn">${chrome.i18n.getMessage('promptBtnSwitch') || '选平台'}</button>
             </div>
         `;
         container.appendChild(bottomSection);

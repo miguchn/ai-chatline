@@ -53,8 +53,8 @@ class SmartInputBoxTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${chrome.i18n.getMessage('quickAskTitle') || '追问功能'}</div>
-                        <div class="setting-hint">${chrome.i18n.getMessage('quickAskHint') || '选中页面上的文字后，显示追问按钮，点击可快速引用到对话框中'}</div>
+                        <div class="setting-label">${chrome.i18n.getMessage('quickAskTitle') || '追问'}</div>
+                        <div class="setting-hint">${chrome.i18n.getMessage('quickAskHint') || '选中文字点「追问」，直接带进输入框'}</div>
                     </div>
                     <label class="ait-toggle-switch">
                         <input type="checkbox" id="quick-ask-toggle">
@@ -69,8 +69,8 @@ class SmartInputBoxTab extends BaseTab {
             <div class="setting-section">
                 <div class="setting-item">
                     <div class="setting-info">
-                        <div class="setting-label">${chrome.i18n.getMessage('scrollToBottomTitle') || '返回底部'}</div>
-                        <div class="setting-hint">${chrome.i18n.getMessage('scrollToBottomHint') || '显示返回底部的快捷按钮，方便回到最新消息'}</div>
+                        <div class="setting-label">${chrome.i18n.getMessage('scrollToBottomTitle') || '回到底部'}</div>
+                        <div class="setting-hint">${chrome.i18n.getMessage('scrollToBottomHint') || '显示一个按钮，一键跳到最新消息'}</div>
                     </div>
                     <label class="ait-toggle-switch">
                         <input type="checkbox" id="scroll-to-bottom-toggle">

@@ -18,16 +18,16 @@
     "message": "Hapus dari favorit"
   },
   "vnkxpm": {
-    "message": "Folder"
+    "message": "Tersimpan"
   },
   "kxpmzv": {
-    "message": "Ditambahkan ke favorit"
+    "message": "Tersimpan"
   },
   "pzmvkx": {
     "message": "Dihapus dari favorit"
   },
   "jwvnkp": {
-    "message": "Tidak ada data"
+    "message": "Tidak ada yang cocok"
   },
   "zxvkpm": {
     "message": "Lihat semua"
@@ -57,10 +57,10 @@
     "message": "Konfirmasi"
   },
   "mzpxvk": {
-    "message": "Judul tidak boleh kosong"
+    "message": "Tambahkan judul dulu"
   },
   "folderRequired": {
-    "message": "Silakan pilih folder"
+    "message": "Pilih folder dulu"
   },
   "defaultFolder": {
     "message": "Default"
@@ -72,10 +72,10 @@
     "message": "Lepas"
   },
   "searchPrompt": {
-    "message": "Cari prompt..."
+    "message": "Cari prompt"
   },
   "sidebarStarredHint": {
-    "message": "Saat diaktifkan, folder ditampilkan di bilah sisi"
+    "message": "Menampilkan percakapan tersimpan kamu di sidebar bawaan situs"
   },
   "sidebarStarredManage": {
     "message": "Pengaturan"
@@ -87,7 +87,7 @@
     "message": "Tandai poin penting"
   },
   "unpinAction": {
-    "message": "Hapus tanda penting"
+    "message": "Hapus tanda"
   },
   "starAction": {
     "message": "Simpan ke folder"
@@ -96,7 +96,7 @@
     "message": "Hapus dari tersimpan"
   },
   "questionListTitle": {
-    "message": "Daftar Pertanyaan"
+    "message": "Pertanyaan kamu"
   },
   "questionListEmpty": {
     "message": "Belum ada pertanyaan"
@@ -120,7 +120,7 @@
     "message": "Penyihir"
   },
   "animTabEmpty": {
-    "message": "Tidak ada animasi"
+    "message": "Belum ada hewan peliharaan"
   },
   "animGrowHint": {
     "message": "{n} pesan lagi"
@@ -129,7 +129,7 @@
     "message": "Ganti nama"
   },
   "pzmkvx": {
-    "message": "Konten tidak boleh kosong"
+    "message": "Tambahkan konten dulu"
   },
   "vxpzmk": {
     "message": "Sumber terbuka"
@@ -144,7 +144,7 @@
     "message": "Bagikan ke teman"
   },
   "mvxkpz": {
-    "message": "Salin rumus LaTeX"
+    "message": "Salin sebagai LaTeX"
   },
   "kxvpmz": {
     "message": "Folder baru"
@@ -162,28 +162,28 @@
     "message": "Buat subfolder di \"{folderName}\""
   },
   "vzkpmx": {
-    "message": "Masukkan nama folder"
+    "message": "Beri nama folder ini"
   },
   "kmxpvz": {
-    "message": "Nama folder tidak boleh kosong"
+    "message": "Beri nama dulu"
   },
   "pxmzvk": {
-    "message": "Edit folder"
+    "message": "Ganti nama folder"
   },
   "mvzxkp": {
-    "message": "Masukkan nama baru"
+    "message": "Ketik nama baru"
   },
   "kpvzmx": {
-    "message": "Nama folder sudah ada"
+    "message": "Nama itu sudah dipakai"
   },
   "xzvkpm": {
-    "message": "Berhasil dibuat"
+    "message": "Dibuat"
   },
   "vmkxpz": {
-    "message": "Berhasil diperbarui"
+    "message": "Tersimpan"
   },
   "zpxmkv": {
-    "message": "Folder tidak ditemukan"
+    "message": "Folder itu sudah tidak ada"
   },
   "kvpzmx": {
     "message": "Folder dihapus"
@@ -198,10 +198,10 @@
     "message": "Pindahkan ke"
   },
   "wjxnkp": {
-    "message": "{count} item favorit juga akan dihapus."
+    "message": "{count} percakapan di dalamnya juga akan dihapus"
   },
   "qzmvkx": {
-    "message": "Yakin ingin menghapus folder \"{folderName}\"?"
+    "message": "Hapus \"{folderName}\"?"
   },
   "mvkzpx": {
     "message": "Cari..."
@@ -219,25 +219,25 @@
     "message": "Lini Masa"
   },
   "mzkvxp": {
-    "message": "Saat diaktifkan, lini masa ditampilkan di sisi kanan halaman percakapan AI"
+    "message": "Menampilkan timeline di sisi kanan supaya kamu bisa melompat ke pesan mana pun"
   },
   "vkpmzx": {
-    "message": "Gunakan tombol ↑ / ↓ untuk navigasi antar node percakapan"
+    "message": "Lompat dengan tombol panah"
   },
   "xpvmkz": {
-    "message": "Saat diaktifkan, gunakan tombol ↑ / ↓ untuk melompat cepat antar node percakapan."
+    "message": "Tekan ↑ ↓ untuk melompat ke pesan sebelumnya atau berikutnya"
   },
   "pxmzkv": {
-    "message": "Tandai percakapan penting"
+    "message": "Tandai chat penting"
   },
   "kzxvpm": {
-    "message": "Tekan lama node percakapan di lini masa untuk menandainya sebagai penting."
+    "message": "Tekan lama titik di timeline untuk menandai pesan itu"
   },
   "xmvkpz": {
     "message": "Kotak input"
   },
   "kvzmxp": {
-    "message": "Baris baru & Kirim pesan"
+    "message": "Baris baru & pengiriman"
   },
   "kpxvmz": {
     "message": "Salin rumus"
@@ -249,43 +249,43 @@
     "message": "Saat diaktifkan, secara otomatis mendeteksi rumus di halaman dan klik untuk menyalin dalam format LaTeX."
   },
   "mkvzpx": {
-    "message": "Platform yang didukung"
+    "message": "Berjalan di"
   },
   "vxmkpz": {
-    "message": "Tombol Enter: tekan sekali untuk baris baru, dua kali untuk mengirim"
+    "message": "Enter: baris baru · tekan dua kali: kirim"
   },
   "mkpxvz": {
-    "message": "Saat diaktifkan, di kotak input chat AI, tekan Enter untuk baris baru, {mode} untuk mengirim pesan."
+    "message": "Enter hanya menambah baris baru — {mode} untuk mengirim"
   },
   "qoytxz": {
-    "message": "Fitur ini diaktifkan secara default dan tidak dapat dimatikan"
+    "message": "Selalu aktif — tidak bisa dimatikan"
   },
   "hosegod": {
     "message": "Prompts"
   },
   "hobsidbg": {
-    "message": "Simpan prompt untuk akses cepat. Saat diaktifkan, tombol prompt akan ditampilkan di sisi kiri kotak chat."
+    "message": "Simpan prompt andalan kamu, kirim dengan sekali klik"
   },
   "biwhckdj": {
-    "message": "Daftar Prompt"
+    "message": "Prompt kamu"
   },
   "byaskjndg": {
-    "message": "Tambah Prompt"
+    "message": "Prompt baru"
   },
   "hsksuywm": {
     "message": "Edit Prompt"
   },
   "hsuywkw": {
-    "message": "Nama Prompt"
+    "message": "Nama"
   },
   "hsuywkwPlaceholder": {
-    "message": "Masukkan nama prompt"
+    "message": "Beri nama prompt ini"
   },
   "promptContent": {
     "message": "Konten"
   },
   "uwkjwjw": {
-    "message": "Masukkan konten prompt"
+    "message": "Tempel prompt kamu di sini"
   },
   "hsiwhwl": {
     "message": "Belum ada prompt"
@@ -294,13 +294,13 @@
     "message": "Prompt ditambahkan"
   },
   "hwkwbhwk": {
-    "message": "Prompt diperbarui"
+    "message": "Prompt tersimpan"
   },
   "qrtypd": {
     "message": "Prompt dihapus"
   },
   "dcnfmq": {
-    "message": "Yakin ingin menghapus prompt ini?"
+    "message": "Hapus prompt ini?"
   },
   "svkbtn": {
     "message": "Simpan"
@@ -312,13 +312,13 @@
     "message": "Dilepas sematan"
   },
   "addkbt": {
-    "message": "Tambah"
+    "message": "Baru"
   },
   "ptfmsl": {
-    "message": "Berlaku untuk"
+    "message": "Berjalan di"
   },
   "allptfm": {
-    "message": "Semua platform AI"
+    "message": "Semua platform"
   },
   "febhyejd": {
     "message": "Kirim umpan balik online"
@@ -327,7 +327,7 @@
     "message": "Penjalankan kode"
   },
   "runnerSettingsTitle": {
-    "message": "Bahasa yang didukung"
+    "message": "Bahasa"
   },
   "runnerSettingsHint": {
     "message": "Saat diaktifkan, tombol Run akan muncul di blok kode untuk menjalankan kode secara langsung"
@@ -348,22 +348,22 @@
     "message": "Terang"
   },
   "dataSyncTabName": {
-    "message": "Sinkronisasi Data"
+    "message": "Cadangan & pemulihan"
   },
   "formulaFormatTitle": {
-    "message": "Pilih Format Salin"
+    "message": "Format salinan"
   },
   "importSuccess": {
-    "message": "Impor berhasil"
+    "message": "Diimpor"
   },
   "importSuccessHint": {
-    "message": "Data berhasil diimpor. Silakan refresh halaman"
+    "message": "Berhasil diimpor — refresh halaman untuk melihatnya"
   },
   "importFailed": {
     "message": "Impor gagal"
   },
   "refreshPage": {
-    "message": "Refresh halaman"
+    "message": "Refresh sekarang"
   },
   "refreshLater": {
     "message": "Refresh nanti"
@@ -372,10 +372,10 @@
     "message": "Tanya Lanjutan"
   },
   "highlightToggleTitle": {
-    "message": "Aktifkan Sorotan Teks"
+    "message": "Aktifkan sorotan"
   },
   "highlightToggleHint": {
-    "message": "Setelah diaktifkan, Anda dapat menyorot teks yang dipilih di halaman web"
+    "message": "Pilih teks mana pun untuk menandainya dengan warna"
   },
   "highlightColorTitle": {
     "message": "Warna Sorotan"
@@ -393,19 +393,19 @@
     "message": "Batal"
   },
   "scrollToBottomTitle": {
-    "message": "Ke Bawah"
+    "message": "Kembali ke bawah"
   },
   "scrollToBottomHint": {
-    "message": "Tampilkan tombol cepat untuk kembali ke pesan terbaru"
+    "message": "Menambahkan tombol untuk melompat ke pesan terbaru"
   },
   "pleaseWait": {
-    "message": "Harap tunggu, ID node sedang dimuat..."
+    "message": "Tunggu sebentar, sedang memuat…"
   },
   "chatTimeLabelTitle": {
-    "message": "Tampilkan Waktu Chat"
+    "message": "Tampilkan waktu"
   },
   "chatTimeLabelHint": {
-    "message": "Tampilkan waktu kirim di setiap pesan, sejelas riwayat chat"
+    "message": "Menampilkan waktu kirim setiap pesan"
   },
   "exportTitle": {
     "message": "Sinkronisasi Manual"
@@ -441,7 +441,7 @@
     "message": "Gulir untuk zoom · Seret untuk menggeser · ESC untuk menutup"
   },
   "notepadToggleHint": {
-    "message": "Show notepad entry at the bottom of the timeline for quick notes"
+    "message": "Menambahkan pintasan catatan di bagian bawah timeline"
   },
   "notepadTitle": {
     "message": "Flash Notes"
@@ -459,10 +459,10 @@
     "message": "New Note"
   },
   "notepadConfirmDeleteTitle": {
-    "message": "Confirm Delete"
+    "message": "Hapus catatan"
   },
   "notepadConfirmDeleteContent": {
-    "message": "This cannot be undone. Are you sure?"
+    "message": "Tindakan ini tidak bisa dibatalkan. Hapus?"
   },
   "notepadUntitled": {
     "message": "Untitled"
@@ -477,49 +477,49 @@
     "message": "Jenis salinan rumus"
   },
   "formulaCopyMathML": {
-    "message": "Salin rumus MathML"
+    "message": "Salin sebagai MathML"
   },
   "formulaCopyGeneric": {
     "message": "Salin rumus"
   },
   "formulaLatexTitle": {
-    "message": "Salin rumus LaTeX"
+    "message": "LaTeX"
   },
   "formulaLatexHint": {
-    "message": "Klik rumus untuk menyalinnya dalam format LaTeX"
+    "message": "Klik rumus untuk menyalinnya sebagai LaTeX"
   },
   "formulaMathMLTitle": {
-    "message": "Salin rumus MathML"
+    "message": "MathML"
   },
   "formulaMathMLHint": {
-    "message": "Klik rumus untuk menyalinnya dalam format MathML, bisa langsung ditempel di Word"
+    "message": "Klik untuk menyalin, lalu tempel langsung ke Word"
   },
   "aboutTabName": {
     "message": "Tentang Plugin"
   },
   "aboutPluginTitle": {
-    "message": "Tentang ekstensi"
+    "message": "Apa ini"
   },
   "aboutPluginContent": {
-    "message": "ChatLine adalah ekstensi browser untuk halaman chat AI. Dikembangkan sebagai fork dari proyek open-source Timeline, ChatLine berfokus pada navigasi timeline, pencarian posisi dalam riwayat, peningkatan penelusuran percakapan, dan pengarsipan data percakapan. Mendukung berbagai platform chat AI utama."
+    "message": "ChatLine menambahkan timeline, chat tersimpan, ekspor, dan penjalankan kode ke halaman chat AI. Fork dari proyek sumber terbuka Timeline, ChatLine mendukung ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, NotebookLM, dan lainnya."
   },
   "aboutDataSecurityTitle": {
-    "message": "Keamanan Data"
+    "message": "Data kamu"
   },
   "aboutDataSecurityContent": {
-    "message": "Semua data kamu disimpan secara lokal di browser atau di Google Drive kamu. Ekstensi tidak mengumpulkan, mengunggah, atau membagikan konten percakapan atau informasi pribadi kamu. Proyek ini bersifat open-source di GitHub, dan kode dapat ditinjau kapan saja."
+    "message": "Data kamu tetap ada di browser atau di Google Drive kamu sendiri. Ekstensi ini tidak pernah mengumpulkan, mengunggah, atau membagikan percakapan maupun informasi pribadi kamu. Kodenya bersifat sumber terbuka di GitHub dan bisa ditinjau kapan saja."
   },
   "aboutDeveloperTitle": {
     "message": "Umpan Balik"
   },
   "aboutDeveloperContent": {
-    "message": "ChatLine dikelola sebagai fork ai-chat-timeline. Untuk meminta fitur atau melaporkan bug, gunakan halaman Issues di repositori proyek ini."
+    "message": "ChatLine dikelola sebagai fork dari ai-chat-timeline. Untuk meminta fitur atau melaporkan bug, buka issue di repositori proyek."
   },
   "aboutShareTitle": {
-    "message": "Rekomendasikan ke teman"
+    "message": "Ceritakan ke teman"
   },
   "aboutShareContent": {
-    "message": "Jika ChatLine bermanfaat, rekomendasikan kepada orang yang sering membaca, mencari, dan mengarsipkan percakapan AI. Penulis: 咪咕看见小黑. Email: miguchn@gmail.com. Jika mengalami masalah saat menggunakan atau memiliki saran peningkatan, Anda dapat mengirim masukan melalui email kapan saja."
+    "message": "Kalau ChatLine membantu kamu, bagikan ke siapa pun yang sering memakai chat AI. Penulis: 咪咕看见小黑 · miguchn@gmail.com — pertanyaan dan saran diterima kapan saja."
   },
   "nativeMenuStarToFolder": {
     "message": "Star to Folder"
@@ -528,7 +528,7 @@
     "message": "Already starred"
   },
   "nativeMenuStarSuccess": {
-    "message": "Starred successfully"
+    "message": "Tersimpan"
   },
   "animViewMore": {
     "message": "Ganti hewan"
@@ -537,28 +537,28 @@
     "message": "Dipindahkan"
   },
   "starredHelpDesc": {
-    "message": "Folders help you organize conversations and stay clutter-free."
+    "message": "Kelompokkan percakapan ke dalam folder supaya tidak perlu mencari-cari"
   },
   "starredHelpTipsTitle": {
-    "message": "Quick tips:"
+    "message": "Cara kerjanya"
   },
   "starredHelpTip1": {
-    "message": "Drag conversations into a folder."
+    "message": "Seret percakapan ke dalam folder"
   },
   "starredHelpTip2": {
-    "message": "Drag items within a folder to reorder."
+    "message": "Seret untuk mengurutkan di dalam folder"
   },
   "starredHelpTip3": {
-    "message": "Drag subfolders to reorder."
+    "message": "Seret subfolder untuk mengurutkannya juga"
   },
   "starredHelpTip4": {
-    "message": "Double-click a folder or item to edit."
+    "message": "Klik dua kali untuk mengganti nama"
   },
   "folderMoveHasChildren": {
-    "message": "Has subfolders, cannot nest further"
+    "message": "Sudah punya subfolder — tidak bisa dibuat bersarang"
   },
   "folderMoveMaxDepth": {
-    "message": "Maximum folder depth reached"
+    "message": "Ini batas kedalaman folder"
   },
   "guideSubtitle": {
     "message": "AI conversation enhancement extension"
@@ -579,34 +579,34 @@
     "message": "Supported Platforms"
   },
   "highlightStyleTitle": {
-    "message": "Gaya Sorotan"
+    "message": "Gaya"
   },
   "highlightStyleFullCover": {
-    "message": "Penuh"
+    "message": "Blok penuh"
   },
   "highlightStyleFullCoverDesc": {
-    "message": "Sorotan menutupi seluruh teks"
+    "message": "Warna menutupi seluruh baris"
   },
   "highlightStyleHalfCover": {
-    "message": "Setengah"
+    "message": "Blok setengah"
   },
   "highlightStyleHalfCoverDesc": {
-    "message": "Sorotan menutupi setengah bawah teks"
+    "message": "Warna menutupi setengah bagian bawah"
   },
   "highlightStyleUnderline": {
     "message": "Garis Bawah"
   },
   "highlightStyleUnderlineDesc": {
-    "message": "Sorotan muncul di bawah teks"
+    "message": "Garis berwarna di bawah teks"
   },
   "highlightStyleTextOnly": {
-    "message": "Teks Saja"
+    "message": "Warna teks"
   },
   "highlightStyleTextOnlyDesc": {
-    "message": "Tanpa latar, hanya warna teks"
+    "message": "Tanpa latar — hanya mengubah warna teks"
   },
   "highlightMyColors": {
-    "message": "Warna Sorotan"
+    "message": "Warna kamu"
   },
   "highlightColorPlaceholder": {
     "message": "#FF5733"
@@ -615,22 +615,22 @@
     "message": "Maksimal 15 warna"
   },
   "highlightDeleteColorConfirm": {
-    "message": "Hapus warna {color}?"
+    "message": "Hapus {color}?"
   },
   "highlightAddColorTitle": {
     "message": "Tambah Warna"
   },
   "highlightAddColorBtn": {
-    "message": "Warna"
+    "message": "Tambah warna"
   },
   "highlightInvalidHex": {
-    "message": "Format warna tidak valid"
+    "message": "Kode itu tidak valid — coba #FF5733"
   },
   "highlightColorExists": {
-    "message": "Warna sudah ada"
+    "message": "Kamu sudah punya warna itu"
   },
   "highlightColorHint": {
-    "message": "Masukkan kode warna hex 6 digit, contoh #FF5733"
+    "message": "Masukkan kode warna seperti #FF5733"
   },
   "highlightAnnotationPlaceholder": {
     "message": "Ide…"
@@ -675,22 +675,22 @@
     "message": "Tampilkan timeline"
   },
   "starredDisplayLabel": {
-    "message": "Tampilkan folder"
+    "message": "Tampilkan di sidebar"
   },
   "promptBtnDisplayLabel": {
-    "message": "Tampilkan tombol prompt"
+    "message": "Tombol prompt"
   },
   "promptBtnSwitch": {
-    "message": "Pengaturan"
+    "message": "Pilih platform"
   },
   "formulaFormatNone": {
-    "message": "Tanpa pembungkus"
+    "message": "Rumus polos"
   },
   "gdriveUploadBtn": {
-    "message": "Unggah ke cloud"
+    "message": "Unggah cadangan"
   },
   "gdriveDownloadBtn": {
-    "message": "Unduh dari cloud"
+    "message": "Pulihkan cadangan"
   },
   "exportLabel": {
     "message": "Ekspor"
@@ -699,7 +699,7 @@
     "message": "Impor"
   },
   "gdriveUploading": {
-    "message": "Mengunggah..."
+    "message": "Mengunggah…"
   },
   "gdriveUploadSuccess": {
     "message": "Diunggah ke Google Drive"
@@ -708,109 +708,109 @@
     "message": "Gagal mengunggah"
   },
   "gdriveDownloading": {
-    "message": "Mengunduh..."
+    "message": "Memulihkan…"
   },
   "gdriveDownloadFailed": {
-    "message": "Gagal mengunduh"
+    "message": "Gagal memulihkan"
   },
   "gdriveNoBackup": {
-    "message": "Tidak ada data cadangan di cloud"
+    "message": "Belum ada cadangan di cloud"
   },
   "gdriveDataInvalid": {
-    "message": "Format data cloud tidak valid"
+    "message": "Cadangan cloud itu tidak bisa dibaca"
   },
   "gdriveMergeSuccess": {
-    "message": "Data cloud digabungkan"
+    "message": "Dipulihkan dan digabungkan"
   },
   "gdriveMergeHint": {
-    "message": "Data diunduh dan digabungkan dari Google Drive. Muat ulang halaman untuk menerapkan."
+    "message": "Berhasil dipulihkan — refresh halaman untuk melihatnya"
   },
   "chatWidthTitle": {
-    "message": "Lebar chat"
+    "message": "Lebar halaman"
   },
   "chatWidthHint": {
-    "message": "Perlebar area percakapan untuk memanfaatkan layar"
+    "message": "Perlebar chat supaya layar kamu tidak setengah kosong"
   },
   "chatWidthAdjust": {
-    "message": "Sesuaikan"
+    "message": "Seret untuk menyesuaikan"
   },
   "chatWidthCurrent": {
     "message": "Lebar saat ini"
   },
   "chatWidthNormal": {
-    "message": "Normal"
+    "message": "Default"
   },
   "chatWidthConfirm": {
-    "message": "OK"
+    "message": "Simpan"
   },
   "mirrorSiteTabName": {
-    "message": "Situs Cermin"
+    "message": "Situs lain"
   },
   "mirrorSiteHint": {
-    "message": "Tambahkan domain situs cermin AI. Tombol mengambang akan muncul di situs ini, memungkinkan penggunaan beberapa fitur ekstensi ini."
+    "message": "Tambahkan situs AI yang kamu pakai — ekstensi ini juga berfungsi di sana"
   },
   "mirrorSiteAddDomain": {
-    "message": "Tambah"
+    "message": "Tambah situs"
   },
   "mirrorSiteInputPlaceholder": {
-    "message": "Masukkan domain, mis. chat.example.com"
+    "message": "Masukkan alamat situs, mis. chat.example.com"
   },
   "mirrorSiteDomainListTitle": {
-    "message": "Domain yang ditambahkan"
+    "message": "Situs yang kamu tambahkan"
   },
   "mirrorSiteNoDomains": {
-    "message": "Belum ada domain yang ditambahkan"
+    "message": "Belum ada yang ditambahkan"
   },
   "mirrorSiteDomainAdded": {
-    "message": "Domain ditambahkan"
+    "message": "Situs ditambahkan"
   },
   "mirrorSiteDomainRemoved": {
-    "message": "Domain dihapus"
+    "message": "Situs dihapus"
   },
   "mirrorSiteDomainExists": {
-    "message": "Domain sudah ada"
+    "message": "Situs itu sudah ada di daftar"
   },
   "mirrorSiteDomainInvalid": {
-    "message": "Format domain tidak valid"
+    "message": "Sepertinya itu bukan alamat situs yang valid"
   },
   "mirrorSiteDomainIsOfficial": {
-    "message": "Domain ini sudah merupakan platform resmi"
+    "message": "Sudah didukung — tidak perlu ditambahkan"
   },
   "mirrorSiteCopied": {
-    "message": "Disalin ke papan klip"
+    "message": "Disalin"
   },
   "hideStarredFromListLabel": {
-    "message": "Mode deduplikasi"
+    "message": "Sembunyikan duplikat"
   },
   "hideStarredFromListHint": {
-    "message": "Saat diaktifkan, percakapan yang ditambahkan ke folder akan disembunyikan dari daftar sidebar"
+    "message": "Percakapan tersimpan tidak muncul lagi di daftar asli"
   },
   "timelineAICompleteNotLatestToast": {
-    "message": "Balasan $1 selesai."
+    "message": "$1 selesai membalas"
   },
   "timelineAICompleteToastTitle": {
-    "message": "Pengingat balasan selesai"
+    "message": "Notifikasi balasan"
   },
   "timelineAICompleteToastHint": {
-    "message": "Tampilkan pengingat saat balasan AI selesai dan Anda tidak berada di posisi terbaru"
+    "message": "Memberi tahu saat balasan selesai padahal kamu sedang membaca pesan lain"
   },
   "timelineThemeColorLabel": {
-    "message": "Warna tema linimasa"
+    "message": "Warna timeline"
   },
   "timelineThemeColorHint": {
-    "message": "Atur warna tema penanda timeline aktif untuk setiap platform"
+    "message": "Pilih warna sorotan untuk setiap platform"
   },
   "timelineThemeColorManageButton": {
-    "message": "Atur"
+    "message": "Pilih"
   },
   "changelogShareTip": {
     "message": "Jika ekstensi ini bermanfaat, silakan bagikan kepada orang yang mungkin membutuhkannya."
   },
   "longConversationPerformanceTitle": {
-    "message": "Long Conversation Optimization"
+    "message": "Lipat otomatis"
   },
   "longConversationPerformanceHint": {
-    "message": "Automatically fold older messages after the set limit."
+    "message": "Melipat pesan lama — tidak ada yang dihapus, klik untuk membacanya"
   },
   "longConversationThresholdLabel": {
     "message": "After"
@@ -819,19 +819,19 @@
     "message": "messages"
   },
   "longConversationKeepRecentLabel": {
-    "message": "Keep recent"
+    "message": "Tetap tampilkan"
   },
   "longConversationKeepRecentUnit": {
-    "message": "messages visible"
+    "message": "pesan terakhir"
   },
   "longConversationValidationKeepRecent": {
-    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+    "message": "Jumlah pesan yang ditampilkan harus lebih kecil dari batas pemicu — sudah disesuaikan"
   },
   "longConversationExpandMore": {
-    "message": "Expand more history"
+    "message": "Tampilkan pesan sebelumnya"
   },
   "longConversationCollapsedTooltip": {
-    "message": "$1 older messages above are folded. Click to expand more."
+    "message": "$1 pesan sebelumnya dilipat — klik untuk menampilkan"
   },
   "highlightSettings": {
     "message": "Pengaturan"

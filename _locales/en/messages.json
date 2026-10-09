@@ -18,16 +18,16 @@
     "message": "Unstar"
   },
   "vnkxpm": {
-    "message": "Folder"
+    "message": "Saved"
   },
   "kxpmzv": {
-    "message": "Starred Successfully"
+    "message": "Saved"
   },
   "pzmvkx": {
     "message": "Unstarred"
   },
   "jwvnkp": {
-    "message": "No Data"
+    "message": "No matches"
   },
   "mvkxpz": {
     "message": "Copy"
@@ -42,7 +42,7 @@
     "message": "Copy Failed"
   },
   "zmxvkp": {
-    "message": "Please Enter"
+    "message": "Type something"
   },
   "pxvkmz": {
     "message": "Cancel"
@@ -51,10 +51,10 @@
     "message": "Confirm"
   },
   "mzpxvk": {
-    "message": "Title cannot be empty"
+    "message": "Add a title first"
   },
   "folderRequired": {
-    "message": "Please select a folder"
+    "message": "Pick a folder first"
   },
   "defaultFolder": {
     "message": "Default"
@@ -66,10 +66,10 @@
     "message": "Unpin"
   },
   "searchPrompt": {
-    "message": "Search prompts..."
+    "message": "Search prompts"
   },
   "sidebarStarredHint": {
-    "message": "When enabled, folders are displayed in the sidebar"
+    "message": "Shows your saved conversations in the site's own sidebar"
   },
   "sidebarStarredManage": {
     "message": "Settings"
@@ -81,7 +81,7 @@
     "message": "Mark Key Point"
   },
   "unpinAction": {
-    "message": "Unmark Key Point"
+    "message": "Unmark"
   },
   "starAction": {
     "message": "Save to folder"
@@ -90,19 +90,19 @@
     "message": "Remove from saved"
   },
   "questionListTitle": {
-    "message": "Questions"
+    "message": "Your questions"
   },
   "questionListEmpty": {
     "message": "No questions yet"
   },
   "animTabTitle": {
-    "message": "Digital Pet"
+    "message": "Digital pet"
   },
   "animTabDesc": {
     "message": "Displayed above the chat box. Cute animals walk around when AI replies."
   },
   "animLightweightHint": {
-    "message": "Off by default. Choose one pet to show it while AI replies; turn it off again to stop it."
+    "message": "Off by default — pick a pet and it shows up while the AI replies"
   },
   "animSnail": {
     "message": "Snail Parade"
@@ -126,7 +126,7 @@
     "message": "Red Panda Ramble"
   },
   "animTabEmpty": {
-    "message": "No animations available"
+    "message": "No pets yet"
   },
   "animGrowHint": {
     "message": "{n} more messages"
@@ -135,7 +135,7 @@
     "message": "Rename"
   },
   "pzmkvx": {
-    "message": "Content cannot be empty"
+    "message": "Add some content first"
   },
   "vxpzmk": {
     "message": "Open Source"
@@ -150,7 +150,7 @@
     "message": "Share with Friends"
   },
   "mvxkpz": {
-    "message": "Copy LaTeX Formula"
+    "message": "Copy as LaTeX"
   },
   "kxvpmz": {
     "message": "New Folder"
@@ -168,31 +168,31 @@
     "message": "Create subfolder in \"{folderName}\""
   },
   "vzkpmx": {
-    "message": "Enter folder name"
+    "message": "Name this folder"
   },
   "kmxpvz": {
-    "message": "Folder name cannot be empty"
+    "message": "Give it a name first"
   },
   "pxmzvk": {
-    "message": "Edit Folder"
+    "message": "Rename folder"
   },
   "mvzxkp": {
-    "message": "Enter new name"
+    "message": "Type a new name"
   },
   "kpvzmx": {
-    "message": "Folder name already exists"
+    "message": "That name is already taken"
   },
   "xzvkpm": {
-    "message": "Created Successfully"
+    "message": "Created"
   },
   "vmkxpz": {
-    "message": "Updated Successfully"
+    "message": "Saved"
   },
   "zpxmkv": {
-    "message": "Folder not found"
+    "message": "That folder is gone"
   },
   "kvpzmx": {
-    "message": "Folder Deleted"
+    "message": "Folder deleted"
   },
   "mxkvzp": {
     "message": "Delete Failed"
@@ -204,10 +204,10 @@
     "message": "Move to"
   },
   "wjxnkp": {
-    "message": "{count} starred items inside will also be deleted."
+    "message": "The {count} conversations inside will be deleted too"
   },
   "qzmvkx": {
-    "message": "Are you sure you want to delete folder \"{folderName}\"?"
+    "message": "Delete \"{folderName}\"?"
   },
   "mvkzpx": {
     "message": "Search..."
@@ -225,28 +225,28 @@
     "message": "Timeline"
   },
   "mzkvxp": {
-    "message": "When enabled, a timeline is displayed on the right side of the AI conversation page"
+    "message": "Shows a timeline on the right so you can jump to any message"
   },
   "vkpmzx": {
-    "message": "Use ↑ / ↓ keys to navigate conversation nodes"
+    "message": "Arrow-key jumping"
   },
   "xpvmkz": {
-    "message": "When enabled, use ↑ / ↓ keys to quickly jump between conversation nodes."
+    "message": "Press ↑ ↓ to jump to the previous or next message"
   },
   "pxmzkv": {
-    "message": "Mark Important Conversations"
+    "message": "Mark important chats"
   },
   "kzxvpm": {
-    "message": "Long press on a conversation node in the timeline to mark it as important."
+    "message": "Long-press a dot on the timeline to mark that message"
   },
   "xmvkpz": {
-    "message": "Input Box"
+    "message": "Input box"
   },
   "kvzmxp": {
-    "message": "Line Break & Send"
+    "message": "Line breaks & sending"
   },
   "kpxvmz": {
-    "message": "Copy Formula"
+    "message": "Copy formulas"
   },
   "zmkvpx": {
     "message": "Copy LaTeX Formula"
@@ -255,16 +255,16 @@
     "message": "When enabled, formulas on the page are automatically detected. Click to copy in LaTeX format."
   },
   "mkvzpx": {
-    "message": "Supported Platforms"
+    "message": "Works on"
   },
   "vxmkpz": {
-    "message": "Enter key: Single press for new line, double press to send"
+    "message": "Enter: new line · double-tap: send"
   },
   "mkpxvz": {
-    "message": "When enabled, press Enter for a new line in the AI chat input box. {mode} to send messages."
+    "message": "Enter only adds a line break — {mode} sends"
   },
   "smartEnterModeDoubleEnter": {
-    "message": "Quick double Enter"
+    "message": "Double-tap Enter"
   },
   "smartEnterModeDoubleEnterDesc": {
     "message": "Press Enter once for a new line, press twice quickly to send"
@@ -282,55 +282,55 @@
     "message": "Enter for new line, Shift + Enter to send"
   },
   "smartEnterToastCtrlEnter": {
-    "message": "Enter: new line, {ctrl}+Enter: send"
+    "message": "Enter: new line · {ctrl}+Enter: send"
   },
   "smartEnterToastShiftEnter": {
-    "message": "Enter: new line, Shift+Enter: send"
+    "message": "Enter: new line · Shift+Enter: send"
   },
   "qoytxz": {
-    "message": "This feature is enabled by default and cannot be turned off"
+    "message": "Always on — can't be turned off"
   },
   "hosegod": {
     "message": "Prompts"
   },
   "hobsidbg": {
-    "message": "Save your go-to prompts for quick access. When enabled, a prompt button will be displayed on the left side of the chat box."
+    "message": "Keep your go-to prompts handy and send one with a click"
   },
   "biwhckdj": {
-    "message": "Prompt List"
+    "message": "Your prompts"
   },
   "byaskjndg": {
-    "message": "Add Prompt"
+    "message": "New prompt"
   },
   "hsksuywm": {
     "message": "Edit Prompt"
   },
   "hsuywkw": {
-    "message": "Prompt Name"
+    "message": "Name"
   },
   "hsuywkwPlaceholder": {
-    "message": "Enter prompt name"
+    "message": "Name this prompt"
   },
   "promptContent": {
     "message": "Content"
   },
   "uwkjwjw": {
-    "message": "Enter prompt content"
+    "message": "Paste your prompt here"
   },
   "hsiwhwl": {
-    "message": "No Prompts Yet"
+    "message": "No prompts yet"
   },
   "shwsuwk": {
-    "message": "Prompt Added"
+    "message": "Prompt added"
   },
   "hwkwbhwk": {
-    "message": "Prompt Updated"
+    "message": "Prompt saved"
   },
   "qrtypd": {
-    "message": "Prompt Deleted"
+    "message": "Prompt deleted"
   },
   "dcnfmq": {
-    "message": "Are you sure you want to delete this prompt?"
+    "message": "Delete this prompt?"
   },
   "svkbtn": {
     "message": "Save"
@@ -351,19 +351,19 @@
     "message": "Pin"
   },
   "addkbt": {
-    "message": "Add"
+    "message": "New"
   },
   "ptfmsl": {
-    "message": "Applies to"
+    "message": "Works on"
   },
   "allptfm": {
-    "message": "All AI Platforms"
+    "message": "All platforms"
   },
   "febhyejd": {
     "message": "Submit Feedback Online"
   },
   "runnerTabTitle": {
-    "message": "Code Runner"
+    "message": "Code runner"
   },
   "runnerExecute": {
     "message": "Run"
@@ -372,25 +372,25 @@
     "message": "Clear"
   },
   "runnerCodeEditor": {
-    "message": "Code Editor"
+    "message": "Code"
   },
   "runnerOutput": {
-    "message": "Output"
+    "message": "Result"
   },
   "runnerHint": {
-    "message": "Enter your code here, async/await supported"
+    "message": "Write code here — async/await works"
   },
   "runnerTabName": {
-    "message": "Code Runner"
+    "message": "Code runner"
   },
   "runnerSettingsTitle": {
-    "message": "Supported Languages"
+    "message": "Languages"
   },
   "runnerSettingsHint": {
     "message": "When enabled, a Run button will appear on code blocks to execute code directly"
   },
   "runnerAdvancedHint": {
-    "message": "Advanced feature. Loaded only after you enable it and may use additional page resources."
+    "message": "Adds a Run button to code blocks; may slow the page slightly"
   },
   "fiveStarReview": {
     "message": "Like it"
@@ -414,51 +414,61 @@
     "message": "Are you sure you want to unstar?"
   },
   "formulaFormatTitle": {
-    "message": "Select Copy Format"
+    "message": "Copy format"
   },
   "formulaCopyTypeTitle": {
     "message": "Formula Copy Type"
   },
   "formulaCopyMathML": {
-    "message": "Copy MathML Formula"
+    "message": "Copy as MathML"
   },
   "formulaCopyGeneric": {
-    "message": "Copy Formula"
+    "message": "Copy formula"
   },
   "formulaLatexTitle": {
-    "message": "Copy LaTeX Formula"
+    "message": "LaTeX"
   },
   "formulaLatexHint": {
-    "message": "Click on a formula to copy it in LaTeX format"
+    "message": "Click a formula to copy it as LaTeX"
   },
   "formulaMathMLTitle": {
-    "message": "Copy MathML Formula"
+    "message": "MathML"
   },
   "formulaMathMLHint": {
-    "message": "Click on a formula to copy it in MathML format, paste directly into Word"
+    "message": "Click to copy, then paste straight into Word"
   },
   "dataSyncTabName": {
-    "message": "Data Sync"
+    "message": "Backup & restore"
   },
-  "settingsGroupCore": { "message": "Core Features" },
-  "settingsGroupAdvanced": { "message": "Advanced Features" },
-  "settingsGroupExperimental": { "message": "Experimental" },
-  "settingsGroupBackup": { "message": "Backup & Sync" },
-  "settingsGroupAbout": { "message": "About" },
+  "settingsGroupCore": {
+    "message": "Essentials"
+  },
+  "settingsGroupAdvanced": {
+    "message": "More"
+  },
+  "settingsGroupExperimental": {
+    "message": "Fun stuff"
+  },
+  "settingsGroupBackup": {
+    "message": "Backup"
+  },
+  "settingsGroupAbout": {
+    "message": "About"
+  },
   "localBackupTitle": {
-    "message": "Local JSON Backup (Recommended)"
+    "message": "Save to your computer (recommended)"
   },
   "localBackupHint": {
-    "message": "Back up or restore with a JSON file without an account or cloud permissions."
+    "message": "No account needed — export a file and keep it safe"
   },
   "gdriveAdvancedTitle": {
-    "message": "Advanced Cloud Backup (Optional)"
+    "message": "Google Drive backup (optional)"
   },
   "gdriveOptionalHint": {
-    "message": "Google identity and Drive API access are requested only when you first use cloud backup."
+    "message": "Google access is requested only if you use cloud backup"
   },
   "gdrivePermissionDeclined": {
-    "message": "Cloud backup permission was not granted"
+    "message": "Google access wasn't granted"
   },
   "exportTitle": {
     "message": "Manual Sync"
@@ -467,7 +477,7 @@
     "message": "Manually back up or restore data via JSON file for migration to other browsers."
   },
   "exportBtn": {
-    "message": "Export Data"
+    "message": "Export a backup file"
   },
   "importTitle": {
     "message": "Import Data"
@@ -476,43 +486,43 @@
     "message": "Import data from a JSON file, supports overwrite or merge modes."
   },
   "importBtn": {
-    "message": "Select File to Import"
+    "message": "Choose a file"
   },
   "importModeMerge": {
     "message": "Merge"
   },
   "importModeMergeDesc": {
-    "message": "Keep existing data and merge with imported data"
+    "message": "Keeps what you have and adds the rest"
   },
   "importModeOverwrite": {
-    "message": "Overwrite"
+    "message": "Replace"
   },
   "importModeOverwriteDesc": {
-    "message": "Clear existing data and replace with imported data"
+    "message": "Wipes current data and uses the file instead"
   },
   "exportingData": {
-    "message": "Exporting..."
+    "message": "Exporting…"
   },
   "exportSuccess": {
-    "message": "Export successful"
+    "message": "Exported"
   },
   "exportFailed": {
     "message": "Export failed"
   },
   "importingData": {
-    "message": "Importing..."
+    "message": "Importing…"
   },
   "importSuccess": {
-    "message": "Import Successful"
+    "message": "Imported"
   },
   "importSuccessHint": {
-    "message": "Data imported successfully. Please refresh the page to apply changes."
+    "message": "Imported — refresh the page to see it"
   },
   "importFailed": {
     "message": "Import failed"
   },
   "refreshPage": {
-    "message": "Refresh Page"
+    "message": "Refresh now"
   },
   "refreshLater": {
     "message": "Later"
@@ -521,10 +531,10 @@
     "message": "Follow Up"
   },
   "highlightToggleTitle": {
-    "message": "Enable Text Highlight"
+    "message": "Turn on highlighting"
   },
   "highlightToggleHint": {
-    "message": "When enabled, you can highlight selected text on webpages"
+    "message": "Select any text to mark it up in color"
   },
   "highlightColorTitle": {
     "message": "Highlight Color"
@@ -536,31 +546,31 @@
     "message": "Remove this highlight?"
   },
   "highlightRemoveYes": {
-    "message": "Remove"
+    "message": "Delete"
   },
   "highlightRemoveNo": {
     "message": "Cancel"
   },
   "quickAskTitle": {
-    "message": "Follow Up"
+    "message": "Follow up"
   },
   "quickAskHint": {
-    "message": "After selecting text on the page, a follow-up button appears to quickly quote into the input box"
+    "message": "Select text, tap Follow up, and it lands in the input box"
   },
   "scrollToBottomTitle": {
-    "message": "Scroll to Bottom"
+    "message": "Back to bottom"
   },
   "scrollToBottomHint": {
-    "message": "Show a quick button to scroll to the latest message"
+    "message": "Adds a button that jumps to the newest message"
   },
   "pleaseWait": {
-    "message": "Please wait, node ID is loading..."
+    "message": "Hold on, loading…"
   },
   "chatTimeLabelTitle": {
-    "message": "Show Chat Time"
+    "message": "Show timestamps"
   },
   "chatTimeLabelHint": {
-    "message": "Display send time on each message, as clear as a chat log"
+    "message": "Shows when each message was sent"
   },
   "gdriveTitle": {
     "message": "Google Drive Sync"
@@ -590,10 +600,10 @@
     "message": "Scroll to zoom · Drag to pan · ESC to close"
   },
   "notepadToggleHint": {
-    "message": "Show notepad entry at the bottom of the timeline for quick notes"
+    "message": "Adds a note shortcut at the bottom of the timeline"
   },
   "notepadTitle": {
-    "message": "Flash Notes"
+    "message": "Flash notes"
   },
   "notepadPlaceholder": {
     "message": "Just write what comes to mind…"
@@ -602,16 +612,16 @@
     "message": "Close"
   },
   "notepadAllNotes": {
-    "message": "All Notes"
+    "message": "All notes"
   },
   "notepadNewNote": {
-    "message": "New Note"
+    "message": "New note"
   },
   "notepadConfirmDeleteTitle": {
-    "message": "Confirm Delete"
+    "message": "Delete note"
   },
   "notepadConfirmDeleteContent": {
-    "message": "This cannot be undone. Are you sure?"
+    "message": "This can't be undone. Delete it?"
   },
   "notepadUntitled": {
     "message": "Untitled"
@@ -620,34 +630,34 @@
     "message": "Yesterday"
   },
   "notepadSaveToFolder": {
-    "message": "Save to folder"
+    "message": "Save to a folder"
   },
   "aboutTabName": {
     "message": "About"
   },
   "aboutPluginTitle": {
-    "message": "About This Extension"
+    "message": "What this is"
   },
   "aboutPluginContent": {
-    "message": "ChatLine is a browser enhancement for AI chat pages. Forked from the open-source Timeline project, it focuses on timeline navigation, history positioning, improved conversation browsing, and conversation data archiving. It supports multiple mainstream AI chat platforms."
+    "message": "ChatLine adds a timeline, saved chats, export, and code running to AI chat pages. Forked from the open-source Timeline project, it works with ChatGPT, Gemini, DeepSeek, Kimi, Qwen, Claude, Yuanbao, NotebookLM and more."
   },
   "aboutDataSecurityTitle": {
-    "message": "Data Security"
+    "message": "Your data"
   },
   "aboutDataSecurityContent": {
-    "message": "All your data is stored locally in your browser or in your Google Drive. The extension does not collect, upload, or share any of your conversation content or personal information. This project is open-source on GitHub, and the code is available for review at any time."
+    "message": "Your data stays in your browser or in your own Google Drive. The extension never collects, uploads, or shares your conversations or personal information. The code is open source on GitHub and open to review at any time."
   },
   "aboutDeveloperTitle": {
     "message": "Feedback"
   },
   "aboutDeveloperContent": {
-    "message": "ChatLine is maintained as the ai-chat-timeline fork. To request a feature or report a bug, please use the Issues page of this project repository."
+    "message": "ChatLine is maintained as a fork of ai-chat-timeline. To request a feature or report a bug, open an issue in the project repository."
   },
   "aboutShareTitle": {
-    "message": "Recommend to Friends"
+    "message": "Tell a friend"
   },
   "aboutShareContent": {
-    "message": "If ChatLine is useful to you, feel free to recommend it to people who spend a lot of time reading and revisiting AI conversations. Author: 咪咕看见小黑. Email: miguchn@gmail.com. If you run into issues or have suggestions for improvement, you can send feedback by email at any time."
+    "message": "If ChatLine helps you, pass it along to anyone who spends time in AI chats. Author: 咪咕看见小黑 · miguchn@gmail.com — questions and suggestions welcome any time."
   },
   "nativeMenuStarToFolder": {
     "message": "Star to Folder"
@@ -656,7 +666,7 @@
     "message": "Already starred"
   },
   "nativeMenuStarSuccess": {
-    "message": "Starred successfully"
+    "message": "Saved"
   },
   "animViewMore": {
     "message": "Change Pet"
@@ -665,28 +675,28 @@
     "message": "Moved"
   },
   "starredHelpDesc": {
-    "message": "Folders help you organize conversations and stay clutter-free."
+    "message": "Group conversations into folders so you stop digging"
   },
   "starredHelpTipsTitle": {
-    "message": "Quick tips:"
+    "message": "How it works"
   },
   "starredHelpTip1": {
-    "message": "Drag conversations into a folder."
+    "message": "Drag a conversation into a folder"
   },
   "starredHelpTip2": {
-    "message": "Drag items within a folder to reorder."
+    "message": "Drag to reorder inside a folder"
   },
   "starredHelpTip3": {
-    "message": "Drag subfolders to reorder."
+    "message": "Drag subfolders to reorder too"
   },
   "starredHelpTip4": {
-    "message": "Double-click a folder or item to edit."
+    "message": "Double-click to rename"
   },
   "folderMoveHasChildren": {
-    "message": "Has subfolders, cannot nest further"
+    "message": "It already has subfolders — can't nest it"
   },
   "folderMoveMaxDepth": {
-    "message": "Maximum folder depth reached"
+    "message": "That's as deep as folders go"
   },
   "guideSubtitle": {
     "message": "AI conversation enhancement extension"
@@ -707,34 +717,34 @@
     "message": "Supported Platforms"
   },
   "highlightStyleTitle": {
-    "message": "Highlight Style"
+    "message": "Style"
   },
   "highlightStyleFullCover": {
-    "message": "Full Cover"
+    "message": "Full block"
   },
   "highlightStyleFullCoverDesc": {
-    "message": "Highlight fully covers text"
+    "message": "Color covers the whole line"
   },
   "highlightStyleHalfCover": {
-    "message": "Half Cover"
+    "message": "Half block"
   },
   "highlightStyleHalfCoverDesc": {
-    "message": "Highlight covers lower half of text"
+    "message": "Color covers the lower half"
   },
   "highlightStyleUnderline": {
     "message": "Underline"
   },
   "highlightStyleUnderlineDesc": {
-    "message": "Highlight appears below text"
+    "message": "A colored line under the text"
   },
   "highlightStyleTextOnly": {
-    "message": "Text Only"
+    "message": "Text color"
   },
   "highlightStyleTextOnlyDesc": {
-    "message": "No background, text color only"
+    "message": "No background — just recolors the text"
   },
   "highlightMyColors": {
-    "message": "Highlight Colors"
+    "message": "Your colors"
   },
   "highlightColorPlaceholder": {
     "message": "#FF5733"
@@ -743,22 +753,22 @@
     "message": "Maximum 15 colors"
   },
   "highlightDeleteColorConfirm": {
-    "message": "Delete color {color}?"
+    "message": "Delete {color}?"
   },
   "highlightAddColorTitle": {
     "message": "Add Color"
   },
   "highlightAddColorBtn": {
-    "message": "Color"
+    "message": "Add color"
   },
   "highlightInvalidHex": {
-    "message": "Invalid color format"
+    "message": "That's not a valid code — try #FF5733"
   },
   "highlightColorExists": {
-    "message": "Color already exists"
+    "message": "You already have that color"
   },
   "highlightColorHint": {
-    "message": "Enter a 6-digit hex color code, e.g. #FF5733"
+    "message": "Enter a color code like #FF5733"
   },
   "highlightAnnotationPlaceholder": {
     "message": "Thoughts…"
@@ -800,25 +810,25 @@
     "message": "Email"
   },
   "timelineDisplayLabel": {
-    "message": "Show Timeline"
+    "message": "Show timeline"
   },
   "starredDisplayLabel": {
-    "message": "Show Folders"
+    "message": "Show in sidebar"
   },
   "promptBtnDisplayLabel": {
-    "message": "Show Prompt Button"
+    "message": "Prompt button"
   },
   "promptBtnSwitch": {
-    "message": "Settings"
+    "message": "Choose platforms"
   },
   "formulaFormatNone": {
-    "message": "No wrapping"
+    "message": "Plain formula"
   },
   "gdriveUploadBtn": {
-    "message": "Upload to Cloud"
+    "message": "Upload a backup"
   },
   "gdriveDownloadBtn": {
-    "message": "Download from Cloud"
+    "message": "Restore a backup"
   },
   "exportLabel": {
     "message": "Export"
@@ -827,7 +837,7 @@
     "message": "Import"
   },
   "gdriveUploading": {
-    "message": "Uploading..."
+    "message": "Uploading…"
   },
   "gdriveUploadSuccess": {
     "message": "Uploaded to Google Drive"
@@ -836,109 +846,109 @@
     "message": "Upload failed"
   },
   "gdriveDownloading": {
-    "message": "Downloading..."
+    "message": "Restoring…"
   },
   "gdriveDownloadFailed": {
-    "message": "Download failed"
+    "message": "Restore failed"
   },
   "gdriveNoBackup": {
-    "message": "No backup data on cloud"
+    "message": "No backup in the cloud yet"
   },
   "gdriveDataInvalid": {
-    "message": "Cloud data format is invalid"
+    "message": "That cloud backup can't be read"
   },
   "gdriveMergeSuccess": {
-    "message": "Cloud data merged"
+    "message": "Restored and merged"
   },
   "gdriveMergeHint": {
-    "message": "Data downloaded and merged from Google Drive. Refresh to apply changes."
+    "message": "Restored — refresh the page to see it"
   },
   "chatWidthTitle": {
-    "message": "Chat Width"
+    "message": "Page width"
   },
   "chatWidthHint": {
-    "message": "Widen the conversation area to make better use of screen space"
+    "message": "Widen the chat so your screen isn't half empty"
   },
   "chatWidthAdjust": {
-    "message": "Adjust"
+    "message": "Drag to adjust"
   },
   "chatWidthCurrent": {
     "message": "Current width"
   },
   "chatWidthNormal": {
-    "message": "Normal"
+    "message": "Default"
   },
   "chatWidthConfirm": {
-    "message": "OK"
+    "message": "Save"
   },
   "mirrorSiteTabName": {
-    "message": "Mirror Sites"
+    "message": "Other sites"
   },
   "mirrorSiteHint": {
-    "message": "Add AI mirror site domains. A floating button will appear on these sites, enabling some features of this extension."
+    "message": "Add the AI sites you use — the extension works there too"
   },
   "mirrorSiteAddDomain": {
-    "message": "Add"
+    "message": "Add site"
   },
   "mirrorSiteInputPlaceholder": {
-    "message": "Enter domain, e.g. chat.example.com"
+    "message": "Enter a site, e.g. chat.example.com"
   },
   "mirrorSiteDomainListTitle": {
-    "message": "Added Domains"
+    "message": "Sites you added"
   },
   "mirrorSiteNoDomains": {
-    "message": "No domains added yet"
+    "message": "Nothing added yet"
   },
   "mirrorSiteDomainAdded": {
-    "message": "Domain added"
+    "message": "Site added"
   },
   "mirrorSiteDomainRemoved": {
-    "message": "Domain removed"
+    "message": "Site removed"
   },
   "mirrorSiteDomainExists": {
-    "message": "Domain already exists"
+    "message": "That site is already on the list"
   },
   "mirrorSiteDomainInvalid": {
-    "message": "Invalid domain format"
+    "message": "That doesn't look like a valid site"
   },
   "mirrorSiteDomainIsOfficial": {
-    "message": "This domain is already an officially supported platform"
+    "message": "Already supported — no need to add it"
   },
   "mirrorSiteCopied": {
-    "message": "Copied to clipboard"
+    "message": "Copied"
   },
   "hideStarredFromListLabel": {
-    "message": "Dedup Mode"
+    "message": "Hide duplicates"
   },
   "hideStarredFromListHint": {
-    "message": "When enabled, conversations added to folders will be hidden from the native sidebar list"
+    "message": "Saved conversations disappear from the original list"
   },
   "timelineAICompleteNotLatestToast": {
-    "message": "$1 reply is complete."
+    "message": "$1 finished replying"
   },
   "timelineAICompleteToastTitle": {
-    "message": "Reply completion reminder"
+    "message": "Reply alert"
   },
   "timelineAICompleteToastHint": {
-    "message": "Show a reminder when an AI reply finishes while you are not at the latest position"
+    "message": "Notifies you when a reply finishes while you're scrolled away"
   },
   "timelineThemeColorLabel": {
-    "message": "Timeline theme color"
+    "message": "Timeline color"
   },
   "timelineThemeColorHint": {
-    "message": "Set the active timeline marker theme color for each platform"
+    "message": "Pick the highlight color for each platform"
   },
   "timelineThemeColorManageButton": {
-    "message": "Set"
+    "message": "Choose"
   },
   "conversationExportTabName": {
-    "message": "Conversation Export"
+    "message": "Export chats"
   },
   "conversationExportToggleTitle": {
-    "message": "Enable conversation export"
+    "message": "Turn on export"
   },
   "conversationExportToggleHint": {
-    "message": "When enabled, supported conversation pages show an export entry above the timeline."
+    "message": "Adds an export button above the timeline"
   },
   "conversationExportButton": {
     "message": "Export conversation"
@@ -947,10 +957,10 @@
     "message": "If you find this extension useful, feel free to share it with someone who might need it."
   },
   "longConversationPerformanceTitle": {
-    "message": "Long Conversation Optimization"
+    "message": "Auto-fold"
   },
   "longConversationPerformanceHint": {
-    "message": "Automatically fold older messages after the set limit."
+    "message": "Folds older messages — nothing is deleted, click to read them"
   },
   "longConversationThresholdLabel": {
     "message": "After"
@@ -959,24 +969,30 @@
     "message": "messages"
   },
   "longConversationKeepRecentLabel": {
-    "message": "Keep recent"
+    "message": "Keep the last"
   },
   "longConversationKeepRecentUnit": {
-    "message": "messages visible"
+    "message": "visible"
   },
   "longConversationValidationKeepRecent": {
-    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+    "message": "The kept count must be lower than the trigger — adjusted for you"
   },
   "longConversationExpandMore": {
-    "message": "Expand more history"
+    "message": "Show earlier messages"
   },
   "longConversationCollapsedTooltip": {
-    "message": "$1 older messages above are folded. Click to expand more."
+    "message": "$1 earlier messages folded — click to show"
   },
   "highlightSettings": {
     "message": "Settings"
   },
   "highlightConfirm": {
     "message": "Confirm"
+  },
+  "highlightTabName": {
+    "message": "Highlighting"
+  },
+  "formulaSettingsLabel": {
+    "message": "Formula settings"
   }
 }

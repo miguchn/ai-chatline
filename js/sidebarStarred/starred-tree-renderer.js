@@ -851,8 +851,8 @@ class StarredTreeRenderer {
 
             const result = await window.folderEditModal.show({
                 mode: 'create', title,
-                placeholder: chrome.i18n.getMessage('vzkpmx') || 'Folder name',
-                requiredMessage: chrome.i18n.getMessage('kmxpvz') || 'Name is required',
+                placeholder: chrome.i18n.getMessage('vzkpmx') || 'Name this folder',
+                requiredMessage: chrome.i18n.getMessage('kmxpvz') || 'Give it a name first',
                 maxLength: 15
             });
             if (!result) return;
@@ -879,10 +879,10 @@ class StarredTreeRenderer {
 
             const result = await window.folderEditModal.show({
                 mode: 'edit',
-                title: chrome.i18n.getMessage('pxmzvk') || 'Edit Folder',
+                title: chrome.i18n.getMessage('pxmzvk') || 'Rename folder',
                 name: currentName,
                 icon: folder.icon || '',
-                placeholder: chrome.i18n.getMessage('mvzxkp') || 'Folder name',
+                placeholder: chrome.i18n.getMessage('mvzxkp') || 'Type a new name',
                 maxLength: 15
             });
             if (!result) return;
@@ -919,10 +919,10 @@ class StarredTreeRenderer {
             if (!folderData) { this._toast('error', 'zpxmkv', 'Folder not found'); return; }
 
             const totalItems = this._countAllItems(folderData);
-            const title = (chrome.i18n.getMessage('qzmvkx') || 'Delete folder "{folderName}"?')
+            const title = (chrome.i18n.getMessage('qzmvkx') || 'Delete "{folderName}"?')
                 .replace('{folderName}', folderData.name);
             const content = totalItems > 0
-                ? (chrome.i18n.getMessage('wjxnkp') || '{count} starred items inside will also be deleted.')
+                ? (chrome.i18n.getMessage('wjxnkp') || 'The {count} conversations inside will be deleted too')
                     .replace('{count}', totalItems)
                 : '';
 
@@ -1216,7 +1216,7 @@ class StarredTreeRenderer {
                 await this.folderManager.reorderStarredInFolder(turnId, actualFolderId, refTurnId, refPosition);
             }
 
-            this._toastAtFolder(folderEl, 'nativeMenuStarSuccess', 'Starred');
+            this._toastAtFolder(folderEl, 'nativeMenuStarSuccess', 'Saved');
             await this.opts.onAfterAction();
         } catch (err) {
             console.error('[StarredTreeRenderer] External drop failed:', err);

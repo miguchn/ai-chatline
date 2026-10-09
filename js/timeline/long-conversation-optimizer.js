@@ -327,7 +327,7 @@ class LongConversationOptimizer {
         if (!this.collapseHintElement) {
             this.collapseHintElement = document.createElement('button');
             this.collapseHintElement.className = 'ait-timeline-collapse-hint';
-            this.collapseHintElement.setAttribute('aria-label', this.i18n('longConversationExpandMore', '展开更多历史消息'));
+            this.collapseHintElement.setAttribute('aria-label', this.i18n('longConversationExpandMore', '展开更早的对话'));
             this.collapseHintElement.setAttribute('tabindex', '0');
             this.collapseHintElement.innerHTML = `
                 <span class="ait-timeline-collapse-hint-icon" aria-hidden="true">↥</span>

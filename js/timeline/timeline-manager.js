@@ -424,7 +424,7 @@ class TimelineManager {
             questionListBtn = document.createElement('button');
             questionListBtn.className = 'ait-question-list-btn';
             questionListBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>';
-            questionListBtn.setAttribute('aria-label', TimelineUtils.i18n('questionListTitle', 'Questions'));
+            questionListBtn.setAttribute('aria-label', TimelineUtils.i18n('questionListTitle', 'Your questions'));
             questionListBtn.style.display = 'none';
 
             questionListBtn.addEventListener('mouseenter', () => {
@@ -432,7 +432,7 @@ class TimelineManager {
                     'question-list-btn',
                     'button',
                     questionListBtn,
-                    TimelineUtils.i18n('questionListTitle', 'Questions'),
+                    TimelineUtils.i18n('questionListTitle', 'Your questions'),
                     { placement: 'left' }
                 );
             });
@@ -465,7 +465,7 @@ class TimelineManager {
                     'starred-btn',
                     'button',
                     starredBtn,
-                    TimelineUtils.i18n('vnkxpm', 'Starred'),
+                    TimelineUtils.i18n('vnkxpm', 'Saved'),
                     { placement: 'left' }
                 );
             });
@@ -878,7 +878,7 @@ class TimelineManager {
             defaultValue: currentText,
             placeholder: TimelineUtils.i18n('zmxvkp', '标题'),
             required: true,
-            requiredMessage: TimelineUtils.i18n('pzmkvx', '请输入内容'),
+            requiredMessage: TimelineUtils.i18n('pzmkvx', '内容不能空着'),
             maxLength: 100
         });
     }
@@ -972,7 +972,7 @@ class TimelineManager {
             defaultValue: defaultTheme,
             placeholder: TimelineUtils.i18n('zmxvkp', '标题'),
             required: true,
-            requiredMessage: TimelineUtils.i18n('mzpxvk', '请输入主题'),
+            requiredMessage: TimelineUtils.i18n('mzpxvk', '标题不能空着'),
             maxLength: 100
         });
     }
@@ -2567,7 +2567,7 @@ class TimelineManager {
         pinSpan.dataset.targetTurnId = id;
         if (!isPinned) pinSpan.classList.add('not-pinned');
         pinSpan.dataset.tip = isPinned
-            ? TimelineUtils.i18n('unpinAction', '取消标记重点')
+            ? TimelineUtils.i18n('unpinAction', '取消标记')
             : TimelineUtils.i18n('pinAction', '标记重点');
         pinSpan.addEventListener('click', async (e) => {
             e.stopPropagation();
@@ -2578,7 +2578,7 @@ class TimelineManager {
                 const nowPinned = this.pinned.has(turnId);
                 pinSpan.classList.toggle('not-pinned', !nowPinned);
                 pinSpan.dataset.tip = nowPinned
-                    ? TimelineUtils.i18n('unpinAction', '取消标记重点')
+                    ? TimelineUtils.i18n('unpinAction', '取消标记')
                     : TimelineUtils.i18n('pinAction', '标记重点');
             }
         });
@@ -4017,7 +4017,7 @@ class TimelineManager {
             const isTempId = tempMatch && parseInt(tempMatch[1], 10) < 1000;
             if (isTempId) {
                 if (window.globalToastManager) {
-                    window.globalToastManager.info(TimelineUtils.i18n('pleaseWait', '请稍等，节点ID正在加载...'));
+                    window.globalToastManager.info(TimelineUtils.i18n('pleaseWait', '稍等，正在加载…'));
                 }
                 return { success: false, action: null };
             }
@@ -4388,7 +4388,7 @@ class TimelineManager {
             const isTempId = tempMatch && parseInt(tempMatch[1], 10) < 1000;
             if (isTempId) {
                 if (window.globalToastManager) {
-                    window.globalToastManager.info(TimelineUtils.i18n('pleaseWait', '请稍等，节点ID正在加载...'));
+                    window.globalToastManager.info(TimelineUtils.i18n('pleaseWait', '稍等，正在加载…'));
                 }
                 return false;
             }

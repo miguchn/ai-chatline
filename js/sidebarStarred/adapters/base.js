@@ -243,7 +243,7 @@ class BaseSidebarStarredAdapter {
                 folderId: result.folderId || null
             });
 
-            window.globalToastManager?.success(chrome.i18n.getMessage('nativeMenuStarSuccess') || 'Starred');
+            window.globalToastManager?.success(chrome.i18n.getMessage('nativeMenuStarSuccess') || 'Saved');
         } catch (err) {
             console.error('[SidebarStarredAdapter] Star failed:', err);
         }

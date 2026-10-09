@@ -18,16 +18,16 @@
     "message": "お気に入りから削除"
   },
   "vnkxpm": {
-    "message": "フォルダ"
+    "message": "保存済み"
   },
   "kxpmzv": {
-    "message": "お気に入りに追加しました"
+    "message": "保存しました"
   },
   "pzmvkx": {
     "message": "お気に入りから削除しました"
   },
   "jwvnkp": {
-    "message": "データがありません"
+    "message": "該当なし"
   },
   "zxvkpm": {
     "message": "すべて表示"
@@ -57,10 +57,10 @@
     "message": "確定"
   },
   "mzpxvk": {
-    "message": "タイトルは空にできません"
+    "message": "タイトルを先に入力してください"
   },
   "folderRequired": {
-    "message": "フォルダーを選択してください"
+    "message": "フォルダを先に選択してください"
   },
   "defaultFolder": {
     "message": "デフォルト"
@@ -72,10 +72,10 @@
     "message": "ピン留め解除"
   },
   "searchPrompt": {
-    "message": "プロンプトを検索..."
+    "message": "プロンプトを検索"
   },
   "sidebarStarredHint": {
-    "message": "有効にすると、サイドバーにフォルダが表示されます"
+    "message": "保存した会話をサイトのサイドバーに表示します"
   },
   "sidebarStarredManage": {
     "message": "設定"
@@ -120,7 +120,7 @@
     "message": "魔法使い"
   },
   "animTabEmpty": {
-    "message": "利用可能なアニメーションはありません"
+    "message": "まだペットがいません"
   },
   "animGrowHint": {
     "message": "あと{n}メッセージ"
@@ -129,7 +129,7 @@
     "message": "名前を変更"
   },
   "pzmkvx": {
-    "message": "内容は空にできません"
+    "message": "内容を先に入力してください"
   },
   "vxpzmk": {
     "message": "オープンソース"
@@ -144,7 +144,7 @@
     "message": "友達にシェア"
   },
   "mvxkpz": {
-    "message": "LaTeX数式をコピー"
+    "message": "LaTeX としてコピー"
   },
   "kxvpmz": {
     "message": "新規フォルダ"
@@ -165,22 +165,22 @@
     "message": "フォルダ名を入力"
   },
   "kmxpvz": {
-    "message": "フォルダ名は空にできません"
+    "message": "名前を先に入力してください"
   },
   "pxmzvk": {
-    "message": "フォルダを編集"
+    "message": "フォルダ名を変更"
   },
   "mvzxkp": {
     "message": "新しい名前を入力"
   },
   "kpvzmx": {
-    "message": "フォルダ名は既に存在します"
+    "message": "この名前は既に使われています"
   },
   "xzvkpm": {
     "message": "作成しました"
   },
   "vmkxpz": {
-    "message": "更新しました"
+    "message": "保存しました"
   },
   "zpxmkv": {
     "message": "フォルダが見つかりません"
@@ -198,10 +198,10 @@
     "message": "移動先"
   },
   "wjxnkp": {
-    "message": "{count} 件のお気に入りも一緒に削除されます。"
+    "message": "中の会話 {count} 件も一緒に削除されます"
   },
   "qzmvkx": {
-    "message": "フォルダ「{folderName}」を削除しますか？"
+    "message": "「{folderName}」を削除しますか？"
   },
   "mvkzpx": {
     "message": "検索..."
@@ -219,19 +219,19 @@
     "message": "タイムライン"
   },
   "mzkvxp": {
-    "message": "有効にすると、AI 会話ページの右側にタイムラインが表示されます"
+    "message": "右側にタイムラインを表示し、任意のメッセージへ直接移動できます"
   },
   "vkpmzx": {
-    "message": "↑ / ↓ キーで会話ノードを移動"
+    "message": "矢印キーで移動"
   },
   "xpvmkz": {
-    "message": "有効にすると、↑ / ↓ キーで会話ノード間を素早く移動できます。"
+    "message": "↑ ↓ キーで前・次のメッセージへ移動"
   },
   "pxmzkv": {
     "message": "重要な会話をマーク"
   },
   "kzxvpm": {
-    "message": "タイムライン上の会話ノードを長押しすると、重要としてマークできます。"
+    "message": "タイムラインの点を長押しして、そのメッセージをマーク"
   },
   "xmvkpz": {
     "message": "入力ボックス"
@@ -252,10 +252,10 @@
     "message": "対応プラットフォーム"
   },
   "vxmkpz": {
-    "message": "Enterキー：1回押しで改行、2回連続で送信"
+    "message": "Enter：改行 · 2回押し：送信"
   },
   "mkpxvz": {
-    "message": "有効にすると、AIチャット入力欄で Enter キーで改行、{mode} でメッセージを送信します。"
+    "message": "Enter は改行のみ — {mode} で送信"
   },
   "smartEnterModeDoubleEnter": {
     "message": "Enter 素早く2回"
@@ -276,31 +276,31 @@
     "message": "Enter で改行、Shift + Enter で送信"
   },
   "smartEnterToastCtrlEnter": {
-    "message": "Enterキー：改行、{ctrl}+Enter：送信"
+    "message": "Enter：改行 · {ctrl}+Enter：送信"
   },
   "smartEnterToastShiftEnter": {
-    "message": "Enterキー：改行、Shift+Enter：送信"
+    "message": "Enter：改行 · Shift+Enter：送信"
   },
   "qoytxz": {
-    "message": "この機能はデフォルトで有効で、オフにできません"
+    "message": "常にオン — オフにできません"
   },
   "hosegod": {
     "message": "プロンプト"
   },
   "hobsidbg": {
-    "message": "よく使うプロンプトを保存し、すぐ呼び出せます。有効にすると、チャットボックスの左側にプロンプトボタンが表示されます。"
+    "message": "よく使うプロンプトを保存して、ワンクリックで送信"
   },
   "biwhckdj": {
     "message": "プロンプト一覧"
   },
   "byaskjndg": {
-    "message": "プロンプトを追加"
+    "message": "新規プロンプト"
   },
   "hsksuywm": {
     "message": "プロンプトを編集"
   },
   "hsuywkw": {
-    "message": "プロンプト名"
+    "message": "名前"
   },
   "hsuywkwPlaceholder": {
     "message": "プロンプト名を入力"
@@ -309,16 +309,16 @@
     "message": "内容"
   },
   "uwkjwjw": {
-    "message": "プロンプト内容を入力"
+    "message": "プロンプトをここに貼り付け"
   },
   "hsiwhwl": {
-    "message": "プロンプトがありません"
+    "message": "まだプロンプトがありません"
   },
   "shwsuwk": {
     "message": "プロンプトを追加しました"
   },
   "hwkwbhwk": {
-    "message": "プロンプトを更新しました"
+    "message": "プロンプトを保存しました"
   },
   "qrtypd": {
     "message": "プロンプトを削除しました"
@@ -336,13 +336,13 @@
     "message": "ピン留めを解除しました"
   },
   "addkbt": {
-    "message": "追加"
+    "message": "新規"
   },
   "ptfmsl": {
     "message": "対象"
   },
   "allptfm": {
-    "message": "すべてのAIプラットフォーム"
+    "message": "すべてのプラットフォーム"
   },
   "febhyejd": {
     "message": "オンラインでフィードバックを送信"
@@ -372,10 +372,10 @@
     "message": "ライト"
   },
   "formulaFormatTitle": {
-    "message": "コピー形式を選択"
+    "message": "コピー形式"
   },
   "dataSyncTabName": {
-    "message": "データ同期"
+    "message": "バックアップと復元"
   },
   "exportTitle": {
     "message": "手動同期"
@@ -384,7 +384,7 @@
     "message": "JSONファイルで手動バックアップまたはデータ復元を行い、他のブラウザへの移行に使用できます。"
   },
   "exportBtn": {
-    "message": "エクスポート"
+    "message": "バックアップファイルをエクスポート"
   },
   "importTitle": {
     "message": "データをインポート"
@@ -399,46 +399,46 @@
     "message": "マージ"
   },
   "importModeMergeDesc": {
-    "message": "既存のデータを保持し、インポートデータとマージ"
+    "message": "既存のデータはそのままに、足りない分を追加します"
   },
   "importModeOverwrite": {
-    "message": "上書き"
+    "message": "置き換え"
   },
   "importModeOverwriteDesc": {
-    "message": "既存のデータを消去し、インポートデータで置き換え"
+    "message": "現在のデータを消去し、ファイルの内容に置き換えます"
   },
   "exportSuccess": {
-    "message": "エクスポート成功"
+    "message": "エクスポートしました"
   },
   "importSuccess": {
-    "message": "インポート成功"
+    "message": "インポートしました"
   },
   "importSuccessHint": {
-    "message": "データのインポートが成功しました。ページを更新して適用してください"
+    "message": "インポートしました — ページを更新すると反映されます"
   },
   "importFailed": {
     "message": "インポート失敗"
   },
   "refreshPage": {
-    "message": "ページを更新"
+    "message": "今すぐ更新"
   },
   "refreshLater": {
-    "message": "後で更新"
+    "message": "後で"
   },
   "quickAsk": {
     "message": "追加質問"
   },
   "highlightToggleTitle": {
-    "message": "テキストハイライトを有効にする"
+    "message": "ハイライトを有効にする"
   },
   "highlightToggleHint": {
-    "message": "有効にすると、ウェブページのテキストを選択してハイライトできます"
+    "message": "テキストを選択して色でマークできます"
   },
   "highlightColorTitle": {
     "message": "ハイライト色"
   },
   "highlightMark": {
-    "message": "マーク"
+    "message": "ハイライト"
   },
   "highlightRemoveConfirm": {
     "message": "このハイライトを削除しますか？"
@@ -453,16 +453,16 @@
     "message": "最下部へ"
   },
   "scrollToBottomHint": {
-    "message": "最新メッセージに戻るクイックボタンを表示"
+    "message": "最新メッセージへ移動するボタンを追加します"
   },
   "pleaseWait": {
-    "message": "お待ちください、ノードIDを読み込み中..."
+    "message": "お待ちください、読み込み中…"
   },
   "chatTimeLabelTitle": {
-    "message": "会話時間を表示"
+    "message": "時刻を表示"
   },
   "chatTimeLabelHint": {
-    "message": "各メッセージに送信時間を表示、チャット履歴のように一目瞭然"
+    "message": "各メッセージの送信時刻を表示します"
   },
   "gdriveTitle": {
     "message": "Google Drive 同期"
@@ -492,28 +492,28 @@
     "message": "スクロールでズーム · ドラッグで移動 · ESC で閉じる"
   },
   "notepadToggleHint": {
-    "message": "Show notepad entry at the bottom of the timeline for quick notes"
+    "message": "タイムラインの下にメモの入口を追加します"
   },
   "notepadTitle": {
-    "message": "Flash Notes"
+    "message": "クイックメモ"
   },
   "notepadPlaceholder": {
-    "message": "Just write what comes to mind…"
+    "message": "思いついたことをそのまま書き留めましょう…"
   },
   "notepadClose": {
     "message": "Close"
   },
   "notepadAllNotes": {
-    "message": "All Notes"
+    "message": "すべてのメモ"
   },
   "notepadNewNote": {
-    "message": "New Note"
+    "message": "新規メモ"
   },
   "notepadConfirmDeleteTitle": {
-    "message": "Confirm Delete"
+    "message": "メモを削除"
   },
   "notepadConfirmDeleteContent": {
-    "message": "This cannot be undone. Are you sure?"
+    "message": "元に戻せません。削除しますか？"
   },
   "notepadUntitled": {
     "message": "Untitled"
@@ -528,49 +528,49 @@
     "message": "数式コピーの種類"
   },
   "formulaCopyMathML": {
-    "message": "MathML 数式をコピー"
+    "message": "MathML としてコピー"
   },
   "formulaCopyGeneric": {
     "message": "数式をコピー"
   },
   "formulaLatexTitle": {
-    "message": "LaTeX 数式をコピー"
+    "message": "LaTeX"
   },
   "formulaLatexHint": {
-    "message": "数式をクリックすると LaTeX 形式でコピーされます"
+    "message": "数式をクリックすると LaTeX としてコピーされます"
   },
   "formulaMathMLTitle": {
-    "message": "MathML 数式をコピー"
+    "message": "MathML"
   },
   "formulaMathMLHint": {
-    "message": "数式をクリックすると MathML 形式でコピーされ、Word に直接貼り付け可能"
+    "message": "クリックでコピーして、Word にそのまま貼り付けられます"
   },
   "aboutTabName": {
-    "message": "プラグインについて"
+    "message": "情報"
   },
   "aboutPluginTitle": {
-    "message": "プラグイン紹介"
+    "message": "ChatLine について"
   },
   "aboutPluginContent": {
-    "message": "ChatLine は AI チャットページ向けのブラウザ拡張です。オープンソースの Timeline プロジェクトをベースに二次開発され、タイムラインナビゲーション、履歴位置の特定、会話閲覧の強化、会話データのアーカイブに重点を置いています。複数の主要な AI チャットプラットフォームをサポートします。"
+    "message": "ChatLine は、AI チャットページにタイムライン、会話の保存、エクスポート、コード実行を追加する拡張機能です。オープンソースの Timeline プロジェクトをベースに開発され、ChatGPT・Gemini・DeepSeek・Kimi・Qwen・Claude・Yuanbao・NotebookLM などに対応しています。"
   },
   "aboutDataSecurityTitle": {
-    "message": "データセキュリティ"
+    "message": "あなたのデータ"
   },
   "aboutDataSecurityContent": {
-    "message": "すべてのデータはブラウザのローカルまたは Google Drive に保存されます。拡張機能はあなたの会話内容や個人情報を収集、アップロード、共有することはありません。本プロジェクトは GitHub でオープンソース化されており、いつでもコードを確認できます。"
+    "message": "データはブラウザ内、またはご自身の Google Drive にのみ保存されます。この拡張機能が会話内容や個人情報を収集・アップロード・共有することはありません。コードは GitHub で公開されており、いつでも確認できます。"
   },
   "aboutDeveloperTitle": {
     "message": "フィードバック"
   },
   "aboutDeveloperContent": {
-    "message": "ChatLine は ai-chat-timeline fork として保守されています。機能要望や bug 報告は、このプロジェクトリポジトリの Issues ページから送信してください。"
+    "message": "ChatLine は ai-chat-timeline のフォークとして開発・運営されています。機能の追加依頼やバグの報告は、プロジェクトリポジトリで issue を作成してください。"
   },
   "aboutShareTitle": {
     "message": "友達にすすめる"
   },
   "aboutShareContent": {
-    "message": "ChatLine が役に立ったら、AI 会話をよく読み返し、探し、保存する人におすすめしてください。作者: 咪咕看见小黑。メール: miguchn@gmail.com。利用中に問題が発生した場合や改善提案がある場合は、いつでもメールでフィードバックできます。"
+    "message": "ChatLine が役に立ったら、AI チャットをよく使う人にも紹介してください。作者: 咪咕看见小黑 · miguchn@gmail.com — ご質問やご提案はいつでも歓迎します。"
   },
   "nativeMenuStarToFolder": {
     "message": "フォルダにスター"
@@ -579,7 +579,7 @@
     "message": "すでにスター済みです"
   },
   "nativeMenuStarSuccess": {
-    "message": "スターしました"
+    "message": "保存しました"
   },
   "animViewMore": {
     "message": "ペット変更"
@@ -588,28 +588,28 @@
     "message": "移動しました"
   },
   "starredHelpDesc": {
-    "message": "フォルダで会話を整理し、すっきり管理。"
+    "message": "会話をフォルダで整理して、探す手間を省きましょう"
   },
   "starredHelpTipsTitle": {
-    "message": "便利な使い方："
+    "message": "使い方"
   },
   "starredHelpTip1": {
-    "message": "会話をフォルダにドラッグ。"
+    "message": "会話をフォルダにドラッグ"
   },
   "starredHelpTip2": {
-    "message": "フォルダ内の会話をドラッグして並べ替え。"
+    "message": "フォルダ内はドラッグで並べ替え"
   },
   "starredHelpTip3": {
-    "message": "サブフォルダをドラッグして並べ替え。"
+    "message": "サブフォルダもドラッグで並べ替え"
   },
   "starredHelpTip4": {
-    "message": "フォルダや会話をダブルクリックで編集。"
+    "message": "ダブルクリックで名前を変更"
   },
   "folderMoveHasChildren": {
-    "message": "サブフォルダを含むため、ネストできません"
+    "message": "サブフォルダがあるため、入れ子にできません"
   },
   "folderMoveMaxDepth": {
-    "message": "最大階層に達しました"
+    "message": "フォルダはこれ以上深くできません"
   },
   "guideSubtitle": {
     "message": "AI会話拡張プラグイン"
@@ -630,34 +630,34 @@
     "message": "対応プラットフォーム"
   },
   "highlightStyleTitle": {
-    "message": "ハイライトスタイル"
+    "message": "スタイル"
   },
   "highlightStyleFullCover": {
     "message": "全面カバー"
   },
   "highlightStyleFullCoverDesc": {
-    "message": "テキスト全体をハイライトで覆う"
+    "message": "行全体を色で覆います"
   },
   "highlightStyleHalfCover": {
     "message": "半分カバー"
   },
   "highlightStyleHalfCoverDesc": {
-    "message": "テキストの下半分をハイライト"
+    "message": "行の下半分を色で覆います"
   },
   "highlightStyleUnderline": {
     "message": "下線"
   },
   "highlightStyleUnderlineDesc": {
-    "message": "テキストの下にハイライトを表示"
+    "message": "テキストの下に色付きの線を表示します"
   },
   "highlightStyleTextOnly": {
-    "message": "テキストのみ"
+    "message": "文字色"
   },
   "highlightStyleTextOnlyDesc": {
-    "message": "背景なし、文字色のみ変更"
+    "message": "背景なし — 文字色だけを変更します"
   },
   "highlightMyColors": {
-    "message": "ハイライトカラー"
+    "message": "マイカラー"
   },
   "highlightColorPlaceholder": {
     "message": "#FF5733"
@@ -672,16 +672,16 @@
     "message": "色を追加"
   },
   "highlightAddColorBtn": {
-    "message": "色"
+    "message": "色を追加"
   },
   "highlightInvalidHex": {
-    "message": "無効なカラー形式です"
+    "message": "無効なカラーコードです — 例: #FF5733"
   },
   "highlightColorExists": {
-    "message": "この色は既に存在します"
+    "message": "既に追加済みの色です"
   },
   "highlightColorHint": {
-    "message": "6桁の16進数カラーコードを入力してください（例: #FF5733）"
+    "message": "#FF5733 のようなカラーコードを入力してください"
   },
   "highlightAnnotationPlaceholder": {
     "message": "考え…"
@@ -726,22 +726,22 @@
     "message": "タイムラインを表示"
   },
   "starredDisplayLabel": {
-    "message": "フォルダを表示"
+    "message": "サイドバーに表示"
   },
   "promptBtnDisplayLabel": {
-    "message": "プロンプトボタンを表示"
+    "message": "プロンプトボタン"
   },
   "promptBtnSwitch": {
-    "message": "設定"
+    "message": "プラットフォームを選択"
   },
   "formulaFormatNone": {
-    "message": "ラッピングなし"
+    "message": "数式のみ"
   },
   "gdriveUploadBtn": {
-    "message": "クラウドにアップロード"
+    "message": "バックアップをアップロード"
   },
   "gdriveDownloadBtn": {
-    "message": "クラウドからダウンロード"
+    "message": "バックアップを復元"
   },
   "exportLabel": {
     "message": "エクスポート"
@@ -750,7 +750,7 @@
     "message": "インポート"
   },
   "gdriveUploading": {
-    "message": "アップロード中..."
+    "message": "アップロード中…"
   },
   "gdriveUploadSuccess": {
     "message": "Google Drive にアップロードしました"
@@ -759,135 +759,210 @@
     "message": "アップロード失敗"
   },
   "gdriveDownloading": {
-    "message": "ダウンロード中..."
+    "message": "復元中…"
   },
   "gdriveDownloadFailed": {
-    "message": "ダウンロード失敗"
+    "message": "復元に失敗しました"
   },
   "gdriveNoBackup": {
-    "message": "クラウドにバックアップデータがありません"
+    "message": "まだクラウドにバックアップがありません"
   },
   "gdriveDataInvalid": {
-    "message": "クラウドデータの形式が無効です"
+    "message": "クラウドのバックアップを読み込めません"
   },
   "gdriveMergeSuccess": {
-    "message": "クラウドデータを統合しました"
+    "message": "復元して統合しました"
   },
   "gdriveMergeHint": {
-    "message": "Google Drive からデータをダウンロードし統合しました。ページを更新して反映してください。"
+    "message": "復元しました — ページを更新すると反映されます"
   },
   "chatWidthTitle": {
-    "message": "チャット幅"
+    "message": "ページ幅"
   },
   "chatWidthHint": {
-    "message": "会話エリアを広げて画面を有効活用"
+    "message": "チャット表示を広げて、画面の余白を有効活用"
   },
   "chatWidthAdjust": {
-    "message": "調整"
+    "message": "ドラッグで調整"
   },
   "chatWidthCurrent": {
     "message": "現在の幅"
   },
   "chatWidthNormal": {
-    "message": "通常"
+    "message": "デフォルト"
   },
   "chatWidthConfirm": {
-    "message": "OK"
+    "message": "保存"
   },
   "mirrorSiteTabName": {
-    "message": "ミラーサイト"
+    "message": "その他のサイト"
   },
   "mirrorSiteHint": {
-    "message": "AIミラーサイトのドメインを追加すると、そのサイトにフローティングボタンが表示され、本拡張機能の一部の機能を利用できます。"
+    "message": "使っている AI サイトを追加すると、そのサイトでも拡張機能が使えます"
   },
   "mirrorSiteAddDomain": {
-    "message": "追加"
+    "message": "サイトを追加"
   },
   "mirrorSiteInputPlaceholder": {
-    "message": "ドメインを入力（例：chat.example.com）"
+    "message": "サイトを入力（例: chat.example.com）"
   },
   "mirrorSiteDomainListTitle": {
-    "message": "追加済みドメイン"
+    "message": "追加したサイト"
   },
   "mirrorSiteNoDomains": {
-    "message": "ドメインが追加されていません"
+    "message": "まだ追加されていません"
   },
   "mirrorSiteDomainAdded": {
-    "message": "ドメインを追加しました"
+    "message": "サイトを追加しました"
   },
   "mirrorSiteDomainRemoved": {
-    "message": "ドメインを削除しました"
+    "message": "サイトを削除しました"
   },
   "mirrorSiteDomainExists": {
-    "message": "このドメインは既に存在します"
+    "message": "このサイトは既に一覧にあります"
   },
   "mirrorSiteDomainInvalid": {
-    "message": "ドメイン形式が無効です"
+    "message": "正しいサイト形式ではないようです"
   },
   "mirrorSiteDomainIsOfficial": {
-    "message": "このドメインは公式対応プラットフォームです"
+    "message": "既に対応済みです — 追加は不要です"
   },
   "mirrorSiteCopied": {
-    "message": "クリップボードにコピーしました"
+    "message": "コピーしました"
   },
   "hideStarredFromListLabel": {
-    "message": "重複排除モード"
+    "message": "重複を非表示"
   },
   "hideStarredFromListHint": {
-    "message": "有効にすると、フォルダに追加された会話がサイドバーのリストから非表示になります"
+    "message": "保存した会話はサイトのリストから非表示になります"
   },
   "timelineAICompleteNotLatestToast": {
-    "message": "$1 の返信が完了しました。"
+    "message": "$1 の返信が完了しました"
   },
   "timelineAICompleteToastTitle": {
-    "message": "返信完了リマインダー"
+    "message": "返信通知"
   },
   "timelineAICompleteToastHint": {
-    "message": "AI の返信が完了し、最新位置にいないときに通知を表示します"
+    "message": "画面から離れている間に返信が完了したら通知します"
   },
   "timelineThemeColorLabel": {
-    "message": "タイムラインのテーマカラー"
+    "message": "タイムラインの色"
   },
   "timelineThemeColorHint": {
-    "message": "プラットフォームごとにタイムラインのアクティブマーカーのテーマカラーを設定します"
+    "message": "プラットフォームごとにハイライトカラーを選択"
   },
   "timelineThemeColorManageButton": {
-    "message": "設定"
+    "message": "選択"
   },
   "changelogShareTip": {
     "message": "この拡張機能が便利だと感じたら、必要としている人にもぜひ共有してください。"
   },
   "longConversationPerformanceTitle": {
-    "message": "Long Conversation Optimization"
+    "message": "自動折りたたみ"
   },
   "longConversationPerformanceHint": {
-    "message": "Automatically fold older messages after the set limit."
+    "message": "古いメッセージを折りたたみます — 削除はされず、クリックで表示"
   },
   "longConversationThresholdLabel": {
-    "message": "After"
+    "message": "メッセージが"
   },
   "longConversationMessageUnit": {
-    "message": "messages"
+    "message": "件を超えたら"
   },
   "longConversationKeepRecentLabel": {
-    "message": "Keep recent"
+    "message": "直近"
   },
   "longConversationKeepRecentUnit": {
-    "message": "messages visible"
+    "message": "件は表示したまま"
   },
   "longConversationValidationKeepRecent": {
-    "message": "Visible messages must be fewer than the trigger limit. Adjusted automatically."
+    "message": "表示する件数は折りたたみの開始件数より少なくする必要があります — 自動で調整しました"
   },
   "longConversationExpandMore": {
-    "message": "Expand more history"
+    "message": "以前のメッセージを表示"
   },
   "longConversationCollapsedTooltip": {
-    "message": "$1 older messages above are folded. Click to expand more."
+    "message": "以前のメッセージ $1 件を折りたたみました — クリックで表示"
   },
   "highlightSettings": {
     "message": "設定"
   },
   "highlightConfirm": {
     "message": "確認"
+  },
+  "settingsGroupCore": {
+    "message": "基本"
+  },
+  "settingsGroupAdvanced": {
+    "message": "その他"
+  },
+  "settingsGroupExperimental": {
+    "message": "お楽しみ機能"
+  },
+  "settingsGroupBackup": {
+    "message": "バックアップ"
+  },
+  "settingsGroupAbout": {
+    "message": "情報"
+  },
+  "conversationExportTabName": {
+    "message": "会話のエクスポート"
+  },
+  "highlightTabName": {
+    "message": "ハイライト"
+  },
+  "conversationExportToggleTitle": {
+    "message": "エクスポートを有効にする"
+  },
+  "conversationExportToggleHint": {
+    "message": "タイムラインの上にエクスポートボタンを追加します"
+  },
+  "formulaSettingsLabel": {
+    "message": "数式設定"
+  },
+  "quickAskTitle": {
+    "message": "追加質問"
+  },
+  "quickAskHint": {
+    "message": "テキストを選択して「追加質問」を押すと、入力欄に取り込めます"
+  },
+  "runnerAdvancedHint": {
+    "message": "コードブロックに Run ボタンを追加します。ページの動作が少し重くなる場合があります"
+  },
+  "runnerHint": {
+    "message": "ここにコードを書きます — async/await 対応"
+  },
+  "runnerCodeEditor": {
+    "message": "コード"
+  },
+  "runnerOutput": {
+    "message": "結果"
+  },
+  "runnerTabTitle": {
+    "message": "コードランナー"
+  },
+  "animLightweightHint": {
+    "message": "デフォルトはオフ — ペットを選ぶと、AI の返信中に表示されます"
+  },
+  "localBackupTitle": {
+    "message": "自分の PC に保存（おすすめ）"
+  },
+  "localBackupHint": {
+    "message": "アカウント不要 — ファイルをエクスポートして自分で保管できます"
+  },
+  "gdriveAdvancedTitle": {
+    "message": "Google Drive バックアップ（任意）"
+  },
+  "gdriveOptionalHint": {
+    "message": "Google へのアクセス許可は、クラウドバックアップを使う場合のみ求められます"
+  },
+  "gdrivePermissionDeclined": {
+    "message": "Google へのアクセスが許可されませんでした"
+  },
+  "exportingData": {
+    "message": "エクスポート中…"
+  },
+  "importingData": {
+    "message": "インポート中…"
   }
 }
